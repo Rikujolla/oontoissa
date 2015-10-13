@@ -71,10 +71,21 @@ Page {
             }
             Label {
                 x: Theme.paddingLarge
-                text: qsTr("Now")
+                text: qsTr("Location now")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
+
+            Text {
+                color: Theme.secondaryHighlightColor
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: varus.inFence
+            }
+
             Label {
                 x: Theme.paddingLarge
                 text: qsTr("GPS info")
@@ -82,13 +93,23 @@ Page {
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
             Text {
-                text: qsTr("Latitude") + ", " + qsTr("Longitude")
                 color: Theme.secondaryHighlightColor
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: qsTr("Latitude") + ", " + qsTr("Longitude")
             }
 
             Text {
-                text: possu.position.coordinate.latitude + ", " + possu.position.coordinate.longitude
                 color: Theme.secondaryHighlightColor
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: possu.position.coordinate.latitude + ", " + possu.position.coordinate.longitude
             }
 
             Label {
@@ -113,7 +134,13 @@ Page {
                 onPositionChanged: {
                     var coord = possu.position.coordinate;
                     console.log("Coordinate:", coord.longitude, coord.latitude);
+                    Mydbases.checkFences();
                 }
+            }
+
+            Item {
+                id: varus
+                property string inFence
             }
 
 

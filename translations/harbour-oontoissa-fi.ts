@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Käännökset</translation>
     </message>
     <message>
         <source>Finnish (Riku Lahtinen)</source>
@@ -36,7 +36,7 @@
     <name>CoverPage</name>
     <message>
         <source>At work</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Oon töissä!</translation>
     </message>
 </context>
 <context>
@@ -47,7 +47,7 @@
     </message>
     <message>
         <source>Help page</source>
-        <translation type="unfinished"></translation>
+        <translation>Ohjesivu</translation>
     </message>
     <message>
         <source>Setting a location</source>
@@ -73,10 +73,6 @@
 <context>
     <name>Loc</name>
     <message>
-        <source>Set location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
@@ -86,6 +82,14 @@
     </message>
     <message>
         <source>Loc</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update values</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete vallue</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -116,14 +120,18 @@
     </message>
     <message>
         <source>At work</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Now</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Oon töissä!</translation>
     </message>
     <message>
         <source>GPS info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Longitude</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -135,11 +143,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Latitude</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Longitude</source>
+        <source>Location now</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -73,10 +73,6 @@
 <context>
     <name>Loc</name>
     <message>
-        <source>Set location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
@@ -86,6 +82,14 @@
     </message>
     <message>
         <source>Loc</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update values</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete vallue</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -119,11 +123,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Now</source>
+        <source>GPS info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>GPS info</source>
+        <source>Latitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Longitude</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -135,11 +143,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Latitude</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Longitude</source>
+        <source>Location now</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

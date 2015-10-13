@@ -40,12 +40,17 @@ Page {
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
+                text: qsTr("Delete vallue")
+                onClicked: {Mydbases.delLocTable()
+                }
+            }
+            MenuItem {
                 text: qsTr("Update values")
                 onClicked: {
                     if (varis.itemi == "") {
                         Mydbases.addLocation()
                     }
-                    else  {}
+                    else  {Mydbases.updateLocation()}
                 }
             }
         }
@@ -158,6 +163,7 @@ Page {
                 //color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
             }
+                Component.onCompleted: Mydbases.populateView()
 
 
         }

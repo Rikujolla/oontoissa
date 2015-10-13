@@ -31,7 +31,7 @@ Page {
     id: page
     SilicaListView {
         id: listView
-        model: 10
+        model: 5
         anchors.fill: parent
         header: PageHeader {
             title: qsTr("Set location page")
