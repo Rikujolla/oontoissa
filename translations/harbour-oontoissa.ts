@@ -96,11 +96,11 @@
 <context>
     <name>SetLocation</name>
     <message>
-        <source>Item</source>
+        <source>Set location page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Set location page</source>
+        <source>New location</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

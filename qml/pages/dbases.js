@@ -32,17 +32,17 @@ function updateLocation() {
 
             // Updating the location
             if (neimi.text != "") {
-                tx.executeSql('UPDATE Locations SET theplace=? WHERE ROWID = last_insert_rowid()', neimi.text);
+                tx.executeSql('UPDATE Locations SET theplace=? WHERE ROWID = currentIndex', neimi.text);
             }
             if (latti.text != "") {
-                tx.executeSql('UPDATE Locations SET thelati=? WHERE ROWID = last_insert_rowid()', latti.text);
+                tx.executeSql('UPDATE Locations SET thelati=? WHERE ROWID = currentIndex', latti.text);
             }
             if (longi.text != "") {
-                tx.executeSql('UPDATE Locations SET thelongi=? WHERE ROWID = last_insert_rowid()', longi.text);
+                tx.executeSql('UPDATE Locations SET thelongi=? WHERE ROWID = currentIndex', longi.text);
             }
             if (saissi.text != "") {
-                tx.executeSql('UPDATE Locations SET tolerlong=? WHERE ROWID = last_insert_rowid()', saissi.text);
-                tx.executeSql('UPDATE Locations SET tolerlat=? WHERE ROWID = last_insert_rowid()', saissi.text);
+                tx.executeSql('UPDATE Locations SET tolerlong=? WHERE ROWID = currentIndex', saissi.text);
+                tx.executeSql('UPDATE Locations SET tolerlat=? WHERE ROWID = currentIndex', saissi.text);
             }
             console.log("uprate")
 
@@ -103,8 +103,10 @@ function checkFences() {
             // Filling movetext
             varus.inFence = "";
             for(var i = 0; i < rs.rows.length; i++) {
-                console.log("Varis lentää")
+                console.log("Harakka", possu.position.coordinate.latitude)
+                if (possu.position.coordinate.latitude - rs.rows.item(i).thelati < rs.rows.item(i).tolerlat) {
                 varus.inFence += rs.rows.item(i).theplace;
+                }
             }
         }
     )

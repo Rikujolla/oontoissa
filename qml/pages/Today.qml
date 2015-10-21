@@ -140,7 +140,7 @@ Page {
 
             Item {
                 id: varus
-                property string inFence
+                property string inFence  //Stores the value where device is, e.g. Work, Home ..
             }
 
 

@@ -31,7 +31,7 @@ Page {
     id: page
     SilicaListView {
         id: listView
-        model: 5
+        model: listSize
         anchors.fill: parent
         header: PageHeader {
             title: qsTr("Set location page")
@@ -41,12 +41,13 @@ Page {
 
             Label {
                 x: Theme.paddingLarge
-                text: qsTr("Item") + " " + index
+                text: qsTr("New location") + " " + index
                 anchors.verticalCenter: parent.verticalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
             onClicked: {console.log("Clicked " + index)
                 pageStack.push(Qt.resolvedUrl("Loc.qml"))
+                currentIndex = index
             }
         }
         VerticalScrollDecorator {}
