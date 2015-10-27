@@ -47,7 +47,7 @@ Page {
             MenuItem {
                 text: qsTr("Update values")
                 onClicked: {
-                    if (varis.itemi == "") {
+                    if (varis.itemis[currentIndex-1].pla == "") {
                         Mydbases.addLocation()
                     }
                     else  {Mydbases.updateLocation()}
@@ -83,11 +83,17 @@ Page {
             Item {
                 id: varis
                 property string itemi //saved location in database
+                property var itemis: [
+                    {pla:"",els:""},
+                    {pla:"",els:""}
+                ] //saved locations in database
+                property string tempur //temporary string
+                property int indos // currentIndex
             }
 
             Text {
                     id: baassi
-                    text: varis.itemi
+                    text: varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
             }
@@ -163,7 +169,20 @@ Page {
                 //color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
             }
-                Component.onCompleted: Mydbases.populateView()
+                Component.onCompleted: {Mydbases.populateView();
+                    //varis.indos = currentIndex;
+                    console.log(varis.itemis[currentIndex-1].pla);
+                }
+
+                Timer {
+                    interval: 2000
+                    running: true && Qt.ApplicationActive
+                    repeat: true
+                    onTriggered: {Mydbases.populateView();
+                        baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
+                    }
+                }
+
 
 
         }

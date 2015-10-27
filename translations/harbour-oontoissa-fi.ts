@@ -100,7 +100,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New location</source>
+        <source>Location</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -139,11 +139,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>GPS not on</source>
+        <source>Location now</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Location now</source>
+        <source>GPS is on</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

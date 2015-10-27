@@ -35,7 +35,7 @@ ApplicationWindow
     _defaultPageOrientations: Orientation.All
 
     property int currentIndex: 1 //
-    property int listSize: 1 //
+    property int listSize: 2 //
 }
 
 

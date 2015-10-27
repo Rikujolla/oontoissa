@@ -41,13 +41,13 @@ Page {
 
             Label {
                 x: Theme.paddingLarge
-                text: qsTr("New location") + " " + index
+                text: qsTr("Location") + " " + (index+1) + ": "
                 anchors.verticalCenter: parent.verticalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
             onClicked: {console.log("Clicked " + index)
                 pageStack.push(Qt.resolvedUrl("Loc.qml"))
-                currentIndex = index
+                currentIndex = index+1;
             }
         }
         VerticalScrollDecorator {}

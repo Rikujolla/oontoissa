@@ -77,6 +77,7 @@ Page {
             }
 
             Text {
+                id: status
                 color: Theme.secondaryHighlightColor
                 anchors {
                     left: parent.left
@@ -120,7 +121,7 @@ Page {
             }
             Label {
                 x: Theme.paddingLarge
-                text: qsTr("GPS not on")
+                text: qsTr("GPS is on")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
@@ -135,6 +136,7 @@ Page {
                     var coord = possu.position.coordinate;
                     console.log("Coordinate:", coord.longitude, coord.latitude);
                     Mydbases.checkFences();
+                    status.text = varus.inFence;
                 }
             }
 
