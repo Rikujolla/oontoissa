@@ -1,6 +1,9 @@
 ///
 /// addLocation(), row 6
-/// delLocTable(), row 25
+/// updateLocation(), row 35
+/// delLocTable(), row 79
+/// populateView(), row 91
+/// checkFences(), row 120
 
 
 function addLocation() {
@@ -81,7 +84,8 @@ function delLocTable() {
     db.transaction(
         function(tx) {
             // Create the database if it doesn't already exist
-            tx.executeSql('DROP TABLE Locations');
+            //tx.executeSql('DROP TABLE Locations');
+            tx.executeSql('DROP TABLE Today');
         }
     )
 }
@@ -128,15 +132,52 @@ function checkFences() {
 
 
             // Filling movetext
-            varus.inFence = "?";
+            varus.inFence = "Not in any fence";
             for(var i = 0; i < rs.rows.length; i++) {
-                if (Math.abs(possu.position.coordinate.latitude - rs.rows.item(i).thelati) < rs.rows.item(i).tolerlat) {
+                if ((Math.abs(possu.position.coordinate.latitude - rs.rows.item(i).thelati) < rs.rows.item(i).tolerlat)
+                        && (Math.abs(possu.position.coordinate.longitude - rs.rows.item(i).thelongi) < rs.rows.item(i).tolerlong)) {
                 varus.inFence = rs.rows.item(i).theplace;
-                    console.log("checkFences", possu.position.coordinate.latitude - rs.rows.item(i).thelati, varus.inFence)
+                    console.log("checkFences", possu.position.coordinate.latitude - rs.rows.item(i).thelati,
+                                possu.position.coordinate.longitude - rs.rows.item(i).thelongi, varus.inFence)
 
                 }
             }
         }
     )
 
+}
+
+function addTodayInfo() {
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+
+    db.transaction(
+        function(tx) {
+            // Create the database if it doesn't already exist
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+
+            //Testing, if the status is still same
+            var evid = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()')
+            if (evid.rows.length == 0) {
+                tx.executeSql('INSERT INTO Today VALUES(?, ?, ?, ?, ?)', [ timeri.daatta, varus.inFence, timeri.timme, timeri.timme, timeri.timme ]);
+            }
+
+            else if (evid.rows.item(0).thestatus == varus.inFence){
+                // Update
+                tx.executeSql('UPDATE Today SET endtime=? WHERE ROWID = last_insert_rowid()', [timeri.timme]);
+            }
+            else {
+                // Add a row
+                tx.executeSql('INSERT INTO Today VALUES(?, ?, ?, ?, ?)', [ timeri.daatta, varus.inFence, timeri.timme, timeri.timme, timeri.timme ]);
+            }
+            console.log("evid", evid.rows.item(0).thestatus)
+            // Show all values
+            var rs = tx.executeSql('SELECT * FROM Today');
+
+            var r = ""
+            for(var i = 0; i < rs.rows.length; i++) {
+                r += rs.rows.item(i).starttime + " - " + rs.rows.item(i).endtime + ", " + rs.rows.item(i).thestatus +"\n"
+            }
+            varus.whatToday = r
+        }
+    )
 }

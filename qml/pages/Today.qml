@@ -119,6 +119,17 @@ Page {
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
+            Text {
+                id: todday
+                color: Theme.secondaryHighlightColor
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: varus.whatToday
+            }
+
             Label {
                 x: Theme.paddingLarge
                 text: qsTr("GPS is on")
@@ -137,14 +148,39 @@ Page {
                     console.log("Coordinate:", coord.longitude, coord.latitude);
                     Mydbases.checkFences();
                     status.text = varus.inFence;
+                    todday.text = varus.whatToday;
                 }
             }
 
             Item {
                 id: varus
                 property string inFence  //Stores the value where device is, e.g. Work, Home ..
+                property string whatToday: "Invent something"
             }
 
+            /// Counting time in each location
+            Timer {
+                interval:5000
+                running:Qt.ApplicationActive
+                repeat:true
+                onTriggered: {
+                    timeri.timeInfo();
+                    console.log(timeri.timme)
+                    Mydbases.addTodayInfo();
+                }
+            }
+
+            Item {
+                id : timeri
+                property string timme
+                property string daatta
+                function timeInfo() {
+                    var date0 = new Date;
+                    //timme = date0.getHours() + ":" + date0.getMinutes() + ":" + date0.getSeconds();
+                    timme = date0.getHours() + ":" + date0.getMinutes();
+                    daatta = date0.getFullYear() + ":" + (date0.getMonth()+1) + ":" + date0.getDate();
+                }
+            }
 
 
         }
