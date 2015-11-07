@@ -69,16 +69,11 @@ Page {
             PageHeader {
                 title: qsTr("At work")
             }
-            Label {
-                x: Theme.paddingLarge
-                text: qsTr("Location now")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
-            }
+            SectionHeader { text: qsTr("Location now") }
 
             Text {
                 id: status
-                color: Theme.secondaryHighlightColor
+                color: Theme.primaryColor
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -87,12 +82,7 @@ Page {
                 text: varus.inFence
             }
 
-            Label {
-                x: Theme.paddingLarge
-                text: qsTr("GPS info")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
-            }
+            SectionHeader { text: qsTr("GPS info") }
             Text {
                 color: Theme.secondaryHighlightColor
                 anchors {
@@ -104,7 +94,7 @@ Page {
             }
 
             Text {
-                color: Theme.secondaryHighlightColor
+                color: Theme.primaryColor
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -113,15 +103,10 @@ Page {
                 text: possu.position.coordinate.latitude + ", " + possu.position.coordinate.longitude
             }
 
-            Label {
-                x: Theme.paddingLarge
-                text: qsTr("Today")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
-            }
+            SectionHeader { text: qsTr("Today") }
             Text {
                 id: todday
-                color: Theme.secondaryHighlightColor
+                color: Theme.primaryColor
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -130,12 +115,22 @@ Page {
                 text: varus.whatToday
             }
 
-            Label {
-                x: Theme.paddingLarge
-                text: qsTr("GPS is on")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
+            SectionHeader { text: qsTr("History") }
+            Text {
+                id: histor
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                wrapMode: Text.WordWrap
+                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: varus.niceHistory
+
             }
+
 
             ////Functions etc
             PositionSource {
@@ -149,6 +144,7 @@ Page {
                     Mydbases.checkFences();
                     status.text = varus.inFence;
                     todday.text = varus.whatToday;
+                    histor.text = varus.niceHistory;
                 }
             }
 
@@ -156,6 +152,7 @@ Page {
                 id: varus
                 property string inFence  //Stores the value where device is, e.g. Work, Home ..
                 property string whatToday: "Invent something"
+                property string niceHistory: "The whole history"
             }
 
             /// Counting time in each location
@@ -167,6 +164,7 @@ Page {
                     timeri.timeInfo();
                     console.log(timeri.timme)
                     Mydbases.addTodayInfo();
+                    Mydbases.addHistoryData();
                 }
             }
 
@@ -176,9 +174,9 @@ Page {
                 property string daatta
                 function timeInfo() {
                     var date0 = new Date;
-                    //timme = date0.getHours() + ":" + date0.getMinutes() + ":" + date0.getSeconds();
-                    timme = date0.getHours() + ":" + date0.getMinutes();
-                    daatta = date0.getFullYear() + ":" + (date0.getMonth()+1) + ":" + date0.getDate();
+                    timme = date0.getHours() + ":" + date0.getMinutes() + ":" + date0.getSeconds();
+                    //timme = date0.getHours() + ":" + date0.getMinutes();
+                    daatta = date0.getFullYear() + "-" + (date0.getMonth()+1) + "-" + date0.getDate();
                 }
             }
 
