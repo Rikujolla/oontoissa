@@ -124,13 +124,9 @@ Page {
                 TextField {
                 id: latti
                 placeholderText: "24.15"
-                //label: qsTr("ECO code")
-                //visible: openingMode == 2
                 width: page.width/2
-                //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0-9])$/ }
-                //color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
-            }
+                }
 
                 Text {
                     text: "Longitude"
@@ -172,6 +168,21 @@ Page {
                 Component.onCompleted: {Mydbases.populateView();
                     //varis.indos = currentIndex;
                     console.log(varis.itemis[currentIndex-1].pla);
+                }
+
+                ////Functions etc
+                PositionSource {
+                    id: possul
+                    updateInterval: 1000
+                    active: true
+
+                    onPositionChanged: {
+                        var coord = possul.position.coordinate;
+                        console.log("Coordinate:", coord.longitude, coord.latitude);
+                        //status.text = varus.inFence + ": " + varus.timeInFenceS;
+                        //todday.text = varus.whatToday;
+                        //histor.text = varus.niceHistory;
+                    }
                 }
 
                 Timer {

@@ -79,7 +79,7 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: varus.inFence
+                text: varus.inFence + ": " + varus.timeInFenceS
             }
 
             SectionHeader { text: qsTr("GPS info") }
@@ -142,7 +142,8 @@ Page {
                     var coord = possu.position.coordinate;
                     console.log("Coordinate:", coord.longitude, coord.latitude);
                     Mydbases.checkFences();
-                    status.text = varus.inFence;
+                    varus.timeSow();
+                    status.text = varus.inFence + ": " + varus.timeInFenceS;
                     todday.text = varus.whatToday;
                     histor.text = varus.niceHistory;
                 }
@@ -151,13 +152,23 @@ Page {
             Item {
                 id: varus
                 property string inFence  //Stores the value where device is, e.g. Work, Home ..
+                property string timeInFence //Stores the time in fence in seconds
+                property string timeInFenceS //Stores the time in fence String
                 property string whatToday: "Invent something"
                 property string niceHistory: "The whole history"
+                property int hoursD //used to display status hours
+                property int minutesD //Used to display status minutes
+                function timeSow() {
+                    hoursD = (varus.timeInFence-varus.timeInFence%3600)/3600;
+                    minutesD = (varus.timeInFence-varus.timeInFence%60)/60-hoursD*60;
+                    timeInFenceS = minutesD < 10 ? (hoursD + ":0" + minutesD):(hoursD + ":" + minutesD)
+                    console.log("tunnit:min", hoursD, ":",minutesD)
+                }
             }
 
             /// Counting time in each location
             Timer {
-                interval:5000
+                interval:1000
                 running:Qt.ApplicationActive
                 repeat:true
                 onTriggered: {

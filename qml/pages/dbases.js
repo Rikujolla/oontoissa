@@ -133,7 +133,7 @@ function checkFences() {
 
 
             // Filling movetext
-            varus.inFence = "Not in any fence";
+            varus.inFence = qsTr("Not in a paddock");
             for(var i = 0; i < rs.rows.length; i++) {
                 if ((Math.abs(possu.position.coordinate.latitude - rs.rows.item(i).thelati) < rs.rows.item(i).tolerlat)
                         && (Math.abs(possu.position.coordinate.longitude - rs.rows.item(i).thelongi) < rs.rows.item(i).tolerlong)) {
@@ -159,37 +159,39 @@ function addTodayInfo() {
             //Testing, if the status is still same
             var evid = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()')
             if (evid.rows.length == 0) {
-                tx.executeSql('INSERT INTO Today VALUES(?, ?, ?, ?, ?)', [ timeri.daatta, varus.inFence, timeri.timme, timeri.timme, '00:00' ]);
+                tx.executeSql('INSERT INTO Today VALUES(date(?), ?, time(?), time(?), time(?))', [ 'now', varus.inFence, 'now', 'now', 'now' ]);
+                //var evide = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()')
+                //console.log("daate", evide.rows.item(0).theday)
             }
 
             else if (evid.rows.item(0).thestatus == varus.inFence){
                 // Update
-                tx.executeSql('UPDATE Today SET endtime=? WHERE ROWID = last_insert_rowid()', [timeri.timme]);
-                //tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = last_insert_rowid()', '00:01');
+            var evied = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = last_insert_rowid()',['%s', 'now',  '%s', ("2015-11-09 " + evid.rows.item(0).starttime)])
+                tx.executeSql('UPDATE Today SET endtime=time(?) WHERE ROWID = last_insert_rowid()', 'now');
                 var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = last_insert_rowid()');
                 //console.log('alku', begi.rows.item(0).begil)
                 var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = last_insert_rowid()');
                 console.log('alku', begi.rows.item(0).begil, endi.rows.item(0).endil)
-                //tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = last_insert_rowid()', ['08:02:11', '08:00:05']);
-                //tx.executeSql('UPDATE Today SET subtotal=time(?-?) WHERE ROWID = last_insert_rowid()',[endi.rows.item(0).endil,begi.rows.item(0).begil]);
-                //tx.executeSql('UPDATE Today SET subtotal=(time(?)-time(?)) WHERE ROWID = last_insert_rowid()',[endi.rows.item(0).endil,begi.rows.item(0).begil]);
-                tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = last_insert_rowid()', [endi.rows.item(0).endil]);
-                //tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = last_insert_rowid()', '00:01');
+                tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = last_insert_rowid()', [evied.rows.item(0).rest]);
             }
             else {
                 // Add a row
-                tx.executeSql('INSERT INTO Today VALUES(?, ?, ?, ?, ?)', [ timeri.daatta, varus.inFence, timeri.timme, timeri.timme, '00:00' ]);
+                tx.executeSql('INSERT INTO Today VALUES(date(?), ?, time(?), time(?), time(?))', [ 'now', varus.inFence, 'now', 'now', 'now' ]);
             }
             //console.log("evid", evid.rows.item(0).thestatus)
+            console.log("evied", evied.rows.item(0).rest)
             // Show all values
+            var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = last_insert_rowid()')
+            //var evider = tx.executeSql('SELECT time(?,?) AS rest  FROM Today WHERE ROWID = last_insert_rowid()')
+
             var rs = tx.executeSql('SELECT * FROM Today WHERE date(?)', 'now');
-            //var rs = tx.executeSql('SELECT * FROM Today WHERE date(?)', '2015-10-30');
 
             var r = ""
             for(var i = 0; i < rs.rows.length; i++) {
                 r += rs.rows.item(i).starttime + " - " + rs.rows.item(i).endtime + ", " + rs.rows.item(i).thestatus + ", " + rs.rows.item(i).subtotal +"\n"
             }
             varus.whatToday = r
+            varus.timeInFence = evider.rows.item(0).resto
         }
     )
 }
