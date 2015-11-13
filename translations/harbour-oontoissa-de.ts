@@ -123,6 +123,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Location now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>GPS info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -139,11 +143,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Location now</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>GPS is on</source>
+        <source>History</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

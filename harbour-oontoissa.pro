@@ -18,7 +18,6 @@ SOURCES += src/harbour-oontoissa.cpp
 
 OTHER_FILES += qml/harbour-oontoissa.qml \
     qml/cover/CoverPage.qml \
-    rpm/harbour-oontoissa.changes.in \
     rpm/harbour-oontoissa.spec \
     rpm/harbour-oontoissa.yaml \
     translations/*.ts \
@@ -29,7 +28,10 @@ OTHER_FILES += qml/harbour-oontoissa.qml \
     qml/pages/About.qml \
     translations/harbour-oontoissa-fi.ts \
     qml/pages/dbases.js \
-    qml/pages/Loc.qml
+    qml/pages/Loc.qml \
+    qml/pages/HelpLoc.qml \
+    qml/pages/HelpSetLoc.qml \
+    qml/pages/Del.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -39,6 +41,8 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/harbour-oontoissa-de.ts \
-                translations/harbour-oontoissa-fi.ts
+TRANSLATIONS += translations/harbour-oontoissa-fi.ts
+
+DISTFILES += \
+    rpm/harbour-oontoissa.changes
 

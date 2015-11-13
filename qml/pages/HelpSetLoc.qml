@@ -25,17 +25,51 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "pages"
 
-ApplicationWindow
-{
-    initialPage: Component { Today { } }
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
-    allowedOrientations: Orientation.All
-    _defaultPageOrientations: Orientation.All
 
-    property int currentIndex: 1 //
-    property int listSize: 3 //
+Page {
+    id: page
+
+    SilicaFlickable {
+        anchors.fill: parent
+
+        PullDownMenu {
+
+            MenuItem {
+                text: qsTr("Back to settings")
+                onClicked: pageStack.pop()
+            }
+        }
+
+        contentHeight: column.height
+
+        Column {
+            id: column
+
+            width: page.width
+            spacing: Theme.paddingLarge
+            PageHeader {
+                title: qsTr("Help")
+            }
+
+            SectionHeader { text: qsTr("Set location page") }
+            Text {
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                wrapMode: Text.WordWrap
+                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: {qsTr("On this page you will see the preset locations")
+                }
+            }
+
+
+
+//loppusulkeet
+        }
+    }
 }
-
-

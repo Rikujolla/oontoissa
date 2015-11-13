@@ -40,9 +40,8 @@ Page {
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
-                text: qsTr("Delete vallue")
-                onClicked: {Mydbases.delLocTable()
-                }
+                text: qsTr("Delete tables")
+                onClicked: pageStack.push(Qt.resolvedUrl("Del.qml"))
             }
             MenuItem {
                 text: qsTr("Update values")
@@ -52,17 +51,13 @@ Page {
                     }
                     else  {Mydbases.updateLocation()}
                 }
-            }
+           }
         }
 
         PushUpMenu {
             MenuItem {
                 text: qsTr("Help")
-                onClicked: pageStack.push(Qt.resolvedUrl("Help.qml"))
-            }
-            MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(Qt.resolvedUrl("About.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("HelpDel.qml"))
             }
         }
 
@@ -77,13 +72,14 @@ Page {
             width: page.width
             spacing: Theme.paddingLarge
             PageHeader {
-                title: qsTr("Loc")
+                title: qsTr("Location")
             }
 
             Item {
                 id: varis
                 property string itemi //saved location in database
                 property var itemis: [
+                    {pla:"",els:""},
                     {pla:"",els:""},
                     {pla:"",els:""}
                 ] //saved locations in database
@@ -121,22 +117,32 @@ Page {
                     x: Theme.paddingLarge
                 }
 
+            Row {
                 TextField {
                 id: latti
-                placeholderText: "24.15"
+                placeholderText: "63.1"
                 width: page.width/2
                 inputMethodHints: Qt.ImhNoPredictiveText
                 }
-
                 Text {
+                    id: lattite
+                    text: possul.position.coordinate.latitude
+                    color: Theme.secondaryHighlightColor
+                    x: Theme.paddingLarge
+                }
+
+            }
+
+            Text {
                     text: "Longitude"
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
                 }
 
+            Row {
                 TextField {
                 id: longi
-                placeholderText: "24.15"
+                placeholderText: "24.2"
                 //label: qsTr("ECO code")
                 //visible: openingMode == 2
                 width: page.width/2
@@ -145,6 +151,13 @@ Page {
                 //validator: RegExpValidator { regExp: /^((([A-E])([0-9])([0]))|((A)([0-3])([0-9])))$/ }
                 //color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
+                }
+                Text {
+                    id: longite
+                    text: possul.position.coordinate.longitude
+                    color: Theme.secondaryHighlightColor
+                    x: Theme.paddingLarge
+                }
             }
 
                 Text {

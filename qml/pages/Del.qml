@@ -25,34 +25,52 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.LocalStorage 2.0
+import QtPositioning 5.0
+import "dbases.js" as Mydbases
 
 
 Page {
     id: page
 
+    // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
         anchors.fill: parent
 
+        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
-
             MenuItem {
-                text: qsTr("Back to settings")
-                onClicked: pageStack.pop()
+                text: qsTr("Set location")
+                onClicked: pageStack.push(Qt.resolvedUrl("SetLocation.qml"))
             }
         }
 
+        PushUpMenu {
+            MenuItem {
+                text: qsTr("Help")
+                onClicked: pageStack.push(Qt.resolvedUrl("Help.qml"))
+            }
+            MenuItem {
+                text: qsTr("About")
+                onClicked: pageStack.push(Qt.resolvedUrl("About.qml"))
+            }
+        }
+
+        // Tell SilicaFlickable the height of its content.
         contentHeight: column.height
 
+        // Place our content in a Column.  The PageHeader is always placed at the top
+        // of the page, followed by our content.
         Column {
             id: column
 
             width: page.width
             spacing: Theme.paddingLarge
             PageHeader {
-                title: qsTr("Help page")
+                title: qsTr("Delete data")
             }
 
-            SectionHeader { text: qsTr("Location now") }
+            SectionHeader { text: qsTr("Warning!") }
             Text {
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.primaryColor
@@ -63,37 +81,40 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("Location now shows current location and time stayed there.")
+                text: {qsTr("The data will be deleted without warning when buttons are pressed!")
                 }
             }
 
-            SectionHeader { text: qsTr("Today") }
-            Text {
-                font.pixelSize: Theme.fontSizeSmall
-                color: Theme.primaryColor
-                wrapMode: Text.WordWrap
-                width: parent.width
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    margins: Theme.paddingLarge
-                }
-                text: {qsTr("Today shows the detailed info of the current day. If sowtware is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.")
+            Item {
+                id:deletions
+                property string choice: "none"
+
+            }
+
+            Button {
+                text: qsTr("Delete all!")
+                onClicked: {
+                    deletions.choice = "all";
+                    Mydbases.delLocTable();
+                    deletions.choice = "none";
                 }
             }
 
-            SectionHeader { text: qsTr("History") }
-            Text {
-                font.pixelSize: Theme.fontSizeSmall
-                color: Theme.primaryColor
-                wrapMode: Text.WordWrap
-                width: parent.width
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    margins: Theme.paddingLarge
+            Button {
+                text: qsTr("Delete times!")
+                onClicked: {
+                    deletions.choice = "times";
+                    Mydbases.delLocTable();
+                    deletions.choice = "none";
                 }
-                text: {qsTr("History shows the recorded info of the recent days.")
+            }
+
+            Button {
+                text: qsTr("Delete locations!")
+                onClicked: {
+                    deletions.choice = "locations";
+                    Mydbases.delLocTable();
+                    deletions.choice = "none";
                 }
             }
 
@@ -101,3 +122,5 @@ Page {
         }
     }
 }
+
+

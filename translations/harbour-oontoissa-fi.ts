@@ -40,6 +40,45 @@
     </message>
 </context>
 <context>
+    <name>Del</name>
+    <message>
+        <source>Set location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The data will be deleted without warning when buttons are pressed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete all!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete times!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete locations!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Help</name>
     <message>
         <source>Back to settings</source>
@@ -50,23 +89,65 @@
         <translation>Ohjesivu</translation>
     </message>
     <message>
-        <source>Setting a location</source>
+        <source>Location now</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Help text</source>
+        <source>Location now shows current location and time stayed there.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Help text continues</source>
+        <source>Today</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Known limitations</source>
+        <source>Today shows the detailed info of the current day. If sowtware is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Not able to do any sensible</source>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>History shows the recorded info of the recent days.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HelpLoc</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On this page you can feed location information, name, coordinates and tolerance. You will see current latitude and longitude to help the feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HelpSetLoc</name>
+    <message>
+        <source>Back to settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On this page you will see the preset locations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set location page</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -77,19 +158,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About</source>
+        <source>Location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Loc</source>
+        <source>Delete tables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete vallue</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -97,6 +174,10 @@
     <name>SetLocation</name>
     <message>
         <source>Set location page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -123,15 +204,7 @@
         <translation type="unfinished">Oon töissä!</translation>
     </message>
     <message>
-        <source>GPS info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Latitude</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Longitude</source>
+        <source>Location now</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -139,11 +212,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Location now</source>
+        <source>History</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>dbases</name>
     <message>
-        <source>GPS is on</source>
+        <source>Not in a paddock</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

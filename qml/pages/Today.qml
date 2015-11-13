@@ -82,7 +82,7 @@ Page {
                 text: varus.inFence + ": " + varus.timeInFenceS
             }
 
-            SectionHeader { text: qsTr("GPS info") }
+            /*SectionHeader { text: qsTr("GPS info") }
             Text {
                 color: Theme.secondaryHighlightColor
                 anchors {
@@ -101,7 +101,7 @@ Page {
                     margins: Theme.paddingLarge
                 }
                 text: possu.position.coordinate.latitude + ", " + possu.position.coordinate.longitude
-            }
+            }*/
 
             SectionHeader { text: qsTr("Today") }
             Text {
@@ -135,14 +135,16 @@ Page {
             ////Functions etc
             PositionSource {
                 id: possu
-                updateInterval: 1000
+                updateInterval: 100
                 active: true
 
                 onPositionChanged: {
                     var coord = possu.position.coordinate;
-                    console.log("Coordinate:", coord.longitude, coord.latitude);
+                    //console.log("Coordinate:", coord.longitude, coord.latitude);
                     Mydbases.checkFences();
                     varus.timeSow();
+                    Mydbases.addTodayInfo();
+                    Mydbases.addHistoryData();
                     status.text = varus.inFence + ": " + varus.timeInFenceS;
                     todday.text = varus.whatToday;
                     histor.text = varus.niceHistory;
@@ -158,24 +160,26 @@ Page {
                 property string niceHistory: "The whole history"
                 property int hoursD //used to display status hours
                 property int minutesD //Used to display status minutes
+                property string secondsD //Used to display status seconds
                 function timeSow() {
                     hoursD = (varus.timeInFence-varus.timeInFence%3600)/3600;
                     minutesD = (varus.timeInFence-varus.timeInFence%60)/60-hoursD*60;
-                    timeInFenceS = minutesD < 10 ? (hoursD + ":0" + minutesD):(hoursD + ":" + minutesD)
-                    console.log("tunnit:min", hoursD, ":",minutesD)
+                    secondsD = varus.timeInFence%60 < 10 ? ("0"+ varus.timeInFence%60):(varus.timeInFence%60)
+                    timeInFenceS = minutesD < 10 ? (hoursD + ":0" + minutesD + ":" + secondsD):(hoursD + ":" + minutesD + ":" + secondsD)
+                    //console.log("tunnit:min", hoursD, ":",minutesD)
                 }
             }
 
             /// Counting time in each location
             Timer {
-                interval:1000
+                interval:100
                 running:Qt.ApplicationActive
                 repeat:true
                 onTriggered: {
                     timeri.timeInfo();
-                    console.log(timeri.timme)
-                    Mydbases.addTodayInfo();
-                    Mydbases.addHistoryData();
+                    //console.log(timeri.timme)
+                    //Mydbases.addTodayInfo();
+                    //Mydbases.addHistoryData();
                 }
             }
 

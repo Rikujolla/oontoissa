@@ -25,14 +25,25 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.LocalStorage 2.0
+import "dbases.js" as Mydbases
 
 
 Page {
     id: page
     SilicaListView {
         id: listView
-        model: listSize
+        model: listis
         anchors.fill: parent
+
+        PushUpMenu {
+            MenuItem {
+                text: qsTr("Help")
+                onClicked: pageStack.push(Qt.resolvedUrl("HelpSetLoc.qml"))
+            }
+        }
+
+
         header: PageHeader {
             title: qsTr("Set location page")
         }
@@ -40,8 +51,10 @@ Page {
             id: delegate
 
             Label {
+                id: listos
                 x: Theme.paddingLarge
-                text: qsTr("Location") + " " + (index+1) + ": "
+                //text: qsTr("Location") + " " + (index+1) + ": " + paramit.itemis[index].pla
+                text: qsTr("Location") + " " + (index+1) + ": " + tekstis
                 anchors.verticalCenter: parent.verticalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
@@ -51,6 +64,39 @@ Page {
             }
         }
         VerticalScrollDecorator {}
+
+        ListModel {
+                id: listis
+                ListElement {
+                    tekstis: "test1"
+                }
+                ListElement {
+                    tekstis: "test2"
+                }
+                ListElement {
+                    tekstis: "test3"
+                }
+        }
+
+        Item {
+            id: paramit
+            property var itemis: [
+                {pla:"",els:""},
+                {pla:"",els:""},
+                {pla:"",els:""}
+            ] //saved locations in database
+
+        }
+
+        Timer {
+            interval: 200
+            running: true && Qt.ApplicationActive
+            repeat: true
+            onTriggered: { Mydbases.loadLocation()
+            }
+        }
+
+        //Component.onCompleted: Mydbases.loadLocation()
     }
 }
 

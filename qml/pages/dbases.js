@@ -26,7 +26,7 @@ function addLocation() {
             varis.itemis[currentIndex-1].pla = rs.rows.item(currentIndex-1).theplace;
             varis.itemis[currentIndex-1].els = rs.rows.item(currentIndex-1).thelati + ", "
                     + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong
-            console.log("The place ", varis.itemis[currentIndex-1].pla);
+            //console.log("The place ", varis.itemis[currentIndex-1].pla);
 
 
         }
@@ -77,16 +77,57 @@ function updateLocation() {
 
 }
 
-function delLocTable() {
+function loadLocation() {
+
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+
+    db.transaction(
+        function(tx) {
+            // Create the table, if not existing
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEST, tolerlong REAL, tolerlat REAL)');
+
+            // Show all
+            var rs = tx.executeSql('SELECT rowid, * FROM Locations');
+            for(var i = 0; i < rs.rows.length; i++) {
+                paramit.itemis[i].pla = rs.rows.item(i).theplace;
+                console.log("uprateee ", paramit.itemis[i].pla, i);
+                listis.set(i,{"tekstis": paramit.itemis[i].pla});
+            }
+
+
+        }
+    )
+
+}
+
+function delLocTable() { // DROP TABLE does not work yet. Table locking should be solved! Stop Timers??
     console.log("deleting files")
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
     db.transaction(
         function(tx) {
-            // Create the database if it doesn't already exist
-            //tx.executeSql('DROP TABLE Locations');
-            tx.executeSql('DROP TABLE Today');
-            //tx.executeSql('DROP TABLE History');
+            switch (deletions.choice) {
+            case "all":
+                //tx.executeSql('DROP TABLE Locations');
+                tx.executeSql('DELETE FROM Locations');
+                //tx.executeSql('DROP TABLE Today');
+                tx.executeSql('DELETE FROM Today');
+                //tx.executeSql('DROP TABLE History');
+                deletions.choice = "none";
+                break;
+            case "times":
+                //tx.executeSql('DROP TABLE Today');
+                tx.executeSql('DELETE FROM Today');
+                deletions.choice = "none";
+                break;
+            case "locations":
+                //tx.executeSql('DROP TABLE Locations');
+                tx.executeSql('DELETE FROM Locations');
+                deletions.choice = "none";
+                break;
+            default:
+                deletions.choice = "none";
+            }
         }
     )
 }
@@ -157,38 +198,45 @@ function addTodayInfo() {
             tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
 
             //Testing, if the status is still same
-            var evid = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()')
+            //var evid = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()')
+            var evid = tx.executeSql('SELECT * FROM Today ORDER BY theday DESC LIMIT 1')
+            console.log("Statukset", evid.rows.length)
+
             if (evid.rows.length == 0) {
-                tx.executeSql('INSERT INTO Today VALUES(date(?), ?, time(?), time(?), time(?))', [ 'now', varus.inFence, 'now', 'now', 'now' ]);
-                //var evide = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()')
-                //console.log("daate", evide.rows.item(0).theday)
+                tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), time(?))', [ 'now', varus.inFence, 'now', 'now', 'now' ]);
             }
 
             else if (evid.rows.item(0).thestatus == varus.inFence){
                 // Update
-            var evied = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = last_insert_rowid()',['%s', 'now',  '%s', ("2015-11-09 " + evid.rows.item(0).starttime)])
-                tx.executeSql('UPDATE Today SET endtime=time(?) WHERE ROWID = last_insert_rowid()', 'now');
+                //var evied = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = last_insert_rowid()',['%s', 'now',  '%s', (evid.rows.item(0).theday)])
+                var evied = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now',  '%s', (evid.rows.item(0).theday)])
+                tx.executeSql('UPDATE Today SET endtime=time(?) WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', 'now');
+                //var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = last_insert_rowid()');
                 var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = last_insert_rowid()');
                 //console.log('alku', begi.rows.item(0).begil)
-                var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = last_insert_rowid()');
-                console.log('alku', begi.rows.item(0).begil, endi.rows.item(0).endil)
-                tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = last_insert_rowid()', [evied.rows.item(0).rest]);
+                //var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = last_insert_rowid()');
+                var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
+                //console.log('alku', begi.rows.item(0).begil, endi.rows.item(0).endil)
+                //tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = last_insert_rowid()', [evied.rows.item(0).rest]);
+                tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', [evied.rows.item(0).rest]);
             }
             else {
                 // Add a row
-                tx.executeSql('INSERT INTO Today VALUES(date(?), ?, time(?), time(?), time(?))', [ 'now', varus.inFence, 'now', 'now', 'now' ]);
+                tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), time(?))', [ 'now', varus.inFence, 'now', 'now', 'now' ]);
             }
             //console.log("evid", evid.rows.item(0).thestatus)
-            console.log("evied", evied.rows.item(0).rest)
+            //console.log("evied", evied.rows.item(0).rest)
             // Show all values
-            var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = last_insert_rowid()')
+            //var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = last_insert_rowid()')
+            var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
             //var evider = tx.executeSql('SELECT time(?,?) AS rest  FROM Today WHERE ROWID = last_insert_rowid()')
 
-            var rs = tx.executeSql('SELECT * FROM Today WHERE date(?)', 'now');
+            var rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?) AND thestatus NOT IN (?)', ['now', 'Not in a paddock']);
 
             var r = ""
             for(var i = 0; i < rs.rows.length; i++) {
-                r += rs.rows.item(i).starttime + " - " + rs.rows.item(i).endtime + ", " + rs.rows.item(i).thestatus + ", " + rs.rows.item(i).subtotal +"\n"
+                //r += rs.rows.item(i).starttime + " - " + rs.rows.item(i).endtime + ", " + rs.rows.item(i).thestatus + ", " + rs.rows.item(i).subtotal +"\n"
+                r += rs.rows.item(i).starttime + " - " + rs.rows.item(i).endtime + ", " + rs.rows.item(i).thestatus +"\n"
             }
             varus.whatToday = r
             varus.timeInFence = evider.rows.item(0).resto
@@ -203,28 +251,21 @@ function addHistoryData() {
         function(tx) {
             // Create the database if it doesn't already exist
             tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+            //tx.executeSql('CREATE TABLE IF NOT EXISTS History(hday TEXT, hstatus TEXT, htotal TEXT)');
 
-            /* //Testing, if the status is still same
-            var evid = tx.executeSql('SELECT * FROM History WHERE ROWID = last_insert_rowid()')
-            if (evid.rows.length == 0) {
-                tx.executeSql('INSERT INTO Today VALUES(?, ?, ?)', [ timeri.daatta, varus.inFence, timeri.timme]);
-            }
-
-            else if (evid.rows.item(0).thestatus == varus.inFence){
-                // Update
-                tx.executeSql('UPDATE Today SET endtime=? WHERE ROWID = last_insert_rowid()', [timeri.timme]);
-            }
-            else {
-                // Add a row
-                tx.executeSql('INSERT INTO Today VALUES(?, ?, ?, ?, ?)', [ timeri.daatta, varus.inFence, timeri.timme, timeri.timme, timeri.timme ]);
-            }
-            console.log("evid", evid.rows.item(0).thestatus)*/
             // Show all values
-            var rs = tx.executeSql('SELECT theday, thestatus, SUM(time(subtotal)) AS totle FROM Today GROUP BY theday, thestatus');
+            //var rs = tx.executeSql('SELECT theday, thestatus, SUM(time(?)) AS totle FROM Today GROUP BY theday, thestatus', 'subtotal');
+            var rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE thestatus NOT IN (?) GROUP BY deit, thestatus', 'Not in a paddock');
+            //var rs = rt.executeSql('SELECT deit, thestatus, time(totle) AS totles FROM Today GROUP BY deit, thestatus');
+            //var rt = tx.executeSql('INSERT INTO History SELECT date(theday) AS hday, thestatus AS hstatus, SUM(subtotal) AS htotal FROM Today GROUP BY hday, hstatus');
 
             var r = ""
             for(var i = 0; i < rs.rows.length; i++) {
-                r += rs.rows.item(i).theday + ", " + rs.rows.item(i).thestatus + ", " + rs.rows.item(i).totle +"\n"
+                //console.log(i, rs.rows.item(i).totle);
+                r += rs.rows.item(i).deit + ", " + rs.rows.item(i).thestatus + ", "
+                        + (rs.rows.item(i).totle-rs.rows.item(i).totle%3600)/3600 + ":"
+                        + ((rs.rows.item(i).totle-rs.rows.item(i).totle%60)/60 - (rs.rows.item(i).totle-rs.rows.item(i).totle%3600)/60)
+                        +"\n"
             }
             varus.niceHistory = r
         }
