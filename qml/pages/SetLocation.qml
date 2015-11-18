@@ -89,7 +89,7 @@ Page {
         }
 
         Timer {
-            interval: 200
+            interval: Qt.ApplicationActive ? rateAct : ratePass
             running: true && Qt.ApplicationActive
             repeat: true
             onTriggered: { Mydbases.loadLocation()

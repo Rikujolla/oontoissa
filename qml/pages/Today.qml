@@ -135,7 +135,7 @@ Page {
             ////Functions etc
             PositionSource {
                 id: possu
-                updateInterval: 100
+                updateInterval: Qt.ApplicationActive ? rateAct : ratePass
                 active: true
 
                 onPositionChanged: {
@@ -156,23 +156,26 @@ Page {
                 property string inFence  //Stores the value where device is, e.g. Work, Home ..
                 property string timeInFence //Stores the time in fence in seconds
                 property string timeInFenceS //Stores the time in fence String
+                //property string timeInFenceQ //Stores the time in fence String
                 property string whatToday: "Invent something"
                 property string niceHistory: "The whole history"
                 property int hoursD //used to display status hours
                 property int minutesD //Used to display status minutes
                 property string secondsD //Used to display status seconds
+                property real tolerat: 40000000.0 // Used to order two locations in order
                 function timeSow() {
                     hoursD = (varus.timeInFence-varus.timeInFence%3600)/3600;
                     minutesD = (varus.timeInFence-varus.timeInFence%60)/60-hoursD*60;
                     secondsD = varus.timeInFence%60 < 10 ? ("0"+ varus.timeInFence%60):(varus.timeInFence%60)
                     timeInFenceS = minutesD < 10 ? (hoursD + ":0" + minutesD + ":" + secondsD):(hoursD + ":" + minutesD + ":" + secondsD)
                     //console.log("tunnit:min", hoursD, ":",minutesD)
+                    covTim = timeInFenceS;
                 }
             }
 
             /// Counting time in each location
             Timer {
-                interval:100
+                interval: Qt.ApplicationActive ? rateAct : ratePass
                 running:Qt.ApplicationActive
                 repeat:true
                 onTriggered: {

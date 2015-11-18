@@ -90,7 +90,7 @@ function loadLocation() {
             var rs = tx.executeSql('SELECT rowid, * FROM Locations');
             for(var i = 0; i < rs.rows.length; i++) {
                 paramit.itemis[i].pla = rs.rows.item(i).theplace;
-                console.log("uprateee ", paramit.itemis[i].pla, i);
+                //console.log("uprateee ", paramit.itemis[i].pla, i);
                 listis.set(i,{"tekstis": paramit.itemis[i].pla});
             }
 
@@ -175,10 +175,14 @@ function checkFences() {
 
             // Filling movetext
             varus.inFence = qsTr("Not in a paddock");
+            varus.tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
             for(var i = 0; i < rs.rows.length; i++) {
                 if ((Math.abs(possu.position.coordinate.latitude - rs.rows.item(i).thelati) < rs.rows.item(i).tolerlat)
-                        && (Math.abs(possu.position.coordinate.longitude - rs.rows.item(i).thelongi) < rs.rows.item(i).tolerlong)) {
-                varus.inFence = rs.rows.item(i).theplace;
+                        && (Math.abs(possu.position.coordinate.longitude - rs.rows.item(i).thelongi) < rs.rows.item(i).tolerlong)
+                        && (rs.rows.item(i).tolerlong < varus.tolerat)) {
+                    varus.inFence = rs.rows.item(i).theplace;
+                    covLoc = varus.inFence;
+                    varus.tolerat = rs.rows.item(i).tolerlong;
                     console.log("checkFences", possu.position.coordinate.latitude - rs.rows.item(i).thelati,
                                 possu.position.coordinate.longitude - rs.rows.item(i).thelongi, varus.inFence)
 
@@ -199,7 +203,7 @@ function addTodayInfo() {
 
             //Testing, if the status is still same
             //var evid = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()')
-            var evid = tx.executeSql('SELECT * FROM Today ORDER BY theday DESC LIMIT 1')
+            var evid = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?) ORDER BY theday DESC LIMIT 1', 'now')
             console.log("Statukset", evid.rows.length)
 
             if (evid.rows.length == 0) {
@@ -229,6 +233,7 @@ function addTodayInfo() {
             // Show all values
             //var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = last_insert_rowid()')
             var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
+            //var evidy = tx.executeSql('SELECT time(subtotal) AS resta  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
             //var evider = tx.executeSql('SELECT time(?,?) AS rest  FROM Today WHERE ROWID = last_insert_rowid()')
 
             var rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?) AND thestatus NOT IN (?)', ['now', 'Not in a paddock']);
@@ -240,6 +245,9 @@ function addTodayInfo() {
             }
             varus.whatToday = r
             varus.timeInFence = evider.rows.item(0).resto
+            //varus.timeInFenceQ = evidy.rows.item(0).resta
+            //console.log(varus.timeInFenceQ)
+
         }
     )
 }

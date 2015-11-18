@@ -33,13 +33,13 @@ Page {
     SilicaFlickable {
         anchors.fill: parent
 
-        PullDownMenu {
+        /*PullDownMenu {
 
             MenuItem {
                 text: qsTr("Back to settings")
                 onClicked: pageStack.pop()
             }
-        }
+        }*/
 
         contentHeight: column.height
 

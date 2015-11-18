@@ -199,7 +199,7 @@ Page {
                 }
 
                 Timer {
-                    interval: 2000
+                    interval: Qt.ApplicationActive ? rateAct : ratePass
                     running: true && Qt.ApplicationActive
                     repeat: true
                     onTriggered: {Mydbases.populateView();

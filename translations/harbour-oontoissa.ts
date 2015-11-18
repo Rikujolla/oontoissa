@@ -4,10 +4,6 @@
 <context>
     <name>About</name>
     <message>
-        <source>Back to settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>About page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -36,6 +32,10 @@
     <name>CoverPage</name>
     <message>
         <source>At work</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -81,10 +81,6 @@
 <context>
     <name>Help</name>
     <message>
-        <source>Back to settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Help page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -116,10 +112,6 @@
 <context>
     <name>HelpLoc</name>
     <message>
-        <source>Back to settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
@@ -134,10 +126,6 @@
 </context>
 <context>
     <name>HelpSetLoc</name>
-    <message>
-        <source>Back to settings</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>On this page you will see the preset locations</source>
         <translation type="unfinished"></translation>
