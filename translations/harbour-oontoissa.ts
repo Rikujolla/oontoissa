@@ -34,10 +34,6 @@
         <source>At work</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Location</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Del</name>
@@ -207,7 +203,7 @@
 <context>
     <name>dbases</name>
     <message>
-        <source>Not in a paddock</source>
+        <source>Free gallopping</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

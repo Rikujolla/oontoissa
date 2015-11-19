@@ -174,14 +174,17 @@ function checkFences() {
 
 
             // Filling movetext
-            varus.inFence = qsTr("Not in a paddock");
+            varus.inFence = "Not in a paddock";
+            varus.inFenceT = qsTr("Free gallopping");
+            covLoc = varus.inFenceT;
             varus.tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
             for(var i = 0; i < rs.rows.length; i++) {
                 if ((Math.abs(possu.position.coordinate.latitude - rs.rows.item(i).thelati) < rs.rows.item(i).tolerlat)
                         && (Math.abs(possu.position.coordinate.longitude - rs.rows.item(i).thelongi) < rs.rows.item(i).tolerlong)
                         && (rs.rows.item(i).tolerlong < varus.tolerat)) {
                     varus.inFence = rs.rows.item(i).theplace;
-                    covLoc = varus.inFence;
+                    varus.inFenceT = varus.inFence;
+                    covLoc = varus.inFenceT;
                     varus.tolerat = rs.rows.item(i).tolerlong;
                     console.log("checkFences", possu.position.coordinate.latitude - rs.rows.item(i).thelati,
                                 possu.position.coordinate.longitude - rs.rows.item(i).thelongi, varus.inFence)
