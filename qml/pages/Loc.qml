@@ -57,7 +57,7 @@ Page {
         PushUpMenu {
             MenuItem {
                 text: qsTr("Help")
-                onClicked: pageStack.push(Qt.resolvedUrl("HelpDel.qml"))
+                onClicked: pageStack.push(Qt.resolvedUrl("HelpLoc.qml"))
             }
         }
 
@@ -122,6 +122,8 @@ Page {
                 id: latti
                 placeholderText: "63.1"
                 width: page.width/2
+                validator: RegExpValidator { regExp: /^\d?\d\.\d*$/ }
+                color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
                 }
                 Text {
@@ -146,10 +148,8 @@ Page {
                 //label: qsTr("ECO code")
                 //visible: openingMode == 2
                 width: page.width/2
-                //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0-9])$/ }
-                //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0])$/ }
-                //validator: RegExpValidator { regExp: /^((([A-E])([0-9])([0]))|((A)([0-3])([0-9])))$/ }
-                //color: errorHighlight? "red" : Theme.primaryColor
+                validator: RegExpValidator { regExp: /^\d?\d\.\d*$/ }
+                color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
                 }
                 Text {
@@ -172,15 +172,13 @@ Page {
                 //label: qsTr("ECO code")
                 //visible: openingMode == 2
                 width: page.width/2
-                //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0-9])$/ }
-                //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0])$/ }
-                //validator: RegExpValidator { regExp: /^((([A-E])([0-9])([0]))|((A)([0-3])([0-9])))$/ }
-                //color: errorHighlight? "red" : Theme.primaryColor
+                validator: RegExpValidator { regExp: /^\d*\.?\d*$/ }
+                color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
-            }
+                }
                 Component.onCompleted: {Mydbases.populateView();
                     //varis.indos = currentIndex;
-                    console.log(varis.itemis[currentIndex-1].pla);
+                    //console.log(varis.itemis[currentIndex-1].pla);
                 }
 
                 ////Functions etc
@@ -191,10 +189,7 @@ Page {
 
                     onPositionChanged: {
                         var coord = possul.position.coordinate;
-                        console.log("Coordinate:", coord.longitude, coord.latitude);
-                        //status.text = varus.inFence + ": " + varus.timeInFenceS;
-                        //todday.text = varus.whatToday;
-                        //histor.text = varus.niceHistory;
+                        //console.log("Coordinate:", coord.longitude, coord.latitude);
                     }
                 }
 

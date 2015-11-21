@@ -32,23 +32,11 @@
     <name>CoverPage</name>
     <message>
         <source>At work</source>
-        <translation type="unfinished">Oon töissä</translation>
+        <translation>Oon töissä</translation>
     </message>
 </context>
 <context>
     <name>Del</name>
-    <message>
-        <source>Set location</source>
-        <translation>Aseta sijainti</translation>
-    </message>
-    <message>
-        <source>Help</source>
-        <translation>Ohje</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation>Tietoja</translation>
-    </message>
     <message>
         <source>Delete data</source>
         <translation>Tuhoa tietoja</translation>
@@ -85,24 +73,24 @@
         <translation>Sijaintisi nyt</translation>
     </message>
     <message>
-        <source>Location now shows current location and time stayed there.</source>
-        <translation>Sijainti nyt näyttää tämänhetkisen sijainnin ja siellä vietetyn ajan.</translation>
-    </message>
-    <message>
         <source>Today</source>
         <translation>Tänään</translation>
-    </message>
-    <message>
-        <source>Today shows the detailed info of the current day. If sowtware is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.</source>
-        <translation>Tänään näyttää yksityiskohtaiset tiedot kuluvasta päivästä. Jos ohjelma suljetaan päivän aikana, se olettaa, että sijainti ei muutu tauon aikana. Voit esimerkiksi käynnistää sovelluksen aamulla mennessäsi töihin, sulkea sen töissä ja käynnistää sen uudelleen työpäivän lähetessä loppua.</translation>
     </message>
     <message>
         <source>History</source>
         <translation>Historia</translation>
     </message>
     <message>
-        <source>History shows the recorded info of the recent days.</source>
-        <translation>Historia näyttää viimepäivien tallennetut tiedot.</translation>
+        <source>&apos;Location now&apos; shows current location and time stayed there.</source>
+        <translation>&apos;Sijaintisi nyt&apos; näyttää nykyisen sijaintisi ja siellä vietetyn ajan.</translation>
+    </message>
+    <message>
+        <source>&apos;Today&apos; shows the detailed info of the current day. If software is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.</source>
+        <translation>&apos;Tänään&apos; näyttää yksityiskohtaiset tiedot kuluvasta päivästä. Jos ohjelma suljetaan päivän aikana, se olettaa, että sijainti ei muutu tauon aikana. Voit esimerkiksi käynnistää sovelluksen aamulla mennessäsi töihin, sulkea sen töissä ja käynnistää sen uudelleen työpäivän lähetessä loppua.</translation>
+    </message>
+    <message>
+        <source>&apos;History&apos; shows the recorded info of the recent days.</source>
+        <translation>&apos;Historia&apos; näyttää viimepäivien tallennetut tiedot.</translation>
     </message>
 </context>
 <context>
@@ -116,16 +104,12 @@
         <translation>Sijainti</translation>
     </message>
     <message>
-        <source>On this page you can feed location information, name, coordinates and tolerance. You will see current latitude and longitude to help the feed.</source>
-        <translation>Tällä sivulla voit syöttää sijaintitiedot, nimen, koordinaatit ja toleranssin. Tämänhetkinen leveys- ja pituuspiiri näytetään myös helpottamaan syöttöä.</translation>
+        <source>On this page you can feed the location information: name, coordinates and tolerance. You will see current latitude and longitude to help the feed.</source>
+        <translation>Tällä sivulla voit syöttää sijaintitiedot: nimen, koordinaatit ja toleranssin. Tämänhetkinen leveys- ja pituuspiiri näytetään myös helpottamaan syöttöä.</translation>
     </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
-    <message>
-        <source>On this page you will see the preset locations</source>
-        <translation>Tällä sivulla näet asettamasi sijainnit.</translation>
-    </message>
     <message>
         <source>Help</source>
         <translation>Ohje</translation>
@@ -133,6 +117,10 @@
     <message>
         <source>Set location page</source>
         <translation>Sijainnit</translation>
+    </message>
+    <message>
+        <source>On this page you will see the preset locations.</source>
+        <translation>Tällä sivulla näet asettamasi sijainnit.</translation>
     </message>
 </context>
 <context>
@@ -204,7 +192,7 @@
     <name>dbases</name>
     <message>
         <source>Free gallopping</source>
-        <translation type="unfinished"></translation>
+        <translation>Laukkaamassa...</translation>
     </message>
 </context>
 </TS>

@@ -63,7 +63,7 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("Location now shows current location and time stayed there.")
+                text: {qsTr("'Location now' shows current location and time stayed there.")
                 }
             }
 
@@ -78,7 +78,7 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("Today shows the detailed info of the current day. If sowtware is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.")
+                text: {qsTr("'Today' shows the detailed info of the current day. If software is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.")
                 }
             }
 
@@ -93,7 +93,7 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("History shows the recorded info of the recent days.")
+                text: {qsTr("'History' shows the recorded info of the recent days.")
                 }
             }
 

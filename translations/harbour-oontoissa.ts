@@ -38,18 +38,6 @@
 <context>
     <name>Del</name>
     <message>
-        <source>Set location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Delete data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -85,15 +73,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Location now shows current location and time stayed there.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Today</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Today shows the detailed info of the current day. If sowtware is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -101,7 +81,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>History shows the recorded info of the recent days.</source>
+        <source>&apos;Location now&apos; shows current location and time stayed there.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&apos;Today&apos; shows the detailed info of the current day. If software is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&apos;History&apos; shows the recorded info of the recent days.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -116,22 +104,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>On this page you can feed location information, name, coordinates and tolerance. You will see current latitude and longitude to help the feed.</source>
+        <source>On this page you can feed the location information: name, coordinates and tolerance. You will see current latitude and longitude to help the feed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
     <message>
-        <source>On this page you will see the preset locations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set location page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On this page you will see the preset locations.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

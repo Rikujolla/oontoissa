@@ -16,7 +16,7 @@ function addLocation() {
             tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
 
             // Adding location
-            tx.executeSql('INSERT INTO Locations VALUES(?, ?, ?, ?, ?)', ['24.3764948', '61.64687276', 'Orivesi', '0.001', '0.001']);
+            tx.executeSql('INSERT INTO Locations VALUES(?, ?, ?, ?, ?)', ['24.3764948', '61.64687276', 'Orivesi', '50.0', '50.0']);
 
             // Show all
             var rs = tx.executeSql('SELECT * FROM Locations');
@@ -66,10 +66,12 @@ function updateLocation() {
             for(var i = 0; i < rs.rows.length; i++) {
                 varis.tempur += rs.rows.item(i).theplace + ", " + rs.rows.item(i).rowid + "\n";
             }
+           // if (rs.rows.length > currentIndex-2) {
             varis.itemis[currentIndex-1].pla = rs.rows.item(currentIndex-1).theplace;
             varis.itemis[currentIndex-1].els = rs.rows.item(currentIndex-1).thelati + ", "
                     + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong
-            console.log("uprateee ", varis.tempur);
+            //console.log("uprateee ", varis.tempur);
+           // }
 
 
         }
@@ -101,7 +103,7 @@ function loadLocation() {
 }
 
 function delLocTable() { // DROP TABLE does not work yet. Table locking should be solved! Stop Timers??
-    console.log("deleting files")
+    //console.log("deleting files")
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
     db.transaction(
@@ -148,13 +150,15 @@ function populateView() {
             // Filling movetext
             varis.itemi = "";
             for(var i = 0; i < rs.rows.length; i++) {
-                console.log("populateView", rs.rows.item(currentIndex-1).theplace)
+                //console.log("populateView", rs.rows.item(currentIndex-1).theplace)
                 varis.itemi += rs.rows.item(i).theplace + ", " + rs.rows.item(i).thelati + ", "
                         + rs.rows.item(i).thelongi + ", " + rs.rows.item(i).tolerlong + "\n";
             }
+            //if (rs.rows.length > currentIndex-2) {
             varis.itemis[currentIndex-1].pla = rs.rows.item(currentIndex-1).theplace;
             varis.itemis[currentIndex-1].els = rs.rows.item(currentIndex-1).thelati + ", "
                     + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong
+            //}
         }
     )
 
@@ -171,7 +175,11 @@ function checkFences() {
 
             // Show all
             var rs = tx.executeSql('SELECT * FROM Locations');
-
+            // Spherical distance
+            var dfii; // Latitude difference
+            var meanfii; // Latitude difference mean
+            var dlamda; // Longitude difference
+            var ddist; // Distance in meters
 
             // Filling movetext
             varus.inFence = "Not in a paddock";
@@ -179,15 +187,17 @@ function checkFences() {
             covLoc = varus.inFenceT;
             varus.tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
             for(var i = 0; i < rs.rows.length; i++) {
-                if ((Math.abs(possu.position.coordinate.latitude - rs.rows.item(i).thelati) < rs.rows.item(i).tolerlat)
-                        && (Math.abs(possu.position.coordinate.longitude - rs.rows.item(i).thelongi) < rs.rows.item(i).tolerlong)
+                dfii = Math.abs(possu.position.coordinate.latitude - rs.rows.item(i).thelati)*Math.PI/180;
+                meanfii = (possu.position.coordinate.latitude + rs.rows.item(i).thelati)*Math.PI/360
+                dlamda = Math.abs(possu.position.coordinate.longitude - rs.rows.item(i).thelongi)*Math.PI/180;
+                ddist = 6371009*Math.sqrt(Math.pow(dfii,2)+Math.pow(Math.cos(meanfii)*dlamda,2));
+                if ((ddist < rs.rows.item(i).tolerlong)
                         && (rs.rows.item(i).tolerlong < varus.tolerat)) {
                     varus.inFence = rs.rows.item(i).theplace;
                     varus.inFenceT = varus.inFence;
                     covLoc = varus.inFenceT;
                     varus.tolerat = rs.rows.item(i).tolerlong;
-                    console.log("checkFences", possu.position.coordinate.latitude - rs.rows.item(i).thelati,
-                                possu.position.coordinate.longitude - rs.rows.item(i).thelongi, varus.inFence)
+                    //console.log("distance", ddist)
 
                 }
             }
@@ -207,17 +217,17 @@ function addTodayInfo() {
             //Testing, if the status is still same
             //var evid = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()')
             var evid = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?) ORDER BY theday DESC LIMIT 1', 'now')
-            console.log("Statukset", evid.rows.length)
+            //console.log("Statukset", evid.rows.length)
 
             if (evid.rows.length == 0) {
-                tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), time(?))', [ 'now', varus.inFence, 'now', 'now', 'now' ]);
+                tx.executeSql('INSERT INTO Today VALUES(datetime(?,?), ?, time(?,?), time(?,?), time(?,?))', [ 'now', 'localtime', varus.inFence, 'now', 'localtime', 'now', 'localtime', 'now', 'localtime' ]);
             }
 
             else if (evid.rows.item(0).thestatus == varus.inFence){
                 // Update
                 //var evied = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = last_insert_rowid()',['%s', 'now',  '%s', (evid.rows.item(0).theday)])
-                var evied = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now',  '%s', (evid.rows.item(0).theday)])
-                tx.executeSql('UPDATE Today SET endtime=time(?) WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', 'now');
+                var evied = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
+                tx.executeSql('UPDATE Today SET endtime=time(?, ?) WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', ['now', 'localtime']);
                 //var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = last_insert_rowid()');
                 var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = last_insert_rowid()');
                 //console.log('alku', begi.rows.item(0).begil)
@@ -229,15 +239,10 @@ function addTodayInfo() {
             }
             else {
                 // Add a row
-                tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), time(?))', [ 'now', varus.inFence, 'now', 'now', 'now' ]);
+                tx.executeSql('INSERT INTO Today VALUES(datetime(?,?), ?, time(?,?), time(?,?), time(?,?))', [ 'now', 'localtime', varus.inFence, 'now', 'localtime', 'now', 'localtime', 'now', 'localtime' ]);
             }
-            //console.log("evid", evid.rows.item(0).thestatus)
-            //console.log("evied", evied.rows.item(0).rest)
             // Show all values
-            //var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = last_insert_rowid()')
             var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
-            //var evidy = tx.executeSql('SELECT time(subtotal) AS resta  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
-            //var evider = tx.executeSql('SELECT time(?,?) AS rest  FROM Today WHERE ROWID = last_insert_rowid()')
 
             var rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?) AND thestatus NOT IN (?)', ['now', 'Not in a paddock']);
 
@@ -248,8 +253,6 @@ function addTodayInfo() {
             }
             varus.whatToday = r
             varus.timeInFence = evider.rows.item(0).resto
-            //varus.timeInFenceQ = evidy.rows.item(0).resta
-            //console.log(varus.timeInFenceQ)
 
         }
     )
@@ -262,22 +265,29 @@ function addHistoryData() {
         function(tx) {
             // Create the database if it doesn't already exist
             tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
-            //tx.executeSql('CREATE TABLE IF NOT EXISTS History(hday TEXT, hstatus TEXT, htotal TEXT)');
 
             // Show all values
-            //var rs = tx.executeSql('SELECT theday, thestatus, SUM(time(?)) AS totle FROM Today GROUP BY theday, thestatus', 'subtotal');
-            var rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE thestatus NOT IN (?) GROUP BY deit, thestatus', 'Not in a paddock');
-            //var rs = rt.executeSql('SELECT deit, thestatus, time(totle) AS totles FROM Today GROUP BY deit, thestatus');
-            //var rt = tx.executeSql('INSERT INTO History SELECT date(theday) AS hday, thestatus AS hstatus, SUM(subtotal) AS htotal FROM Today GROUP BY hday, hstatus');
+            var rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE thestatus NOT IN (?) GROUP BY deit, thestatus ORDER BY deit DESC', 'Not in a paddock');
 
             var r = ""
+            var rmos = 0;
+            //var rmtos = "";
             for(var i = 0; i < rs.rows.length; i++) {
                 //console.log(i, rs.rows.item(i).totle);
+                rmos = ((rs.rows.item(i).totle-rs.rows.item(i).totle%60)/60 - (rs.rows.item(i).totle-rs.rows.item(i).totle%3600)/60);
+                //console.log(rmos);
+                //rmos < 10 ? (rmtos = "0" + rmos);
+                if (rmos < 10){
                 r += rs.rows.item(i).deit + ", " + rs.rows.item(i).thestatus + ", "
-                        + (rs.rows.item(i).totle-rs.rows.item(i).totle%3600)/3600 + ":"
+                        + (rs.rows.item(i).totle-rs.rows.item(i).totle%3600)/3600 + ":" + "0"
                         + ((rs.rows.item(i).totle-rs.rows.item(i).totle%60)/60 - (rs.rows.item(i).totle-rs.rows.item(i).totle%3600)/60)
-                        +"\n"
-            }
+                        +"\n"}
+                else {
+                    r += rs.rows.item(i).deit + ", " + rs.rows.item(i).thestatus + ", "
+                            + (rs.rows.item(i).totle-rs.rows.item(i).totle%3600)/3600 + ":"
+                            + ((rs.rows.item(i).totle-rs.rows.item(i).totle%60)/60 - (rs.rows.item(i).totle-rs.rows.item(i).totle%3600)/60)
+                            +"\n"}
+                }
             varus.niceHistory = r
         }
     )

@@ -58,7 +58,8 @@ Page {
                 anchors.verticalCenter: parent.verticalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
-            onClicked: {console.log("Clicked " + index)
+            onClicked: {
+                //console.log("Clicked " + index)
                 pageStack.push(Qt.resolvedUrl("Loc.qml"))
                 currentIndex = index+1;
             }
@@ -68,13 +69,13 @@ Page {
         ListModel {
                 id: listis
                 ListElement {
-                    tekstis: "test1"
+                    tekstis: "undefined 1"
                 }
                 ListElement {
-                    tekstis: "test2"
+                    tekstis: "undefined 2"
                 }
                 ListElement {
-                    tekstis: "test3"
+                    tekstis: "undefined 3"
                 }
         }
 

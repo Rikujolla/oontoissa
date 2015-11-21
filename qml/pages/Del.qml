@@ -26,7 +26,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
-import QtPositioning 5.0
+//import QtPositioning 5.0
 import "dbases.js" as Mydbases
 
 
@@ -38,7 +38,7 @@ Page {
         anchors.fill: parent
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
-        PullDownMenu {
+/*        PullDownMenu {
             MenuItem {
                 text: qsTr("Set location")
                 onClicked: pageStack.push(Qt.resolvedUrl("SetLocation.qml"))
@@ -54,7 +54,7 @@ Page {
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("About.qml"))
             }
-        }
+        }*/
 
         // Tell SilicaFlickable the height of its content.
         contentHeight: column.height

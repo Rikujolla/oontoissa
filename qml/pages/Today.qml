@@ -157,7 +157,6 @@ Page {
                 property string inFenceT  //Stores the value where device is, e.g. Work, Home ..
                 property string timeInFence //Stores the time in fence in seconds
                 property string timeInFenceS //Stores the time in fence String
-                //property string timeInFenceQ //Stores the time in fence String
                 property string whatToday: "Invent something"
                 property string niceHistory: "The whole history"
                 property int hoursD //used to display status hours
@@ -171,7 +170,6 @@ Page {
                     secondsD = varus.timeInFence%60
                     secondsDT = secondsD < 10 ? ("0"+ secondsD):(secondsD)
                     timeInFenceS = minutesD < 10 ? (hoursD + ":0" + minutesD + ":" + secondsDT):(hoursD + ":" + minutesD + ":" + secondsDT)
-                    //console.log("tunnit:min", hoursD, ":",minutesD)
                     covTim = minutesD < 10 ? (hoursD + ":0" + minutesD):(hoursD + ":" + minutesD);
                 }
             }
@@ -183,9 +181,6 @@ Page {
                 repeat:true
                 onTriggered: {
                     timeri.timeInfo();
-                    //console.log(timeri.timme)
-                    //Mydbases.addTodayInfo();
-                    //Mydbases.addHistoryData();
                 }
             }
 

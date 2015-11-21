@@ -63,7 +63,7 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("On this page you will see the preset locations")
+                text: {qsTr("On this page you will see the preset locations.")
                 }
             }
 
