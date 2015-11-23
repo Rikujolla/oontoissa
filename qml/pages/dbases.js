@@ -63,9 +63,9 @@ function updateLocation() {
 
             // Show all
             var rs = tx.executeSql('SELECT rowid, * FROM Locations');
-            for(var i = 0; i < rs.rows.length; i++) {
-                varis.tempur += rs.rows.item(i).theplace + ", " + rs.rows.item(i).rowid + "\n";
-            }
+            //for(var i = 0; i < rs.rows.length; i++) {
+            //    varis.tempur += rs.rows.item(i).theplace + ", " + rs.rows.item(i).rowid + "\n";
+            //}
            // if (rs.rows.length > currentIndex-2) {
             varis.itemis[currentIndex-1].pla = rs.rows.item(currentIndex-1).theplace;
             varis.itemis[currentIndex-1].els = rs.rows.item(currentIndex-1).thelati + ", "
@@ -149,11 +149,11 @@ function populateView() {
 
             // Filling movetext
             varis.itemi = "";
-            for(var i = 0; i < rs.rows.length; i++) {
+            //for(var i = 0; i < rs.rows.length; i++) {
                 //console.log("populateView", rs.rows.item(currentIndex-1).theplace)
-                varis.itemi += rs.rows.item(i).theplace + ", " + rs.rows.item(i).thelati + ", "
-                        + rs.rows.item(i).thelongi + ", " + rs.rows.item(i).tolerlong + "\n";
-            }
+                //varis.itemi += rs.rows.item(i).theplace + ", " + rs.rows.item(i).thelati + ", "
+            //            + rs.rows.item(i).thelongi + ", " + rs.rows.item(i).tolerlong + "\n";
+           // }
             //if (rs.rows.length > currentIndex-2) {
             varis.itemis[currentIndex-1].pla = rs.rows.item(currentIndex-1).theplace;
             varis.itemis[currentIndex-1].els = rs.rows.item(currentIndex-1).thelati + ", "
@@ -215,8 +215,8 @@ function addTodayInfo() {
             tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
 
             //Testing, if the status is still same
-            //var evid = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()')
-            var evid = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?) ORDER BY theday DESC LIMIT 1', 'now')
+
+            var evid = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) ORDER BY theday DESC LIMIT 1', ['now', 'localtime'])
             //console.log("Statukset", evid.rows.length)
 
             if (evid.rows.length == 0) {
@@ -225,16 +225,16 @@ function addTodayInfo() {
 
             else if (evid.rows.item(0).thestatus == varus.inFence){
                 // Update
-                //var evied = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = last_insert_rowid()',['%s', 'now',  '%s', (evid.rows.item(0).theday)])
+
                 var evied = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
                 tx.executeSql('UPDATE Today SET endtime=time(?, ?) WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', ['now', 'localtime']);
-                //var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = last_insert_rowid()');
+
                 var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = last_insert_rowid()');
                 //console.log('alku', begi.rows.item(0).begil)
-                //var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = last_insert_rowid()');
+
                 var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
                 //console.log('alku', begi.rows.item(0).begil, endi.rows.item(0).endil)
-                //tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = last_insert_rowid()', [evied.rows.item(0).rest]);
+
                 tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', [evied.rows.item(0).rest]);
             }
             else {
@@ -244,7 +244,7 @@ function addTodayInfo() {
             // Show all values
             var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
 
-            var rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?) AND thestatus NOT IN (?)', ['now', 'Not in a paddock']);
+            var rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) AND thestatus NOT IN (?)', ['now', 'localtime', 'Not in a paddock']);
 
             var r = ""
             for(var i = 0; i < rs.rows.length; i++) {
