@@ -52,6 +52,21 @@ Page {
                 title: qsTr("About page")
             }
 
+            SectionHeader { text: qsTr("Idea") }
+            Text {
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                wrapMode: Text.WordWrap
+                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: {qsTr("The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or gallopping freely elsewhere.")
+                }
+            }
+
             SectionHeader { text: qsTr("Translations") }
             Text {
                 font.pixelSize: Theme.fontSizeSmall

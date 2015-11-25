@@ -12,8 +12,8 @@ Name:       harbour-oontoissa
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
-Summary:    Application to log working hours
-Version:    0.0.3
+Summary:    Automatical sensor based working time recorder
+Version:    0.0.4
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my SailfishOS Application
+The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or gallopping freely elsewhere.
 
 
 %prep
@@ -66,6 +66,6 @@ desktop-file-install --delete-original       \
 %{_bindir}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 # >> files
 # << files

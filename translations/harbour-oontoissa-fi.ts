@@ -27,6 +27,14 @@
         <source>Licensed under BSD. License, source code and more information:</source>
         <translation>BSD-lisenssi. Lisenssi, lähdekoodi ja lisätietoja:</translation>
     </message>
+    <message>
+        <source>Idea</source>
+        <translation>Idea</translation>
+    </message>
+    <message>
+        <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or gallopping freely elsewhere.</source>
+        <translation>Ohjelman ideana on tukea päivittäisten työaikojen kirjausta automaattisen sensoridataan perustuvan kirjauksen avulla. Voit luoda alueita ja Jolla havaitsee oletko määrittämäsi alueen sisällä vaiko laukkaamassa vapaana jossakin muualla.</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
