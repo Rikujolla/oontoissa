@@ -78,7 +78,12 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("Finnish (Riku Lahtinen)")
+                text: {
+                    qsTr("German (John Gibbon)") + "\n" +
+                    qsTr("Finnish (Riku Lahtinen)") + "\n" +
+                    //qsTr("French (Jordi)") + "\n" +
+                    qsTr("Swedish (Åke Engelbrektson)") + "\n" +
+                    qsTr("Chinese (0312birdzhang)")
                 }
             }
 

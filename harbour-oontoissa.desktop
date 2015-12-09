@@ -9,7 +9,10 @@ Name=At work
 #
 # Remember to comment out the following line, if you do not want to use
 # a different app name in German locale (de).
-#Name[de]=Arbeiten
+Name[de]=Bei der Arbeit
 Name[en]=At work
 Name[fi]=Oon töissä!
+Name[fr]=At work
+Name[sv]=At work
+Name[zh_CN]=At work
 

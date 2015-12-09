@@ -95,14 +95,14 @@ Page {
             }
 
             Text {
-                text: "Location name"
+                text: qsTr("Location name")
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
             }
 
             TextField {
             id: neimi
-            placeholderText: "Work1"
+            placeholderText: qsTr("Work1")
             //label: qsTr("ECO code")
             //visible: openingMode == 2
             width: page.width/2
@@ -112,7 +112,7 @@ Page {
         }
 
             Text {
-                    text: "Latitude"
+                    text: qsTr("Latitude")
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
                 }
@@ -136,7 +136,7 @@ Page {
             }
 
             Text {
-                    text: "Longitude"
+                    text: qsTr("Longitude")
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
                 }
@@ -161,7 +161,7 @@ Page {
             }
 
                 Text {
-                    text: "Size meters"
+                    text: qsTr("Size (meters)")
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
                 }

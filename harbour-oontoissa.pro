@@ -43,7 +43,11 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/harbour-oontoissa-fi.ts
+TRANSLATIONS += translations/harbour-oontoissa-fi.ts \
+    translations/harbour-oontoissa-zh_cn.ts \
+    translations/harbour-oontoissa-fr.ts \
+    translations/harbour-oontoissa-sv.ts \
+    translations/harbour-oontoissa-de.ts
 
 DISTFILES += \
     rpm/harbour-oontoissa.changes

@@ -5,6 +5,11 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Wed Dec 09 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.0.5-1
+- Swedish translation
+- Partial German translation
+- Partial Chinese translation
+
 * Wed Nov 24 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.0.4-1
 - First release to Harbour
 

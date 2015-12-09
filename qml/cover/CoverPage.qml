@@ -40,7 +40,7 @@ CoverBackground {
         id: label2
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: label.bottom
-        text: "Location"
+        text: qsTr("Location")
         anchors.topMargin: Theme.paddingLarge
         x: Theme.paddingLarge
     }

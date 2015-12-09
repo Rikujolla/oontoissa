@@ -1,242 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fi_FI">
+<TS version="2.1" language="sv">
 <context>
     <name>About</name>
     <message>
         <source>About page</source>
-        <translation>Tietosivu</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Käännökset</translation>
+        <translation>Översättningar</translation>
     </message>
     <message>
         <source>Finnish (Riku Lahtinen)</source>
-        <translation>Suomeksi(Riku Lahtinen)</translation>
+        <translation>Finska (Riku Lahtinen)</translation>
     </message>
     <message>
         <source>Licence</source>
-        <translation>Lisenssi</translation>
+        <translation>Licens</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
+        <translation>Copyright© 2015, Riku Lahtinen</translation>
     </message>
     <message>
         <source>Licensed under BSD. License, source code and more information:</source>
-        <translation>BSD-lisenssi. Lisenssi, lähdekoodi ja lisätietoja:</translation>
+        <translation>Licensierad under BSD. Licens, källkod och mer information:</translation>
     </message>
     <message>
         <source>Idea</source>
-        <translation>Idea</translation>
+        <translation>Idé</translation>
     </message>
     <message>
         <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or gallopping freely elsewhere.</source>
-        <translation>Ohjelman ideana on tukea päivittäisten työaikojen kirjausta automaattisen sensoridataan perustuvan kirjauksen avulla. Voit luoda alueita ja Jolla havaitsee oletko määrittämäsi alueen sisällä vaiko laukkaamassa vapaana jossakin muualla.</translation>
+        <translation>Idéen med programmet är att stödja din dagliga arbetstid automatiskt, baserat på sensorsdata. Du skapar områden och Jollan känner av om du är innanför gränserna eller galopperar fritt på annat håll.</translation>
     </message>
     <message>
         <source>German (John Gibbon)</source>
-        <translation>Saksaksi (John Gibbon)</translation>
+        <translation>Tyska (John Gibbon)</translation>
     </message>
     <message>
         <source>Swedish (Åke Engelbrektson)</source>
-        <translation>Ruotsiksi (Åke Engelbrektson)</translation>
+        <translation>Svenska (Åke Engelbrektson)</translation>
     </message>
     <message>
         <source>Chinese (0312birdzhang)</source>
-        <translation>Kiinaksi (0312birdzhang)</translation>
+        <translation>Kinesiska (0312birdzhang)</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>At work</source>
-        <translation>Oon töissä</translation>
+        <translation>At work</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Sijainti</translation>
+        <translation>Plats</translation>
     </message>
 </context>
 <context>
     <name>Del</name>
     <message>
         <source>Delete data</source>
-        <translation>Tuhoa tietoja</translation>
+        <translation>Ta bort data</translation>
     </message>
     <message>
         <source>Warning!</source>
-        <translation>Varoitus!</translation>
+        <translation>Varning!</translation>
     </message>
     <message>
         <source>The data will be deleted without warning when buttons are pressed!</source>
-        <translation>Tiedot poistetaan ilman erillistä varoitusta, kun painat nappia!</translation>
+        <translation>Data kommer att tas bort utan föregående varning när knappen trycks!</translation>
     </message>
     <message>
         <source>Delete all!</source>
-        <translation>Poista kaikki!</translation>
+        <translation>Ta bort allt!</translation>
     </message>
     <message>
         <source>Delete times!</source>
-        <translation>Poista ajat!</translation>
+        <translation>Ta bort tider!</translation>
     </message>
     <message>
         <source>Delete locations!</source>
-        <translation>Poista sijainnit!</translation>
+        <translation>Ta bort platser!</translation>
     </message>
 </context>
 <context>
     <name>Help</name>
     <message>
         <source>Help page</source>
-        <translation>Ohjesivu</translation>
+        <translation>Hjälpsida</translation>
     </message>
     <message>
         <source>Location now</source>
-        <translation>Sijaintisi nyt</translation>
+        <translation>Plats nu</translation>
     </message>
     <message>
         <source>Today</source>
-        <translation>Tänään</translation>
+        <translation>I dag</translation>
     </message>
     <message>
         <source>History</source>
-        <translation>Historia</translation>
+        <translation>Historik</translation>
     </message>
     <message>
         <source>&apos;Location now&apos; shows current location and time stayed there.</source>
-        <translation>&apos;Sijaintisi nyt&apos; näyttää nykyisen sijaintisi ja siellä vietetyn ajan.</translation>
+        <translation>&apos;Plats nu&apos; visar aktuell plats och hur lång tid du varit där.</translation>
     </message>
     <message>
         <source>&apos;Today&apos; shows the detailed info of the current day. If software is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.</source>
-        <translation>&apos;Tänään&apos; näyttää yksityiskohtaiset tiedot kuluvasta päivästä. Jos ohjelma suljetaan päivän aikana, se olettaa, että sijainti ei muutu tauon aikana. Voit esimerkiksi käynnistää sovelluksen aamulla mennessäsi töihin, sulkea sen töissä ja käynnistää sen uudelleen työpäivän lähetessä loppua.</translation>
+        <translation>&apos;I dag&apos; visar detaljerad info för aktuell dag. Om programmet stängs av under dagen, förutsätter programmet att platsen inte har ändrats under avbrottet. Du kan t.ex. starta programmet på morgonen för att logga starten av dagen, stänga av programmet och sedan starta det igen, före slutet på dagen.</translation>
     </message>
     <message>
         <source>&apos;History&apos; shows the recorded info of the recent days.</source>
-        <translation>&apos;Historia&apos; näyttää viimepäivien tallennetut tiedot.</translation>
+        <translation>&apos;Historik&apos; visar loggad info om de närmast föregående dagarna.</translation>
     </message>
 </context>
 <context>
     <name>HelpLoc</name>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Sijainti</translation>
+        <translation>Plats</translation>
     </message>
     <message>
         <source>On this page you can feed the location information: name, coordinates and tolerance. You will see current latitude and longitude to help the feed.</source>
-        <translation>Tällä sivulla voit syöttää sijaintitiedot: nimen, koordinaatit ja toleranssin. Tämänhetkinen leveys- ja pituuspiiri näytetään myös helpottamaan syöttöä.</translation>
+        <translation>På den här sidan kan du ange platsinformation. Namn, koordinater och tolerans. Du kan se aktuell latitud och longitud, som hjälpinformation.</translation>
     </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <source>Set location page</source>
-        <translation>Sijainnit</translation>
+        <translation>Platssida</translation>
     </message>
     <message>
         <source>On this page you will see the preset locations.</source>
-        <translation>Tällä sivulla näet asettamasi sijainnit.</translation>
+        <translation>På den här sidan kan du se förinställda platser.</translation>
     </message>
 </context>
 <context>
     <name>Loc</name>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Sijainti</translation>
+        <translation>Plats</translation>
     </message>
     <message>
         <source>Delete tables</source>
-        <translation>Poista taulukot</translation>
+        <translation>Ta bort tabeller</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation>Päivitä arvot</translation>
+        <translation>Uppdatera värden</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation>Sijainnin nimi</translation>
+        <translation>Platsnamn</translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation>Työ1</translation>
+        <translation>Arbete1</translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation>Leveyspiiri</translation>
+        <translation>Latitud</translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation>Pituuspiiri</translation>
+        <translation>Longitud</translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation>Koko (metriä)</translation>
+        <translation>Storlek (meter)</translation>
     </message>
 </context>
 <context>
     <name>SetLocation</name>
     <message>
         <source>Set location page</source>
-        <translation>Sijainnit</translation>
+        <translation>Platssida</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Sijainti</translation>
+        <translation>Plats</translation>
     </message>
 </context>
 <context>
     <name>Today</name>
     <message>
         <source>Set location</source>
-        <translation>Aseta sijainti</translation>
+        <translation>Ange plats</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <source>About</source>
-        <translation>Tietoja</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <source>At work</source>
-        <translation>Oon töissä</translation>
+        <translation>At work</translation>
     </message>
     <message>
         <source>Location now</source>
-        <translation>Sijaintisi nyt</translation>
+        <translation>Plats nu</translation>
     </message>
     <message>
         <source>Today</source>
-        <translation>Tänään</translation>
+        <translation>I dag</translation>
     </message>
     <message>
         <source>History</source>
-        <translation>Historia</translation>
+        <translation>Historik</translation>
     </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free gallopping</source>
-        <translation>Laukkaamassa...</translation>
+        <translation>Fritt galopperande</translation>
     </message>
 </context>
 </TS>
