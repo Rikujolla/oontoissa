@@ -37,15 +37,15 @@
     </message>
     <message>
         <source>German (John Gibbon)</source>
-        <translation type="unfinished"></translation>
+        <translation>Deutsch (John Gibbon)</translation>
     </message>
     <message>
         <source>Swedish (Åke Engelbrektson)</source>
-        <translation type="unfinished"></translation>
+        <translation>Schwedisch (Åke Engelbrektson)</translation>
     </message>
     <message>
         <source>Chinese (0312birdzhang)</source>
-        <translation type="unfinished"></translation>
+        <translation>Chinesisch (0312birdzhang)</translation>
     </message>
 </context>
 <context>
@@ -56,7 +56,7 @@
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished">Aufenthaltsort</translation>
+        <translation>Ort</translation>
     </message>
 </context>
 <context>
@@ -167,23 +167,23 @@
     </message>
     <message>
         <source>Location name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name des Ortes</translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbeit1</translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Breitengrad</translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Längengrad</translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation type="unfinished"></translation>
+        <translation>Umkreis (in Metern)</translation>
     </message>
 </context>
 <context>
