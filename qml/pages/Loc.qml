@@ -122,7 +122,7 @@ Page {
                 id: latti
                 placeholderText: "63.1"
                 width: page.width/2
-                validator: RegExpValidator { regExp: /^\d?\d\.\d*$/ }
+                validator: RegExpValidator { regExp: /^\-?\d?\d\.\d*$/ }
                 color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
                 }
@@ -148,7 +148,7 @@ Page {
                 //label: qsTr("ECO code")
                 //visible: openingMode == 2
                 width: page.width/2
-                validator: RegExpValidator { regExp: /^\d?\d\.\d*$/ }
+                validator: RegExpValidator { regExp: /^\-?\d?\d?\d\.\d*$/ }
                 color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
                 }
