@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fi_FI">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi_FI" version="2.1">
 <context>
     <name>About</name>
     <message>
@@ -128,8 +126,16 @@
         <translation>Sijainti</translation>
     </message>
     <message>
-        <source>On this page you can feed the location information: name, coordinates and tolerance. You will see current latitude and longitude to help the feed.</source>
-        <translation>Tällä sivulla voit syöttää sijaintitiedot: nimen, koordinaatit ja toleranssin. Tämänhetkinen leveys- ja pituuspiiri näytetään myös helpottamaan syöttöä.</translation>
+        <source>On this page you can feed the location information: name, coordinates and tolerance.</source>
+        <translation>Tällä sivulla voit syöttää sijaintitiedot: nimen, koordinaatit ja toleranssin.</translation>
+    </message>
+    <message>
+        <source>Current location can be feeded with buttons.</source>
+        <translation>Tämänhetkisen sijaintisi voit syöttää napeilla.</translation>
+    </message>
+    <message>
+        <source>You will see current latitude and longitude to help the feed.</source>
+        <translation>Tämänhetkinen leveys- ja pituuspiiri näytetään myös helpottamaan syöttöä.</translation>
     </message>
 </context>
 <context>
@@ -150,20 +156,20 @@
 <context>
     <name>Loc</name>
     <message>
-        <source>Help</source>
-        <translation>Ohje</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Sijainti</translation>
-    </message>
-    <message>
         <source>Delete tables</source>
         <translation>Poista taulukot</translation>
     </message>
     <message>
         <source>Update values</source>
         <translation>Päivitä arvot</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>Ohje</translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation>Sijainti</translation>
     </message>
     <message>
         <source>Location name</source>

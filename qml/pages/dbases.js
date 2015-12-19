@@ -1,9 +1,12 @@
 ///
-/// addLocation(), row 6
-/// updateLocation(), row 35
-/// delLocTable(), row 79
-/// populateView(), row 91
-/// checkFences(), row 120
+/// addLocation(), row 9
+/// updateLocation(), row 37
+/// loadLocation(), row 83
+/// delLocTable(), row 106
+/// populateView(), row 138
+/// checkFences(), row 168
+/// addTodayInfo(), row 211
+/// addHistoryData(), row 264
 
 
 function addLocation() {
@@ -41,7 +44,7 @@ function updateLocation() {
     db.transaction(
         function(tx) {
             // Create the table, if not existing
-            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEST, tolerlong REAL, tolerlat REAL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
 
             // Updating the location name
             if (neimi.text != "") {
@@ -86,14 +89,16 @@ function loadLocation() {
     db.transaction(
         function(tx) {
             // Create the table, if not existing
-            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEST, tolerlong REAL, tolerlat REAL)');
-
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
+            //console.log("test2")
             // Show all
             var rs = tx.executeSql('SELECT rowid, * FROM Locations');
+            //listis.clear() when dynamic listis
             for(var i = 0; i < rs.rows.length; i++) {
-                paramit.itemis[i].pla = rs.rows.item(i).theplace;
-                //console.log("uprateee ", paramit.itemis[i].pla, i);
-                listis.set(i,{"tekstis": paramit.itemis[i].pla});
+                //paramit.itemis[i].pla = rs.rows.item(i).theplace;
+                //console.log("test3 ", paramit.itemis[i].pla, i);
+                //listis.set(i,{"tekstis": paramit.itemis[i].pla});
+                listis.set(i,{"tekstis": rs.rows.item(i).theplace});
             }
 
 
@@ -141,11 +146,21 @@ function populateView() {
     db.transaction(
         function(tx) {
             // Create the table, if not existing
-            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEST, tolerlong REAL, tolerlat REAL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
 
             // Show all
             var rs = tx.executeSql('SELECT * FROM Locations');
 
+            // Adding location if location empty
+            if (rs.rows.length == 0) {
+                tx.executeSql('INSERT INTO Locations VALUES(?, ?, ?, ?, ?)', ['24.3764948', '61.64687276', 'Orivesi', '50.0', '50.0']);
+                rs = tx.executeSql('SELECT * FROM Locations');
+
+            }
+            else {
+                neimi.text = rs.rows.item(currentIndex-1).theplace;
+                saissi.text = rs.rows.item(currentIndex-1).tolerlong;
+            }
 
             // Filling movetext
             varis.itemi = "";
@@ -171,7 +186,7 @@ function checkFences() {
     db.transaction(
         function(tx) {
             // Create the table, if not existing
-            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEST, tolerlong REAL, tolerlat REAL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
 
             // Show all
             var rs = tx.executeSql('SELECT * FROM Locations');

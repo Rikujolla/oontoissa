@@ -63,7 +63,9 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("On this page you can feed the location information: name, coordinates and tolerance. You will see current latitude and longitude to help the feed.")
+                text: {qsTr("On this page you can feed the location information: name, coordinates and tolerance.") + " "
+                       + qsTr("Current location can be feeded with buttons.") + " "
+                       + qsTr("You will see current latitude and longitude to help the feed.")
                 }
             }
 

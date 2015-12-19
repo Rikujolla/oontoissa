@@ -50,6 +50,7 @@ Page {
                         Mydbases.addLocation()
                     }
                     else  {Mydbases.updateLocation()}
+                    baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
                 }
            }
         }
@@ -88,10 +89,10 @@ Page {
             }
 
             Text {
-                    id: baassi
-                    text: varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
-                    color: Theme.secondaryHighlightColor
-                    x: Theme.paddingLarge
+                id: baassi
+                text: varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
+                color: Theme.secondaryHighlightColor
+                x: Theme.paddingLarge
             }
 
             Text {
@@ -101,15 +102,27 @@ Page {
             }
 
             TextField {
-            id: neimi
-            placeholderText: qsTr("Work1")
-            //label: qsTr("ECO code")
-            //visible: openingMode == 2
-            width: page.width/2
-            //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0-9])$/ }
-            //color: errorHighlight? "red" : Theme.primaryColor
-            inputMethodHints: Qt.ImhNoPredictiveText
-        }
+                id: neimi
+                placeholderText: qsTr("Work1")
+                //label: qsTr("ECO code")
+                //visible: openingMode == 2
+                width: page.width/2
+                //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0-9])$/ }
+                //color: errorHighlight? "red" : Theme.primaryColor
+                inputMethodHints: Qt.ImhNoPredictiveText
+                EnterKey.enabled: !errorHighlight
+                EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                EnterKey.onClicked: {
+                    console.log("Saissi entered")
+                    focus = false
+                    if (varis.itemis[currentIndex-1].pla == "") {
+                        Mydbases.addLocation()
+                    }
+                    else  {Mydbases.updateLocation()}
+                    baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
+
+                }
+            }
 
             Text {
                     text: qsTr("Latitude")
@@ -119,21 +132,77 @@ Page {
 
             Row {
                 TextField {
-                id: latti
-                placeholderText: "63.1"
-                width: page.width/2
-                validator: RegExpValidator { regExp: /^\-?\d?\d\.\d*$/ }
-                color: errorHighlight? "red" : Theme.primaryColor
-                inputMethodHints: Qt.ImhNoPredictiveText
+                    id: latti
+                    placeholderText: "63.1"
+                    width: page.width/2
+                    validator: RegExpValidator { regExp: /^\-?\d?\d\.\d*$/ }
+                    color: errorHighlight? "red" : Theme.primaryColor
+                    inputMethodHints: Qt.ImhNoPredictiveText
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        console.log("Entered")
+                        focus = false
+                        if (varis.itemis[currentIndex-1].pla == "") {
+                            Mydbases.addLocation()
+                        }
+                        else  {Mydbases.updateLocation()}
+                        baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
+
+                    }
                 }
-                Text {
+                Button {
                     id: lattite
                     text: possul.position.coordinate.latitude
                     color: Theme.secondaryHighlightColor
-                    x: Theme.paddingLarge
+                    width:page.width/2
+                    onClicked: {
+                        latti.text = lattite.text
+                        if (varis.itemis[currentIndex-1].pla == "") {
+                            Mydbases.addLocation()
+                        }
+                        else  {Mydbases.updateLocation()}
+                        baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
+
+                        console.log("Latitude set")
+                    }
                 }
 
             }
+            /*Row {
+                TextField {
+                    id: latti2
+                    placeholderText: "63.1"
+                    width: page.width/2
+                    validator: RegExpValidator { regExp: /^\-?\d?\d\.\d*$/ }
+                    color: errorHighlight? "red" : Theme.primaryColor
+                    inputMethodHints: Qt.ImhNoPredictiveText
+                    //EnterKey.enabled: text.length > 0
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        console.log("Entered")
+                        focus = false
+                    }
+                }
+                IconButton {
+                    icon.source: "image://theme/icon-m-enter-accept?" + (pressed
+                                 ? Theme.highlightColor
+                                 : Theme.primaryColor)
+                    onClicked: console.log("Play clicked!")
+                }
+
+                Button {
+                    id: lattite2
+                    //text: qsTr("Set") + "\n" + possul.position.coordinate.latitude
+                    text: possul.position.coordinate.latitude
+                    color: Theme.secondaryHighlightColor
+                    width:page.width/2
+                    //x: Theme.paddingLarge
+                    onClicked: console.log("Latitude set")
+                }
+
+            }*/
 
             Text {
                     text: qsTr("Longitude")
@@ -143,30 +212,52 @@ Page {
 
             Row {
                 TextField {
-                id: longi
-                placeholderText: "24.2"
-                //label: qsTr("ECO code")
-                //visible: openingMode == 2
-                width: page.width/2
-                validator: RegExpValidator { regExp: /^\-?\d?\d?\d\.\d*$/ }
-                color: errorHighlight? "red" : Theme.primaryColor
-                inputMethodHints: Qt.ImhNoPredictiveText
+                    id: longi
+                    placeholderText: "24.2"
+                    //label: qsTr("ECO code")
+                    //visible: openingMode == 2
+                    width: page.width/2
+                    validator: RegExpValidator { regExp: /^\-?\d?\d?\d\.\d*$/ }
+                    color: errorHighlight? "red" : Theme.primaryColor
+                    inputMethodHints: Qt.ImhNoPredictiveText
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        console.log("Longi entered")
+                        focus = false
+                        if (varis.itemis[currentIndex-1].pla == "") {
+                            Mydbases.addLocation()
+                        }
+                        else  {Mydbases.updateLocation()}
+                        baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
+
+                    }
                 }
-                Text {
+                Button {
                     id: longite
                     text: possul.position.coordinate.longitude
                     color: Theme.secondaryHighlightColor
-                    x: Theme.paddingLarge
+                    width:page.width/2
+                    onClicked: {
+                        longi.text = longite.text
+                        if (varis.itemis[currentIndex-1].pla == "") {
+                            Mydbases.addLocation()
+                        }
+                        else  {Mydbases.updateLocation()}
+                        baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
+
+                        console.log("Longitude set")
+                    }
                 }
             }
 
-                Text {
+            Text {
                     text: qsTr("Size (meters)")
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
                 }
 
-                TextField {
+            TextField {
                 id: saissi
                 placeholderText: "50"
                 //label: qsTr("ECO code")
@@ -175,11 +266,27 @@ Page {
                 validator: RegExpValidator { regExp: /^\d*\.?\d*$/ }
                 color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
+                EnterKey.enabled: !errorHighlight
+                EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                EnterKey.onClicked: {
+                    console.log("Saissi entered")
+                    focus = false
+                    if (varis.itemis[currentIndex-1].pla == "") {
+                        Mydbases.addLocation()
+                    }
+                    else  {Mydbases.updateLocation()}
+                    baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
                 }
-                Component.onCompleted: {Mydbases.populateView();
+
+            }
+
+            Component.onCompleted: {Mydbases.populateView();
+                baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
                     //varis.indos = currentIndex;
                     //console.log(varis.itemis[currentIndex-1].pla);
-                }
+            }
+
+            //Component.onDestruction: baassi.text = ""
 
                 ////Functions etc
                 PositionSource {
@@ -193,14 +300,14 @@ Page {
                     }
                 }
 
-                Timer {
+                /*Timer {
                     interval: Qt.ApplicationActive ? rateAct : ratePass
                     running: true && Qt.ApplicationActive
                     repeat: true
                     onTriggered: {Mydbases.populateView();
                         baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
                     }
-                }
+                }*/
 
 
 

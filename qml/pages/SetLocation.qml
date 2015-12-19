@@ -36,6 +36,12 @@ Page {
         model: listis
         anchors.fill: parent
 
+        //PullDownMenu {
+            //MenuItem {
+                //text: qsTr("Add location")
+                //onClicked: pageStack.push(Qt.resolvedUrl("Del.qml"))
+            //}
+        //}
         PushUpMenu {
             MenuItem {
                 text: qsTr("Help")
@@ -53,15 +59,14 @@ Page {
             Label {
                 id: listos
                 x: Theme.paddingLarge
-                //text: qsTr("Location") + " " + (index+1) + ": " + paramit.itemis[index].pla
                 text: qsTr("Location") + " " + (index+1) + ": " + tekstis
                 anchors.verticalCenter: parent.verticalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
             onClicked: {
                 //console.log("Clicked " + index)
-                pageStack.push(Qt.resolvedUrl("Loc.qml"))
                 currentIndex = index+1;
+                pageStack.push(Qt.resolvedUrl("Loc.qml"))
             }
         }
         VerticalScrollDecorator {}
@@ -69,13 +74,13 @@ Page {
         ListModel {
                 id: listis
                 ListElement {
-                    tekstis: "undefined 1"
+                    tekstis: "undefined"
                 }
                 ListElement {
-                    tekstis: "undefined 2"
+                    tekstis: "undefined"
                 }
                 ListElement {
-                    tekstis: "undefined 3"
+                    tekstis: "undefined"
                 }
         }
 
@@ -88,12 +93,14 @@ Page {
             ] //saved locations in database
 
         }
+        Component.onCompleted: {Mydbases.loadLocation()}
 
         Timer {
             interval: Qt.ApplicationActive ? rateAct : ratePass
             running: true && Qt.ApplicationActive
             repeat: true
             onTriggered: { Mydbases.loadLocation()
+                //console.log("test1")
             }
         }
 
