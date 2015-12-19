@@ -128,8 +128,16 @@
         <translation>Plats</translation>
     </message>
     <message>
-        <source>On this page you can feed the location information: name, coordinates and tolerance. You will see current latitude and longitude to help the feed.</source>
-        <translation>På den här sidan kan du ange platsinformation. Namn, koordinater och tolerans. Du kan se aktuell latitud och longitud, som hjälpinformation.</translation>
+        <source>On this page you can feed the location information: name, coordinates and tolerance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current location can be feeded with buttons.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You will see current latitude and longitude to help the feed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -150,40 +158,40 @@
 <context>
     <name>Loc</name>
     <message>
-        <source>Help</source>
-        <translation>Hjälp</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Plats</translation>
-    </message>
-    <message>
         <source>Delete tables</source>
-        <translation>Ta bort tabeller</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation>Uppdatera värden</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Hjälp</translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation type="unfinished">Plats</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation>Platsnamn</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation>Arbete1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation>Latitud</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation>Longitud</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation>Storlek (meter)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

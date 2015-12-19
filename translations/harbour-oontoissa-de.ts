@@ -128,8 +128,16 @@
         <translation>Aufenthaltsort</translation>
     </message>
     <message>
-        <source>On this page you can feed the location information: name, coordinates and tolerance. You will see current latitude and longitude to help the feed.</source>
-        <translation>Auf dieser Seite kannst du die Informationen zum Aufenthaltsort eintragen: Name, Koordinaten und Toleranz. Die aktuellen Längen- und Breitengrade werden dir angezeigt, damit das etwas einfacher ist.</translation>
+        <source>On this page you can feed the location information: name, coordinates and tolerance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current location can be feeded with buttons.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You will see current latitude and longitude to help the feed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -150,40 +158,40 @@
 <context>
     <name>Loc</name>
     <message>
-        <source>Help</source>
-        <translation>Hilfe</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Aufenthaltsort</translation>
-    </message>
-    <message>
         <source>Delete tables</source>
-        <translation>Tabellen löschen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation>Werte aktualisieren</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Hilfe</translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation>Name des Ortes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation>Arbeit1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation>Breitengrad</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation>Längengrad</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation>Umkreis (in Metern)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

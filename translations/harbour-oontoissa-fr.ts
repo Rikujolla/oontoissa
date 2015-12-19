@@ -128,7 +128,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>On this page you can feed the location information: name, coordinates and tolerance. You will see current latitude and longitude to help the feed.</source>
+        <source>On this page you can feed the location information: name, coordinates and tolerance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current location can be feeded with buttons.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You will see current latitude and longitude to help the feed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -150,19 +158,19 @@
 <context>
     <name>Loc</name>
     <message>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Delete tables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Update values</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
