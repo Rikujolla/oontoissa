@@ -113,7 +113,7 @@ Page {
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
                 EnterKey.onClicked: {
-                    console.log("Saissi entered")
+                    //console.log("Saissi entered")
                     focus = false
                     if (varis.itemis[currentIndex-1].pla == "") {
                         Mydbases.addLocation()
@@ -141,7 +141,7 @@ Page {
                     EnterKey.enabled: !errorHighlight
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: {
-                        console.log("Entered")
+                        //console.log("Entered")
                         focus = false
                         if (varis.itemis[currentIndex-1].pla == "") {
                             Mydbases.addLocation()
@@ -164,7 +164,7 @@ Page {
                         else  {Mydbases.updateLocation()}
                         baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
 
-                        console.log("Latitude set")
+                        //console.log("Latitude set")
                     }
                 }
 
@@ -223,7 +223,7 @@ Page {
                     EnterKey.enabled: !errorHighlight
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: {
-                        console.log("Longi entered")
+                        //console.log("Longi entered")
                         focus = false
                         if (varis.itemis[currentIndex-1].pla == "") {
                             Mydbases.addLocation()
@@ -246,7 +246,7 @@ Page {
                         else  {Mydbases.updateLocation()}
                         baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
 
-                        console.log("Longitude set")
+                        //console.log("Longitude set")
                     }
                 }
             }
@@ -269,7 +269,7 @@ Page {
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
                 EnterKey.onClicked: {
-                    console.log("Saissi entered")
+                    //console.log("Saissi entered")
                     focus = false
                     if (varis.itemis[currentIndex-1].pla == "") {
                         Mydbases.addLocation()
