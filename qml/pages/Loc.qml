@@ -164,45 +164,17 @@ Page {
                         else  {Mydbases.updateLocation()}
                         baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
 
-                        //console.log("Latitude set")
                     }
                 }
 
             }
-            /*Row {
-                TextField {
-                    id: latti2
-                    placeholderText: "63.1"
-                    width: page.width/2
-                    validator: RegExpValidator { regExp: /^\-?\d?\d\.\d*$/ }
-                    color: errorHighlight? "red" : Theme.primaryColor
-                    inputMethodHints: Qt.ImhNoPredictiveText
-                    //EnterKey.enabled: text.length > 0
-                    EnterKey.enabled: !errorHighlight
-                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                    EnterKey.onClicked: {
-                        console.log("Entered")
-                        focus = false
-                    }
-                }
+            /*
                 IconButton {
                     icon.source: "image://theme/icon-m-enter-accept?" + (pressed
                                  ? Theme.highlightColor
                                  : Theme.primaryColor)
                     onClicked: console.log("Play clicked!")
-                }
-
-                Button {
-                    id: lattite2
-                    //text: qsTr("Set") + "\n" + possul.position.coordinate.latitude
-                    text: possul.position.coordinate.latitude
-                    color: Theme.secondaryHighlightColor
-                    width:page.width/2
-                    //x: Theme.paddingLarge
-                    onClicked: console.log("Latitude set")
-                }
-
-            }*/
+                }*/
 
             Text {
                     text: qsTr("Longitude")
@@ -298,6 +270,14 @@ Page {
                         var coord = possul.position.coordinate;
                         //console.log("Coordinate:", coord.longitude, coord.latitude);
                     }
+                }
+
+                ListModel {
+                        id: listix
+                        ListElement {
+                            pla: "place"
+                            els: "else"
+                        }
                 }
 
                 /*Timer {

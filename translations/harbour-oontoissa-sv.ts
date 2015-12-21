@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sv">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.1">
 <context>
     <name>About</name>
     <message>
@@ -33,7 +31,7 @@
     </message>
     <message>
         <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or gallopping freely elsewhere.</source>
-        <translation>Idéen med programmet är att stödja din dagliga arbetstid automatiskt, baserat på sensorsdata. Du skapar områden och Jollan känner av om du är innanför gränserna eller galopperar fritt på annat håll.</translation>
+        <translation>Idéen med programmet är att stödja din dagliga arbetstid automatiskt, baserat på sensorsdata. Du skapar områden och Jollan känner av om du är innanför gränserna eller rör dig fritt på annat håll.</translation>
     </message>
     <message>
         <source>German (John Gibbon)</source>
@@ -52,7 +50,7 @@
     <name>CoverPage</name>
     <message>
         <source>At work</source>
-        <translation>At work</translation>
+        <translation>På jobbet</translation>
     </message>
     <message>
         <source>Location</source>
@@ -129,15 +127,15 @@
     </message>
     <message>
         <source>On this page you can feed the location information: name, coordinates and tolerance.</source>
-        <translation type="unfinished"></translation>
+        <translation>På den här sidan kan du mata in platsinformation som namn, koordinater och tolerans.</translation>
     </message>
     <message>
         <source>Current location can be feeded with buttons.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuell plats kan infogas med knappar.</translation>
     </message>
     <message>
         <source>You will see current latitude and longitude to help the feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du kan se aktuell latitud och longitud, som konfigurationshjälp.</translation>
     </message>
 </context>
 <context>
@@ -159,39 +157,39 @@
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort tabeller</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera värden</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Hjälp</translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished">Plats</translation>
+        <translation>Plats</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation type="unfinished"></translation>
+        <translation>Platsnamn</translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbete1</translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Latitud</translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Longitud</translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation type="unfinished"></translation>
+        <translation>Storlek (meter)</translation>
     </message>
 </context>
 <context>
@@ -225,7 +223,7 @@
     </message>
     <message>
         <source>At work</source>
-        <translation>At work</translation>
+        <translation>På jobbet</translation>
     </message>
     <message>
         <source>Location now</source>
@@ -244,7 +242,7 @@
     <name>dbases</name>
     <message>
         <source>Free gallopping</source>
-        <translation>Fritt galopperande</translation>
+        <translation>Fritt rörlig</translation>
     </message>
 </context>
 </TS>
