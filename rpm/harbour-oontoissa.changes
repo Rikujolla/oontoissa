@@ -5,6 +5,11 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Wed Dec 23 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.0.7-3
+- Swedish translation update
+- German translations update
+- Removing a limit for amount of the locations
+
 * Sat Dec 19 2015 Riku Lahtinen <rikul.lajolla@kiu.as> 0.0.7-2
 - Improved the location feed
 

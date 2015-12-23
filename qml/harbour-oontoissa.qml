@@ -35,11 +35,12 @@ ApplicationWindow
     _defaultPageOrientations: Orientation.All
 
     property int currentIndex: 1 //
-    property int listSize: 3 //
+    property int listSize: 0 //
     property int rateAct: 100 // Timers update rate when active
     property int ratePass: 10000 // Timers update when application not active
     property string covLoc: "Test"  // Cover location display
     property string covTim: "07:12" // Cover Time display
+    property bool updateL : true //
 }
 
 

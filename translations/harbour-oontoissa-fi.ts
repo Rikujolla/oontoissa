@@ -193,6 +193,14 @@
         <source>Size (meters)</source>
         <translation>Koko (metriä)</translation>
     </message>
+    <message>
+        <source>Delete location</source>
+        <translation>Poista sijainti</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Poistetaan</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -207,6 +215,10 @@
     <message>
         <source>Location</source>
         <translation>Sijainti</translation>
+    </message>
+    <message>
+        <source>Add location</source>
+        <translation>Lisää sijainti</translation>
     </message>
 </context>
 <context>

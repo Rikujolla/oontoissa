@@ -36,12 +36,16 @@ Page {
         model: listis
         anchors.fill: parent
 
-        //PullDownMenu {
-            //MenuItem {
-                //text: qsTr("Add location")
-                //onClicked: pageStack.push(Qt.resolvedUrl("Del.qml"))
-            //}
-        //}
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Add location")
+                onClicked:{
+                    currentIndex = listSize+1;
+                    listSize++;
+                    pageStack.push(Qt.resolvedUrl("Loc.qml"))
+                }
+            }
+        }
         PushUpMenu {
             MenuItem {
                 text: qsTr("Help")
@@ -64,7 +68,6 @@ Page {
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
             onClicked: {
-                //console.log("Clicked " + index)
                 currentIndex = index+1;
                 pageStack.push(Qt.resolvedUrl("Loc.qml"))
             }
@@ -76,35 +79,21 @@ Page {
                 ListElement {
                     tekstis: "undefined"
                 }
-                ListElement {
-                    tekstis: "undefined"
-                }
-                ListElement {
-                    tekstis: "undefined"
-                }
         }
 
-        Item {
-            id: paramit
-            property var itemis: [
-                {pla:"",els:""},
-                {pla:"",els:""},
-                {pla:"",els:""}
-            ] //saved locations in database
 
+        Component.onCompleted: {
+            Mydbases.loadLocation()
         }
-        Component.onCompleted: {Mydbases.loadLocation()}
 
         Timer {
-            interval: Qt.ApplicationActive ? rateAct : ratePass
+            interval: 800
             running: true && Qt.ApplicationActive
-            repeat: true
-            onTriggered: { Mydbases.loadLocation()
-                //console.log("test1")
+            repeat: updateL
+            onTriggered: {
+                Mydbases.loadLocation()
             }
         }
-
-        //Component.onCompleted: Mydbases.loadLocation()
     }
 }
 

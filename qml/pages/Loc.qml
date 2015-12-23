@@ -44,13 +44,23 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("Del.qml"))
             }
             MenuItem {
+                text: qsTr("Delete location")
+                onClicked: {
+                    remorse.execute(qsTr("Deleting"), console.log("remorse") , 3000 )
+                }
+                RemorsePopup { id: remorse
+                onTriggered: Mydbases.delLocation()}
+            }
+            MenuItem {
                 text: qsTr("Update values")
                 onClicked: {
-                    if (varis.itemis[currentIndex-1].pla == "") {
-                        Mydbases.addLocation()
-                    }
-                    else  {Mydbases.updateLocation()}
-                    baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
+                    //if (varis.itemis[currentIndex-1].pla == "") {
+                      //  Mydbases.addLocation()
+                    //}
+                    //else  {
+                        Mydbases.updateLocation()
+                //}
+                    baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 }
            }
         }
@@ -90,7 +100,7 @@ Page {
 
             Text {
                 id: baassi
-                text: varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
+                text: listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
             }
@@ -113,14 +123,10 @@ Page {
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
                 EnterKey.onClicked: {
-                    //console.log("Saissi entered")
                     focus = false
-                    if (varis.itemis[currentIndex-1].pla == "") {
-                        Mydbases.addLocation()
-                    }
-                    else  {Mydbases.updateLocation()}
-                    baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
-
+                    Mydbases.updateLocation()
+                    baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
+                    updateL = true
                 }
             }
 
@@ -141,14 +147,9 @@ Page {
                     EnterKey.enabled: !errorHighlight
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: {
-                        //console.log("Entered")
                         focus = false
-                        if (varis.itemis[currentIndex-1].pla == "") {
-                            Mydbases.addLocation()
-                        }
-                        else  {Mydbases.updateLocation()}
-                        baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
-
+                        Mydbases.updateLocation()
+                        baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                     }
                 }
                 Button {
@@ -158,12 +159,8 @@ Page {
                     width:page.width/2
                     onClicked: {
                         latti.text = lattite.text
-                        if (varis.itemis[currentIndex-1].pla == "") {
-                            Mydbases.addLocation()
-                        }
-                        else  {Mydbases.updateLocation()}
-                        baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
-
+                        Mydbases.updateLocation()
+                        baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                     }
                 }
 
@@ -195,14 +192,9 @@ Page {
                     EnterKey.enabled: !errorHighlight
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: {
-                        //console.log("Longi entered")
                         focus = false
-                        if (varis.itemis[currentIndex-1].pla == "") {
-                            Mydbases.addLocation()
-                        }
-                        else  {Mydbases.updateLocation()}
-                        baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
-
+                        Mydbases.updateLocation()
+                        baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                     }
                 }
                 Button {
@@ -212,13 +204,8 @@ Page {
                     width:page.width/2
                     onClicked: {
                         longi.text = longite.text
-                        if (varis.itemis[currentIndex-1].pla == "") {
-                            Mydbases.addLocation()
-                        }
-                        else  {Mydbases.updateLocation()}
-                        baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
-
-                        //console.log("Longitude set")
+                        Mydbases.updateLocation()
+                        baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                     }
                 }
             }
@@ -232,8 +219,6 @@ Page {
             TextField {
                 id: saissi
                 placeholderText: "50"
-                //label: qsTr("ECO code")
-                //visible: openingMode == 2
                 width: page.width/2
                 validator: RegExpValidator { regExp: /^\d*\.?\d*$/ }
                 color: errorHighlight? "red" : Theme.primaryColor
@@ -241,24 +226,15 @@ Page {
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
                 EnterKey.onClicked: {
-                    //console.log("Saissi entered")
                     focus = false
-                    if (varis.itemis[currentIndex-1].pla == "") {
-                        Mydbases.addLocation()
-                    }
-                    else  {Mydbases.updateLocation()}
-                    baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
+                    Mydbases.updateLocation()
+                    baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 }
-
             }
 
             Component.onCompleted: {Mydbases.populateView();
-                baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
-                    //varis.indos = currentIndex;
-                    //console.log(varis.itemis[currentIndex-1].pla);
+                baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
             }
-
-            //Component.onDestruction: baassi.text = ""
 
                 ////Functions etc
                 PositionSource {
@@ -268,7 +244,6 @@ Page {
 
                     onPositionChanged: {
                         var coord = possul.position.coordinate;
-                        //console.log("Coordinate:", coord.longitude, coord.latitude);
                     }
                 }
 
@@ -279,17 +254,6 @@ Page {
                             els: "else"
                         }
                 }
-
-                /*Timer {
-                    interval: Qt.ApplicationActive ? rateAct : ratePass
-                    running: true && Qt.ApplicationActive
-                    repeat: true
-                    onTriggered: {Mydbases.populateView();
-                        baassi.text = varis.itemis[currentIndex-1].pla + ", " + varis.itemis[currentIndex-1].els
-                    }
-                }*/
-
-
 
         }
     }

@@ -14,7 +14,7 @@ Name:       harbour-oontoissa
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Automatical sensor based working time recorder
 Version:    0.0.7
-Release:    1
+Release:    3
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/

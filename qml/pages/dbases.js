@@ -38,7 +38,7 @@ function addLocation() {
 }
 
 function updateLocation() {
-    //console.log("Adding recent moves")
+
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
     db.transaction(
@@ -47,22 +47,22 @@ function updateLocation() {
             tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
 
             // Updating the location name
-            if (neimi.text != "") {
-                tx.executeSql('UPDATE Locations SET theplace=? WHERE ROWID = ?', [neimi.text, currentIndex] );
-            }
+            //if (neimi.text != "") {
+                tx.executeSql('UPDATE Locations SET theplace=? WHERE theplace = ?', [neimi.text, (listix.get(currentIndex-1).pla)] );
+            //}
             // Updating the location latitude
             if (latti.text != "") {
-                tx.executeSql('UPDATE Locations SET thelati=? WHERE ROWID = ?', [latti.text, currentIndex]);
+                tx.executeSql('UPDATE Locations SET thelati=? WHERE theplace = ?', [latti.text, (listix.get(currentIndex-1).pla)]);
             }
             // Updating the location longitude
             if (longi.text != "") {
-                tx.executeSql('UPDATE Locations SET thelongi=? WHERE ROWID = ?', [longi.text, currentIndex]);
+                tx.executeSql('UPDATE Locations SET thelongi=? WHERE theplace = ?', [longi.text, (listix.get(currentIndex-1).pla)]);
             }
             // Updating the location tolerance
-            if (saissi.text != "") {
-                tx.executeSql('UPDATE Locations SET tolerlong=? WHERE ROWID = ?', [saissi.text, currentIndex]);
-                tx.executeSql('UPDATE Locations SET tolerlat=? WHERE ROWID = ?', [saissi.text, currentIndex]);
-            }
+            //if (saissi.text != "") {
+                tx.executeSql('UPDATE Locations SET tolerlong=? WHERE theplace = ?', [saissi.text, (listix.get(currentIndex-1).pla)]);
+                tx.executeSql('UPDATE Locations SET tolerlat=? WHERE theplace = ?', [saissi.text, (listix.get(currentIndex-1).pla)]);
+            //}
 
             // Show all
             var rs = tx.executeSql('SELECT rowid, * FROM Locations');
@@ -70,10 +70,13 @@ function updateLocation() {
             //    varis.tempur += rs.rows.item(i).theplace + ", " + rs.rows.item(i).rowid + "\n";
             //}
            // if (rs.rows.length > currentIndex-2) {
-            varis.itemis[currentIndex-1].pla = rs.rows.item(currentIndex-1).theplace;
+           /* varis.itemis[currentIndex-1].pla = rs.rows.item(currentIndex-1).theplace;
             varis.itemis[currentIndex-1].els = rs.rows.item(currentIndex-1).thelati + ", "
-                    + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong
-            //console.log("uprateee ", varis.tempur);
+                    + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong*/
+
+            listix.set((currentIndex-1),{"pla": rs.rows.item(currentIndex-1).theplace});
+            listix.set((currentIndex-1),{"els": (rs.rows.item(currentIndex-1).thelati + ", "
+                                 + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong)});
            // }
 
 
@@ -90,25 +93,20 @@ function loadLocation() {
         function(tx) {
             // Create the table, if not existing
             tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
-            //console.log("test2")
+
             // Show all
             var rs = tx.executeSql('SELECT rowid, * FROM Locations');
-            //listis.clear() when dynamic listis
+            listSize = rs.rows.length;
+            listis.clear();
             for(var i = 0; i < rs.rows.length; i++) {
-                //paramit.itemis[i].pla = rs.rows.item(i).theplace;
-                //console.log("test3 ", paramit.itemis[i].pla, i);
-                //listis.set(i,{"tekstis": paramit.itemis[i].pla});
                 listis.set(i,{"tekstis": rs.rows.item(i).theplace});
             }
-
-
         }
     )
-
 }
 
 function delLocTable() { // DROP TABLE does not work yet. Table locking should be solved! Stop Timers??
-    //console.log("deleting files")
+
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
     db.transaction(
@@ -139,8 +137,32 @@ function delLocTable() { // DROP TABLE does not work yet. Table locking should b
     )
 }
 
+function delLocation() { // DROP TABLE does not work yet. Table locking should be solved! Stop Timers??
+
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+
+    db.transaction(
+        function(tx) {
+            // Create the table, if not existing
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
+            // Show all
+            var rs = tx.executeSql('SELECT rowid, * FROM Locations');
+
+           // tx.executeSql('DELETE FROM Locations WHERE rowid = ?', (currentIndex));
+            tx.executeSql('DELETE FROM Locations WHERE theplace = ?', (listix.get(currentIndex-1).pla));
+
+            tx.executeSql('SELECT rowid, * FROM Locations');
+            listSize = rs.rows.length;
+            currentIndex--;
+            //pageStack.push(Qt.resolvedUrl("SetLocation.qml"))
+
+        }
+    )
+}
+
+
 function populateView() {
-    //console.log("populating")
+
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
     db.transaction(
@@ -152,35 +174,31 @@ function populateView() {
             var rs = tx.executeSql('SELECT * FROM Locations');
 
             // Adding location if location empty
-            if (rs.rows.length == 0) {
-                tx.executeSql('INSERT INTO Locations VALUES(?, ?, ?, ?, ?)', ['24.3764948', '61.64687276', 'Orivesi', '50.0', '50.0']);
+            if (rs.rows.length < listSize) {
+                tx.executeSql('INSERT INTO Locations VALUES(?, ?, ?, ?, ?)', ['24.37', '61.64', 'Orivesi' + currentIndex, '50.0', '50.0']);
                 rs = tx.executeSql('SELECT * FROM Locations');
-
+                listix.append({"pla": "new", "els":"new"})
+                neimi.text = rs.rows.item(currentIndex-1).theplace;
+                saissi.text = rs.rows.item(currentIndex-1).tolerlong;
             }
             else {
                 neimi.text = rs.rows.item(currentIndex-1).theplace;
                 saissi.text = rs.rows.item(currentIndex-1).tolerlong;
             }
 
-            // Filling movetext
-            varis.itemi = "";
-            //for(var i = 0; i < rs.rows.length; i++) {
-                //console.log("populateView", rs.rows.item(currentIndex-1).theplace)
-                //varis.itemi += rs.rows.item(i).theplace + ", " + rs.rows.item(i).thelati + ", "
-            //            + rs.rows.item(i).thelongi + ", " + rs.rows.item(i).tolerlong + "\n";
-           // }
-            //if (rs.rows.length > currentIndex-2) {
-            varis.itemis[currentIndex-1].pla = rs.rows.item(currentIndex-1).theplace;
-            varis.itemis[currentIndex-1].els = rs.rows.item(currentIndex-1).thelati + ", "
-                    + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong
-            //}
+            // Filling listix
+            for(var i = 0; i < rs.rows.length; i++) {
+                listix.set(i,{"pla": rs.rows.item(i).theplace});
+                listix.set(i,{"els": (rs.rows.item(i).thelati + ", "
+                                     + rs.rows.item(i).thelongi + ", " + rs.rows.item(i).tolerlong)});
+           }
         }
     )
 
 }
 
 function checkFences() {
-    //console.log("populating")
+
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
     db.transaction(
@@ -245,10 +263,8 @@ function addTodayInfo() {
                 tx.executeSql('UPDATE Today SET endtime=time(?, ?) WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', ['now', 'localtime']);
 
                 var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = last_insert_rowid()');
-                //console.log('alku', begi.rows.item(0).begil)
 
                 var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
-                //console.log('alku', begi.rows.item(0).begil, endi.rows.item(0).endil)
 
                 tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', [evied.rows.item(0).rest]);
             }
@@ -286,12 +302,11 @@ function addHistoryData() {
 
             var r = ""
             var rmos = 0;
-            //var rmtos = "";
+
             for(var i = 0; i < rs.rows.length; i++) {
-                //console.log(i, rs.rows.item(i).totle);
+
                 rmos = ((rs.rows.item(i).totle-rs.rows.item(i).totle%60)/60 - (rs.rows.item(i).totle-rs.rows.item(i).totle%3600)/60);
-                //console.log(rmos);
-                //rmos < 10 ? (rmtos = "0" + rmos);
+
                 if (rmos < 10){
                 r += rs.rows.item(i).deit + ", " + rs.rows.item(i).thestatus + ", "
                         + (rs.rows.item(i).totle-rs.rows.item(i).totle%3600)/3600 + ":" + "0"

@@ -193,6 +193,14 @@
         <source>Size (meters)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Delete location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -206,6 +214,10 @@
     </message>
     <message>
         <source>Location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add location</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

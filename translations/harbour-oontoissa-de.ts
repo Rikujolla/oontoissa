@@ -129,15 +129,15 @@
     </message>
     <message>
         <source>On this page you can feed the location information: name, coordinates and tolerance.</source>
-        <translation type="unfinished"></translation>
+        <translation>Auf dieser Seite kannst du die Informationen zum Aufenthaltsort eintragen: Name, Koordinaten und Toleranz.</translation>
     </message>
     <message>
         <source>Current location can be feeded with buttons.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der derzeitige Ort kann über Buttons eingestellt werden.</translation>
     </message>
     <message>
         <source>You will see current latitude and longitude to help the feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die aktuellen Längen- und Breitengrade werden dir als Hilfe zum Eintragen angezeigt.</translation>
     </message>
 </context>
 <context>
@@ -159,39 +159,47 @@
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabellen löschen</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation type="unfinished"></translation>
+        <translation>Werte aktualisieren</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Hilfe</translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Aufenthaltsort</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name des Ortes</translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbeit1</translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Breitengrad</translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Längengrad</translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation type="unfinished"></translation>
+        <translation>Umkreis (in Metern)</translation>
+    </message>
+    <message>
+        <source>Delete location</source>
+        <translation>Aufenthaltsort entfernen</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Entferne</translation>
     </message>
 </context>
 <context>
@@ -207,6 +215,10 @@
     <message>
         <source>Location</source>
         <translation>Aufenthaltsort</translation>
+    </message>
+    <message>
+        <source>Add location</source>
+        <translation>Aufenthaltsort hinzufügen</translation>
     </message>
 </context>
 <context>
