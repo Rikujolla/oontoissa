@@ -63,7 +63,7 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or gallopping freely elsewhere.")
+                text: {qsTr("The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or galloping freely elsewhere.")
                 }
             }
 
@@ -81,7 +81,7 @@ Page {
                 text: {
                     qsTr("German (John Gibbon)") + "\n" +
                     qsTr("Finnish (Riku Lahtinen)") + "\n" +
-                    //qsTr("French (Jordi)") + "\n" +
+                    qsTr("French (Jordi)") + "\n" +
                     qsTr("Swedish (Åke Engelbrektson)") + "\n" +
                     qsTr("Chinese (0312birdzhang)")
                 }

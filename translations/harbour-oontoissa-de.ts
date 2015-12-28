@@ -32,10 +32,6 @@
         <translation>Idee</translation>
     </message>
     <message>
-        <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or gallopping freely elsewhere.</source>
-        <translation>Die Idee dieser Software ist, dich bei der Erfassung deiner täglichen Arbeitszeiten mithilfe von Sensordaten zu unterstützen.</translation>
-    </message>
-    <message>
         <source>German (John Gibbon)</source>
         <translation>Deutsch (John Gibbon)</translation>
     </message>
@@ -46,6 +42,14 @@
     <message>
         <source>Chinese (0312birdzhang)</source>
         <translation>Chinesisch (0312birdzhang)</translation>
+    </message>
+    <message>
+        <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or galloping freely elsewhere.</source>
+        <translation>Die Idee dieser Software ist, dich bei der Erfassung deiner täglichen Arbeitszeiten mithilfe von Sensordaten zu unterstützen.</translation>
+    </message>
+    <message>
+        <source>French (Jordi)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

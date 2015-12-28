@@ -32,19 +32,23 @@
         <translation>创意</translation>
     </message>
     <message>
-        <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or gallopping freely elsewhere.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>German (John Gibbon)</source>
-        <translation type="unfinished"></translation>
+        <translation>德语(John Gibbon)</translation>
     </message>
     <message>
         <source>Swedish (Åke Engelbrektson)</source>
-        <translation type="unfinished"></translation>
+        <translation>瑞典语(Åke Engelbrektson)</translation>
     </message>
     <message>
         <source>Chinese (0312birdzhang)</source>
+        <translation>中文(0312birdzhang)</translation>
+    </message>
+    <message>
+        <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or galloping freely elsewhere.</source>
+        <translation>这个软件的创意是根据传感器数据支持你每天的工作时间。当你创建区域的时候， olla会判断你是在屋内还是在某处嗨着。</translation>
+    </message>
+    <message>
+        <source>French (Jordi)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -52,11 +56,11 @@
     <name>CoverPage</name>
     <message>
         <source>At work</source>
-        <translation type="unfinished"></translation>
+        <translation>上班中</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>位置</translation>
     </message>
 </context>
 <context>
@@ -110,134 +114,134 @@
     </message>
     <message>
         <source>&apos;Today&apos; shows the detailed info of the current day. If software is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.</source>
-        <translation type="unfinished"></translation>
+        <translation>“今天”显示本日的详细信息。如果软件在当天关闭了，那么会当做这一天后面的时间位置没有变过。例如，你可以在早上的时候打开记录今天，在今天还没结束的时候关闭或重启软件。</translation>
     </message>
     <message>
         <source>&apos;History&apos; shows the recorded info of the recent days.</source>
-        <translation type="unfinished"></translation>
+        <translation>“历史”显示已经记录的最近几天信息。</translation>
     </message>
 </context>
 <context>
     <name>HelpLoc</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>帮助</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>位置</translation>
     </message>
     <message>
         <source>On this page you can feed the location information: name, coordinates and tolerance.</source>
-        <translation type="unfinished"></translation>
+        <translation>你可以在本页捕获位置信息：地名，坐标，公差。</translation>
     </message>
     <message>
         <source>Current location can be feeded with buttons.</source>
-        <translation type="unfinished"></translation>
+        <translation>当前位置可以通过按钮捕获。</translation>
     </message>
     <message>
         <source>You will see current latitude and longitude to help the feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>你会看到当前的纬度和经度来帮助获取。</translation>
     </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>帮助</translation>
     </message>
     <message>
         <source>Set location page</source>
-        <translation type="unfinished"></translation>
+        <translation>设置位置页面</translation>
     </message>
     <message>
         <source>On this page you will see the preset locations.</source>
-        <translation type="unfinished"></translation>
+        <translation>在这个页面，你会看到预设位置。</translation>
     </message>
 </context>
 <context>
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation type="unfinished"></translation>
+        <translation>删除表格</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation type="unfinished"></translation>
+        <translation>更新值</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>帮助</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>位置</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation type="unfinished"></translation>
+        <translation>位置名</translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation type="unfinished"></translation>
+        <translation>工作1</translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>纬度</translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>经度</translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation type="unfinished"></translation>
+        <translation>大小(米)</translation>
     </message>
     <message>
         <source>Delete location</source>
-        <translation type="unfinished"></translation>
+        <translation>删除位置</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>删除中</translation>
     </message>
 </context>
 <context>
     <name>SetLocation</name>
     <message>
         <source>Set location page</source>
-        <translation type="unfinished"></translation>
+        <translation>设置位置页面</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>帮助</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>位置</translation>
     </message>
     <message>
         <source>Add location</source>
-        <translation type="unfinished"></translation>
+        <translation>添加位置</translation>
     </message>
 </context>
 <context>
     <name>Today</name>
     <message>
         <source>Set location</source>
-        <translation type="unfinished"></translation>
+        <translation>设置位置</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>帮助</translation>
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>关于</translation>
     </message>
     <message>
         <source>At work</source>
-        <translation type="unfinished"></translation>
+        <translation>上班中</translation>
     </message>
     <message>
         <source>Location now</source>
@@ -256,7 +260,7 @@
     <name>dbases</name>
     <message>
         <source>Free gallopping</source>
-        <translation type="unfinished"></translation>
+        <translation>自由舞动</translation>
     </message>
 </context>
 </TS>

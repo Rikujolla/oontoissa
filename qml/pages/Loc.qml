@@ -49,7 +49,11 @@ Page {
                     remorse.execute(qsTr("Deleting"), console.log("remorse") , 3000 )
                 }
                 RemorsePopup { id: remorse
-                onTriggered: Mydbases.delLocation()}
+                onTriggered: {
+                    Mydbases.delLocation()
+                    pageStack.pop()
+                }
+                }
             }
             MenuItem {
                 text: qsTr("Update values")
