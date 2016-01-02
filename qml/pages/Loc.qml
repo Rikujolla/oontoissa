@@ -27,6 +27,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
 import QtPositioning 5.2
+import QtSystemInfo 5.0
 import "dbases.js" as Mydbases
 
 
@@ -85,7 +86,7 @@ Page {
             id: column
 
             width: page.width
-            spacing: Theme.paddingLarge
+            spacing: Theme.paddingMedium
             PageHeader {
                 title: qsTr("Location")
             }
@@ -236,8 +237,46 @@ Page {
                 }
             }
 
+            Text {
+                id:celltitle
+                text: qsTr("Cell ids")
+                    color: Theme.secondaryHighlightColor
+                    x: Theme.paddingLarge
+                }
+
+            Row {
+                TextField {
+                    id: celli
+                    placeholderText: "24.2"
+                    width: page.width/2
+                    //validator: RegExpValidator { regExp: /^\-?\d?\d?\d\.\d*$/ }
+                    //color: errorHighlight? "red" : Theme.primaryColor
+                    inputMethodHints: Qt.ImhNoPredictiveText
+                    //EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        focus = false
+                        Mydbases.updateLocation()
+                        baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
+                    }
+                }
+                Button {
+                    id: cellie
+                    text: tempor.sello
+                    color: Theme.secondaryHighlightColor
+                    width:page.width/2
+                    onClicked: {
+                        tempor.sello = testsell.cellId(0)
+                        celli.text = cellie.text
+                        //Mydbases.updateLocation()
+                        //baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
+                    }
+                }
+            }
+
             Component.onCompleted: {Mydbases.populateView();
                 baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
+                celltitle.text = qsTr("Cell ids") + listix.get(currentIndex-1).cels
             }
 
                 ////Functions etc
@@ -245,10 +284,62 @@ Page {
                     id: possul
                     updateInterval: 1000
                     active: true
+                    //preferredPositioningMethods: NonSatellitePositioningMethods
 
                     onPositionChanged: {
                         var coord = possul.position.coordinate;
+                        tempor.sello = testsell.cellId(0)
+                        //possul.position.latitudeValid ? console.log("valid") : console.log("notvalid")
+                        /*
+                        console.log("CellID", testsell.cellId(0))
+                        console.log("MCC", testsell.homeMobileCountryCode(0))
+                        console.log("MNC", testsell.homeMobileNetworkCode(0))
+                        console.log("LAC", testsell.locationAreaCode(0))
+                        console.log("GSM", testsell.networkSignalStrength(1,0))
+                        console.log("CDMA", testsell.networkSignalStrength(2,0))
+                        console.log("W-CDMA", testsell.networkSignalStrength(3,0))
+                        console.log("WLAN", testsell.networkSignalStrength(4,0))
+                        console.log("LAN", testsell.networkSignalStrength(5,0))
+                        console.log("Bluetooth", testsell.networkSignalStrength(6,0))
+                        console.log("Wimax", testsell.networkSignalStrength(7,0))
+                        console.log("Lte", testsell.networkSignalStrength(8,0))
+                        //*/
                     }
+                }
+
+                NetworkInfo {
+                    id:testsell
+                    //updateinterval:2000
+                    onNetworkSignalStrengthChanged: {
+                        tempor.sello = testsell.cellId(0)
+
+                        console.log("SignalCellID", testsell.cellId(0))
+                        console.log("MCC", testsell.homeMobileCountryCode(0))
+                        console.log("MNC", testsell.homeMobileNetworkCode(0))
+                        console.log("LAC", testsell.locationAreaCode(0))
+                        console.log("GSM", testsell.networkSignalStrength(1,0))
+                        console.log("CDMA", testsell.networkSignalStrength(2,0))
+                        console.log("W-CDMA", testsell.networkSignalStrength(3,0))
+                        console.log("WLAN", testsell.networkSignalStrength(4,0))
+                        console.log("LAN", testsell.networkSignalStrength(5,0))
+                        console.log("Bluetooth", testsell.networkSignalStrength(6,0))
+                        console.log("Wimax", testsell.networkSignalStrength(7,0))
+                        console.log("Lte", testsell.networkSignalStrength(8,0))
+
+                    }
+
+                    onCellIdChanged: {
+                        tempor.sello = testsell.cellId(0)
+                        console.log("Cellidchanged")
+                    }
+
+
+                }
+
+                Item {
+                id: tempor
+                property int sello //temporary celllid
+                property string sellotext // sellotext
                 }
 
                 ListModel {
@@ -256,6 +347,7 @@ Page {
                         ListElement {
                             pla: "place"
                             els: "else"
+                            cels: "cells"
                         }
                 }
 

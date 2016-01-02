@@ -45,6 +45,7 @@ function updateLocation() {
         function(tx) {
             // Create the table, if not existing
             tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Cellinfo(theplace TEXT, thecelli INTEGER, sigstrength INTEGER, cellat REAL, cellong REAL, celltol REAL)');
 
             // Updating the location name
             //if (neimi.text != "") {
@@ -63,6 +64,13 @@ function updateLocation() {
                 tx.executeSql('UPDATE Locations SET tolerlong=? WHERE theplace = ?', [saissi.text, (listix.get(currentIndex-1).pla)]);
                 tx.executeSql('UPDATE Locations SET tolerlat=? WHERE theplace = ?', [saissi.text, (listix.get(currentIndex-1).pla)]);
             //}
+
+            // Updating the cell information
+            if (celli.text != "") {
+                //tx.executeSql('UPDATE Cellinfo SET thecelli=? WHERE theplace = ?', [celli.text, (listix.get(currentIndex-1).pla)]);
+                tx.executeSql('INSERT INTO Cellinfo VALUES(?, ?, ?, ?, ?, ?)', [(listix.get(currentIndex-1).pla), '1', '1', '1.0', '1.0', '1.0']);
+
+            }
 
             // Show all
             var rs = tx.executeSql('SELECT rowid, * FROM Locations');
@@ -161,7 +169,7 @@ function delLocation() { // DROP TABLE does not work yet. Table locking should b
 }
 
 
-function populateView() {
+function populateView() {  // Loads existing info to Loc.qml page
 
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
@@ -169,6 +177,7 @@ function populateView() {
         function(tx) {
             // Create the table, if not existing
             tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Cellinfo(theplace TEXT, thecelli INTEGER, sigstrength INTEGER, cellat REAL, cellong REAL, celltol REAL)');
 
             // Show all
             var rs = tx.executeSql('SELECT * FROM Locations');
@@ -192,6 +201,14 @@ function populateView() {
                 listix.set(i,{"els": (rs.rows.item(i).thelati + ", "
                                      + rs.rows.item(i).thelongi + ", " + rs.rows.item(i).tolerlong)});
            }
+            rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ?', neimi.text);
+            tempor.sellotext = ""
+            for(i = 0; i < rs.rows.length; i++) {
+                tempor.sellotext = tempor.sellotext + rs.rows.item(i).thelati + ", ";
+                }
+            listix.set((currentIndex-1),{"cels": tempor.sellotext});
+            celli.text = listix.get(currentIndex-1).cels;
+
         }
     )
 
@@ -205,6 +222,7 @@ function checkFences() {
         function(tx) {
             // Create the table, if not existing
             tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Cellinfo(theplace TEXT, thecelli INTEGER, sigstrength INTEGER, cellat REAL, cellong REAL, celltol REAL)');
 
             // Show all
             var rs = tx.executeSql('SELECT * FROM Locations');

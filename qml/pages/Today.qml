@@ -82,27 +82,6 @@ Page {
                 text: varus.inFence + ": " + varus.timeInFenceS
             }
 
-            /*SectionHeader { text: qsTr("GPS info") }
-            Text {
-                color: Theme.secondaryHighlightColor
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    margins: Theme.paddingLarge
-                }
-                text: qsTr("Latitude") + ", " + qsTr("Longitude")
-            }
-
-            Text {
-                color: Theme.primaryColor
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    margins: Theme.paddingLarge
-                }
-                text: possu.position.coordinate.latitude + ", " + possu.position.coordinate.longitude
-            }*/
-
             SectionHeader { text: qsTr("Today") }
             Text {
                 id: todday
