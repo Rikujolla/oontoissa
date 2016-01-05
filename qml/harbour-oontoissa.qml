@@ -25,6 +25,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtSystemInfo 5.0
 import "pages"
 
 ApplicationWindow
@@ -41,6 +42,11 @@ ApplicationWindow
     property string covLoc: "Test"  // Cover location display
     property string covTim: "07:12" // Cover Time display
     property bool updateL : true //
+    property int currentCell //saves current cell number globally
+
+    NetworkInfo { // Make multiple signals possible
+        id : bestcell
+    }
 }
 
 

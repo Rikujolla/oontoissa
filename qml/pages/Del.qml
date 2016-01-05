@@ -118,6 +118,15 @@ Page {
                 }
             }
 
+            Button {
+                text: qsTr("Delete cells info!")
+                onClicked: {
+                    deletions.choice = "cells";
+                    Mydbases.delLocTable();
+                    deletions.choice = "none";
+                }
+            }
+
 //loppusulkeet
         }
     }

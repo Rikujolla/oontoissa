@@ -9,7 +9,7 @@
 /// addHistoryData(), row 264
 
 
-function addLocation() {
+/*function addLocation() {
     //console.log("Adding recent moves")
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
@@ -35,7 +35,7 @@ function addLocation() {
         }
     )
 
-}
+}*/
 
 function updateLocation() {
 
@@ -67,13 +67,16 @@ function updateLocation() {
 
             // Updating the cell information
             if (celli.text != "") {
-                //tx.executeSql('UPDATE Cellinfo SET thecelli=? WHERE theplace = ?', [celli.text, (listix.get(currentIndex-1).pla)]);
-                tx.executeSql('INSERT INTO Cellinfo VALUES(?, ?, ?, ?, ?, ?)', [(listix.get(currentIndex-1).pla), '1', '1', '1.0', '1.0', '1.0']);
+                var rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ? AND thecelli = ?', [(listix.get(currentIndex-1).pla), celli.text]);
 
+                //tx.executeSql('UPDATE Cellinfo SET thecelli=? WHERE theplace = ?', [celli.text, (listix.get(currentIndex-1).pla)]);
+                if (rs.rows.length == 0) {
+                    tx.executeSql('INSERT INTO Cellinfo VALUES(?, ?, ?, ?, ?, ?)', [(listix.get(currentIndex-1).pla), celli.text, '1', '1.0', '1.0', '1.0']);
+                }
             }
 
             // Show all
-            var rs = tx.executeSql('SELECT rowid, * FROM Locations');
+            rs = tx.executeSql('SELECT * FROM Locations');
             //for(var i = 0; i < rs.rows.length; i++) {
             //    varis.tempur += rs.rows.item(i).theplace + ", " + rs.rows.item(i).rowid + "\n";
             //}
@@ -87,7 +90,10 @@ function updateLocation() {
                                  + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong)});
            // }
 
-
+            rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ?',(listix.get(currentIndex-1).pla));
+            for(var i = 0; i < rs.rows.length; i++) {
+                listix.set((currentIndex-1),{"cels":", " + rs.rows.item(i).thecelli})
+            }
         }
     )
 
@@ -103,7 +109,7 @@ function loadLocation() {
             tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
 
             // Show all
-            var rs = tx.executeSql('SELECT rowid, * FROM Locations');
+            var rs = tx.executeSql('SELECT * FROM Locations');
             listSize = rs.rows.length;
             listis.clear();
             for(var i = 0; i < rs.rows.length; i++) {
@@ -138,6 +144,11 @@ function delLocTable() { // DROP TABLE does not work yet. Table locking should b
                 tx.executeSql('DELETE FROM Locations');
                 deletions.choice = "none";
                 break;
+            case "cells":
+                //tx.executeSql('DROP TABLE Cellinfo');
+                tx.executeSql('DELETE FROM Cellinfo');
+                deletions.choice = "none";
+                break;
             default:
                 deletions.choice = "none";
             }
@@ -153,21 +164,22 @@ function delLocation() { // DROP TABLE does not work yet. Table locking should b
         function(tx) {
             // Create the table, if not existing
             tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Cellinfo(theplace TEXT, thecelli INTEGER, sigstrength INTEGER, cellat REAL, cellong REAL, celltol REAL)');
             // Show all
-            var rs = tx.executeSql('SELECT rowid, * FROM Locations');
+            //var rs = tx.executeSql('SELECT * FROM Locations');
 
            // tx.executeSql('DELETE FROM Locations WHERE rowid = ?', (currentIndex));
             tx.executeSql('DELETE FROM Locations WHERE theplace = ?', (listix.get(currentIndex-1).pla));
+            tx.executeSql('DELETE FROM Cellinfo WHERE theplace = ?', (listix.get(currentIndex-1).pla));
 
-            tx.executeSql('SELECT rowid, * FROM Locations');
+            //rs = tx.executeSql('SELECT * FROM Cellinfo');
+
+            var rs = tx.executeSql('SELECT * FROM Locations');
             listSize = rs.rows.length;
             currentIndex--;
-            //pageStack.push(Qt.resolvedUrl("SetLocation.qml"))
-
         }
     )
 }
-
 
 function populateView() {  // Loads existing info to Loc.qml page
 
@@ -204,10 +216,10 @@ function populateView() {  // Loads existing info to Loc.qml page
             rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ?', neimi.text);
             tempor.sellotext = ""
             for(i = 0; i < rs.rows.length; i++) {
-                tempor.sellotext = tempor.sellotext + rs.rows.item(i).thelati + ", ";
+                tempor.sellotext = tempor.sellotext + ", " + rs.rows.item(i).thecelli ;
                 }
             listix.set((currentIndex-1),{"cels": tempor.sellotext});
-            celli.text = listix.get(currentIndex-1).cels;
+            celltitle.text = qsTr("Cell ids") + listix.get(currentIndex-1).cels
 
         }
     )
@@ -223,6 +235,7 @@ function checkFences() {
             // Create the table, if not existing
             tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS Cellinfo(theplace TEXT, thecelli INTEGER, sigstrength INTEGER, cellat REAL, cellong REAL, celltol REAL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
 
             // Show all
             var rs = tx.executeSql('SELECT * FROM Locations');
@@ -234,7 +247,7 @@ function checkFences() {
 
             // Filling movetext
             varus.inFence = "Not in a paddock";
-            varus.inFenceT = qsTr("Free gallopping");
+            varus.inFenceT = qsTr("Free galloping");
             covLoc = varus.inFenceT;
             varus.tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
             for(var i = 0; i < rs.rows.length; i++) {
@@ -248,9 +261,14 @@ function checkFences() {
                     varus.inFenceT = varus.inFence;
                     covLoc = varus.inFenceT;
                     varus.tolerat = rs.rows.item(i).tolerlong;
-                    //console.log("distance", ddist)
-
                 }
+            } //endfor
+            // Maintaining location if in cell though not in gps range (e.g. in building)
+            rs = tx.executeSql('SELECT * FROM Locations');
+            var rt = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()');
+
+            if (varus.inFence == "Not in a paddock" ){
+                console.log("testing cells")
             }
         }
     )

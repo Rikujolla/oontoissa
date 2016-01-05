@@ -153,6 +153,15 @@ Page {
                 }
             }
 
+            Connections {
+                target: bestcell
+                onCellIdChanged: {
+                    currentCell = bestcell.cellId(0)
+                    console.log("con cell", currentCell)
+                }
+            }
+
+
             /// Counting time in each location
             Timer {
                 interval: Qt.ApplicationActive ? rateAct : ratePass
@@ -160,6 +169,8 @@ Page {
                 repeat:true
                 onTriggered: {
                     timeri.timeInfo();
+                    Mydbases.checkFences();
+
                 }
             }
 

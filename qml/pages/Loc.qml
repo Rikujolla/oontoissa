@@ -27,7 +27,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
 import QtPositioning 5.2
-import QtSystemInfo 5.0
+//import QtSystemInfo 5.0
 import "dbases.js" as Mydbases
 
 
@@ -266,9 +266,10 @@ Page {
                     color: Theme.secondaryHighlightColor
                     width:page.width/2
                     onClicked: {
-                        tempor.sello = testsell.cellId(0)
+                        //tempor.sello = testsell.cellId(0)
+                        tempor.sello = bestcell.cellId(0)
                         celli.text = cellie.text
-                        //Mydbases.updateLocation()
+                        Mydbases.updateLocation()
                         //baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                     }
                 }
@@ -284,11 +285,12 @@ Page {
                     id: possul
                     updateInterval: 1000
                     active: true
-                    //preferredPositioningMethods: NonSatellitePositioningMethods
 
                     onPositionChanged: {
                         var coord = possul.position.coordinate;
-                        tempor.sello = testsell.cellId(0)
+                        //tempor.sello = testsell.cellId(0)
+                        tempor.sello = bestcell.cellId(0)
+                        //tempor.sello = currentCell
                         //possul.position.latitudeValid ? console.log("valid") : console.log("notvalid")
                         /*
                         console.log("CellID", testsell.cellId(0))
@@ -307,11 +309,11 @@ Page {
                     }
                 }
 
-                NetworkInfo {
+                /*NetworkInfo {
                     id:testsell
                     //updateinterval:2000
                     onNetworkSignalStrengthChanged: {
-                        tempor.sello = testsell.cellId(0)
+                        //tempor.sello = testsell.cellId(0)
 
                         console.log("SignalCellID", testsell.cellId(0))
                         console.log("MCC", testsell.homeMobileCountryCode(0))
@@ -330,10 +332,18 @@ Page {
 
                     onCellIdChanged: {
                         tempor.sello = testsell.cellId(0)
-                        console.log("Cellidchanged")
+                        console.log("Cellidchanged to ", testsell.cellId(0))
+                        cellie.text = tempor.sello
                     }
+                }*/
 
-
+                Connections {
+                    target: bestcell
+                    onCellIdChanged: {
+                        currentCell = bestcell.cellId(0)
+                        console.log("Loc Cellidchanged to ", currentCell)
+                        cellie.text = currentCell
+                    }
                 }
 
                 Item {
