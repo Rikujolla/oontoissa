@@ -53,7 +53,7 @@
     </message>
     <message>
         <source>Russian (lewa)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryska (lewa)</translation>
     </message>
 </context>
 <context>
