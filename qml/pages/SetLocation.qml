@@ -33,7 +33,7 @@ Page {
     id: page
     SilicaListView {
         id: listView
-        model: listis
+        model: listix
         anchors.fill: parent
 
         PullDownMenu {
@@ -63,7 +63,7 @@ Page {
             Label {
                 id: listos
                 x: Theme.paddingLarge
-                text: qsTr("Location") + " " + (index+1) + ": " + tekstis
+                text: qsTr("Location") + " " + (index+1) + ": " + pla
                 anchors.verticalCenter: parent.verticalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
@@ -73,14 +73,6 @@ Page {
             }
         }
         VerticalScrollDecorator {}
-
-        ListModel {
-                id: listis
-                ListElement {
-                    tekstis: "undefined"
-                }
-        }
-
 
         Component.onCompleted: {
             Mydbases.loadLocation()

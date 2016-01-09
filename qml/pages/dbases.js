@@ -60,10 +60,8 @@ function updateLocation() {
                 tx.executeSql('UPDATE Locations SET thelongi=? WHERE theplace = ?', [longi.text, (listix.get(currentIndex-1).pla)]);
             }
             // Updating the location tolerance
-            //if (saissi.text != "") {
                 tx.executeSql('UPDATE Locations SET tolerlong=? WHERE theplace = ?', [saissi.text, (listix.get(currentIndex-1).pla)]);
                 tx.executeSql('UPDATE Locations SET tolerlat=? WHERE theplace = ?', [saissi.text, (listix.get(currentIndex-1).pla)]);
-            //}
 
             // Updating the cell information
             if (celli.text != "") {
@@ -77,23 +75,16 @@ function updateLocation() {
 
             // Show all
             rs = tx.executeSql('SELECT * FROM Locations');
-            //for(var i = 0; i < rs.rows.length; i++) {
-            //    varis.tempur += rs.rows.item(i).theplace + ", " + rs.rows.item(i).rowid + "\n";
-            //}
-           // if (rs.rows.length > currentIndex-2) {
-           /* varis.itemis[currentIndex-1].pla = rs.rows.item(currentIndex-1).theplace;
-            varis.itemis[currentIndex-1].els = rs.rows.item(currentIndex-1).thelati + ", "
-                    + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong*/
 
             listix.set((currentIndex-1),{"pla": rs.rows.item(currentIndex-1).theplace});
             listix.set((currentIndex-1),{"els": (rs.rows.item(currentIndex-1).thelati + ", "
                                  + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong)});
-           // }
 
             rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ?',(listix.get(currentIndex-1).pla));
             for(var i = 0; i < rs.rows.length; i++) {
                 listix.set((currentIndex-1),{"cels":", " + rs.rows.item(i).thecelli})
             }
+            populateView()
         }
     )
 
@@ -111,9 +102,9 @@ function loadLocation() {
             // Show all
             var rs = tx.executeSql('SELECT * FROM Locations');
             listSize = rs.rows.length;
-            listis.clear();
+            listix.clear();
             for(var i = 0; i < rs.rows.length; i++) {
-                listis.set(i,{"tekstis": rs.rows.item(i).theplace});
+                listix.set(i,{"pla": rs.rows.item(i).theplace});
             }
         }
     )
@@ -152,6 +143,23 @@ function delLocTable() { // DROP TABLE does not work yet. Table locking should b
             default:
                 deletions.choice = "none";
             }
+        }
+    )
+}
+
+function delCelli() { // Deleting single cell from the list
+
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+
+    db.transaction(
+        function(tx) {
+            // Create the table, if not existing
+            //tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS Cellinfo(theplace TEXT, thecelli INTEGER, sigstrength INTEGER, cellat REAL, cellong REAL, celltol REAL)');
+            // Deleting the cell
+            tx.executeSql('DELETE FROM Cellinfo WHERE theplace = ? and thecelli = ?', [(listix.get(currentIndex-1).pla),cellistit.get(tempor.ind).cels]);
+            // Refreshing the view
+            populateView()
         }
     )
 }
@@ -214,12 +222,15 @@ function populateView() {  // Loads existing info to Loc.qml page
                                      + rs.rows.item(i).thelongi + ", " + rs.rows.item(i).tolerlong)});
            }
             rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ?', neimi.text);
+            cellistit.clear()
             tempor.sellotext = ""
+
             for(i = 0; i < rs.rows.length; i++) {
-                tempor.sellotext = tempor.sellotext + ", " + rs.rows.item(i).thecelli ;
+                tempor.sellotext = tempor.sellotext + ", " + rs.rows.item(i).thecelli;
+                cellistit.set(i,{"cels": rs.rows.item(i).thecelli});
                 }
             listix.set((currentIndex-1),{"cels": tempor.sellotext});
-            celltitle.text = qsTr("Cell ids") + listix.get(currentIndex-1).cels
+            celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
 
         }
     )
@@ -251,10 +262,11 @@ function checkFences() {
             covLoc = varus.inFenceT;
             varus.tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
             for(var i = 0; i < rs.rows.length; i++) {
-                dfii = Math.abs(possu.position.coordinate.latitude - rs.rows.item(i).thelati)*Math.PI/180;
-                meanfii = (possu.position.coordinate.latitude + rs.rows.item(i).thelati)*Math.PI/360
-                dlamda = Math.abs(possu.position.coordinate.longitude - rs.rows.item(i).thelongi)*Math.PI/180;
+                dfii = Math.abs(possut.position.coordinate.latitude - rs.rows.item(i).thelati)*Math.PI/180;
+                meanfii = (possut.position.coordinate.latitude + rs.rows.item(i).thelati)*Math.PI/360
+                dlamda = Math.abs(possut.position.coordinate.longitude - rs.rows.item(i).thelongi)*Math.PI/180;
                 ddist = 6371009*Math.sqrt(Math.pow(dfii,2)+Math.pow(Math.cos(meanfii)*dlamda,2));
+                //console.log(ddist)
                 if ((ddist < rs.rows.item(i).tolerlong)
                         && (rs.rows.item(i).tolerlong < varus.tolerat)) {
                     varus.inFence = rs.rows.item(i).theplace;
@@ -264,11 +276,24 @@ function checkFences() {
                 }
             } //endfor
             // Maintaining location if in cell though not in gps range (e.g. in building)
-            rs = tx.executeSql('SELECT * FROM Locations');
+            if (varus.inFence == "Not in a paddock") {
             var rt = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()');
+                //console.log("last insertred", rt.rows.item(0).thestatus, rt.rows.length, currentCell)
+                //console.log(currentCell)
+            if (rt.rows.length >0) {
+                //console.log("last insertred", rt.rows.item(0).thestatus, rt.rows.length, currentCell)
+                rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ? AND thecelli = ?', [rt.rows.item(0).thestatus, currentCell]);
+                //console.log(rs.rows.length)
+                if (rs.rows.length > 0) {
+                    console.log("last insertred", rt.rows.item(0).thestatus, rt.rows.length, currentCell)
+                    rs = tx.executeSql('SELECT * FROM Locations WHERE theplace = ?', rt.rows.item(0).thestatus);
+                    varus.inFence = rs.rows.item(0).theplace;
+                    varus.inFenceT = varus.inFence;
+                    covLoc = varus.inFenceT;
+                    varus.tolerat = rs.rows.item(0).tolerlong;
+                }
+            }
 
-            if (varus.inFence == "Not in a paddock" ){
-                console.log("testing cells")
             }
         }
     )

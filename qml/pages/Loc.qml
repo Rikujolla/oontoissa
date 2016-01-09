@@ -26,8 +26,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
-import QtPositioning 5.2
-//import QtSystemInfo 5.0
 import "dbases.js" as Mydbases
 
 
@@ -59,12 +57,7 @@ Page {
             MenuItem {
                 text: qsTr("Update values")
                 onClicked: {
-                    //if (varis.itemis[currentIndex-1].pla == "") {
-                      //  Mydbases.addLocation()
-                    //}
-                    //else  {
                         Mydbases.updateLocation()
-                //}
                     baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 }
            }
@@ -119,11 +112,7 @@ Page {
             TextField {
                 id: neimi
                 placeholderText: qsTr("Work1")
-                //label: qsTr("ECO code")
-                //visible: openingMode == 2
                 width: page.width/2
-                //validator: RegExpValidator { regExp: /^([A-E])([0-9])([0-9])$/ }
-                //color: errorHighlight? "red" : Theme.primaryColor
                 inputMethodHints: Qt.ImhNoPredictiveText
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
@@ -159,7 +148,7 @@ Page {
                 }
                 Button {
                     id: lattite
-                    text: possul.position.coordinate.latitude
+                    text: possut.position.coordinate.latitude
                     color: Theme.secondaryHighlightColor
                     width:page.width/2
                     onClicked: {
@@ -188,7 +177,6 @@ Page {
                 TextField {
                     id: longi
                     placeholderText: "24.2"
-                    //label: qsTr("ECO code")
                     //visible: openingMode == 2
                     width: page.width/2
                     validator: RegExpValidator { regExp: /^\-?\d?\d?\d\.\d*$/ }
@@ -204,7 +192,7 @@ Page {
                 }
                 Button {
                     id: longite
-                    text: possul.position.coordinate.longitude
+                    text: possut.position.coordinate.longitude
                     color: Theme.secondaryHighlightColor
                     width:page.width/2
                     onClicked: {
@@ -239,7 +227,7 @@ Page {
 
             Text {
                 id:celltitle
-                text: qsTr("Cell ids")
+                text: tempor.selltitleBase
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
                 }
@@ -247,17 +235,17 @@ Page {
             Row {
                 TextField {
                     id: celli
-                    placeholderText: "24.2"
+                    placeholderText: "243546"
                     width: page.width/2
-                    //validator: RegExpValidator { regExp: /^\-?\d?\d?\d\.\d*$/ }
-                    //color: errorHighlight? "red" : Theme.primaryColor
+                    validator: RegExpValidator { regExp: /^\d{1,10}$/ }
+                    color: errorHighlight? "red" : Theme.primaryColor
                     inputMethodHints: Qt.ImhNoPredictiveText
-                    //EnterKey.enabled: !errorHighlight
+                    EnterKey.enabled: !errorHighlight
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: {
                         focus = false
                         Mydbases.updateLocation()
-                        baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
+                        celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
                     }
                 }
                 Button {
@@ -271,25 +259,24 @@ Page {
                         celli.text = cellie.text
                         Mydbases.updateLocation()
                         //baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
+                        celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
                     }
                 }
             }
 
             Component.onCompleted: {Mydbases.populateView();
                 baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
-                celltitle.text = qsTr("Cell ids") + listix.get(currentIndex-1).cels
+                celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
             }
 
                 ////Functions etc
-                PositionSource {
-                    id: possul
-                    updateInterval: 1000
-                    active: true
-
+            Connections {
+                target: possut
                     onPositionChanged: {
-                        var coord = possul.position.coordinate;
+                        //var coord = possut.position.coordinate;
                         //tempor.sello = testsell.cellId(0)
                         tempor.sello = bestcell.cellId(0)
+                        currentCell = bestcell.cellId(0)
                         //tempor.sello = currentCell
                         //possul.position.latitudeValid ? console.log("valid") : console.log("notvalid")
                         /*
@@ -309,39 +296,11 @@ Page {
                     }
                 }
 
-                /*NetworkInfo {
-                    id:testsell
-                    //updateinterval:2000
-                    onNetworkSignalStrengthChanged: {
-                        //tempor.sello = testsell.cellId(0)
-
-                        console.log("SignalCellID", testsell.cellId(0))
-                        console.log("MCC", testsell.homeMobileCountryCode(0))
-                        console.log("MNC", testsell.homeMobileNetworkCode(0))
-                        console.log("LAC", testsell.locationAreaCode(0))
-                        console.log("GSM", testsell.networkSignalStrength(1,0))
-                        console.log("CDMA", testsell.networkSignalStrength(2,0))
-                        console.log("W-CDMA", testsell.networkSignalStrength(3,0))
-                        console.log("WLAN", testsell.networkSignalStrength(4,0))
-                        console.log("LAN", testsell.networkSignalStrength(5,0))
-                        console.log("Bluetooth", testsell.networkSignalStrength(6,0))
-                        console.log("Wimax", testsell.networkSignalStrength(7,0))
-                        console.log("Lte", testsell.networkSignalStrength(8,0))
-
-                    }
-
-                    onCellIdChanged: {
-                        tempor.sello = testsell.cellId(0)
-                        console.log("Cellidchanged to ", testsell.cellId(0))
-                        cellie.text = tempor.sello
-                    }
-                }*/
-
                 Connections {
                     target: bestcell
                     onCellIdChanged: {
                         currentCell = bestcell.cellId(0)
-                        console.log("Loc Cellidchanged to ", currentCell)
+                        //console.log("Loc Cellidchanged to ", currentCell)
                         cellie.text = currentCell
                     }
                 }
@@ -350,18 +309,38 @@ Page {
                 id: tempor
                 property int sello //temporary celllid
                 property string sellotext // sellotext
+                property int ind
+                property string selltitleBase : qsTr("Cell IDs") //
                 }
 
                 ListModel {
-                        id: listix
+                        id: cellistit
                         ListElement {
-                            pla: "place"
-                            els: "else"
-                            cels: "cells"
+                            cels: 0
                         }
                 }
-
+                BackgroundItem {
+                    width: page.width
+                    height: 300
+                GridView {
+                    id: grid
+                    cellWidth: page.width
+                    cellHeight: page.width/8
+                    anchors.fill: parent
+                    model: cellistit
+                    delegate:
+                        Button {
+                        text: qsTr("Delete") + " " + cels
+                        onClicked: {
+                            tempor.ind = index
+                            Mydbases.delCelli()
+                        }
+                    }
+                }
+                }
         }
+
+
     }
 }
 

@@ -26,7 +26,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
-import QtPositioning 5.2
+//import QtPositioning 5.2
 import "dbases.js" as Mydbases
 
 
@@ -112,13 +112,15 @@ Page {
 
 
             ////Functions etc
-            PositionSource {
-                id: possu
-                updateInterval: Qt.ApplicationActive ? rateAct : ratePass
-                active: true
+            Connections {
+                target: possut
+            //PositionSource {
+                //id: possu
+                //updateInterval: Qt.ApplicationActive ? rateAct : ratePass
+                //active: true
 
                 onPositionChanged: {
-                    var coord = possu.position.coordinate;
+                    //var coord = possut.position.coordinate;
                     //console.log("Coordinate:", coord.longitude, coord.latitude);
                     Mydbases.checkFences();
                     varus.timeSow();
@@ -161,6 +163,7 @@ Page {
                 }
             }
 
+            Component.onCompleted: currentCell = bestcell.cellId(0)
 
             /// Counting time in each location
             Timer {

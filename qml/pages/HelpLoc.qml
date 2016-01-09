@@ -65,7 +65,26 @@ Page {
                 }
                 text: {qsTr("On this page you can feed the location information: name, coordinates and tolerance.") + " "
                        + qsTr("Current location can be feeded with buttons.") + " "
-                       + qsTr("You will see current latitude and longitude to help the feed.")
+                       + qsTr("You will see current latitude and longitude to help the feed.") + " "
+                       + qsTr("If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.")
+                }
+            }
+
+            SectionHeader { text: qsTr("Cell IDs") }
+            Text {
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                wrapMode: Text.WordWrap
+                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: {qsTr("By setting the cell information you enable the tracking to continue until you are in the cells.") + " "
+                       + qsTr("That enables the tracking to continue e.g. in the buildings without GPS.") + " "
+                       + qsTr("The tracking stops when you are out of the cell or enter to another location.") + " "
+                       + qsTr("Perhaps you want to set a small gate area as a separate location to stop the tracking.")
                 }
             }
 

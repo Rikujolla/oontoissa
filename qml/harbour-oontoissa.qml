@@ -25,6 +25,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtPositioning 5.2
 import QtSystemInfo 5.0
 import "pages"
 
@@ -37,7 +38,7 @@ ApplicationWindow
 
     property int currentIndex: 1 //
     property int listSize: 0 //
-    property int rateAct: 100 // Timers update rate when active
+    property int rateAct: 200 // Timers update rate when active
     property int ratePass: 10000 // Timers update when application not active
     property string covLoc: "Test"  // Cover location display
     property string covTim: "07:12" // Cover Time display
@@ -46,6 +47,21 @@ ApplicationWindow
 
     NetworkInfo { // Make multiple signals possible
         id : bestcell
+    }
+
+    PositionSource {
+        id: possut
+        updateInterval: Qt.ApplicationActive ? rateAct : ratePass
+        active: true
+    }
+
+    ListModel {
+            id: listix
+            ListElement {
+                pla: "place"
+                els: "else"
+                cels: "cells"
+            }
     }
 }
 
