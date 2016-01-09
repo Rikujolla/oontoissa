@@ -45,11 +45,11 @@
     </message>
     <message>
         <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or galloping freely elsewhere.</source>
-        <translation>Idéen med programmet är att stödja din dagliga arbetstid automatiskt, baserat på sensorsdata. Du skapar områden och Jollan känner av om du är innanför gränserna eller rör dig fritt på annat håll.</translation>
+        <translation>Idéen med programmet är att spåra din dagliga arbetstid automatiskt, baserat på sensorsdata. Du skapar områden och Jollan känner av om du är innanför gränserna eller rör dig fritt på annat håll.</translation>
     </message>
     <message>
         <source>French (Jordi)</source>
-        <translation type="unfinished"></translation>
+        <translation>Franska (Jordi)</translation>
     </message>
 </context>
 <context>
@@ -88,6 +88,10 @@
     <message>
         <source>Delete locations!</source>
         <translation>Ta bort platser!</translation>
+    </message>
+    <message>
+        <source>Delete cells info!</source>
+        <translation>Ta bort basstationsinfo!</translation>
     </message>
 </context>
 <context>
@@ -143,6 +147,30 @@
         <source>You will see current latitude and longitude to help the feed.</source>
         <translation>Du kan se aktuell latitud och longitud, som konfigurationshjälp.</translation>
     </message>
+    <message>
+        <source>If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.</source>
+        <translation>Om appen uppfattar sig som på två platser samtidigt, kommer platsen med minst storlek att väljas för spårning.</translation>
+    </message>
+    <message>
+        <source>Cell IDs</source>
+        <translation>Basstations-ID</translation>
+    </message>
+    <message>
+        <source>That enables the tracking to continue e.g. in the buildings without GPS.</source>
+        <translation>Det låter spårningen fortsätta. Exempelvis, i byggnader utan GPS.</translation>
+    </message>
+    <message>
+        <source>The tracking stops when you are out of the cell or enter to another location.</source>
+        <translation>Spårning avbryts när du är utanför basstationen eller ankommer annan plats.</translation>
+    </message>
+    <message>
+        <source>Perhaps you want to set a small gate area as a separate location to stop the tracking.</source>
+        <translation>Du kanske vill ange ett mindre område som en separat plats, för att stoppa spårningen.</translation>
+    </message>
+    <message>
+        <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
+        <translation>Genom att ange basstationsinfo, aktiverar du kontinuerlig spårning tills du är inom basstationernas täckningsområde.</translation>
+    </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
@@ -164,6 +192,14 @@
     <message>
         <source>Delete tables</source>
         <translation>Ta bort tabeller</translation>
+    </message>
+    <message>
+        <source>Delete location</source>
+        <translation>Ta bort plats</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Tar bort</translation>
     </message>
     <message>
         <source>Update values</source>
@@ -198,12 +234,12 @@
         <translation>Storlek (meter)</translation>
     </message>
     <message>
-        <source>Delete location</source>
-        <translation>Ta bort plats</translation>
+        <source>Delete</source>
+        <translation>Ta bort</translation>
     </message>
     <message>
-        <source>Deleting</source>
-        <translation>Tar bort</translation>
+        <source>Cell IDs</source>
+        <translation>Basstations-ID</translation>
     </message>
 </context>
 <context>
@@ -259,7 +295,7 @@
 <context>
     <name>dbases</name>
     <message>
-        <source>Free gallopping</source>
+        <source>Free galloping</source>
         <translation>Fritt rörlig</translation>
     </message>
 </context>

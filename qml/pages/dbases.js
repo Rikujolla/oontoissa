@@ -1,6 +1,5 @@
 ///
-/// addLocation(), row 9
-/// updateLocation(), row 37
+/// updateLocation(), row 12
 /// loadLocation(), row 83
 /// delLocTable(), row 106
 /// populateView(), row 138
@@ -9,33 +8,6 @@
 /// addHistoryData(), row 264
 
 
-/*function addLocation() {
-    //console.log("Adding recent moves")
-    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
-
-    db.transaction(
-        function(tx) {
-            // Create the table, if not existing
-            tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
-
-            // Adding location
-            tx.executeSql('INSERT INTO Locations VALUES(?, ?, ?, ?, ?)', ['24.3764948', '61.64687276', 'Orivesi', '50.0', '50.0']);
-
-            // Show all
-            var rs = tx.executeSql('SELECT * FROM Locations');
-            //for(var i = 0; i < rs.rows.length; i++) {
-            //    varis.tempur += rs.rows.item(i).theplace + ", " + rs.rows.item(i).rowid + "\n";
-            //}
-            varis.itemis[currentIndex-1].pla = rs.rows.item(currentIndex-1).theplace;
-            varis.itemis[currentIndex-1].els = rs.rows.item(currentIndex-1).thelati + ", "
-                    + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong
-            //console.log("The place ", varis.itemis[currentIndex-1].pla);
-
-
-        }
-    )
-
-}*/
 
 function updateLocation() {
 
@@ -266,7 +238,6 @@ function checkFences() {
                 meanfii = (possut.position.coordinate.latitude + rs.rows.item(i).thelati)*Math.PI/360
                 dlamda = Math.abs(possut.position.coordinate.longitude - rs.rows.item(i).thelongi)*Math.PI/180;
                 ddist = 6371009*Math.sqrt(Math.pow(dfii,2)+Math.pow(Math.cos(meanfii)*dlamda,2));
-                //console.log(ddist)
                 if ((ddist < rs.rows.item(i).tolerlong)
                         && (rs.rows.item(i).tolerlong < varus.tolerat)) {
                     varus.inFence = rs.rows.item(i).theplace;
@@ -278,14 +249,10 @@ function checkFences() {
             // Maintaining location if in cell though not in gps range (e.g. in building)
             if (varus.inFence == "Not in a paddock") {
             var rt = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()');
-                //console.log("last insertred", rt.rows.item(0).thestatus, rt.rows.length, currentCell)
-                //console.log(currentCell)
             if (rt.rows.length >0) {
-                //console.log("last insertred", rt.rows.item(0).thestatus, rt.rows.length, currentCell)
                 rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ? AND thecelli = ?', [rt.rows.item(0).thestatus, currentCell]);
-                //console.log(rs.rows.length)
                 if (rs.rows.length > 0) {
-                    console.log("last insertred", rt.rows.item(0).thestatus, rt.rows.length, currentCell)
+                    //console.log("last insertred", rt.rows.item(0).thestatus, rt.rows.length, currentCell)
                     rs = tx.executeSql('SELECT * FROM Locations WHERE theplace = ?', rt.rows.item(0).thestatus);
                     varus.inFence = rs.rows.item(0).theplace;
                     varus.inFenceT = varus.inFence;
@@ -311,7 +278,6 @@ function addTodayInfo() {
             //Testing, if the status is still same
 
             var evid = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) ORDER BY theday DESC LIMIT 1', ['now', 'localtime'])
-            //console.log("Statukset", evid.rows.length)
 
             if (evid.rows.length == 0) {
                 tx.executeSql('INSERT INTO Today VALUES(datetime(?,?), ?, time(?,?), time(?,?), time(?,?))', [ 'now', 'localtime', varus.inFence, 'now', 'localtime', 'now', 'localtime', 'now', 'localtime' ]);

@@ -278,7 +278,6 @@ Page {
                         tempor.sello = bestcell.cellId(0)
                         currentCell = bestcell.cellId(0)
                         //tempor.sello = currentCell
-                        //possul.position.latitudeValid ? console.log("valid") : console.log("notvalid")
                         /*
                         console.log("CellID", testsell.cellId(0))
                         console.log("MCC", testsell.homeMobileCountryCode(0))
@@ -300,7 +299,6 @@ Page {
                     target: bestcell
                     onCellIdChanged: {
                         currentCell = bestcell.cellId(0)
-                        //console.log("Loc Cellidchanged to ", currentCell)
                         cellie.text = currentCell
                     }
                 }

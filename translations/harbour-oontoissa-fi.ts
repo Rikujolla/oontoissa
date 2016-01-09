@@ -89,6 +89,10 @@
         <source>Delete locations!</source>
         <translation>Poista sijainnit!</translation>
     </message>
+    <message>
+        <source>Delete cells info!</source>
+        <translation>Poista solutiedot!</translation>
+    </message>
 </context>
 <context>
     <name>Help</name>
@@ -143,6 +147,30 @@
         <source>You will see current latitude and longitude to help the feed.</source>
         <translation>Tämänhetkinen leveys- ja pituuspiiri näytetään myös helpottamaan syöttöä.</translation>
     </message>
+    <message>
+        <source>If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.</source>
+        <translation>Jos sovellus havaitsee olevansa kahdessa sijainnissa samanaikaisesti, valitaan sijainti, jonka koko on pienempi.</translation>
+    </message>
+    <message>
+        <source>Cell IDs</source>
+        <translation>Solunumerot</translation>
+    </message>
+    <message>
+        <source>That enables the tracking to continue e.g. in the buildings without GPS.</source>
+        <translation>Tämä mahdollistaa seurannan jatkumisen esimerkiksi rakennuksissa, joissa GPS ei toimi.</translation>
+    </message>
+    <message>
+        <source>The tracking stops when you are out of the cell or enter to another location.</source>
+        <translation>Seuranta lopetetaan, kun poistut solusta tai siirryt toiseen sijaintiin.</translation>
+    </message>
+    <message>
+        <source>Perhaps you want to set a small gate area as a separate location to stop the tracking.</source>
+        <translation>Saatat haluta tehdä pienen porttialueen erilliseksi sijainniksi lopettaaksesi seurannan.</translation>
+    </message>
+    <message>
+        <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
+        <translation>Valitsemalla solut, mahdollistat seurannan jatkumisen, kun olet solun alueella.</translation>
+    </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
@@ -164,6 +192,14 @@
     <message>
         <source>Delete tables</source>
         <translation>Poista taulukot</translation>
+    </message>
+    <message>
+        <source>Delete location</source>
+        <translation>Poista sijainti</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Poistetaan</translation>
     </message>
     <message>
         <source>Update values</source>
@@ -198,12 +234,12 @@
         <translation>Koko (metriä)</translation>
     </message>
     <message>
-        <source>Delete location</source>
-        <translation>Poista sijainti</translation>
+        <source>Delete</source>
+        <translation>Poista</translation>
     </message>
     <message>
-        <source>Deleting</source>
-        <translation>Poistetaan</translation>
+        <source>Cell IDs</source>
+        <translation>Solunumerot</translation>
     </message>
 </context>
 <context>
@@ -259,7 +295,7 @@
 <context>
     <name>dbases</name>
     <message>
-        <source>Free gallopping</source>
+        <source>Free galloping</source>
         <translation>Laukkaamassa...</translation>
     </message>
 </context>

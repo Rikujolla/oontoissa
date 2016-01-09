@@ -89,6 +89,10 @@
         <source>Delete locations!</source>
         <translation>Supprimer les emplacements !</translation>
     </message>
+    <message>
+        <source>Delete cells info!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Help</name>
@@ -143,6 +147,30 @@
         <source>You will see current latitude and longitude to help the feed.</source>
         <translation>La position actuelle (latitude et longitude) est affichée pour vous aider à saisir les données.</translation>
     </message>
+    <message>
+        <source>If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cell IDs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>That enables the tracking to continue e.g. in the buildings without GPS.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The tracking stops when you are out of the cell or enter to another location.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Perhaps you want to set a small gate area as a separate location to stop the tracking.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
@@ -163,47 +191,55 @@
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation>Supprimer les tables</translation>
-    </message>
-    <message>
-        <source>Update values</source>
-        <translation>Mettre à jour les valeurs</translation>
-    </message>
-    <message>
-        <source>Help</source>
-        <translation>Aide</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Position</translation>
-    </message>
-    <message>
-        <source>Location name</source>
-        <translation>Nom de la position</translation>
-    </message>
-    <message>
-        <source>Work1</source>
-        <translation>Travail1</translation>
-    </message>
-    <message>
-        <source>Latitude</source>
-        <translation>Latitude</translation>
-    </message>
-    <message>
-        <source>Longitude</source>
-        <translation>Longitude</translation>
-    </message>
-    <message>
-        <source>Size (meters)</source>
-        <translation>Taille (metres)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete location</source>
-        <translation>Supprimer les positions</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation>Suppression</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update values</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Aide</translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation type="unfinished">Position</translation>
+    </message>
+    <message>
+        <source>Location name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Work1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Longitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Size (meters)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cell IDs</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -259,8 +295,8 @@
 <context>
     <name>dbases</name>
     <message>
-        <source>Free gallopping</source>
-        <translation>Galopant librement</translation>
+        <source>Free galloping</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
