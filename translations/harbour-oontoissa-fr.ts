@@ -51,6 +51,10 @@
         <source>French (Jordi)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Russian (lewa)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

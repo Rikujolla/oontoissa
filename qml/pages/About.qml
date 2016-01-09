@@ -82,7 +82,7 @@ Page {
                     qsTr("German (John Gibbon)") + "\n" +
                     qsTr("Finnish (Riku Lahtinen)") + "\n" +
                     qsTr("French (Jordi)") + "\n" +
-                    //qsTr("Russian (lewa)") + "\n" +
+                    qsTr("Russian (lewa)") + "\n" +
                     qsTr("Swedish (Åke Engelbrektson)") + "\n" +
                     qsTr("Chinese (0312birdzhang)")
                 }

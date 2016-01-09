@@ -1,306 +1,306 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fi_FI">
+<TS version="2.1" language="ru">
 <context>
     <name>About</name>
     <message>
         <source>About page</source>
-        <translation>Tietosivu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Käännökset</translation>
+        <translation>Переводы</translation>
     </message>
     <message>
         <source>Finnish (Riku Lahtinen)</source>
-        <translation>Suomeksi(Riku Lahtinen)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Licence</source>
-        <translation>Lisenssi</translation>
+        <translation>Лицензия</translation>
     </message>
     <message>
         <source>Copyright (c) 2015, Riku Lahtinen</source>
-        <translation>Copyright (c) 2015, Riku Lahtinen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Licensed under BSD. License, source code and more information:</source>
-        <translation>BSD-lisenssi. Lisenssi, lähdekoodi ja lisätietoja:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Idea</source>
-        <translation>Idea</translation>
+        <translation>Идея</translation>
     </message>
     <message>
         <source>German (John Gibbon)</source>
-        <translation>Saksaksi (John Gibbon)</translation>
+        <translation>Немецкий (John Gibbon)</translation>
     </message>
     <message>
         <source>Swedish (Åke Engelbrektson)</source>
-        <translation>Ruotsiksi (Åke Engelbrektson)</translation>
+        <translation>Шведский (Åke Engelbrektson)</translation>
     </message>
     <message>
         <source>Chinese (0312birdzhang)</source>
-        <translation>Kiinaksi (0312birdzhang)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or galloping freely elsewhere.</source>
-        <translation>Ohjelman ideana on tukea päivittäisten työaikojen kirjausta automaattisen sensoridataan perustuvan kirjauksen avulla. Voit luoda alueita ja Jolla havaitsee oletko määrittämäsi alueen sisällä vaiko laukkaamassa vapaana jossakin muualla.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>French (Jordi)</source>
-        <translation>Ranskaksi (Jordi)</translation>
+        <translation>Французский (Jordi)</translation>
     </message>
     <message>
         <source>Russian (lewa)</source>
-        <translation>Venäjäksi (lewa)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>At work</source>
-        <translation>Oon töissä</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Sijainti</translation>
+        <translation>Местоположение</translation>
     </message>
 </context>
 <context>
     <name>Del</name>
     <message>
         <source>Delete data</source>
-        <translation>Tuhoa tietoja</translation>
+        <translation>Удалить данные</translation>
     </message>
     <message>
         <source>Warning!</source>
-        <translation>Varoitus!</translation>
+        <translation>Внимание!</translation>
     </message>
     <message>
         <source>The data will be deleted without warning when buttons are pressed!</source>
-        <translation>Tiedot poistetaan ilman erillistä varoitusta, kun painat nappia!</translation>
+        <translation>Данные будут удалены без предупреждения при нажатии кнопок!</translation>
     </message>
     <message>
         <source>Delete all!</source>
-        <translation>Poista kaikki!</translation>
+        <translation>Удалить все!</translation>
     </message>
     <message>
         <source>Delete times!</source>
-        <translation>Poista ajat!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete locations!</source>
-        <translation>Poista sijainnit!</translation>
+        <translation>Удалить местоположения!</translation>
     </message>
     <message>
         <source>Delete cells info!</source>
-        <translation>Poista solutiedot!</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Help</name>
     <message>
         <source>Help page</source>
-        <translation>Ohjesivu</translation>
+        <translation>Страница справки</translation>
     </message>
     <message>
         <source>Location now</source>
-        <translation>Sijaintisi nyt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Today</source>
-        <translation>Tänään</translation>
+        <translation>Сегодня</translation>
     </message>
     <message>
         <source>History</source>
-        <translation>Historia</translation>
+        <translation>История</translation>
     </message>
     <message>
         <source>&apos;Location now&apos; shows current location and time stayed there.</source>
-        <translation>&apos;Sijaintisi nyt&apos; näyttää nykyisen sijaintisi ja siellä vietetyn ajan.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&apos;Today&apos; shows the detailed info of the current day. If software is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.</source>
-        <translation>&apos;Tänään&apos; näyttää yksityiskohtaiset tiedot kuluvasta päivästä. Jos ohjelma suljetaan päivän aikana, se olettaa, että sijainti ei muutu tauon aikana. Voit esimerkiksi käynnistää sovelluksen aamulla mennessäsi töihin, sulkea sen töissä ja käynnistää sen uudelleen työpäivän lähetessä loppua.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&apos;History&apos; shows the recorded info of the recent days.</source>
-        <translation>&apos;Historia&apos; näyttää viimepäivien tallennetut tiedot.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>HelpLoc</name>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation>Помощь</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Sijainti</translation>
+        <translation>Местоположение</translation>
     </message>
     <message>
         <source>On this page you can feed the location information: name, coordinates and tolerance.</source>
-        <translation>Tällä sivulla voit syöttää sijaintitiedot: nimen, koordinaatit ja toleranssin.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Current location can be feeded with buttons.</source>
-        <translation>Tämänhetkisen sijaintisi voit syöttää napeilla.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You will see current latitude and longitude to help the feed.</source>
-        <translation>Tämänhetkinen leveys- ja pituuspiiri näytetään myös helpottamaan syöttöä.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.</source>
-        <translation>Jos sovellus havaitsee olevansa kahdessa sijainnissa samanaikaisesti, valitaan sijainti, jonka koko on pienempi.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cell IDs</source>
-        <translation>Solunumerot</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>That enables the tracking to continue e.g. in the buildings without GPS.</source>
-        <translation>Tämä mahdollistaa seurannan jatkumisen esimerkiksi rakennuksissa, joissa GPS ei toimi.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>The tracking stops when you are out of the cell or enter to another location.</source>
-        <translation>Seuranta lopetetaan, kun poistut solusta tai siirryt toiseen sijaintiin.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Perhaps you want to set a small gate area as a separate location to stop the tracking.</source>
-        <translation>Saatat haluta tehdä pienen porttialueen erilliseksi sijainniksi lopettaaksesi seurannan.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
-        <translation>Valitsemalla solut, mahdollistat seurannan jatkumisen, kun olet solun alueella.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation type="unfinished">Помощь</translation>
     </message>
     <message>
         <source>Set location page</source>
-        <translation>Sijainnit</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>On this page you will see the preset locations.</source>
-        <translation>Tällä sivulla näet asettamasi sijainnit.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation>Poista taulukot</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete location</source>
-        <translation>Poista sijainti</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation>Poistetaan</translation>
+        <translation>Удаление</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation>Päivitä arvot</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation type="unfinished">Помощь</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Sijainti</translation>
+        <translation>Местоположение</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation>Sijainnin nimi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation>Työ1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation>Leveyspiiri</translation>
+        <translation>Широта</translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation>Pituuspiiri</translation>
+        <translation>Долгота</translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation>Koko (metriä)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Poista</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <source>Cell IDs</source>
-        <translation>Solunumerot</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SetLocation</name>
     <message>
         <source>Set location page</source>
-        <translation>Sijainnit</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation>Помощь</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Sijainti</translation>
+        <translation>Местоположение</translation>
     </message>
     <message>
         <source>Add location</source>
-        <translation>Lisää sijainti</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Today</name>
     <message>
         <source>Set location</source>
-        <translation>Aseta sijainti</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation>Помощь</translation>
     </message>
     <message>
         <source>About</source>
-        <translation>Tietoja</translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <source>At work</source>
-        <translation>Oon töissä</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Location now</source>
-        <translation>Sijaintisi nyt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Today</source>
-        <translation>Tänään</translation>
+        <translation>Сегодня</translation>
     </message>
     <message>
         <source>History</source>
-        <translation>Historia</translation>
+        <translation>История</translation>
     </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
-        <translation>Laukkaamassa...</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

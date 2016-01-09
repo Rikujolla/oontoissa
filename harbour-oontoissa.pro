@@ -26,7 +26,6 @@ OTHER_FILES += qml/harbour-oontoissa.qml \
     qml/pages/SetLocation.qml \
     qml/pages/Help.qml \
     qml/pages/About.qml \
-    translations/harbour-oontoissa-fi.ts \
     qml/pages/dbases.js \
     qml/pages/Loc.qml \
     qml/pages/HelpLoc.qml \
@@ -47,6 +46,7 @@ TRANSLATIONS += translations/harbour-oontoissa-fi.ts \
     translations/harbour-oontoissa-zh_cn.ts \
     translations/harbour-oontoissa-fr.ts \
     translations/harbour-oontoissa-sv.ts \
+    translations/harbour-oontoissa-ru.ts \
     translations/harbour-oontoissa-de.ts
 
 DISTFILES += \
