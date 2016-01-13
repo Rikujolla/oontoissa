@@ -55,6 +55,10 @@
         <source>Russian (lewa)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Italian (Tichy)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

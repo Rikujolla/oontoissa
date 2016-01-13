@@ -47,7 +47,8 @@ TRANSLATIONS += translations/harbour-oontoissa-fi.ts \
     translations/harbour-oontoissa-fr.ts \
     translations/harbour-oontoissa-sv.ts \
     translations/harbour-oontoissa-ru.ts \
-    translations/harbour-oontoissa-de.ts
+    translations/harbour-oontoissa-de.ts \
+    translations/harbour-oontoissa-it.ts
 
 DISTFILES += \
     rpm/harbour-oontoissa.changes

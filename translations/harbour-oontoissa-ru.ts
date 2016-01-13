@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>Finnish (Riku Lahtinen)</source>
-        <translation type="unfinished"></translation>
+        <translation>Финский (Riku Lahtinen)</translation>
     </message>
     <message>
         <source>Licence</source>
@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>Chinese (0312birdzhang)</source>
-        <translation type="unfinished"></translation>
+        <translation>Китайский (0312birdzhang)</translation>
     </message>
     <message>
         <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or galloping freely elsewhere.</source>
@@ -53,7 +53,11 @@
     </message>
     <message>
         <source>Russian (lewa)</source>
-        <translation type="unfinished"></translation>
+        <translation>Русский (lewa)</translation>
+    </message>
+    <message>
+        <source>Italian (Tichy)</source>
+        <translation>Итальянский (Tichy)</translation>
     </message>
 </context>
 <context>
@@ -149,7 +153,7 @@
     </message>
     <message>
         <source>You will see current latitude and longitude to help the feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы увидите текущую широту и долготу для помощи.</translation>
     </message>
     <message>
         <source>If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.</source>
@@ -180,7 +184,7 @@
     <name>HelpSetLoc</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Помощь</translation>
+        <translation>Помощь</translation>
     </message>
     <message>
         <source>Set location page</source>
@@ -211,7 +215,7 @@
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Помощь</translation>
+        <translation>Помощь</translation>
     </message>
     <message>
         <source>Location</source>

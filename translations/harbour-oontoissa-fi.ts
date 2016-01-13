@@ -55,6 +55,10 @@
         <source>Russian (lewa)</source>
         <translation>Venäjäksi (lewa)</translation>
     </message>
+    <message>
+        <source>Italian (Tichy)</source>
+        <translation>Italiaksi (Tichy)</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

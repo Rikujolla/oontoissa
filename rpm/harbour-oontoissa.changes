@@ -5,6 +5,10 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Wed Jan 13 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1.0-1
+- Italian translation
+- Improved cells input when GPS not working
+
 * Sat Jan 09 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.0.9-1
 - Partial Russian translation
 - Utilizing cells information to support tracking

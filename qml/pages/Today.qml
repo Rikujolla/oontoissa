@@ -114,14 +114,7 @@ Page {
             ////Functions etc
             Connections {
                 target: possut
-            //PositionSource {
-                //id: possu
-                //updateInterval: Qt.ApplicationActive ? rateAct : ratePass
-                //active: true
-
                 onPositionChanged: {
-                    //var coord = possut.position.coordinate;
-                    //console.log("Coordinate:", coord.longitude, coord.latitude);
                     Mydbases.checkFences();
                     varus.timeSow();
                     Mydbases.addTodayInfo();

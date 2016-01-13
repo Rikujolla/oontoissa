@@ -49,11 +49,15 @@
     </message>
     <message>
         <source>French (Jordi)</source>
-        <translation type="unfinished"></translation>
+        <translation>Französisch (Jordi)</translation>
     </message>
     <message>
         <source>Russian (lewa)</source>
-        <translation type="unfinished"></translation>
+        <translation>Russisch (lewa)</translation>
+    </message>
+    <message>
+        <source>Italian (Tichy)</source>
+        <translation>Italienisch (Tichy)</translation>
     </message>
 </context>
 <context>
@@ -95,7 +99,7 @@
     </message>
     <message>
         <source>Delete cells info!</source>
-        <translation type="unfinished"></translation>
+        <translation>Zelleninformation löschen!</translation>
     </message>
 </context>
 <context>
@@ -153,27 +157,27 @@
     </message>
     <message>
         <source>If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wenn die App sich an zwei Aufenthaltsorten zugleich sieht, wird diejenige mit dem kleineren Durchmesser ausgewählt, um Zeiten zu zählen.</translation>
     </message>
     <message>
         <source>Cell IDs</source>
-        <translation type="unfinished"></translation>
+        <translation>Zellen-IDs</translation>
     </message>
     <message>
         <source>That enables the tracking to continue e.g. in the buildings without GPS.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dies ermöglicht das Weiterzählen z.B. auch in Gebäuden ohne GPS.</translation>
     </message>
     <message>
         <source>The tracking stops when you are out of the cell or enter to another location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Zählung stoppt, sobald du dich aus der Zelle entfernst oder in einen anderen Aufenthaltsort hereinkommst.</translation>
     </message>
     <message>
         <source>Perhaps you want to set a small gate area as a separate location to stop the tracking.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vielleicht möchtest du eine kleine &quot;Durchgangstor&quot;-Fläche einrichten, um die Zählung zu stoppen.</translation>
     </message>
     <message>
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
-        <translation type="unfinished"></translation>
+        <translation>Durch Setzen der Zelleninformation wird weitergezählt, bis du in den Zellen bist. </translation>
     </message>
 </context>
 <context>
@@ -195,55 +199,55 @@
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabellen löschen</translation>
     </message>
     <message>
         <source>Delete location</source>
-        <translation type="unfinished"></translation>
+        <translation>Aufenthaltsort entfernen</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>Entferne</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation type="unfinished"></translation>
+        <translation>Werte aktualisieren</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Hilfe</translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Aufenthaltsort</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name des Ortes</translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation type="unfinished"></translation>
+        <translation>Arbeit1</translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Breitengrad</translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Längengrad</translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation type="unfinished"></translation>
+        <translation>Umkreis (in Metern)</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <source>Cell IDs</source>
-        <translation type="unfinished"></translation>
+        <translation>Zellen-IDs</translation>
     </message>
 </context>
 <context>
@@ -300,7 +304,7 @@
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
-        <translation type="unfinished"></translation>
+        <translation>Freier Galopp</translation>
     </message>
 </context>
 </TS>

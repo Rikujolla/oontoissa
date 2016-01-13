@@ -57,7 +57,7 @@ Page {
             MenuItem {
                 text: qsTr("Update values")
                 onClicked: {
-                        Mydbases.updateLocation()
+                    Mydbases.updateLocation()
                     baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 }
            }
@@ -264,7 +264,10 @@ Page {
                 }
             }
 
-            Component.onCompleted: {Mydbases.populateView();
+            Component.onCompleted: {
+                currentCell = bestcell.cellId(0)
+                cellie.text = currentCell
+                Mydbases.populateView();
                 baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
             }
@@ -300,6 +303,17 @@ Page {
                     onCellIdChanged: {
                         currentCell = bestcell.cellId(0)
                         cellie.text = currentCell
+                    }
+                }
+
+                Timer { //ensures the cellinfo to be get if GPS is not locating
+                    interval: 10000
+                    repeat: ratePass
+                    running: true
+                    onTriggered: {
+                        currentCell = bestcell.cellId(0)
+                        cellie.text = currentCell
+                        //console.log("Trigger")
                     }
                 }
 

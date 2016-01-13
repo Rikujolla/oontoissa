@@ -38,7 +38,7 @@ ApplicationWindow
 
     property int currentIndex: 1 //
     property int listSize: 0 //
-    property int rateAct: 200 // Timers update rate when active
+    property int rateAct: 900 // Timers update rate when active
     property int ratePass: 10000 // Timers update when application not active
     property string covLoc: "Test"  // Cover location display
     property string covTim: "07:12" // Cover Time display
