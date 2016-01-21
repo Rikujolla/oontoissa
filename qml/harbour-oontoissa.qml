@@ -26,7 +26,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtPositioning 5.2
-//import QtSystemInfo 5.0
 import org.nemomobile.dbus 2.0
 import "pages"
 

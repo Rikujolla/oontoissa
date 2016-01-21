@@ -27,7 +27,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
 import "dbases.js" as Mydbases
-//import org.nemomobile.dbus 2.0
 
 Page {
     id: page
@@ -228,8 +227,10 @@ Page {
             Text {
                 id:celltitle
                 text: tempor.selltitleBase
-                    color: Theme.secondaryHighlightColor
-                    x: Theme.paddingLarge
+                color: Theme.secondaryHighlightColor
+                x: Theme.paddingLarge
+                width: page.width*9/10
+                wrapMode: Text.WordWrap
                 }
 
             Row {
@@ -254,18 +255,15 @@ Page {
                     color: Theme.secondaryHighlightColor
                     width:page.width/2
                     onClicked: {
-                        //tempor.sello = testsell.cellId(0)
                         tempor.sello = currentCell
                         celli.text = cellie.text
                         Mydbases.updateLocation()
-                        //baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                         celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
                     }
                 }
             }
 
             Component.onCompleted: {
-                //currentCell = bestcell.cellId(0)
                 bestBus.getProperties()
                 Mydbases.populateView();
                 baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
@@ -299,41 +297,12 @@ Page {
                     }
                 }
 
-                /*Connections {
-                    target: bestcell
-                    onCellIdChanged: {
-                        currentCell = bestcell.cellId(0)
-                        cellie.text = currentCell
-                    }
-                }*/
-
-                /*DBusInterface {
-                    id: bestBus
-                    bus: DBus.SystemBus
-                    service: 'org.ofono'
-                    iface: 'org.ofono.NetworkRegistration'
-                    path: '/ril_0'
-
-                    function getProperties() {
-                        typedCall('GetProperties',[],
-                                  function(result) {
-                                      //console.log('call completed with:', result.Status,
-                                      //result.Mode, result.CellId, result.Technology, result.MobileCountryCode,
-                                      //result.MobileNetworkCode, result.Name, result.Strength);
-                                  },
-                                  function() { console.log('call failed') })
-                    }
-                }*/
-
                 Timer { //ensures the cellinfo to be get if GPS is not locating
                     interval: 10000
                     repeat: true
                     running: true
                     onTriggered: {
-                        //currentCell = bestcell.cellId(0)
-                        //console.log(bestcell.cellId(0))
                         bestBus.getProperties()
-                        //console.log("irti", tempor.status)
                         cellie.text = currentCell
 
                     }
@@ -345,8 +314,7 @@ Page {
                 property string sellotext // sellotext
                 property int ind
                 property string selltitleBase : qsTr("Cell IDs") //
-                //property int hesari
-                //property string status // first line
+                property int backHeight : 300 // Height of backround Item
                 }
 
                 ListModel {
@@ -357,7 +325,7 @@ Page {
                 }
                 BackgroundItem {
                     width: page.width
-                    height: 300
+                    height: tempor.backHeight
                 GridView {
                     id: grid
                     cellWidth: page.width

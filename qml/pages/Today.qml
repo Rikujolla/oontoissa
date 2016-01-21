@@ -26,7 +26,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
-//import QtPositioning 5.2
 import "dbases.js" as Mydbases
 
 
@@ -148,15 +147,6 @@ Page {
                 }
             }
 
-            /*Connections {
-                target: bestcell
-                onCellIdChanged: {
-                    currentCell = bestcell.cellId(0)
-                    console.log("con cell", currentCell)
-                }
-            }*/
-
-            //Component.onCompleted: currentCell = bestcell.cellId(0)
             Component.onCompleted: bestBus.getProperties()
 
             /// Counting time in each location
@@ -168,8 +158,6 @@ Page {
                     bestBus.getProperties()
                     timeri.timeInfo();
                     Mydbases.checkFences();
-
-
                 }
             }
 

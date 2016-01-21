@@ -194,6 +194,7 @@ function populateView() {  // Loads existing info to Loc.qml page
                                      + rs.rows.item(i).thelongi + ", " + rs.rows.item(i).tolerlong)});
            }
             rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ?', neimi.text);
+            tempor.backHeight = rs.rows.length*72
             cellistit.clear()
             tempor.sellotext = ""
 
