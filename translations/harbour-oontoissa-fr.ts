@@ -5,7 +5,7 @@
     <name>About</name>
     <message>
         <source>About page</source>
-        <translation>Page A propos</translation>
+        <translation>A propos</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -49,15 +49,15 @@
     </message>
     <message>
         <source>French (Jordi)</source>
-        <translation type="unfinished"></translation>
+        <translation>Français (Jordi)</translation>
     </message>
     <message>
         <source>Russian (lewa)</source>
-        <translation type="unfinished"></translation>
+        <translation>Russe (lewa)</translation>
     </message>
     <message>
         <source>Italian (Tichy)</source>
-        <translation type="unfinished"></translation>
+        <translation>Italien (Tichy)</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     </message>
     <message>
         <source>Delete cells info!</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer les infos de cellules !</translation>
     </message>
 </context>
 <context>
@@ -122,7 +122,7 @@
     </message>
     <message>
         <source>&apos;Location now&apos; shows current location and time stayed there.</source>
-        <translation>&quot;Position actuelle&quot; affiche l&apos;emplacement actuel et le temps que vous y êtes resté. </translation>
+        <translation>&quot;Position actuelle&quot; affiche l&apos;emplacement actuel et le temps que vous y êtes restés. </translation>
     </message>
     <message>
         <source>&apos;Today&apos; shows the detailed info of the current day. If software is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.</source>
@@ -157,27 +157,27 @@
     </message>
     <message>
         <source>If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.</source>
-        <translation type="unfinished"></translation>
+        <translation>Si l&apos;application détermine que vous vous trouvez à deux emplacements simultanément, l&apos;emplacement de plus petite taille est choisi pour le suivi.</translation>
     </message>
     <message>
         <source>Cell IDs</source>
-        <translation type="unfinished"></translation>
+        <translation>ID des cellules</translation>
     </message>
     <message>
         <source>That enables the tracking to continue e.g. in the buildings without GPS.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ceci active le suivi sans GPS, p. ex. à l&apos;intérieur de bâtiments.</translation>
     </message>
     <message>
         <source>The tracking stops when you are out of the cell or enter to another location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le suivi s&apos;arrête lorsque vous vous trouvez en dehors de la cellule ou pénétrez un autre emplacement.</translation>
     </message>
     <message>
         <source>Perhaps you want to set a small gate area as a separate location to stop the tracking.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous pouvez définir un petit emplacement comme zone de séparation pour arrêter le suivi.</translation>
     </message>
     <message>
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
-        <translation type="unfinished"></translation>
+        <translation>En définissant l&apos;information des cellules, vous assurez que le suivi se fasse jusqu&apos;à ce que vous vous trouviez dans les cellules.</translation>
     </message>
 </context>
 <context>
@@ -199,55 +199,55 @@
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer les tables</translation>
     </message>
     <message>
         <source>Delete location</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer la position</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>Suppression</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre à jour les valeurs</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Aide</translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished">Position</translation>
+        <translation>Position</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de la position</translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation type="unfinished"></translation>
+        <translation>Travail1</translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Latitude</translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Longitude</translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Taille (metres)</translation>
     </message>
     <message>
         <source>Cell IDs</source>
-        <translation type="unfinished"></translation>
+        <translation>ID des cellules</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Supprimer</translation>
     </message>
 </context>
 <context>
@@ -304,7 +304,7 @@
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
-        <translation type="unfinished"></translation>
+        <translation>Galopant librement</translation>
     </message>
 </context>
 </TS>

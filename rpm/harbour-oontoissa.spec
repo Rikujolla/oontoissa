@@ -13,7 +13,7 @@ Name:       harbour-oontoissa
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Automatical sensor based working time recorder
-Version:    0.1.0
+Version:    0.1.1
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -21,13 +21,11 @@ URL:        http://example.org/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-oontoissa.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
-Requires:   qt5-qtdeclarative-systeminfo
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
-BuildRequires:  pkgconfig(Qt5SystemInfo)
 
 %description
 The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or gallopping freely elsewhere.

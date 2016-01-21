@@ -242,12 +242,12 @@
         <translation>Dimensione (metri)</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation>Elimina</translation>
-    </message>
-    <message>
         <source>Cell IDs</source>
         <translation>Identificatori cella</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Elimina</translation>
     </message>
 </context>
 <context>

@@ -148,15 +148,16 @@ Page {
                 }
             }
 
-            Connections {
+            /*Connections {
                 target: bestcell
                 onCellIdChanged: {
                     currentCell = bestcell.cellId(0)
                     console.log("con cell", currentCell)
                 }
-            }
+            }*/
 
-            Component.onCompleted: currentCell = bestcell.cellId(0)
+            //Component.onCompleted: currentCell = bestcell.cellId(0)
+            Component.onCompleted: bestBus.getProperties()
 
             /// Counting time in each location
             Timer {
@@ -164,8 +165,10 @@ Page {
                 running:Qt.ApplicationActive
                 repeat:true
                 onTriggered: {
+                    bestBus.getProperties()
                     timeri.timeInfo();
                     Mydbases.checkFences();
+
 
                 }
             }

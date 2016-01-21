@@ -242,12 +242,12 @@
         <translation>Koko (metriä)</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation>Poista</translation>
-    </message>
-    <message>
         <source>Cell IDs</source>
         <translation>Solunumerot</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
     </message>
 </context>
 <context>

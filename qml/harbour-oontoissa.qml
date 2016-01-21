@@ -26,7 +26,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtPositioning 5.2
-import QtSystemInfo 5.0
+//import QtSystemInfo 5.0
+import org.nemomobile.dbus 2.0
 import "pages"
 
 ApplicationWindow
@@ -44,16 +45,40 @@ ApplicationWindow
     property string covTim: "07:12" // Cover Time display
     property bool updateL : true //
     property int currentCell //saves current cell number globally
+    property real fenceThickness : 50.0 //Utilized ec to stop cell facilitated tracking
 
-    NetworkInfo { // Make multiple signals possible
+    /*NetworkInfo { // Make multiple signals possible
         id : bestcell
-    }
+    }*/
 
     PositionSource {
         id: possut
         updateInterval: Qt.ApplicationActive ? rateAct : ratePass
         active: true
     }
+
+    DBusInterface {
+        // Motivated ny shell script https://together.jolla.com/question/24943/howto-retrieve-gsm-cell-coordinates/
+        // and other valuable discussions at devel@lists.sailfishos.org and elsewhere
+        id: bestBus
+        bus: DBus.SystemBus
+        service: 'org.ofono'
+        iface: 'org.ofono.NetworkRegistration'
+        path: '/ril_0'
+
+        function getProperties() {
+            typedCall('GetProperties',[],
+                      function(result) {
+                          //console.log('call completed with:', result.Status,
+                          //result.Mode, result.CellId, result.Technology, result.MobileCountryCode,
+                          //result.MobileNetworkCode, result.Name, result.Strength);
+                          currentCell = result.CellId;
+                          //console.log("CellId found ", currentCell);
+                      },
+                      function() { console.log('call failed') })
+        }
+    }
+
 
     ListModel {
             id: listix

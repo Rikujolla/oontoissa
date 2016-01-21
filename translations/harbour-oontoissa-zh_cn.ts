@@ -49,15 +49,15 @@
     </message>
     <message>
         <source>French (Jordi)</source>
-        <translation type="unfinished"></translation>
+        <translation>法国 (Jordi)</translation>
     </message>
     <message>
         <source>Russian (lewa)</source>
-        <translation type="unfinished"></translation>
+        <translation>俄罗斯 (lewa)</translation>
     </message>
     <message>
         <source>Italian (Tichy)</source>
-        <translation type="unfinished"></translation>
+        <translation>意大利 (Tichy)</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     </message>
     <message>
         <source>Delete cells info!</source>
-        <translation type="unfinished"></translation>
+        <translation>删除小区信息！</translation>
     </message>
 </context>
 <context>
@@ -157,27 +157,27 @@
     </message>
     <message>
         <source>If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果程序发现同时处在两个位置，则会选择以较小的尺寸的位置中用于跟踪。</translation>
     </message>
     <message>
         <source>Cell IDs</source>
-        <translation type="unfinished"></translation>
+        <translation>小区ID</translation>
     </message>
     <message>
         <source>That enables the tracking to continue e.g. in the buildings without GPS.</source>
-        <translation type="unfinished"></translation>
+        <translation>能够使跟踪继续例如在没有GPS的建筑物。</translation>
     </message>
     <message>
         <source>The tracking stops when you are out of the cell or enter to another location.</source>
-        <translation type="unfinished"></translation>
+        <translation>当你到小区外或进入到另一个位置时会停止跟踪。</translation>
     </message>
     <message>
         <source>Perhaps you want to set a small gate area as a separate location to stop the tracking.</source>
-        <translation type="unfinished"></translation>
+        <translation>也许你想设置一个小片区域作为一个单独的位置，以停止跟踪。</translation>
     </message>
     <message>
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
-        <translation type="unfinished"></translation>
+        <translation>通过设置小区信息启用继续跟踪，直到你在小区里。</translation>
     </message>
 </context>
 <context>
@@ -199,55 +199,55 @@
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation type="unfinished"></translation>
+        <translation>删除表格</translation>
     </message>
     <message>
         <source>Delete location</source>
-        <translation type="unfinished"></translation>
+        <translation>删除位置</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>删除中</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation type="unfinished"></translation>
+        <translation>更新值</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">帮助</translation>
+        <translation>帮助</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished">位置</translation>
+        <translation>位置</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation type="unfinished"></translation>
+        <translation>位置名</translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation type="unfinished"></translation>
+        <translation>工作1</translation>
     </message>
     <message>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>纬度</translation>
     </message>
     <message>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>经度</translation>
     </message>
     <message>
         <source>Size (meters)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>大小(米)</translation>
     </message>
     <message>
         <source>Cell IDs</source>
-        <translation type="unfinished"></translation>
+        <translation>小区ID</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
     </message>
 </context>
 <context>
@@ -304,7 +304,7 @@
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
-        <translation type="unfinished"></translation>
+        <translation>自由驰骋</translation>
     </message>
 </context>
 </TS>

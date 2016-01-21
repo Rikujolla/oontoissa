@@ -242,12 +242,12 @@
         <translation>Storlek (meter)</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation>Ta bort</translation>
-    </message>
-    <message>
         <source>Cell IDs</source>
         <translation>Basstations-ID</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Ta bort</translation>
     </message>
 </context>
 <context>

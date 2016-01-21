@@ -242,12 +242,12 @@
         <translation>Umkreis (in Metern)</translation>
     </message>
     <message>
-        <source>Delete</source>
-        <translation>Löschen</translation>
-    </message>
-    <message>
         <source>Cell IDs</source>
         <translation>Zellen-IDs</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Löschen</translation>
     </message>
 </context>
 <context>

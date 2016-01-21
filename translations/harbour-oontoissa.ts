@@ -242,11 +242,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Delete</source>
+        <source>Cell IDs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cell IDs</source>
+        <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
