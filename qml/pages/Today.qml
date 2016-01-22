@@ -156,12 +156,18 @@ Page {
                 repeat:true
                 onTriggered: {
                     bestBus.getProperties()
-                    timeri.timeInfo();
+                    //timeri.timeInfo();
                     Mydbases.checkFences();
+                    varus.timeSow();
+                    Mydbases.addTodayInfo();
+                    Mydbases.addHistoryData();
+                    status.text = varus.inFenceT + ": " + varus.timeInFenceS;
+                    todday.text = varus.whatToday;
+                    histor.text = varus.niceHistory;
                 }
             }
 
-            Item {
+            /*Item {
                 id : timeri
                 property string timme
                 property string daatta
@@ -171,7 +177,7 @@ Page {
                     //timme = date0.getHours() + ":" + date0.getMinutes();
                     daatta = date0.getFullYear() + "-" + (date0.getMonth()+1) + "-" + date0.getDate();
                 }
-            }
+            }*/
 
 
         }

@@ -78,6 +78,27 @@ ApplicationWindow
         }
     }
 
+    DBusInterface {
+        // Under construction
+        id: wifiBus
+        bus: DBus.SystemBus
+        service: 'net.connman'
+        iface: 'net.connman.Manager'
+        path: '/'
+        //path: '/net/connman/technology/wifi'
+
+        function getProperties() {
+            typedCall('GetTechnologies',[],
+                      function(result) {
+                          //console.log('call completed with:', result.Status,
+                          //result.Mode, result.CellId, result.Technology, result.MobileCountryCode,
+                          //result.MobileNetworkCode, result.Name, result.Strength);
+                          //currentCell = result.CellId;
+                          console.log("Wifi found ", result.Type);
+                      },
+                      function() { console.log('call failed') })
+        }
+    }
 
     ListModel {
             id: listix

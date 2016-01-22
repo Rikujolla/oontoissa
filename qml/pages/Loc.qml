@@ -304,6 +304,7 @@ Page {
                     onTriggered: {
                         bestBus.getProperties()
                         cellie.text = currentCell
+                        //wifiBus.getProperties()
 
                     }
                 }
