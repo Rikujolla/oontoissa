@@ -95,41 +95,80 @@ Page {
                 property int indos // currentIndex
             }
 
+            Row {
+                x: Theme.paddingLarge
+
+                Text {
+                    text: qsTr("Location name")
+                    color: Theme.secondaryHighlightColor
+                    x: Theme.paddingLarge
+                }
+
+                TextField {
+                    id: neimi
+                    placeholderText: qsTr("Work1")
+                    width: page.width/2
+                    inputMethodHints: Qt.ImhNoPredictiveText
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        focus = false
+                        Mydbases.updateLocation()
+                        baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
+                        updateL = true
+                    }
+                }
+            }
+
+            Row {
+                x: Theme.paddingLarge
+                Text {
+                    text: qsTr("Location size (m)")
+                    //visible: tempor.gpsVisible
+                    color: Theme.secondaryHighlightColor
+                    x: Theme.paddingLarge
+                }
+
+                TextField {
+                    id: saissi
+                    //visible: tempor.gpsVisible
+                    placeholderText: "50"
+                    width: page.width/2
+                    validator: RegExpValidator { regExp: /^\d*\.?\d*$/ }
+                    color: errorHighlight? "red" : Theme.primaryColor
+                    inputMethodHints: Qt.ImhNoPredictiveText
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        focus = false
+                        Mydbases.updateLocation()
+                        baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
+                    }
+                }
+            }
+
+            TextSwitch {
+                text: "Show and set GPS info"
+                onCheckedChanged: tempor.gpsVisible = !tempor.gpsVisible
+            }
+
             Text {
                 id: baassi
                 text: listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
+                visible: tempor.gpsVisible
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
-            }
-
-            Text {
-                text: qsTr("Location name")
-                color: Theme.secondaryHighlightColor
-                x: Theme.paddingLarge
-            }
-
-            TextField {
-                id: neimi
-                placeholderText: qsTr("Work1")
-                width: page.width/2
-                inputMethodHints: Qt.ImhNoPredictiveText
-                EnterKey.enabled: !errorHighlight
-                EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                EnterKey.onClicked: {
-                    focus = false
-                    Mydbases.updateLocation()
-                    baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
-                    updateL = true
-                }
             }
 
             Text {
                     text: qsTr("Latitude")
+                    visible: tempor.gpsVisible
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
                 }
 
             Row {
+                visible: tempor.gpsVisible
                 TextField {
                     id: latti
                     placeholderText: "63.1"
@@ -158,21 +197,17 @@ Page {
                 }
 
             }
-            /*
-                IconButton {
-                    icon.source: "image://theme/icon-m-enter-accept?" + (pressed
-                                 ? Theme.highlightColor
-                                 : Theme.primaryColor)
-                    onClicked: console.log("Play clicked!")
-                }*/
+
 
             Text {
                     text: qsTr("Longitude")
+                    visible: tempor.gpsVisible
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
                 }
 
             Row {
+                visible: tempor.gpsVisible
                 TextField {
                     id: longi
                     placeholderText: "24.2"
@@ -202,25 +237,21 @@ Page {
                 }
             }
 
-            Text {
-                    text: qsTr("Size (meters)")
-                    color: Theme.secondaryHighlightColor
-                    x: Theme.paddingLarge
-                }
 
-            TextField {
-                id: saissi
-                placeholderText: "50"
-                width: page.width/2
-                validator: RegExpValidator { regExp: /^\d*\.?\d*$/ }
-                color: errorHighlight? "red" : Theme.primaryColor
-                inputMethodHints: Qt.ImhNoPredictiveText
-                EnterKey.enabled: !errorHighlight
-                EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                EnterKey.onClicked: {
-                    focus = false
+            //SectionHeader { text: qsTr("Cells info") }
+            TextSwitch {
+                text: "Show and set cells info"
+                onCheckedChanged: tempor.cellsVisible = !tempor.cellsVisible
+            }
+
+            TextSwitch {
+                id: sellPri
+                text: qsTr("Use CellId as a primary location source")
+                visible : tempor.cellsVisible
+                onCheckedChanged: {
+                    checked ? tempor.cellPriori = true : tempor.cellPriori = false
+                    console.log(tempor.cellPriori)
                     Mydbases.updateLocation()
-                    baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 }
             }
 
@@ -231,9 +262,11 @@ Page {
                 x: Theme.paddingLarge
                 width: page.width*9/10
                 wrapMode: Text.WordWrap
+                visible: tempor.cellsVisible
                 }
 
             Row {
+                visible: tempor.cellsVisible
                 TextField {
                     id: celli
                     placeholderText: "243546"
@@ -269,31 +302,14 @@ Page {
                 baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
                 cellie.text = currentCell
+                //sellPri.checked = true
             }
 
                 ////Functions etc
             Connections {
                 target: possut
                     onPositionChanged: {
-                        //var coord = possut.position.coordinate;
-                        //tempor.sello = testsell.cellId(0)
                         tempor.sello = currentCell
-                        ////currentCell = bestcell.cellId(0)
-                        //tempor.sello = currentCell
-                        /*
-                        console.log("CellID", testsell.cellId(0))
-                        console.log("MCC", testsell.homeMobileCountryCode(0))
-                        console.log("MNC", testsell.homeMobileNetworkCode(0))
-                        console.log("LAC", testsell.locationAreaCode(0))
-                        console.log("GSM", testsell.networkSignalStrength(1,0))
-                        console.log("CDMA", testsell.networkSignalStrength(2,0))
-                        console.log("W-CDMA", testsell.networkSignalStrength(3,0))
-                        console.log("WLAN", testsell.networkSignalStrength(4,0))
-                        console.log("LAN", testsell.networkSignalStrength(5,0))
-                        console.log("Bluetooth", testsell.networkSignalStrength(6,0))
-                        console.log("Wimax", testsell.networkSignalStrength(7,0))
-                        console.log("Lte", testsell.networkSignalStrength(8,0))
-                        //*/
                     }
                 }
 
@@ -316,6 +332,10 @@ Page {
                 property int ind
                 property string selltitleBase : qsTr("Cell IDs") //
                 property int backHeight : 300 // Height of backround Item
+                property bool gpsVisible : false
+                property bool cellsVisible : false
+                //property bool wifiVisible : false
+                property bool cellPriori :false
                 }
 
                 ListModel {
@@ -327,6 +347,7 @@ Page {
                 BackgroundItem {
                     width: page.width
                     height: tempor.backHeight
+                    visible: tempor.cellsVisible
                 GridView {
                     id: grid
                     cellWidth: page.width

@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fi_FI">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi_FI" version="2.1">
 <context>
     <name>About</name>
     <message>
@@ -179,6 +177,10 @@
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
         <translation>Valitsemalla solut, mahdollistat seurannan jatkumisen, kun olet solun alueella.</translation>
     </message>
+    <message>
+        <source>If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.</source>
+        <translation>Jos käytät solutietoa ensisijaisena paikkatietona, seuranta on käynnissä, kun olet solun alueella.</translation>
+    </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
@@ -238,16 +240,20 @@
         <translation>Pituuspiiri</translation>
     </message>
     <message>
-        <source>Size (meters)</source>
-        <translation>Koko (metriä)</translation>
-    </message>
-    <message>
         <source>Cell IDs</source>
         <translation>Solunumerot</translation>
     </message>
     <message>
         <source>Delete</source>
         <translation>Poista</translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation>Käytä solutietoa ensisijaisena paikkatietona</translation>
+    </message>
+    <message>
+        <source>Location size (m)</source>
+        <translation>Sijainnin koko (m)</translation>
     </message>
 </context>
 <context>
@@ -299,12 +305,27 @@
         <source>History</source>
         <translation>Historia</translation>
     </message>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>Älä käytä GPS:ää</translation>
+    </message>
+    <message>
+        <source>Use GPS</source>
+        <translation>Käytä GPS:ää</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
         <translation>Laukkaamassa...</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-oontoissa</name>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>Älä käytä GPS:ää</translation>
     </message>
 </context>
 </TS>

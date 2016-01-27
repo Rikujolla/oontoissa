@@ -84,7 +84,8 @@ Page {
                 text: {qsTr("By setting the cell information you enable the tracking to continue until you are in the cells.") + " "
                        + qsTr("That enables the tracking to continue e.g. in the buildings without GPS.") + " "
                        + qsTr("The tracking stops when you are out of the cell or enter to another location.") + " "
-                       + qsTr("Perhaps you want to set a small gate area as a separate location to stop the tracking.")
+                       + qsTr("Perhaps you want to set a small gate area as a separate location to stop the tracking.") + "\n"
+                    +qsTr("If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.")
                 }
             }
 

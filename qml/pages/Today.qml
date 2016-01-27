@@ -39,6 +39,14 @@ Page {
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
+                id: gpsUse
+                text: gpsTxt
+                onClicked: {
+                    gpsTrue = !gpsTrue
+                    gpsTrue ? (gpsUse.text = qsTr("Do not use GPS")) : (gpsUse.text = qsTr("Use GPS"))
+                }
+            }
+            MenuItem {
                 text: qsTr("Set location")
                 onClicked: pageStack.push(Qt.resolvedUrl("SetLocation.qml"))
             }
@@ -111,9 +119,10 @@ Page {
 
 
             ////Functions etc
-            Connections {
+            /*Connections {
                 target: possut
                 onPositionChanged: {
+                    bestBus.getProperties()
                     Mydbases.checkFences();
                     varus.timeSow();
                     Mydbases.addTodayInfo();
@@ -122,7 +131,7 @@ Page {
                     todday.text = varus.whatToday;
                     histor.text = varus.niceHistory;
                 }
-            }
+            }*/
 
             Item {
                 id: varus
@@ -155,29 +164,19 @@ Page {
                 running:Qt.ApplicationActive
                 repeat:true
                 onTriggered: {
+                    Qt.ApplicationActive ? saveDecr = 1 : saveDecr = 10
+                    //console.log(possut.position.coordinate.latitude)
                     bestBus.getProperties()
-                    //timeri.timeInfo();
                     Mydbases.checkFences();
-                    varus.timeSow();
-                    Mydbases.addTodayInfo();
-                    Mydbases.addHistoryData();
-                    status.text = varus.inFenceT + ": " + varus.timeInFenceS;
-                    todday.text = varus.whatToday;
-                    histor.text = varus.niceHistory;
+                    //varus.timeSow();
+                    //Mydbases.addTodayInfo();
+                    //Mydbases.addHistoryData();
+                    //status.text = varus.inFenceT + ": " + varus.timeInFenceS;
+                    //todday.text = varus.whatToday;
+                    //histor.text = varus.niceHistory;
                 }
             }
 
-            /*Item {
-                id : timeri
-                property string timme
-                property string daatta
-                function timeInfo() {
-                    var date0 = new Date;
-                    timme = date0.getHours() + ":" + date0.getMinutes() + ":" + date0.getSeconds();
-                    //timme = date0.getHours() + ":" + date0.getMinutes();
-                    daatta = date0.getFullYear() + "-" + (date0.getMonth()+1) + "-" + date0.getDate();
-                }
-            }*/
 
 
         }
