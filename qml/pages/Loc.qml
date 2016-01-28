@@ -127,6 +127,8 @@ Page {
                     //visible: tempor.gpsVisible
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
+                    width:page.width/2
+                    wrapMode: Text.WordWrap
                 }
 
                 TextField {

@@ -179,6 +179,10 @@
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
         <translation>En définissant l&apos;information des cellules, vous assurez que le suivi se fasse jusqu&apos;à ce que vous vous trouviez dans les cellules.</translation>
     </message>
+    <message>
+        <source>If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.</source>
+        <translation>Si vous utilisez l&apos;ID des cellules comme source principale de positionnement, le suivi démarre et s&apos;arrête lorsque vous êtes dans les cellules sélectionnées. </translation>
+    </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
@@ -238,16 +242,20 @@
         <translation>Longitude</translation>
     </message>
     <message>
-        <source>Size (meters)</source>
-        <translation>Taille (metres)</translation>
-    </message>
-    <message>
         <source>Cell IDs</source>
         <translation>ID des cellules</translation>
     </message>
     <message>
         <source>Delete</source>
         <translation>Supprimer</translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation>Utiliser l&apos;ID des cellules comme source principale de positionnement</translation>
+    </message>
+    <message>
+        <source>Location size (m)</source>
+        <translation>Taille de l&apos;emplacement (m.)</translation>
     </message>
 </context>
 <context>
@@ -299,12 +307,27 @@
         <source>History</source>
         <translation>Historique</translation>
     </message>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>Ne pas utiliser le GPS</translation>
+    </message>
+    <message>
+        <source>Use GPS</source>
+        <translation>Utiliser le GPS</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
         <translation>Galopant librement</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-oontoissa</name>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>Ne pas utiliser le GPS</translation>
     </message>
 </context>
 </TS>

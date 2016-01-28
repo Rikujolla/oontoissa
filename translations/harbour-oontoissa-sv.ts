@@ -179,6 +179,10 @@
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
         <translation>Genom att ange basstationsinfo, aktiverar du kontinuerlig spårning tills du är inom basstationernas täckningsområde.</translation>
     </message>
+    <message>
+        <source>If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.</source>
+        <translation>Om du använder basstations-ID som primär platskälla, startar och stoppar spårningen när du når eller lämnar basstationens räckvidd.</translation>
+    </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
@@ -238,16 +242,20 @@
         <translation>Longitud</translation>
     </message>
     <message>
-        <source>Size (meters)</source>
-        <translation>Storlek (meter)</translation>
-    </message>
-    <message>
         <source>Cell IDs</source>
         <translation>Basstations-ID</translation>
     </message>
     <message>
         <source>Delete</source>
         <translation>Ta bort</translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation>Använd basstations-ID som primär platskälla</translation>
+    </message>
+    <message>
+        <source>Location size (m)</source>
+        <translation>Platsstorlek (m)</translation>
     </message>
 </context>
 <context>
@@ -299,12 +307,27 @@
         <source>History</source>
         <translation>Historik</translation>
     </message>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>Använd inte GPS</translation>
+    </message>
+    <message>
+        <source>Use GPS</source>
+        <translation>Använd GPS</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
         <translation>Fritt rörlig</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-oontoissa</name>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>Använd inte GPS</translation>
     </message>
 </context>
 </TS>
