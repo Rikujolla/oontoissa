@@ -179,6 +179,10 @@
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
         <translation>Impostando l&apos;informazione sulla cella permetti al tracciamento di continuare finché non si è nelle celle.</translation>
     </message>
+    <message>
+        <source>If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.</source>
+        <translation>Se utilizzi Cell ID come fonte primaria per la posizione, il tracciamento inizia e si ferma quando sei nelle celle selezsionate.</translation>
+    </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
@@ -238,16 +242,20 @@
         <translation>Longitudine</translation>
     </message>
     <message>
-        <source>Size (meters)</source>
-        <translation>Dimensione (metri)</translation>
-    </message>
-    <message>
         <source>Cell IDs</source>
         <translation>Identificatori cella</translation>
     </message>
     <message>
         <source>Delete</source>
         <translation>Elimina</translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation>Usa Cell ID come fonte primaria per la posizione</translation>
+    </message>
+    <message>
+        <source>Location size (m)</source>
+        <translation>Dimensione posizione (m)</translation>
     </message>
 </context>
 <context>
@@ -299,12 +307,27 @@
         <source>History</source>
         <translation>Storico</translation>
     </message>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>Non usare il GPS</translation>
+    </message>
+    <message>
+        <source>Use GPS</source>
+        <translation>Usa il GPS</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
         <translation>Galoppo libero</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-oontoissa</name>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>Non usare il GPS</translation>
     </message>
 </context>
 </TS>

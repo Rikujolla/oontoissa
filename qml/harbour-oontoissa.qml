@@ -45,7 +45,7 @@ ApplicationWindow
     property bool updateL : true //
     property int currentCell //saves current cell number globally
     property real fenceThickness : 50.0 //Utilized ec to stop cell facilitated tracking
-    property int saveLag : 60 // Used to postpone saving the values in unstable conditions
+    property int saveLag : 30 // Used to postpone saving the values in unstable conditions
     property int saveDecr: 1//Decrement for saveLag
     property string gpsTxt : qsTr("Do not use GPS")
     property bool gpsTrue : true
@@ -86,19 +86,23 @@ ApplicationWindow
         // Under construction
         id: wifiBus
         bus: DBus.SystemBus
-        service: 'net.connman'
-        iface: 'net.connman.Manager'
-        path: '/'
+        //service: 'net.connman'
+        service: 'com.jolla'
+        //iface: 'net.connman.Manager'
+        iface: 'com.jolla.Connectiond'
+        path: '/Connectiond'
+        //path: '/
         //path: '/net/connman/technology/wifi'
 
         function getProperties() {
-            typedCall('GetTechnologies',[],
+            typedCall('ConnectionState',[],
+                      //typedCall('GetTechnologies',[],
                       function(result) {
                           //console.log('call completed with:', result.Status,
                           //result.Mode, result.CellId, result.Technology, result.MobileCountryCode,
                           //result.MobileNetworkCode, result.Name, result.Strength);
                           //currentCell = result.CellId;
-                          console.log("Wifi found ", result.Type);
+                          console.log("Wifi found ", result);
                       },
                       function() { console.log('call failed') })
         }
@@ -110,6 +114,8 @@ ApplicationWindow
                 pla: "place"
                 els: "else"
                 cels: "cells"
+                lat: 60.1
+                lon: 23.1
             }
     }
 }

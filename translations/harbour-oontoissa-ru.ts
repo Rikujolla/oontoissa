@@ -179,6 +179,10 @@
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
@@ -238,16 +242,20 @@
         <translation>Долгота</translation>
     </message>
     <message>
-        <source>Size (meters)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Cell IDs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete</source>
         <translation>Удалить</translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location size (m)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -299,12 +307,27 @@
         <source>History</source>
         <translation>История</translation>
     </message>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>Не использовать GPS</translation>
+    </message>
+    <message>
+        <source>Use GPS</source>
+        <translation>Использовать GPS</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-oontoissa</name>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>Не использовать GPS</translation>
     </message>
 </context>
 </TS>

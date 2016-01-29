@@ -179,6 +179,10 @@
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
         <translation>通过设置小区信息启用继续跟踪，直到你在小区里。</translation>
     </message>
+    <message>
+        <source>If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.</source>
+        <translation>如果你使用的小区ID作为主位置源，那么当你在选择的小区中时，跟踪会启用和停止。</translation>
+    </message>
 </context>
 <context>
     <name>HelpSetLoc</name>
@@ -238,16 +242,20 @@
         <translation>经度</translation>
     </message>
     <message>
-        <source>Size (meters)</source>
-        <translation>大小(米)</translation>
-    </message>
-    <message>
         <source>Cell IDs</source>
         <translation>小区ID</translation>
     </message>
     <message>
         <source>Delete</source>
         <translation>删除</translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation>使用小区ID作为首要的位置源</translation>
+    </message>
+    <message>
+        <source>Location size (m)</source>
+        <translation>位置尺寸（米）</translation>
     </message>
 </context>
 <context>
@@ -299,12 +307,27 @@
         <source>History</source>
         <translation>历史</translation>
     </message>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>不使用</translation>
+    </message>
+    <message>
+        <source>Use GPS</source>
+        <translation>使用</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
         <translation>自由驰骋</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-oontoissa</name>
+    <message>
+        <source>Do not use GPS</source>
+        <translation>不使用GPS</translation>
     </message>
 </context>
 </TS>

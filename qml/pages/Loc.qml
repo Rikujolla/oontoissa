@@ -102,12 +102,15 @@ Page {
                     text: qsTr("Location name")
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
+                    width:page.width/2
+                    wrapMode: Text.WordWrap
                 }
 
-                TextField {
+                TextArea {
                     id: neimi
                     placeholderText: qsTr("Work1")
                     width: page.width/2
+                    wrapMode:Text.Wrap
                     inputMethodHints: Qt.ImhNoPredictiveText
                     EnterKey.enabled: !errorHighlight
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
@@ -156,10 +159,12 @@ Page {
 
             Text {
                 id: baassi
+                width: page.width*9/10
                 text: listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 visible: tempor.gpsVisible
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
+                wrapMode: Text.WordWrap
             }
 
             Text {

@@ -42,7 +42,9 @@ CoverBackground {
         anchors.top: label.bottom
         text: qsTr("Location")
         anchors.topMargin: Theme.paddingLarge
-        x: Theme.paddingLarge
+        //x: Theme.paddingLarge
+        //width: parent.width
+        wrapMode: Text.WordWrap
     }
     Label {
         id: label3
