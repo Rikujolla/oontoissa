@@ -326,7 +326,7 @@ function addTodayInfo() {
             // Recording the first value of the day
             if (evid.rows.length == 0) {
                 tx.executeSql('INSERT INTO Today VALUES(datetime(?,?), ?, time(?,?), time(?,?), time(?,?))', [ 'now', 'localtime', varus.inFence, 'now', 'localtime', 'now', 'localtime', 'now', 'localtime' ]);
-            if (varus.inFence == "Not in a paddock" ){saveLag = 0} else {saveLag = 50}
+            if (varus.inFence == "Not in a paddock" ){saveLag = 0} else {saveLag = 30}
             }
             // Updating existing record
             else if (evid.rows.item(0).thestatus == varus.inFence){
@@ -337,7 +337,7 @@ function addTodayInfo() {
                 var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
                 var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
                 tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', [evied.rows.item(0).rest]);
-                if (varus.inFence == "Not in a paddock" ){saveLag = 0} else {saveLag = 50}
+                if (varus.inFence == "Not in a paddock" ){saveLag = 0} else {saveLag = 30}
             }
             else {
                 // Add a row. For not in a paddock lag is utilized. today view have to be thinked and time is lost also for one minute
@@ -353,7 +353,7 @@ function addTodayInfo() {
                 }
                 else {
                     tx.executeSql('INSERT INTO Today VALUES(datetime(?,?), ?, time(?,?), time(?,?), time(?,?))', [ 'now', 'localtime', varus.inFence, 'now', 'localtime', 'now', 'localtime', 'now', 'localtime' ]);
-                    saveLag = 50
+                    saveLag = 30
                 }
 
             }
