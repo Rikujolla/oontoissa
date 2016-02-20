@@ -132,6 +132,10 @@
         <source>&apos;History&apos; shows the recorded info of the recent days.</source>
         <translation>&quot;Historique&quot; affiche les informations enregistrées des derniers jours.</translation>
     </message>
+    <message>
+        <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
+        <translation>Vous pouvez définir un jalon à partir de la vue &quot;Aujourd&apos;hui&quot; ou depuis une action de couverture.</translation>
+    </message>
 </context>
 <context>
     <name>HelpLoc</name>
@@ -149,7 +153,7 @@
     </message>
     <message>
         <source>Current location can be feeded with buttons.</source>
-        <translation>La position actuelle peut être alimentée avec les boutons.</translation>
+        <translation>La position actuelle peut être saisie avec les boutons.</translation>
     </message>
     <message>
         <source>You will see current latitude and longitude to help the feed.</source>
@@ -173,7 +177,7 @@
     </message>
     <message>
         <source>Perhaps you want to set a small gate area as a separate location to stop the tracking.</source>
-        <translation>Vous pouvez définir un petit emplacement comme zone de séparation pour arrêter le suivi.</translation>
+        <translation>Vous pouvez définir une petite zone tampon comme aire de séparation pour arrêter le suivi.</translation>
     </message>
     <message>
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
@@ -182,6 +186,14 @@
     <message>
         <source>If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.</source>
         <translation>Si vous utilisez l&apos;ID des cellules comme source principale de positionnement, le suivi démarre et s&apos;arrête lorsque vous êtes dans les cellules sélectionnées. </translation>
+    </message>
+    <message>
+        <source>The fence thickness is used as a virtual aid to determine whether you are entering the location or leaving that.</source>
+        <translation>L&apos;épaisseur de la zone tampon est utilisée comme aide pour déterminer si vous entrez ou sortez d&apos;un emplacement.</translation>
+    </message>
+    <message>
+        <source>It can be used also as an extra tolerance of the area you have entered.</source>
+        <translation>Cela peut aussi être utilisé comme tolérance supplémentaire de la zone où vous êtes entrés.</translation>
     </message>
 </context>
 <context>
@@ -257,6 +269,10 @@
         <source>Location size (m)</source>
         <translation>Taille de l&apos;emplacement (m.)</translation>
     </message>
+    <message>
+        <source>Fence thickness (m)</source>
+        <translation>Largeur de la zone tampon.</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -315,12 +331,36 @@
         <source>Use GPS</source>
         <translation>Utiliser le GPS</translation>
     </message>
+    <message>
+        <source>Set marker</source>
+        <translation>Définir le jalon</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
         <translation>Galopant librement</translation>
+    </message>
+    <message>
+        <source>Leaving the paddock</source>
+        <translation>Quittant le paddock</translation>
+    </message>
+    <message>
+        <source>Entering the paddock</source>
+        <translation>Entrant dans le paddock</translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
+        <translation>Jalon manuel</translation>
+    </message>
+    <message>
+        <source>No GPS, cells info used instead</source>
+        <translation>Pas de GPS, l&apos;info provient des cellules</translation>
+    </message>
+    <message>
+        <source>Pure cell info in use</source>
+        <translation>Info des cellules uniquement</translation>
     </message>
 </context>
 <context>

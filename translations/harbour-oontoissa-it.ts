@@ -68,7 +68,7 @@
     </message>
     <message>
         <source>Location</source>
-        <translation>Posizione</translation>
+        <translation>Luogo</translation>
     </message>
 </context>
 <context>
@@ -95,7 +95,7 @@
     </message>
     <message>
         <source>Delete locations!</source>
-        <translation>Elimina posizioni!</translation>
+        <translation>Elimina luoghi!</translation>
     </message>
     <message>
         <source>Delete cells info!</source>
@@ -110,7 +110,7 @@
     </message>
     <message>
         <source>Location now</source>
-        <translation>Posizione attuale</translation>
+        <translation>Luogo attuale</translation>
     </message>
     <message>
         <source>Today</source>
@@ -122,15 +122,19 @@
     </message>
     <message>
         <source>&apos;Location now&apos; shows current location and time stayed there.</source>
-        <translation>&apos;Posizione attuale&apos; mostra la posizione corrente e il tempo trascorso qua.</translation>
+        <translation>&apos;Luogo attuale&apos; mostra la posizione corrente e il tempo trascorso qua.</translation>
     </message>
     <message>
         <source>&apos;Today&apos; shows the detailed info of the current day. If software is closed during the day the software assumes the location not to be changed during the break. E.g. you can start the app in the morning to record the start of the day, close it and to restart it before the end of the day.</source>
-        <translation>&apos;Oggi&apos; mostra le il formazioni dettagliate sul giorno corrente. Se il programma viene chiuso durante la giornata, assumerà che la posizione non è stata cambiata durante l&apos;interruzione. Es. puoi avviare l&apos;applicazione la mattina per registrare l&apos;inizio della giornata, chiuderla e riavviarla prima della fine della giornata.</translation>
+        <translation>&apos;Oggi&apos; mostra le il formazioni dettagliate sul giorno corrente. Se il programma viene chiuso durante la giornata, assumerà che il luogo non è stato cambiato durante l&apos;interruzione. Es. puoi avviare l&apos;applicazione la mattina per registrare l&apos;inizio della giornata, chiuderla e riavviarla prima della fine della giornata.</translation>
     </message>
     <message>
         <source>&apos;History&apos; shows the recorded info of the recent days.</source>
         <translation>&apos;Storico&apos; mostra le informazioni registrate nei giorni più recenti.</translation>
+    </message>
+    <message>
+        <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
+        <translation>Puoi impostare un marcatore dalla pagina &apos;Ar work&apos; o dalla cover.</translation>
     </message>
 </context>
 <context>
@@ -141,15 +145,15 @@
     </message>
     <message>
         <source>Location</source>
-        <translation>Posizione</translation>
+        <translation>Luogo</translation>
     </message>
     <message>
         <source>On this page you can feed the location information: name, coordinates and tolerance.</source>
-        <translation>In questa pagina puoi introdurre le informazioni sulla posizione: nome, coordinate e tolleranza.</translation>
+        <translation>In questa pagina puoi introdurre le informazioni sul luogo: nome, coordinate e tolleranza.</translation>
     </message>
     <message>
         <source>Current location can be feeded with buttons.</source>
-        <translation>Le informazioni sulla posizione corrente possono essere introdotte con i pulsanti.</translation>
+        <translation>Le informazioni sul luogo corrente possono essere introdotte con i pulsanti.</translation>
     </message>
     <message>
         <source>You will see current latitude and longitude to help the feed.</source>
@@ -157,7 +161,7 @@
     </message>
     <message>
         <source>If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.</source>
-        <translation>Se l&apos;applicazione scopre di essere in due posizioni simultaneamente, verrà scelta per il tracciamento la posizione di dimensioni inferiori.</translation>
+        <translation>Se l&apos;applicazione scopre di essere in due luoghi simultaneamente, verrà scelto per il tracciamento il luogo di dimensioni inferiori.</translation>
     </message>
     <message>
         <source>Cell IDs</source>
@@ -169,11 +173,11 @@
     </message>
     <message>
         <source>The tracking stops when you are out of the cell or enter to another location.</source>
-        <translation>Il tracciamento si ferma quando esci dalla cella o entri in un&apos;altra posizione.</translation>
+        <translation>Il tracciamento si ferma quando esci dalla cella o entri in un altro luogo.</translation>
     </message>
     <message>
         <source>Perhaps you want to set a small gate area as a separate location to stop the tracking.</source>
-        <translation>Forse preferisci impostare un area di gate più piccola come posizione sparata per fermare il tracciamento.</translation>
+        <translation>Forse preferisci impostare un area di gate più piccola come luogo separato per fermare il tracciamento.</translation>
     </message>
     <message>
         <source>By setting the cell information you enable the tracking to continue until you are in the cells.</source>
@@ -181,7 +185,15 @@
     </message>
     <message>
         <source>If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.</source>
-        <translation>Se utilizzi Cell ID come fonte primaria per la posizione, il tracciamento inizia e si ferma quando sei nelle celle selezsionate.</translation>
+        <translation>Se utilizzi Cell ID come fonte primaria per la posizione, il tracciamento inizia e si ferma quando sei nelle celle selezionate.</translation>
+    </message>
+    <message>
+        <source>The fence thickness is used as a virtual aid to determine whether you are entering the location or leaving that.</source>
+        <translation>Lo spessore del recinto viene usato come aiuto virtuale per determinate se stai entrando in un luogo o lasciandolo.</translation>
+    </message>
+    <message>
+        <source>It can be used also as an extra tolerance of the area you have entered.</source>
+        <translation>Può anche essere usato come una tolleranza extra per l&apos;area in cui sei entrato.</translation>
     </message>
 </context>
 <context>
@@ -192,11 +204,11 @@
     </message>
     <message>
         <source>Set location page</source>
-        <translation>Pagina impostazioni posizione</translation>
+        <translation>Pagina impostazioni luogo</translation>
     </message>
     <message>
         <source>On this page you will see the preset locations.</source>
-        <translation>In questa pagina troverai le posizioni preimpostate.</translation>
+        <translation>In questa pagina troverai i luoghi preimpostati.</translation>
     </message>
 </context>
 <context>
@@ -207,7 +219,7 @@
     </message>
     <message>
         <source>Delete location</source>
-        <translation>Elimina posizione</translation>
+        <translation>Elimina luogo</translation>
     </message>
     <message>
         <source>Deleting</source>
@@ -223,11 +235,11 @@
     </message>
     <message>
         <source>Location</source>
-        <translation>Posizione</translation>
+        <translation>Luogo</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation>Nome posizione</translation>
+        <translation>Nome luogo</translation>
     </message>
     <message>
         <source>Work1</source>
@@ -255,14 +267,18 @@
     </message>
     <message>
         <source>Location size (m)</source>
-        <translation>Dimensione posizione (m)</translation>
+        <translation>Dimensione luogo (m)</translation>
+    </message>
+    <message>
+        <source>Fence thickness (m)</source>
+        <translation>Spessore recinto (m)</translation>
     </message>
 </context>
 <context>
     <name>SetLocation</name>
     <message>
         <source>Set location page</source>
-        <translation>Pagina impostazioni posizione</translation>
+        <translation>Pagina impostazioni luogo</translation>
     </message>
     <message>
         <source>Help</source>
@@ -270,18 +286,18 @@
     </message>
     <message>
         <source>Location</source>
-        <translation>Posizione</translation>
+        <translation>Luogo</translation>
     </message>
     <message>
         <source>Add location</source>
-        <translation>Aggiungi posizione</translation>
+        <translation>Aggiungi luogo</translation>
     </message>
 </context>
 <context>
     <name>Today</name>
     <message>
         <source>Set location</source>
-        <translation>Imposta posizione</translation>
+        <translation>Imposta luogo</translation>
     </message>
     <message>
         <source>Help</source>
@@ -297,7 +313,7 @@
     </message>
     <message>
         <source>Location now</source>
-        <translation>Posizione attuale</translation>
+        <translation>Luogo attuale</translation>
     </message>
     <message>
         <source>Today</source>
@@ -315,12 +331,36 @@
         <source>Use GPS</source>
         <translation>Usa il GPS</translation>
     </message>
+    <message>
+        <source>Set marker</source>
+        <translation>Imposta marcatore</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
         <translation>Galoppo libero</translation>
+    </message>
+    <message>
+        <source>Leaving the paddock</source>
+        <translation>Lasciando il recinto</translation>
+    </message>
+    <message>
+        <source>Entering the paddock</source>
+        <translation>Entrando nel recinto</translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
+        <translation>Marcatore manuale</translation>
+    </message>
+    <message>
+        <source>No GPS, cells info used instead</source>
+        <translation>Nessun GPS, verrano usare le informazioni sulla cella</translation>
+    </message>
+    <message>
+        <source>Pure cell info in use</source>
+        <translation>In uso solo informazioni sulla cella</translation>
     </message>
 </context>
 <context>

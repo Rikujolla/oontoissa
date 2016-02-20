@@ -66,7 +66,9 @@ Page {
                 text: {qsTr("On this page you can feed the location information: name, coordinates and tolerance.") + " "
                        + qsTr("Current location can be feeded with buttons.") + " "
                        + qsTr("You will see current latitude and longitude to help the feed.") + " "
-                       + qsTr("If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.")
+                       + qsTr("If the app finds to be in two locations simultaneously, the location with a smaller size is selected for the tracking.") + "\n"
+                    + qsTr("The fence thickness is used as a virtual aid to determine whether you are entering the location or leaving that.") + " "
+                    + qsTr("It can be used also as an extra tolerance of the area you have entered.")
                 }
             }
 

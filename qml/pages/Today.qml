@@ -47,6 +47,10 @@ Page {
                 }
             }
             MenuItem {
+                text: qsTr("Set marker")
+                onClicked: marker = true
+            }
+            MenuItem {
                 text: qsTr("Set location")
                 onClicked: pageStack.push(Qt.resolvedUrl("SetLocation.qml"))
             }
@@ -88,6 +92,17 @@ Page {
                 }
                 text: varus.inFence + ": " + varus.timeInFenceS
             }
+            Text {
+                id: statusExtra
+                color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeSmall
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: extraMsg
+            }
 
             SectionHeader { text: qsTr("Today") }
             Text {
@@ -117,22 +132,6 @@ Page {
 
             }
 
-
-            ////Functions etc
-            /*Connections {
-                target: possut
-                onPositionChanged: {
-                    bestBus.getProperties()
-                    Mydbases.checkFences();
-                    varus.timeSow();
-                    Mydbases.addTodayInfo();
-                    Mydbases.addHistoryData();
-                    status.text = varus.inFenceT + ": " + varus.timeInFenceS;
-                    todday.text = varus.whatToday;
-                    histor.text = varus.niceHistory;
-                }
-            }*/
-
             Item {
                 id: varus
                 property string inFence  //Stores the value where device is, e.g. Work, Home ..
@@ -145,7 +144,9 @@ Page {
                 property int minutesD //Used to display status minutes
                 property int secondsD //Used to display status seconds
                 property string secondsDT //Used to display status seconds in text format
-                property real tolerat: 40000000.0 // Used to order two locations in order
+                //property real tolerat: 40000000.0 // Used to order two locations in order
+                property real temp1
+                property real temp2
                 function timeSow() {
                     hoursD = (varus.timeInFence-varus.timeInFence%3600)/3600;
                     minutesD = (varus.timeInFence-varus.timeInFence%60)/60-hoursD*60;
@@ -168,6 +169,7 @@ Page {
                     //console.log(possut.position.coordinate.latitude)
                     bestBus.getProperties()
                     Mydbases.checkFences();
+                    statusExtra.text = extraMsg
                     //varus.timeSow();
                     //Mydbases.addTodayInfo();
                     //Mydbases.addHistoryData();

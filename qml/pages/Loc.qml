@@ -141,7 +141,36 @@ Page {
                     width: page.width/2
                     validator: RegExpValidator { regExp: /^\d*\.?\d*$/ }
                     color: errorHighlight? "red" : Theme.primaryColor
-                    inputMethodHints: Qt.ImhNoPredictiveText
+                    inputMethodHints: Qt.ImhDigitsOnly
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        focus = false
+                        Mydbases.updateLocation()
+                        baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
+                    }
+                }
+            }
+
+            Row {
+                x: Theme.paddingLarge
+                Text {
+                    text: qsTr("Fence thickness (m)")
+                    //visible: tempor.gpsVisible
+                    color: Theme.secondaryHighlightColor
+                    x: Theme.paddingLarge
+                    width:page.width/2
+                    wrapMode: Text.WordWrap
+                }
+
+                TextField {
+                    id: fence
+                    //visible: tempor.gpsVisible
+                    placeholderText: "50"
+                    width: page.width/2
+                    validator: RegExpValidator { regExp: /^\d*\.?\d*$/ }
+                    color: errorHighlight? "red" : Theme.primaryColor
+                    inputMethodHints: Qt.ImhDigitsOnly
                     EnterKey.enabled: !errorHighlight
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: {

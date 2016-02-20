@@ -49,6 +49,10 @@ ApplicationWindow
     property int saveDecr: 1//Decrement for saveLag
     property string gpsTxt : qsTr("Do not use GPS")
     property bool gpsTrue : true
+    property int newStatus // Saving old status
+    property int prevStatus // Saving old status
+    property string extraMsg
+    property bool marker : false // Sets the marker, either breaks the data or if not in apaddock sets marker label
 
     /*NetworkInfo { // Make multiple signals possible
         id : bestcell

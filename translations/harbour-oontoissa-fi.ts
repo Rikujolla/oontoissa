@@ -132,6 +132,10 @@
         <source>&apos;History&apos; shows the recorded info of the recent days.</source>
         <translation>&apos;Historia&apos; näyttää viimepäivien tallennetut tiedot.</translation>
     </message>
+    <message>
+        <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
+        <translation>Merkki voidaan asettaa Oontöissä-näytön vetovalikosta tai alkunäytön toimintopainikkeella.</translation>
+    </message>
 </context>
 <context>
     <name>HelpLoc</name>
@@ -182,6 +186,14 @@
     <message>
         <source>If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.</source>
         <translation>Jos käytät solutietoa ensisijaisena paikkatietona, seuranta on käynnissä, kun olet solun alueella.</translation>
+    </message>
+    <message>
+        <source>The fence thickness is used as a virtual aid to determine whether you are entering the location or leaving that.</source>
+        <translation>Aidan vahvuutta käytetään avuksi määrittämään sijaintiin saapumista tai siitä poistumista.</translation>
+    </message>
+    <message>
+        <source>It can be used also as an extra tolerance of the area you have entered.</source>
+        <translation>Sitä voidaan käyttää myös alueen mittaustoleranssin kasvattamiseen.</translation>
     </message>
 </context>
 <context>
@@ -257,6 +269,10 @@
         <source>Location size (m)</source>
         <translation>Sijainnin koko (m)</translation>
     </message>
+    <message>
+        <source>Fence thickness (m)</source>
+        <translation>Aidan vahvuus (m)</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -315,12 +331,36 @@
         <source>Use GPS</source>
         <translation>Käytä GPS:ää</translation>
     </message>
+    <message>
+        <source>Set marker</source>
+        <translation>Aseta merkki</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
         <translation>Laukkaamassa...</translation>
+    </message>
+    <message>
+        <source>Leaving the paddock</source>
+        <translation>Pois aitauksesta</translation>
+    </message>
+    <message>
+        <source>Entering the paddock</source>
+        <translation>Tulossa aitaukseen</translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
+        <translation>Merkki</translation>
+    </message>
+    <message>
+        <source>No GPS, cells info used instead</source>
+        <translation>Ei GPS-tietoa, käytetään solutietoa.</translation>
+    </message>
+    <message>
+        <source>Pure cell info in use</source>
+        <translation>Vain solutieto käytössä</translation>
     </message>
 </context>
 <context>

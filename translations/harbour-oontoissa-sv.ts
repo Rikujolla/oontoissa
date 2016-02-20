@@ -132,6 +132,10 @@
         <source>&apos;History&apos; shows the recorded info of the recent days.</source>
         <translation>&apos;Historik&apos; visar loggad info om de närmast föregående dagarna.</translation>
     </message>
+    <message>
+        <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
+        <translation>Du kan sätta en markör från vyn &apos;På jobbet&apos; eller med en miniatyråtgärd.</translation>
+    </message>
 </context>
 <context>
     <name>HelpLoc</name>
@@ -182,6 +186,14 @@
     <message>
         <source>If you use CellId as primary location source, the tracking starts and stops when you are in the cells selected.</source>
         <translation>Om du använder basstations-ID som primär platskälla, startar och stoppar spårningen när du når eller lämnar basstationens räckvidd.</translation>
+    </message>
+    <message>
+        <source>The fence thickness is used as a virtual aid to determine whether you are entering the location or leaving that.</source>
+        <translation>Stängslets tjocklek används som ett virtuellt stöd för att avgöra om du ankommer till platsen eller lämnar den.</translation>
+    </message>
+    <message>
+        <source>It can be used also as an extra tolerance of the area you have entered.</source>
+        <translation>Det kan också användas som extra tolerans för det område du ankommit.</translation>
     </message>
 </context>
 <context>
@@ -257,6 +269,10 @@
         <source>Location size (m)</source>
         <translation>Platsstorlek (m)</translation>
     </message>
+    <message>
+        <source>Fence thickness (m)</source>
+        <translation>Stängseltjocklek (m)</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -315,12 +331,36 @@
         <source>Use GPS</source>
         <translation>Använd GPS</translation>
     </message>
+    <message>
+        <source>Set marker</source>
+        <translation>Ange markör</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
     <message>
         <source>Free galloping</source>
         <translation>Fritt rörlig</translation>
+    </message>
+    <message>
+        <source>Leaving the paddock</source>
+        <translation>Lämnar inhängnaden</translation>
+    </message>
+    <message>
+        <source>Entering the paddock</source>
+        <translation>Ankommer inhägnaden</translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
+        <translation>Manuell markör</translation>
+    </message>
+    <message>
+        <source>No GPS, cells info used instead</source>
+        <translation>Ingen GPS. Basstationsinfo används istället</translation>
+    </message>
+    <message>
+        <source>Pure cell info in use</source>
+        <translation>Endast basstationsinfo används</translation>
     </message>
 </context>
 <context>

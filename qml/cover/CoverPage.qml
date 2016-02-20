@@ -66,18 +66,21 @@ CoverBackground {
     }
 
 
-    /*CoverActionList {
+    CoverActionList {
         id: coverAction
 
-        CoverAction {
+        /*CoverAction {
             iconSource: "image://theme/icon-cover-next"
-        }
+        }*/
 
         CoverAction {
             iconSource: "image://theme/icon-cover-pause"
             //Set here a manual marker Also lock screen button??
+            onTriggered: {
+                marker = true
+            }
         }
-    }*/
+    }
 }
 
 
