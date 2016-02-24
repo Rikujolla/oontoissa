@@ -362,6 +362,10 @@
         <source>Pure cell info in use</source>
         <translation>Endast basstationsinfo används</translation>
     </message>
+    <message>
+        <source>Validating the location info</source>
+        <translation>Validerar platsinformationen</translation>
+    </message>
 </context>
 <context>
     <name>harbour-oontoissa</name>

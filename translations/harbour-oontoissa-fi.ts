@@ -362,6 +362,10 @@
         <source>Pure cell info in use</source>
         <translation>Vain solutieto käytössä</translation>
     </message>
+    <message>
+        <source>Validating the location info</source>
+        <translation>Tarkistetaan sijaintitietoa</translation>
+    </message>
 </context>
 <context>
     <name>harbour-oontoissa</name>

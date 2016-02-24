@@ -362,6 +362,10 @@
         <source>Pure cell info in use</source>
         <translation>In uso solo informazioni sulla cella</translation>
     </message>
+    <message>
+        <source>Validating the location info</source>
+        <translation>Verifico le informazioni posizione</translation>
+    </message>
 </context>
 <context>
     <name>harbour-oontoissa</name>

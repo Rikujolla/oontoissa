@@ -362,6 +362,10 @@
         <source>Pure cell info in use</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Validating the location info</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>harbour-oontoissa</name>

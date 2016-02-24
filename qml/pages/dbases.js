@@ -355,7 +355,12 @@ function addTodayInfo() {
                     // First selecting the most recent value saved to database
                     var evid = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) ORDER BY theday DESC LIMIT 1', ['now', 'localtime'])
                     // Recording the first value of the day
-                    if (evid.rows.length == 0 || marker == true) {
+                    if (saveLag >0) {
+                        saveLag = saveLag -saveDecr
+                        newStatus = 7
+                        extraMsg = qsTr("Validating the location info")
+                    }
+                    else if (evid.rows.length == 0 || marker == true) {
                         if (varus.inFence == "Not in a paddock" && marker == true) {varus.inFence = qsTr("Manual marker")}
                         tx.executeSql('INSERT INTO Today VALUES(datetime(?,?), ?, time(?,?), time(?,?), time(?,?))', [ 'now', 'localtime', varus.inFence, 'now', 'localtime', 'now', 'localtime', 'now', 'localtime' ]);
                         //if (varus.inFence == "Not in a paddock" ){saveLag = 0} else {saveLag = 30}
@@ -385,7 +390,7 @@ function addTodayInfo() {
                     // Show all values
                     var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
                     evied = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
-                    if (newStatus == 5){
+                    if (newStatus == 5 || newStatus == 7){
                         varus.timeInFence = evied.rows.item(0).rest
                     }
                     else {
