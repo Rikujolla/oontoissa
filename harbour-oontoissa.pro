@@ -30,7 +30,9 @@ OTHER_FILES += qml/harbour-oontoissa.qml \
     qml/pages/Loc.qml \
     qml/pages/HelpLoc.qml \
     qml/pages/HelpSetLoc.qml \
-    qml/pages/Del.qml
+    qml/pages/Del.qml \
+    qml/pages/HelpEdit.qml \
+    qml/pages/EditData.qml
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
@@ -52,4 +54,3 @@ TRANSLATIONS += translations/harbour-oontoissa-fi.ts \
 
 DISTFILES += \
     rpm/harbour-oontoissa.changes
-

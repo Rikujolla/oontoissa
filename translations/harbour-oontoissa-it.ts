@@ -103,6 +103,29 @@
     </message>
 </context>
 <context>
+    <name>EditData</name>
+    <message>
+        <source>Select a date</source>
+        <translation>Scegli una data</translation>
+    </message>
+    <message>
+        <source>Selected date</source>
+        <translation>Data selezionata</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>Aiuto</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation>Modifica pagina date</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Elimina</translation>
+    </message>
+</context>
+<context>
     <name>Help</name>
     <message>
         <source>Help page</source>
@@ -135,6 +158,21 @@
     <message>
         <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
         <translation>Puoi impostare un marcatore dalla pagina &apos;Ar work&apos; o dalla cover.</translation>
+    </message>
+</context>
+<context>
+    <name>HelpEdit</name>
+    <message>
+        <source>Help</source>
+        <translation>Aiuto</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation>Modifica pagina dati</translation>
+    </message>
+    <message>
+        <source>On this page you may delete records.</source>
+        <translation>In questa pagina potrai cancellare le registrazioni.</translation>
     </message>
 </context>
 <context>
@@ -334,6 +372,10 @@
     <message>
         <source>Set marker</source>
         <translation>Imposta marcatore</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation>Modifica dati</translation>
     </message>
 </context>
 <context>

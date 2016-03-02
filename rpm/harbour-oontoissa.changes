@@ -5,6 +5,10 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Wed Mar 02 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1.5-1
+- Bug fix for only cell based tracking
+- Minor editing of the data possible by removing a record
+
 * Wed Feb 24 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1.4-1
 - Changed logic on location border from time based to location based
 - Added manual marker

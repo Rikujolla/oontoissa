@@ -103,6 +103,29 @@
     </message>
 </context>
 <context>
+    <name>EditData</name>
+    <message>
+        <source>Select a date</source>
+        <translation>Choisissez une date</translation>
+    </message>
+    <message>
+        <source>Selected date</source>
+        <translation>Date choisie</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>Aide</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation>Modifier la page des données</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Supprimer</translation>
+    </message>
+</context>
+<context>
     <name>Help</name>
     <message>
         <source>Help page</source>
@@ -135,6 +158,21 @@
     <message>
         <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
         <translation>Vous pouvez définir un jalon à partir de la vue &quot;Aujourd&apos;hui&quot; ou depuis une action de couverture.</translation>
+    </message>
+</context>
+<context>
+    <name>HelpEdit</name>
+    <message>
+        <source>Help</source>
+        <translation>Aide</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation>Modifier la page des données</translation>
+    </message>
+    <message>
+        <source>On this page you may delete records.</source>
+        <translation>Vous pouvez supprimer des enregistrements sur cette page.</translation>
     </message>
 </context>
 <context>
@@ -335,6 +373,10 @@
         <source>Set marker</source>
         <translation>Définir le jalon</translation>
     </message>
+    <message>
+        <source>Edit data</source>
+        <translation>Modifier les données</translation>
+    </message>
 </context>
 <context>
     <name>dbases</name>
@@ -364,7 +406,7 @@
     </message>
     <message>
         <source>Validating the location info</source>
-        <translation type="unfinished"></translation>
+        <translation>Validation de l&apos;info de positionnement</translation>
     </message>
 </context>
 <context>

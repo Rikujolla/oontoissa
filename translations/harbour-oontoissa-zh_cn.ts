@@ -103,6 +103,29 @@
     </message>
 </context>
 <context>
+    <name>EditData</name>
+    <message>
+        <source>Select a date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">帮助</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">删除</translation>
+    </message>
+</context>
+<context>
     <name>Help</name>
     <message>
         <source>Help page</source>
@@ -134,6 +157,21 @@
     </message>
     <message>
         <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HelpEdit</name>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">帮助</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On this page you may delete records.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -204,11 +242,11 @@
     </message>
     <message>
         <source>Set location page</source>
-        <translation>设置位置页面</translation>
+        <translation type="unfinished">设置位置页面</translation>
     </message>
     <message>
         <source>On this page you will see the preset locations.</source>
-        <translation>在这个页面，你会看到预设位置。</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -333,6 +371,10 @@
     </message>
     <message>
         <source>Set marker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

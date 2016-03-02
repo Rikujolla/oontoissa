@@ -103,6 +103,29 @@
     </message>
 </context>
 <context>
+    <name>EditData</name>
+    <message>
+        <source>Select a date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Помощь</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Удалить</translation>
+    </message>
+</context>
+<context>
     <name>Help</name>
     <message>
         <source>Help page</source>
@@ -134,6 +157,21 @@
     </message>
     <message>
         <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HelpEdit</name>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Помощь</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On this page you may delete records.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -333,6 +371,10 @@
     </message>
     <message>
         <source>Set marker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

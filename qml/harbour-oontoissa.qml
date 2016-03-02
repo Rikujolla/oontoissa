@@ -1,4 +1,4 @@
-/*Copyright (c) 2015, Riku Lahtinen
+/*Copyright (c) 2015-2016, Riku Lahtinen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ ApplicationWindow
     property bool updateL : true //
     property int currentCell //saves current cell number globally
     property real fenceThickness : 50.0 //Utilized ec to stop cell facilitated tracking
-    property int saveLag : 30 // Used to postpone saving the values in unstable conditions
+    property int saveLag : 50 // Used to postpone saving the values in unstable conditions
     property int saveDecr: 1//Decrement for saveLag
     property string gpsTxt : qsTr("Do not use GPS")
     property bool gpsTrue : true

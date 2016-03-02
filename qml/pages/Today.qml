@@ -47,6 +47,10 @@ Page {
                 }
             }
             MenuItem {
+                text: qsTr("Edit data")
+                onClicked: pageStack.push(Qt.resolvedUrl("EditData.qml"))
+            }
+            MenuItem {
                 text: qsTr("Set marker")
                 onClicked: marker = true
             }
@@ -138,8 +142,8 @@ Page {
                 property string inFenceT  //Stores the value where device is, e.g. Work, Home ..
                 property string timeInFence //Stores the time in fence in seconds
                 property string timeInFenceS //Stores the time in fence String
-                property string whatToday: "Invent something"
-                property string niceHistory: "The whole history"
+                property string whatToday: ""
+                property string niceHistory: ""
                 property int hoursD //used to display status hours
                 property int minutesD //Used to display status minutes
                 property int secondsD //Used to display status seconds

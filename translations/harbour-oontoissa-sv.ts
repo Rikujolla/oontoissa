@@ -103,6 +103,29 @@
     </message>
 </context>
 <context>
+    <name>EditData</name>
+    <message>
+        <source>Select a date</source>
+        <translation>Välj ett datum</translation>
+    </message>
+    <message>
+        <source>Selected date</source>
+        <translation>Valt datum</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>Hjälp</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation>Redigera data</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Ta bort</translation>
+    </message>
+</context>
+<context>
     <name>Help</name>
     <message>
         <source>Help page</source>
@@ -135,6 +158,21 @@
     <message>
         <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
         <translation>Du kan sätta en markör från vyn &apos;På jobbet&apos; eller med en miniatyråtgärd.</translation>
+    </message>
+</context>
+<context>
+    <name>HelpEdit</name>
+    <message>
+        <source>Help</source>
+        <translation>Hjälp</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation>Redigera data</translation>
+    </message>
+    <message>
+        <source>On this page you may delete records.</source>
+        <translation>Här kan du radera poster.</translation>
     </message>
 </context>
 <context>
@@ -334,6 +372,10 @@
     <message>
         <source>Set marker</source>
         <translation>Ange markör</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation>Redigera data</translation>
     </message>
 </context>
 <context>

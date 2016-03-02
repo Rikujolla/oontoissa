@@ -103,6 +103,29 @@
     </message>
 </context>
 <context>
+    <name>EditData</name>
+    <message>
+        <source>Select a date</source>
+        <translation>Valitse pvm</translation>
+    </message>
+    <message>
+        <source>Selected date</source>
+        <translation>Valittu pvm</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>Ohje</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation>Tietojen korjaussivu</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+</context>
+<context>
     <name>Help</name>
     <message>
         <source>Help page</source>
@@ -135,6 +158,21 @@
     <message>
         <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
         <translation>Merkki voidaan asettaa Oontöissä-näytön vetovalikosta tai alkunäytön toimintopainikkeella.</translation>
+    </message>
+</context>
+<context>
+    <name>HelpEdit</name>
+    <message>
+        <source>Help</source>
+        <translation>Ohje</translation>
+    </message>
+    <message>
+        <source>Edit data page</source>
+        <translation>Tietojen korjaussivu</translation>
+    </message>
+    <message>
+        <source>On this page you may delete records.</source>
+        <translation>Tällä sivulla voit poistaa talletettuja tietueita.</translation>
     </message>
 </context>
 <context>
@@ -334,6 +372,10 @@
     <message>
         <source>Set marker</source>
         <translation>Aseta merkki</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation>Korjaa tietoja</translation>
     </message>
 </context>
 <context>

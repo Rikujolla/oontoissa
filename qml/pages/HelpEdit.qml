@@ -1,4 +1,4 @@
-/*Copyright (c) 2015-2016, Riku Lahtinen
+/*Copyright (c) 2015, Riku Lahtinen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ Page {
                 title: qsTr("Help")
             }
 
-            SectionHeader { text: qsTr("Set location page") }
+            SectionHeader { text: qsTr("Edit data page") }
             Text {
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.primaryColor
@@ -63,7 +63,7 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("On this page you will see the preset locations.")
+                text: {qsTr("On this page you may delete records.")
                 }
             }
 
