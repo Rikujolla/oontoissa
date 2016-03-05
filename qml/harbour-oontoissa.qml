@@ -61,7 +61,7 @@ ApplicationWindow
     PositionSource {
         id: possut
         updateInterval: Qt.ApplicationActive ? rateAct : ratePass
-        active: gpsTrue
+        active: gpsTrue && Qt.ApplicationActive
     }
 
     DBusInterface {

@@ -105,10 +105,6 @@
 <context>
     <name>EditData</name>
     <message>
-        <source>Select a date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Selected date</source>
         <translation type="unfinished"></translation>
     </message>
@@ -122,6 +118,30 @@
     </message>
     <message>
         <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extend up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select a date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extending up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extend down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extending down</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -171,7 +191,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>On this page you may delete records.</source>
+        <source>On this page you may delete records or fill possible gaps in data by extending the records to the adjacent records.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -393,10 +413,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Manual marker</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>No GPS, cells info used instead</source>
         <translation type="unfinished"></translation>
     </message>
@@ -406,6 +422,10 @@
     </message>
     <message>
         <source>Validating the location info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

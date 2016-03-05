@@ -63,7 +63,7 @@ Page {
                     right: parent.right
                     margins: Theme.paddingLarge
                 }
-                text: {qsTr("On this page you may delete records.")
+                text: {qsTr("On this page you may delete records or fill possible gaps in data by extending the records to the adjacent records.")
                 }
             }
 

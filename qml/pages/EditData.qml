@@ -40,10 +40,16 @@ Page {
             MenuItem {
                 id: button
                 property string selectedDate
-                property date tiikro;
-                property bool tiikro_done : false
+                //property date tiikro;
+                //property bool tiikro_done : false
+                function dateFormat() {
+                    var tempo = new Date()
+                    selectedDate = tempo.getFullYear() + "-"
+                            + ((tempo.getMonth()+1) < 10 ? ("0" + (tempo.getMonth()+1)) : (tempo.getMonth()+1)) + "-"
+                            + (tempo.getDate() < 10 ? ("0"+ tempo.getDate()) : tempo.getDate())
+                    labeli.text = qsTr("Selected date") + ": " + button.selectedDate
+                }
                 text: qsTr("Select a date")
-
                 onClicked: {
                     var dialog = pageStack.push(pickerComponent, {
                                                     date: new Date() // Selects current date
@@ -51,8 +57,8 @@ Page {
                                                 })
                     dialog.accepted.connect(function() {
                         labeli.text = qsTr("Selected date") + ": " + dialog.dateText;
-                        button.tiikro = dialog.date;
-                        button.tiikro_done = true;
+                       // button.tiikro = dialog.date;
+                       // button.tiikro_done = true;
                         selectedDate = dialog.date.getFullYear() + "-"
                                 + ((dialog.date.getMonth()+1) < 10 ? ("0" + (dialog.date.getMonth()+1)) : (dialog.date.getMonth()+1)) + "-"
                                 + (dialog.date.getDate() < 10 ? ("0"+ dialog.date.getDate()) : dialog.date.getDate())
@@ -68,7 +74,7 @@ Page {
             }
             MenuLabel {
                 id: labeli
-                text: qsTr("Selected date") +": "
+                //text: qsTr("Selected date") + ": " + button.selectedDate
             }
 
         }
@@ -90,30 +96,56 @@ Page {
             //color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             menu: ContextMenu {
                 id:listosMenu
-                /*MenuItem {
-                        text: "Join up"
-                    }*/
+                MenuItem {
+                        text: qsTr("Extend up")
+                        onClicked: {dayValues.indexEdit=index;
+                            remorseExtendUp.execute(qsTr("Extending up"), console.log("remorse") , 3000 )
+                            //Mydbases.extendUpRecord();
+                            //editDataUpdate.start();
+                        }
+                        RemorsePopup { id: remorseExtendUp
+                            onTriggered: {
+                                Mydbases.extendUpRecord();
+                                editDataUpdate.start();
+                            }
+                        }
+                    }
                 MenuItem {
                     text: qsTr("Delete")
                     onClicked: {dayValues.indexEdit=index;
-                        Mydbases.deleteRecord();
-                        editDataUpdate.start();
+                        remorseDel.execute(qsTr("Deleting"), console.log("remorse") , 3000 )
+                        //Mydbases.deleteRecord();
+                        //editDataUpdate.start();
+                    }
+                    RemorsePopup { id: remorseDel
+                        onTriggered: {
+                            Mydbases.deleteRecord();
+                            editDataUpdate.start();
+                        }
                     }
                 }
-                /*MenuItem {
-                        text: "Join down"
+                MenuItem {
+                        text: qsTr("Extend down")
                         onClicked: {dayValues.indexEdit=index;
-                            console.log(dayValues.indexEdit)
+                            remorseExtendDown.execute(qsTr("Extending down"), console.log("remorse") , 3000 )
                         }
-                    }*/
+                        RemorsePopup { id: remorseExtendDown
+                            onTriggered: {
+                                Mydbases.extendDownRecord();
+                                editDataUpdate.start();
+                            }
+                        }
+                    }
             }
 
         }
+
+
         VerticalScrollDecorator {}
 
-        Component.onCompleted: {
+        /*Component.onCompleted: {
             Mydbases.editInfo()
-        }
+        }*/
 
         ListModel {
             id: dayValues
@@ -122,7 +154,7 @@ Page {
                 pla: "place"
                 starttime: ""
                 endtime: ""
-
+                subtotal: ""
             }
         }
 
@@ -141,7 +173,9 @@ Page {
 
     }
 
-
+    Component.onCompleted:{button.dateFormat()
+        Mydbases.editInfo()
+    }
 }
 
 

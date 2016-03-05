@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fi_FI">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi_FI" version="2.1">
 <context>
     <name>About</name>
     <message>
@@ -105,10 +103,6 @@
 <context>
     <name>EditData</name>
     <message>
-        <source>Select a date</source>
-        <translation>Valitse pvm</translation>
-    </message>
-    <message>
         <source>Selected date</source>
         <translation>Valittu pvm</translation>
     </message>
@@ -123,6 +117,30 @@
     <message>
         <source>Delete</source>
         <translation>Poista</translation>
+    </message>
+    <message>
+        <source>Extend up</source>
+        <translation>Laajenna ylempään</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Poistetaan</translation>
+    </message>
+    <message>
+        <source>Select a date</source>
+        <translation>Valitse pvm</translation>
+    </message>
+    <message>
+        <source>Extending up</source>
+        <translation>Laajennetaan ylös</translation>
+    </message>
+    <message>
+        <source>Extend down</source>
+        <translation>Laajenna alempaan</translation>
+    </message>
+    <message>
+        <source>Extending down</source>
+        <translation>Laajennetaan alas</translation>
     </message>
 </context>
 <context>
@@ -171,8 +189,8 @@
         <translation>Tietojen korjaussivu</translation>
     </message>
     <message>
-        <source>On this page you may delete records.</source>
-        <translation>Tällä sivulla voit poistaa talletettuja tietueita.</translation>
+        <source>On this page you may delete records or fill possible gaps in data by extending the records to the adjacent records.</source>
+        <translation>Tällä sivulla voit poistaa tietueita tai täyttää mahdollisia aukkoja datassa laajentamalla tietueita lähimpiin tietueisiin.</translation>
     </message>
 </context>
 <context>
@@ -393,10 +411,6 @@
         <translation>Tulossa aitaukseen</translation>
     </message>
     <message>
-        <source>Manual marker</source>
-        <translation>Merkki</translation>
-    </message>
-    <message>
         <source>No GPS, cells info used instead</source>
         <translation>Ei GPS-tietoa, käytetään solutietoa.</translation>
     </message>
@@ -407,6 +421,10 @@
     <message>
         <source>Validating the location info</source>
         <translation>Tarkistetaan sijaintitietoa</translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
+        <translation>Merkki</translation>
     </message>
 </context>
 <context>

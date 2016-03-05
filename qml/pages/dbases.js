@@ -281,6 +281,10 @@ function checkFences() {
                         }
                         else if ((ddist < (rs.rows.item(i).tolerlong + rs.rows.item(i).tolerlong))) {
                             if (prevStatus == 2 || prevStatus == 3 || prevStatus == 4 || prevStatus == 5){
+                                varus.inFenceT = rs.rows.item(i).theplace;
+                                varus.inFence = rs.rows.item(i).theplace;
+                                covLoc = varus.inFenceT;
+                                //tolerat = rs.rows.item(i).tolerlong;
                                 newStatus=5
                                 extraMsg = qsTr("Leaving the paddock")
                                 //if (newStatus != prevStatus) {console.log("Leaving the paddock", newStatus, ddist)}
@@ -319,27 +323,20 @@ function checkFences() {
                         //First selecting locations from biggest to smallest
                         //rs = tx.executeSql('SELECT * FROM Locations ORDER BY tolerlong DESC');
                         rs = tx.executeSql('SELECT * FROM Locations INNER JOIN Priorities ON Locations.theplace = Priorities.theplace INNER JOIN Cellinfo ON Priorities.theplace = Cellinfo.theplace WHERE Priorities.cell = ? AND Cellinfo.thecelli = ? ORDER BY tolerlong ASC LIMIT 1', ['1',currentCell]);
-                        //console.log("phase1")
                         //rt = tx.executeSql('SELECT * FROM Priorities WHERE theplace = ?', neimi.text);
                         //for(i = 0; i < rs.rows.length; i++) {
-                            //console.log("phase2", rs.rows.item(i).theplace)
-                            //Selecting
-                            //rt = tx.executeSql('SELECT cell FROM Priorities WHERE theplace = ?', rs.rows.item(i).theplace);
-                            //taking any accepted cell from the list. Thinkin priorities later, (smallest or largest?? size)
-                            //if (rt.rows.length > 0) {
-                                if (rs.rows.length > 0) {
-                                //console.log("phase3", rs.rows.item(0).theplace)
-                                varus.inFence = rs.rows.item(0).theplace;
-                                varus.inFenceT = varus.inFence;
-                                covLoc = varus.inFenceT;
-                                tolerat = rs.rows.item(0).tolerlong;
-                                newStatus = 6;
-                                extraMsg = qsTr("Pure cell info in use")
-                                //if (newStatus != prevStatus) {console.log("Pure cell info", newStatus)}
-                            }
+                        //rt = tx.executeSql('SELECT cell FROM Priorities WHERE theplace = ?', rs.rows.item(i).theplace);
+                        //if (rt.rows.length > 0) {
+                        if (rs.rows.length > 0) {
+                            //console.log("phase3", rs.rows.item(0).theplace)
+                            varus.inFence = rs.rows.item(0).theplace;
+                            varus.inFenceT = varus.inFence;
+                            covLoc = varus.inFenceT;
+                            tolerat = rs.rows.item(0).tolerlong;
+                            newStatus = 6;
+                            extraMsg = qsTr("Pure cell info in use")
+                        }
                         //}
-
-
                     }
                 }
                 )
@@ -377,14 +374,15 @@ function addTodayInfo() {
                     // Updating existing record
                     else if (evid.rows.item(0).thestatus == varus.inFence){
                         // If leaving the location, not saving the info
-                        if (varus.inFence == "Not in a paddock" && newStatus == 5 ){
+                        if (newStatus == 5){
+                            //if (varus.inFence == "Not in a paddock" && newStatus == 5 ){
                             prevStatus = newStatus}
                         // Updating the existing record
                         else {
                             var evied = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
                             tx.executeSql('UPDATE Today SET endtime=time(?, ?) WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', ['now', 'localtime']);
-                            var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
-                            var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
+                            //var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
+                            //var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
                             tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', [evied.rows.item(0).rest]);
                             prevStatus = newStatus;
                         }
@@ -464,19 +462,21 @@ function editInfo() {
                 function(tx) {
                     // Create the database if it doesn't already exist
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
-                    if (button.tiikro_done){
-                        var rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = ? AND thestatus NOT IN (?)', [button.selectedDate, 'Not in a paddock']);
+                    var rs = tx.executeSql('DELETE FROM Today WHERE thestatus = ?', ['Not in a paddock']);
+                    //if (button.tiikro_done){
+                        rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = ? AND thestatus NOT IN (?)', [button.selectedDate, 'Not in a paddock']);
                         //console.log(rs.rows.item(0).theday)
-                    }
-                    else {
-                        rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) AND thestatus NOT IN (?)', ['now', 'localtime', 'Not in a paddock']);
+                   // }
+                    //else {
+                        //rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) AND thestatus NOT IN (?)', ['now', 'localtime', 'Not in a paddock']);
                         //console.log("not date")
-                    }
+                   // }
                     //var r = ""
                     for(var i = 0; i < rs.rows.length; i++) {
                         dayValues.set((i),{"starttime": rs.rows.item(i).starttime});
                         dayValues.set((i),{"endtime": rs.rows.item(i).endtime});
                         dayValues.set((i),{"pla": rs.rows.item(i).thestatus});
+                        dayValues.set((i),{"subtotal": rs.rows.item(i).subtotal});
                     }
 
                 }
@@ -491,26 +491,69 @@ function deleteRecord() {
                 function(tx) {
                     // Create the database if it doesn't already exist
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
-                    if (button.tiikro_done){
-                    var rs = tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)]);
-                    }
-                    else{
-                        rs = tx.executeSql('DELETE FROM Today WHERE date(theday) = date(?,?) AND thestatus = ? AND starttime = ?', ['now', 'localtime', (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)]);
-                    }
-                    //var r = ""
-                    /*for(var i = 0; i < rs.rows.length; i++) {
-                        //r += rs.rows.item(i).starttime + " - " + rs.rows.item(i).endtime + ", " + rs.rows.item(i).thestatus +"\n"
-                        dayValues.set((i),{"starttime": rs.rows.item(i).starttime});
-                        dayValues.set((i),{"endtime": rs.rows.item(i).endtime});
-                        dayValues.set((i),{"pla": rs.rows.item(i).thestatus});
-                        //rs.rows.item(i).starttime + " - " + rs.rows.item(i).endtime + ", " + rs.rows.item(i).thestatus +"\n"
-
-
-                    }*/
-                    //dayValues.clear();
-                    //editDataUpdate.start();
-
+                    tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)]);
                 }
+                )
+}
 
+function extendUpRecord() {
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    var dfmt1 = new Date()
+                    var dfmt2 = new Date()
+                    if (dayValues.indexEdit == 0) {} //The first record cannot be extended up
+                    // Join adjacent records of the same location
+                    else if(dayValues.get(dayValues.indexEdit-1).pla == dayValues.get(dayValues.indexEdit).pla) {
+                        dfmt1 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit).endtime)
+                        dfmt2 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit-1).starttime)
+                        var rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
+                        console.log(rs.rows.item(0).tulos)
+                        tx.executeSql('UPDATE Today SET starttime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [(dayValues.get(dayValues.indexEdit-1).starttime), rs.rows.item(0).tulos, button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)] );
+                        tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND endtime = ?', [button.selectedDate, (dayValues.get(dayValues.indexEdit-1).pla), (dayValues.get(dayValues.indexEdit-1).endtime)]);
+                    }
+                    // Filling gap to adjacent record
+                    else {
+                        dfmt1 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit).endtime)
+                        dfmt2 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit-1).endtime)
+                        rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
+                        console.log(rs.rows.item(0).tulos)
+                        tx.executeSql('UPDATE Today SET starttime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [dayValues.get(dayValues.indexEdit-1).endtime, rs.rows.item(0).tulos, button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)] );
+                    }
+                }
+                )
+}
+
+function extendDownRecord() {
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    var dfmt1 = new Date()
+                    var dfmt2 = new Date()
+                    if (dayValues.indexEdit == dayValues.count-1) {console.log("laST LINE")} //The LAST record cannot be extended DOWN
+                    // Join adjacent records of the same location
+                    else if(dayValues.get(dayValues.indexEdit+1).pla == dayValues.get(dayValues.indexEdit).pla) {
+                        dfmt1 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit+1).endtime)
+                        dfmt2 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit).starttime)
+                        var rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
+                        console.log(rs.rows.item(0).tulos)
+                        tx.executeSql('UPDATE Today SET endtime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [(dayValues.get(dayValues.indexEdit+1).endtime), rs.rows.item(0).tulos, button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)] );
+                        tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [button.selectedDate, (dayValues.get(dayValues.indexEdit+1).pla), (dayValues.get(dayValues.indexEdit+1).starttime)]);
+                    }
+                    // Filling gap to adjacent record
+                    else {
+                        dfmt1 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit+1).starttime)
+                        dfmt2 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit).starttime)
+                        rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
+                        console.log(rs.rows.item(0).tulos)
+                        tx.executeSql('UPDATE Today SET endtime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [dayValues.get(dayValues.indexEdit+1).starttime, rs.rows.item(0).tulos, button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)] );
+                    }
+                }
                 )
 }
