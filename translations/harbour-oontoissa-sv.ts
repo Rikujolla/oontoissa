@@ -105,10 +105,6 @@
 <context>
     <name>EditData</name>
     <message>
-        <source>Select a date</source>
-        <translation>Välj ett datum</translation>
-    </message>
-    <message>
         <source>Selected date</source>
         <translation>Valt datum</translation>
     </message>
@@ -123,6 +119,30 @@
     <message>
         <source>Delete</source>
         <translation>Ta bort</translation>
+    </message>
+    <message>
+        <source>Extend up</source>
+        <translation>Utvidga uppåt</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Tar bort</translation>
+    </message>
+    <message>
+        <source>Select a date</source>
+        <translation>Välj ett datum</translation>
+    </message>
+    <message>
+        <source>Extending up</source>
+        <translation>Utökar uppåt</translation>
+    </message>
+    <message>
+        <source>Extend down</source>
+        <translation>Utöka neråt</translation>
+    </message>
+    <message>
+        <source>Extending down</source>
+        <translation>Utökar neråt</translation>
     </message>
 </context>
 <context>
@@ -171,8 +191,8 @@
         <translation>Redigera data</translation>
     </message>
     <message>
-        <source>On this page you may delete records.</source>
-        <translation>Här kan du radera poster.</translation>
+        <source>On this page you may delete records or fill possible gaps in data by extending the records to the adjacent records.</source>
+        <translation>På denna sida kan du radera poster eller fylla eventuella luckor i data genom att utvidga poster till angränsande poster.</translation>
     </message>
 </context>
 <context>
@@ -393,10 +413,6 @@
         <translation>Ankommer inhägnaden</translation>
     </message>
     <message>
-        <source>Manual marker</source>
-        <translation>Manuell markör</translation>
-    </message>
-    <message>
         <source>No GPS, cells info used instead</source>
         <translation>Ingen GPS. Basstationsinfo används istället</translation>
     </message>
@@ -407,6 +423,10 @@
     <message>
         <source>Validating the location info</source>
         <translation>Validerar platsinformationen</translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
+        <translation>Manuell markör</translation>
     </message>
 </context>
 <context>

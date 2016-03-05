@@ -1,4 +1,4 @@
-/*Copyright (c) 2015, Riku Lahtinen
+/*Copyright (c) 2015-2016, Riku Lahtinen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -48,10 +48,6 @@ Page {
             MenuItem {
                 text: qsTr("Help")
                 onClicked: pageStack.push(Qt.resolvedUrl("Help.qml"))
-            }
-            MenuItem {
-                text: qsTr("About")
-                onClicked: pageStack.push(Qt.resolvedUrl("About.qml"))
             }
         }*/
 
