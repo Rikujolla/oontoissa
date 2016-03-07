@@ -105,10 +105,6 @@
 <context>
     <name>EditData</name>
     <message>
-        <source>Select a date</source>
-        <translation>Choisissez une date</translation>
-    </message>
-    <message>
         <source>Selected date</source>
         <translation>Date choisie</translation>
     </message>
@@ -123,6 +119,30 @@
     <message>
         <source>Delete</source>
         <translation>Supprimer</translation>
+    </message>
+    <message>
+        <source>Extend up</source>
+        <translation>Etendre en haut</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Suppression</translation>
+    </message>
+    <message>
+        <source>Select a date</source>
+        <translation>Choisissez une date</translation>
+    </message>
+    <message>
+        <source>Extending up</source>
+        <translation>Extension en haut</translation>
+    </message>
+    <message>
+        <source>Extend down</source>
+        <translation>Etendre en bas</translation>
+    </message>
+    <message>
+        <source>Extending down</source>
+        <translation>Extension en bas</translation>
     </message>
 </context>
 <context>
@@ -171,8 +191,8 @@
         <translation>Modifier la page des données</translation>
     </message>
     <message>
-        <source>On this page you may delete records.</source>
-        <translation>Vous pouvez supprimer des enregistrements sur cette page.</translation>
+        <source>On this page you may delete records or fill possible gaps in data by extending the records to the adjacent records.</source>
+        <translation>Sur cette page, vous pouvez supprimer des enregistrements ou compléter des données manquantes en étendant les enregistrements vers ceux qui sont adjacents.</translation>
     </message>
 </context>
 <context>
@@ -393,10 +413,6 @@
         <translation>Entrant dans le paddock</translation>
     </message>
     <message>
-        <source>Manual marker</source>
-        <translation>Jalon manuel</translation>
-    </message>
-    <message>
         <source>No GPS, cells info used instead</source>
         <translation>Pas de GPS, l&apos;info provient des cellules</translation>
     </message>
@@ -407,6 +423,10 @@
     <message>
         <source>Validating the location info</source>
         <translation>Validation de l&apos;info de positionnement</translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
+        <translation>Jalon manuel</translation>
     </message>
 </context>
 <context>

@@ -277,7 +277,6 @@ function checkFences() {
                             tolerat = rs.rows.item(i).tolerlong;
                             newStatus = 2
                             extraMsg = ""
-                            //if (newStatus != prevStatus) {console.log("In the paddock", newStatus, ddist)}
                         }
                         else if ((ddist < (rs.rows.item(i).tolerlong + rs.rows.item(i).tolerlong))) {
                             if (prevStatus == 2 || prevStatus == 3 || prevStatus == 4 || prevStatus == 5){
@@ -287,12 +286,10 @@ function checkFences() {
                                 //tolerat = rs.rows.item(i).tolerlong;
                                 newStatus=5
                                 extraMsg = qsTr("Leaving the paddock")
-                                //if (newStatus != prevStatus) {console.log("Leaving the paddock", newStatus, ddist)}
                             }
                             else {
                                 newStatus=1
                                 extraMsg = qsTr("Entering the paddock")
-                                //if (newStatus != prevStatus) {console.log("Entering the paddock", newStatus, ddist)}
                             }
                             // 2 in GPS, 3 in Cellsupported gps, 4 wifi, 5 leaving area, 6 pure cell
                         }
@@ -305,7 +302,6 @@ function checkFences() {
                         if (rt.rows.length >0) {
                             rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ? AND thecelli = ?', [rt.rows.item(0).thestatus, currentCell]);
                             if (rs.rows.length > 0) {
-                                //console.log("last insertred", rt.rows.item(0).thestatus, rt.rows.length, currentCell)
                                 rs = tx.executeSql('SELECT * FROM Locations WHERE theplace = ?', rt.rows.item(0).thestatus);
                                 varus.inFence = rs.rows.item(0).theplace;
                                 varus.inFenceT = varus.inFence;
@@ -313,7 +309,6 @@ function checkFences() {
                                 tolerat = rs.rows.item(0).tolerlong;
                                 newStatus = 3;
                                 extraMsg = qsTr("No GPS, cells info used instead")
-                                //if (newStatus != prevStatus) {console.log("Work without GPS", newStatus, ddist)}
                             }
                         }
                     }
@@ -321,14 +316,8 @@ function checkFences() {
                     /// This clause sets the location with pure cell info
                     if (varus.inFence == "Not in a paddock") {
                         //First selecting locations from biggest to smallest
-                        //rs = tx.executeSql('SELECT * FROM Locations ORDER BY tolerlong DESC');
                         rs = tx.executeSql('SELECT * FROM Locations INNER JOIN Priorities ON Locations.theplace = Priorities.theplace INNER JOIN Cellinfo ON Priorities.theplace = Cellinfo.theplace WHERE Priorities.cell = ? AND Cellinfo.thecelli = ? ORDER BY tolerlong ASC LIMIT 1', ['1',currentCell]);
-                        //rt = tx.executeSql('SELECT * FROM Priorities WHERE theplace = ?', neimi.text);
-                        //for(i = 0; i < rs.rows.length; i++) {
-                        //rt = tx.executeSql('SELECT cell FROM Priorities WHERE theplace = ?', rs.rows.item(i).theplace);
-                        //if (rt.rows.length > 0) {
                         if (rs.rows.length > 0) {
-                            //console.log("phase3", rs.rows.item(0).theplace)
                             varus.inFence = rs.rows.item(0).theplace;
                             varus.inFenceT = varus.inFence;
                             covLoc = varus.inFenceT;
@@ -336,7 +325,6 @@ function checkFences() {
                             newStatus = 6;
                             extraMsg = qsTr("Pure cell info in use")
                         }
-                        //}
                     }
                 }
                 )
@@ -381,8 +369,6 @@ function addTodayInfo() {
                         else {
                             var evied = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
                             tx.executeSql('UPDATE Today SET endtime=time(?, ?) WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', ['now', 'localtime']);
-                            //var begi = tx.executeSql('SELECT starttime AS begil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
-                            //var endi = tx.executeSql('SELECT endtime AS endil FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)');
                             tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', [evied.rows.item(0).rest]);
                             prevStatus = newStatus;
                         }
@@ -463,15 +449,7 @@ function editInfo() {
                     // Create the database if it doesn't already exist
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
                     var rs = tx.executeSql('DELETE FROM Today WHERE thestatus = ?', ['Not in a paddock']);
-                    //if (button.tiikro_done){
                         rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = ? AND thestatus NOT IN (?)', [button.selectedDate, 'Not in a paddock']);
-                        //console.log(rs.rows.item(0).theday)
-                   // }
-                    //else {
-                        //rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) AND thestatus NOT IN (?)', ['now', 'localtime', 'Not in a paddock']);
-                        //console.log("not date")
-                   // }
-                    //var r = ""
                     for(var i = 0; i < rs.rows.length; i++) {
                         dayValues.set((i),{"starttime": rs.rows.item(i).starttime});
                         dayValues.set((i),{"endtime": rs.rows.item(i).endtime});

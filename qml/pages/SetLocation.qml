@@ -79,7 +79,7 @@ Page {
         }
 
         Timer {
-            interval: 800
+            interval: Qt.ApplicationActive ? rateAct : ratePass
             running: true && Qt.ApplicationActive
             repeat: updateL
             onTriggered: {

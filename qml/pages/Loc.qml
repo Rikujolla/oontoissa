@@ -350,9 +350,9 @@ Page {
                 }
 
                 Timer { //ensures the cellinfo to be get if GPS is not locating
-                    interval: 10000
+                    interval: ratePass
                     repeat: true
-                    running: true
+                    running: true && Qt.ApplicationActive
                     onTriggered: {
                         bestBus.getProperties()
                         cellie.text = currentCell

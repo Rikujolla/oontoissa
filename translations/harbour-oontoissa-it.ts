@@ -105,10 +105,6 @@
 <context>
     <name>EditData</name>
     <message>
-        <source>Select a date</source>
-        <translation>Scegli una data</translation>
-    </message>
-    <message>
         <source>Selected date</source>
         <translation>Data selezionata</translation>
     </message>
@@ -123,6 +119,30 @@
     <message>
         <source>Delete</source>
         <translation>Elimina</translation>
+    </message>
+    <message>
+        <source>Extend up</source>
+        <translation>Estendi</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Eliminazione</translation>
+    </message>
+    <message>
+        <source>Select a date</source>
+        <translation>Scegli una data</translation>
+    </message>
+    <message>
+        <source>Extending up</source>
+        <translation>Estendo</translation>
+    </message>
+    <message>
+        <source>Extend down</source>
+        <translation>Riduci</translation>
+    </message>
+    <message>
+        <source>Extending down</source>
+        <translation>Riduco</translation>
     </message>
 </context>
 <context>
@@ -171,8 +191,8 @@
         <translation>Modifica pagina dati</translation>
     </message>
     <message>
-        <source>On this page you may delete records.</source>
-        <translation>In questa pagina potrai cancellare le registrazioni.</translation>
+        <source>On this page you may delete records or fill possible gaps in data by extending the records to the adjacent records.</source>
+        <translation>In questa pagina puoi eliminare registrazioni o riempire eventuali buchi nei dati estendendo delle registrazioni verso quelle adiacenti.</translation>
     </message>
 </context>
 <context>
@@ -393,10 +413,6 @@
         <translation>Entrando nel recinto</translation>
     </message>
     <message>
-        <source>Manual marker</source>
-        <translation>Marcatore manuale</translation>
-    </message>
-    <message>
         <source>No GPS, cells info used instead</source>
         <translation>Nessun GPS, verrano usare le informazioni sulla cella</translation>
     </message>
@@ -407,6 +423,10 @@
     <message>
         <source>Validating the location info</source>
         <translation>Verifico le informazioni posizione</translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
+        <translation>Marcatore manuale</translation>
     </message>
 </context>
 <context>

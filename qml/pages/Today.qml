@@ -170,7 +170,6 @@ Page {
                 repeat:true
                 onTriggered: {
                     Qt.ApplicationActive ? saveDecr = 1 : saveDecr = 10
-                    //console.log(possut.position.coordinate.latitude)
                     bestBus.getProperties()
                     Mydbases.checkFences();
                     statusExtra.text = extraMsg
