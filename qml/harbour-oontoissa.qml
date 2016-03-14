@@ -92,23 +92,61 @@ ApplicationWindow
         // Under construction
         id: wifiBus
         bus: DBus.SystemBus
-        //service: 'net.connman'
-        service: 'com.jolla'
-        //iface: 'net.connman.Manager'
-        iface: 'com.jolla.Connectiond'
-        path: '/Connectiond'
-        //path: '/
+        service: 'net.connman'
+        //service: 'com.jolla'
+        iface: 'net.connman.Manager'
+        //iface: 'com.jolla.Connectiond'
+        //path: '/Connectiond'
+        path: '/'
         //path: '/net/connman/technology/wifi'
+        //path: '/net/connman/service/'
+        property string one_name
+        property string two_name
+        property var wifi_name
+        property var wifi_status
+        property var tringi
 
-        function getProperties() {
-            typedCall('ConnectionState',[],
+        signalsEnabled: true
+
+        //https://github.com/aldebaran/connman/blob/master/doc/service-api.txt
+        function propertyChanged(name, value){
+            console.log("signals")
+            if (name == "Name") {console.log("sig", value)}
+        }
+
+        function replacer(key, value) {
+          //if (key != "Name") {
+            if (typeof value === "number") {
+                return undefined;
+            }
+            return value;
+            //return vvlue;
+        }
+
+
+        function getServices() {
+            typedCall('GetServices',[],
                       //typedCall('GetTechnologies',[],
                       function(result) {
-                          //console.log('call completed with:', result.Status,
-                          //result.Mode, result.CellId, result.Technology, result.MobileCountryCode,
-                          //result.MobileNetworkCode, result.Name, result.Strength);
-                          //currentCell = result.CellId;
-                          console.log("Wifi found ", result);
+                          wifis.clear();
+                          //console.log("Wifi found ", JSON.stringify(result)); //OK
+                          //console.log("Wifi found ", JSON.stringify(result, ['Name'])); //OK
+                          one_name = JSON.stringify(result, ['Name', 'State']) //OK
+                          //two_name = JSON.stringify(result, replacer) //OK
+                          tringi = one_name.split(":")
+                          //console.log(tringi)
+                          //console.log(tringi.length)
+                          for (var i =1; i<tringi.length; i=i+2 ){
+                              wifi_name = tringi[i].split(",")
+                              wifi_name = wifi_name[0]
+                              wifi_name = wifi_name.replace("\"", "")
+                              wifi_name = wifi_name.replace("\"", "")
+                              wifi_status = tringi[i+1].split("}")
+                              wifi_status = wifi_status[0]
+                              console.log (wifi_name, wifi_status)
+                              wifis.append({"name":wifi_name, "activity":wifi_status})
+                          }
+                          //console.log(wifis.get(0).name)
                       },
                       function() { console.log('call failed') })
         }
@@ -123,6 +161,14 @@ ApplicationWindow
                 lat: 60.1
                 lon: 23.1
             }
+    }
+
+    ListModel {
+        id:wifis
+        ListElement {
+            name:""
+            activity:""
+        }
     }
 }
 

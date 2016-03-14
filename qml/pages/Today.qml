@@ -170,7 +170,8 @@ Page {
                 repeat:true
                 onTriggered: {
                     Qt.ApplicationActive ? saveDecr = 1 : saveDecr = 10
-                    bestBus.getProperties()
+                    //bestBus.getProperties()
+                    //wifiBus.getServices()
                     Mydbases.checkFences();
                     statusExtra.text = extraMsg
                     //varus.timeSow();
@@ -181,6 +182,20 @@ Page {
                     //histor.text = varus.niceHistory;
                 }
             }
+
+            Timer {
+                interval: ratePass
+                running:Qt.ApplicationActive
+                repeat:true
+                onTriggered: {
+                    Qt.ApplicationActive ? saveDecr = 1 : saveDecr = 10
+                    bestBus.getProperties()
+                    wifiBus.getServices()
+                    Mydbases.checkFences();
+                    statusExtra.text = extraMsg
+                }
+            }
+
 
 
 

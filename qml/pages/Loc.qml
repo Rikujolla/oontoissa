@@ -275,6 +275,7 @@ Page {
 
 
             //SectionHeader { text: qsTr("Cells info") }
+            // Cells section
             TextSwitch {
                 text: "Show and set cells info"
                 onCheckedChanged: tempor.cellsVisible = !tempor.cellsVisible
@@ -332,8 +333,81 @@ Page {
                 }
             }
 
+            // Wifi settings section
+            TextSwitch {
+                text: "Show and set wifi info"
+                onCheckedChanged: tempor.wifiVisible = !tempor.wifiVisible
+            }
+
+            TextSwitch {
+                id: wifiAct
+                text: qsTr("Request wifi to be active")
+                visible : tempor.wifiVisible
+                onCheckedChanged: {
+                    checked ? tempor.wifiActiveReq = true : tempor.wifiActiveReq = false
+                    console.log(tempor.wifiActiveReq)
+                    Mydbases.updateLocation()
+                }
+            }
+
+            Text {
+                id:wifisSelected
+                text: "Selected wifis" + " :"
+                color: Theme.secondaryHighlightColor
+                x: Theme.paddingLarge
+                width: page.width*9/10
+                wrapMode: Text.WordWrap
+                visible: tempor.wifiVisible
+                }
+
+            Text {
+                id:wifisAvailable
+                text: "Available wifis" + " :"
+                color: Theme.secondaryHighlightColor
+                x: Theme.paddingLarge
+                width: page.width*9/10
+                wrapMode: Text.WordWrap
+                visible: tempor.wifiVisible
+                }
+
+            Row {
+                visible: tempor.wifiVisible
+                TextField {
+                    id: wifi
+                    placeholderText: "Saunalahti"
+                    label: "Wifi station name" //does not work
+                    width: page.width/2
+                    //validator: RegExpValidator { regExp: /^\d{1,10}$/ }
+                    //validator: wifi.text.length() > 0
+                    color: errorHighlight? "red" : Theme.primaryColor
+                    inputMethodHints: Qt.ImhNoPredictiveText
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: {
+                        focus = false
+                        Mydbases.updateLocation()
+                        //celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
+                    }
+                }
+                Button {
+                    id: wifie
+                    //text: tempor.sello
+                    visible: false
+                    text: "Update"
+                    color: Theme.secondaryHighlightColor
+                    width:page.width/2
+                    onClicked: {
+                        //tempor.sello = currentCell
+                        //celli.text = cellie.text
+                        Mydbases.updateLocation()
+                        //celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
+                    }
+                }
+            }
+
             Component.onCompleted: {
                 bestBus.getProperties()
+                wifiBus.getServices()
                 Mydbases.populateView();
                 baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
@@ -370,8 +444,9 @@ Page {
                 property int backHeight : 300 // Height of backround Item
                 property bool gpsVisible : false
                 property bool cellsVisible : false
-                //property bool wifiVisible : false
+                property bool wifiVisible : false
                 property bool cellPriori :false
+                property bool wifiActiveReq :false // Requests wifi to be active if used in tracking
                 }
 
                 ListModel {

@@ -229,6 +229,18 @@ function populateView() {  // Loads existing info to Loc.qml page
                         sellPri.checked = rs.rows.item(0).cell
                     }
 
+                    ///// Wifi section
+                    wifisAvailable.text = qsTr("Available wifis") + ": "
+                    for (i=0; i<wifis.count; i++) {
+                        var j = wifis.count-1
+                        if (i == j) {
+                            wifisAvailable.text += wifis.get(i).name;
+                        }
+                        else {
+                            wifisAvailable.text += wifis.get(i).name + ", ";
+                        }
+                    }
+
 
                 }
                 )
