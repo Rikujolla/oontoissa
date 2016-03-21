@@ -39,11 +39,13 @@ ApplicationWindow
     property int currentIndex: 1 //
     property int listSize: 0 //
     property int rateAct: 900 // Timers update rate when active
-    property int ratePass: 20000 // Timers update when application not active
+    property int ratePass: 15000 // Timers update when application not active but tracking
+    property int rateSleep: 58000 // Timers when nothing happens, long away from tracking areas
     property string covLoc: "Test"  // Cover location display
     property string covTim: "07:12" // Cover Time display
     property bool updateL : true //
     property int currentCell //saves current cell number globally
+    property string currentWifi // Maybe later var array to enable multiple wifis
     property real fenceThickness : 50.0 //Utilized ec to stop cell facilitated tracking
     property int saveLag : 50 // Used to postpone saving the values in unstable conditions
     property int saveDecr: 1//Decrement for saveLag
@@ -60,8 +62,8 @@ ApplicationWindow
 
     PositionSource {
         id: possut
-        updateInterval: Qt.ApplicationActive ? rateAct : ratePass
-        active: gpsTrue && Qt.ApplicationActive
+        updateInterval: Qt.application.active ? rateAct : ratePass/2
+        active: gpsTrue
     }
 
     DBusInterface {
@@ -110,7 +112,7 @@ ApplicationWindow
 
         //https://github.com/aldebaran/connman/blob/master/doc/service-api.txt
         function propertyChanged(name, value){
-            console.log("signals")
+            console.log("signals2")
             if (name == "Name") {console.log("sig", value)}
         }
 
@@ -137,14 +139,19 @@ ApplicationWindow
                           //console.log(tringi)
                           //console.log(tringi.length)
                           for (var i =1; i<tringi.length; i=i+2 ){
+                              //console.log(tringi[i-1].indexOf("wifi"))
+                              if (tringi[i-1].indexOf("wifi") > -1){
                               wifi_name = tringi[i].split(",")
                               wifi_name = wifi_name[0]
                               wifi_name = wifi_name.replace("\"", "")
                               wifi_name = wifi_name.replace("\"", "")
                               wifi_status = tringi[i+1].split("}")
                               wifi_status = wifi_status[0]
-                              console.log (wifi_name, wifi_status)
+                              wifi_status = wifi_status.replace("\"", "")
+                              wifi_status = wifi_status.replace("\"", "")
+                              //console.log (wifi_name, wifi_status)
                               wifis.append({"name":wifi_name, "activity":wifi_status})
+                              }
                           }
                           //console.log(wifis.get(0).name)
                       },

@@ -21,6 +21,7 @@ function updateLocation() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Cellinfo(theplace TEXT, thecelli INTEGER, sigstrength INTEGER, cellat REAL, cellong REAL, celltol REAL)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Priorities(theplace TEXT, gps INTEGER, cell INTEGER, wifi INTEGER, blut INTEGER, other INTEGER)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Wifiinfo(theplace TEXT, thewifi TEXT, sigstrength INTEGER, status TEXT, active INTEGER)');
 
                     // Updating the location name
                     //if (neimi.text != "") {
@@ -49,7 +50,6 @@ function updateLocation() {
                             tx.executeSql('INSERT INTO Cellinfo VALUES(?, ?, ?, ?, ?, ?)', [(listix.get(currentIndex-1).pla), celli.text, '1', '1.0', '1.0', '1.0']);
                         }
                     }
-
                     // Show all
                     rs = tx.executeSql('SELECT * FROM Locations');
 
@@ -62,6 +62,20 @@ function updateLocation() {
                         listix.set((currentIndex-1),{"cels":", " + rs.rows.item(i).thecelli})
                     }
                     tx.executeSql('UPDATE Priorities SET cell=? WHERE theplace = ?', [sellPri.checked, (listix.get(currentIndex-1).pla)]);
+
+                    rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE theplace = ?', [listix.get(currentIndex-1).pla]);
+                    if (wifi.text != "" || rs.rows.length > 0) {
+                        if (rs.rows.length == 0){
+                            tx.executeSql('INSERT INTO Wifiinfo VALUES(?, ?, ?, ?, ?)', [listix.get(currentIndex-1).pla, wifi.text, '50', 'idle', wifiAct.checked]);
+                        }
+                        else {
+                            tx.executeSql('UPDATE Wifiinfo SET thewifi=?, active = ? WHERE theplace = ?', [wifi.text, wifiAct.checked, (listix.get(currentIndex-1).pla)]);
+                        }
+                    }
+                    else {
+                        //tx.executeSql('INSERT INTO Wifiinfo VALUES(?, ?, ?, ?, ?)', [listix.get(currentIndex-1).pla, wifi.text, '50', 'idle', '0']);
+
+                    }
 
                 }
                 )
@@ -117,6 +131,11 @@ function delLocTable() { // DROP TABLE does not work yet. Table locking should b
                     case "cells":
                         //tx.executeSql('DROP TABLE Cellinfo');
                         tx.executeSql('DELETE FROM Cellinfo');
+                        deletions.choice = "none";
+                        break;
+                    case "wifi":
+                        //tx.executeSql('DROP TABLE Cellinfo');
+                        tx.executeSql('DELETE FROM Wifiinfo');
                         deletions.choice = "none";
                         break;
                     default:
@@ -178,6 +197,7 @@ function populateView() {  // Loads existing info to Loc.qml page
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Cellinfo(theplace TEXT, thecelli INTEGER, sigstrength INTEGER, cellat REAL, cellong REAL, celltol REAL)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Priorities(theplace TEXT, gps INTEGER, cell INTEGER, wifi INTEGER, blut INTEGER, other INTEGER)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Wifiinfo(theplace TEXT, thewifi TEXT, sigstrength INTEGER, status TEXT, active INTEGER)');
 
                     // Show all
                     var rs = tx.executeSql('SELECT * FROM Locations');
@@ -230,6 +250,18 @@ function populateView() {  // Loads existing info to Loc.qml page
                     }
 
                     ///// Wifi section
+
+                    rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE theplace = ?', neimi.text);
+
+                    if (rs.rows.length == 0) {
+
+                    }
+                    else {
+                        wifi.text = rs.rows.item(0).thewifi
+                        currentWifi = rs.rows.item(0).thewifi
+                        wifiAct.checked = rs.rows.item(0).active
+                    }
+
                     wifisAvailable.text = qsTr("Available wifis") + ": "
                     for (i=0; i<wifis.count; i++) {
                         var j = wifis.count-1
@@ -259,6 +291,7 @@ function checkFences() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Priorities(theplace TEXT, gps INTEGER, cell INTEGER, wifi INTEGER, blut INTEGER, other INTEGER)');
                     //tx.executeSql('CREATE TABLE IF NOT EXISTS Enterstatus(theplace TEXT, previous INTEGER, current INTEGER)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Wifiinfo(theplace TEXT, thewifi TEXT, sigstrength INTEGER, status TEXT, active INTEGER)');
 
                     // Show all
                     var rs = tx.executeSql('SELECT * FROM Locations');
@@ -306,6 +339,7 @@ function checkFences() {
                             // 2 in GPS, 3 in Cellsupported gps, 4 wifi, 5 leaving area, 6 pure cell
                         }
                     } //endfor
+                    //console.log(ddist)
                     // Maintaining location if in cell though not in gps range (e.g. in building)
                     if (varus.inFence == "Not in a paddock"
                             && (prevStatus == 2 || prevStatus == 3 || prevStatus == 4)
@@ -322,6 +356,25 @@ function checkFences() {
                                 newStatus = 3;
                                 extraMsg = qsTr("No GPS, cells info used instead")
                             }
+                        }
+                    }
+
+                    /// This clause tests if in wifi, not sure if the total logic works
+                    if (varus.inFence == "Not in a paddock") {
+                        //console.log("wifi tracks")
+                        for (i=0; i<wifis.count; i++) {
+                            rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ?', wifis.get(i).name); //activity missing
+                            if (rs.rows.length >0) {
+                                varus.inFence = rs.rows.item(0).theplace;
+                                varus.inFenceT = varus.inFence;
+                                covLoc = varus.inFenceT;
+                                tolerat = rs.rows.item(0).tolerlong;
+                                newStatus = 4;
+                                saveLag = 0;
+                                extraMsg = qsTr("No GPS, wifi info used instead")
+                                //rateAct = 25000  // When wifi tracking the data is updated 2 times per minute
+                            }
+
                         }
                     }
 

@@ -101,6 +101,10 @@
         <source>Delete cells info!</source>
         <translation>Elimina informazioni celle!</translation>
     </message>
+    <message>
+        <source>Delete wifi info!</source>
+        <translation>Elimina informazioni wifi!</translation>
+    </message>
 </context>
 <context>
     <name>EditData</name>
@@ -331,6 +335,22 @@
         <source>Fence thickness (m)</source>
         <translation>Spessore recinto (m)</translation>
     </message>
+    <message>
+        <source>Write wifi station name</source>
+        <translation>Scrivi nome stazione wifi</translation>
+    </message>
+    <message>
+        <source>Selected wifis</source>
+        <translation>Wifi selesionzate</translation>
+    </message>
+    <message>
+        <source>Available wifis</source>
+        <translation>Wifi disponibili</translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
+        <translation>Richiede che la wifi sia attiva</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -427,6 +447,14 @@
     <message>
         <source>Manual marker</source>
         <translation>Marcatore manuale</translation>
+    </message>
+    <message>
+        <source>Available wifis</source>
+        <translation>Wifi disponibili</translation>
+    </message>
+    <message>
+        <source>No GPS, wifi info used instead</source>
+        <translation>Nessun GPS, verranno usare le informazioni del wifi</translation>
     </message>
 </context>
 <context>

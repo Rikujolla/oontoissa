@@ -101,6 +101,10 @@
         <source>Delete cells info!</source>
         <translation>Ta bort basstationsinfo!</translation>
     </message>
+    <message>
+        <source>Delete wifi info!</source>
+        <translation>Ta bort WiFi-info!</translation>
+    </message>
 </context>
 <context>
     <name>EditData</name>
@@ -331,6 +335,22 @@
         <source>Fence thickness (m)</source>
         <translation>Stängseltjocklek (m)</translation>
     </message>
+    <message>
+        <source>Write wifi station name</source>
+        <translation>Ange WiFi-nätets namn</translation>
+    </message>
+    <message>
+        <source>Selected wifis</source>
+        <translation>Valda WiFi-nät</translation>
+    </message>
+    <message>
+        <source>Available wifis</source>
+        <translation>Tillgängliga WiFi-nät</translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
+        <translation>Kräver att WiFi-nätet är aktivt</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -427,6 +447,14 @@
     <message>
         <source>Manual marker</source>
         <translation>Manuell markör</translation>
+    </message>
+    <message>
+        <source>Available wifis</source>
+        <translation>Tillgängliga WiFi-nät</translation>
+    </message>
+    <message>
+        <source>No GPS, wifi info used instead</source>
+        <translation>Ingen GPS. WiFi-info används istället</translation>
     </message>
 </context>
 <context>

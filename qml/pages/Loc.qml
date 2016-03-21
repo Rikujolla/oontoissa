@@ -106,11 +106,11 @@ Page {
                     wrapMode: Text.WordWrap
                 }
 
-                TextArea {
+                TextField {
                     id: neimi
                     placeholderText: qsTr("Work1")
                     width: page.width/2
-                    wrapMode:Text.Wrap
+                    //wrapMode:Text.WordWrap
                     inputMethodHints: Qt.ImhNoPredictiveText
                     EnterKey.enabled: !errorHighlight
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
@@ -118,7 +118,7 @@ Page {
                         focus = false
                         Mydbases.updateLocation()
                         baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
-                        updateL = true
+                        //updateL = true
                     }
                 }
             }
@@ -325,7 +325,8 @@ Page {
                     color: Theme.secondaryHighlightColor
                     width:page.width/2
                     onClicked: {
-                        tempor.sello = currentCell
+                        //tempor.sello = currentCell
+                        cellie.text = currentCell
                         celli.text = cellie.text
                         Mydbases.updateLocation()
                         celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
@@ -341,7 +342,7 @@ Page {
 
             TextSwitch {
                 id: wifiAct
-                text: qsTr("Request wifi to be active")
+                text: qsTr("Require wifi to be online")
                 visible : tempor.wifiVisible
                 onCheckedChanged: {
                     checked ? tempor.wifiActiveReq = true : tempor.wifiActiveReq = false
@@ -352,7 +353,7 @@ Page {
 
             Text {
                 id:wifisSelected
-                text: "Selected wifis" + " :"
+                text: qsTr("Selected wifis") + ": " + wifi.text
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
                 width: page.width*9/10
@@ -362,7 +363,7 @@ Page {
 
             Text {
                 id:wifisAvailable
-                text: "Available wifis" + " :"
+                text: qsTr("Available wifis") + ": "
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
                 width: page.width*9/10
@@ -375,8 +376,8 @@ Page {
                 TextField {
                     id: wifi
                     placeholderText: "Saunalahti"
-                    label: "Wifi station name" //does not work
-                    width: page.width/2
+                    label: qsTr("Write wifi station name") //too long
+                    width: page.width*3/4
                     //validator: RegExpValidator { regExp: /^\d{1,10}$/ }
                     //validator: wifi.text.length() > 0
                     color: errorHighlight? "red" : Theme.primaryColor
@@ -385,6 +386,7 @@ Page {
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: {
                         focus = false
+                        currentWifi = wifi.text
                         Mydbases.updateLocation()
                         //celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
                     }
@@ -393,7 +395,7 @@ Page {
                     id: wifie
                     //text: tempor.sello
                     visible: false
-                    text: "Update"
+                    text: "Scroll"
                     color: Theme.secondaryHighlightColor
                     width:page.width/2
                     onClicked: {
@@ -416,21 +418,24 @@ Page {
             }
 
                 ////Functions etc
-            Connections {
+            /*Connections {
                 target: possut
                     onPositionChanged: {
                         tempor.sello = currentCell
+                        console.log("positionLOC")
                     }
-                }
+                }*/
 
                 Timer { //ensures the cellinfo to be get if GPS is not locating
-                    interval: ratePass
+                    interval: rateAct
                     repeat: true
-                    running: true && Qt.ApplicationActive
+                    running: Qt.application.active
                     onTriggered: {
-                        bestBus.getProperties()
+                        //bestBus.getProperties()
                         cellie.text = currentCell
+                        //console.log("low", possut.position.coordinate.latitude)
                         //wifiBus.getProperties()
+                        //console.log("Cell updater")
 
                     }
                 }
@@ -446,7 +451,7 @@ Page {
                 property bool cellsVisible : false
                 property bool wifiVisible : false
                 property bool cellPriori :false
-                property bool wifiActiveReq :false // Requests wifi to be active if used in tracking
+                property bool wifiActiveReq :false // Require wifi to be active if used in tracking
                 }
 
                 ListModel {

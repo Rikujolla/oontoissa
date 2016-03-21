@@ -101,6 +101,10 @@
         <source>Delete cells info!</source>
         <translation>Poista solutiedot!</translation>
     </message>
+    <message>
+        <source>Delete wifi info!</source>
+        <translation>Poista WLAN-tiedot!</translation>
+    </message>
 </context>
 <context>
     <name>EditData</name>
@@ -331,6 +335,22 @@
         <source>Fence thickness (m)</source>
         <translation>Aidan vahvuus (m)</translation>
     </message>
+    <message>
+        <source>Write wifi station name</source>
+        <translation>Kirjoita WLAN-aseman nimi</translation>
+    </message>
+    <message>
+        <source>Selected wifis</source>
+        <translation>Valitut WLANit</translation>
+    </message>
+    <message>
+        <source>Available wifis</source>
+        <translation>Käytettävissä olevat WLAN-asemat</translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
+        <translation>WLANin oltava yhdistetty</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -427,6 +447,14 @@
     <message>
         <source>Manual marker</source>
         <translation>Merkki</translation>
+    </message>
+    <message>
+        <source>Available wifis</source>
+        <translation>Käytettävissä olevat WLAN-asemat</translation>
+    </message>
+    <message>
+        <source>No GPS, wifi info used instead</source>
+        <translation>Ei GPS-tietoa, käytetään WLAN-tietoa</translation>
     </message>
 </context>
 <context>

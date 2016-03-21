@@ -101,6 +101,10 @@
         <source>Delete cells info!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Delete wifi info!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EditData</name>
@@ -331,6 +335,22 @@
         <source>Fence thickness (m)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Write wifi station name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected wifis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available wifis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -426,6 +446,14 @@
     </message>
     <message>
         <source>Manual marker</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available wifis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No GPS, wifi info used instead</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

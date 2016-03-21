@@ -122,6 +122,15 @@ Page {
                 }
             }
 
+            Button {
+                text: qsTr("Delete wifi info!")
+                onClicked: {
+                    deletions.choice = "wifi";
+                    Mydbases.delLocTable();
+                    deletions.choice = "none";
+                }
+            }
+
 //loppusulkeet
         }
     }

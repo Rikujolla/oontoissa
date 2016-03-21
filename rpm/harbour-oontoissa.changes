@@ -5,8 +5,9 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
-* Mon Mar 14 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1.7-1
+* Tue Mar 22 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1.7-1
 - Tracking with wifi possible
+- Removed a bug to prevent the app slow down when not active
 
 * Mon Mar 07 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1.6-1
 - Reduced power consumption

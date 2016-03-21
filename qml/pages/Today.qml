@@ -164,16 +164,19 @@ Page {
             Component.onCompleted: bestBus.getProperties()
 
             /// Counting time in each location
+
+
             Timer {
-                interval: Qt.ApplicationActive ? rateAct : ratePass
-                running:Qt.ApplicationActive
+                interval: rateAct
+                running:Qt.application.active
                 repeat:true
                 onTriggered: {
-                    Qt.ApplicationActive ? saveDecr = 1 : saveDecr = 10
-                    //bestBus.getProperties()
-                    //wifiBus.getServices()
+                    Qt.application.active ? saveDecr = 1 : saveDecr = 10
+                    bestBus.getProperties()
+                    wifiBus.getServices()
                     Mydbases.checkFences();
                     statusExtra.text = extraMsg
+                    //console.log("aktiivist", varus.timeInFenceS)
                     //varus.timeSow();
                     //Mydbases.addTodayInfo();
                     //Mydbases.addHistoryData();
@@ -185,14 +188,16 @@ Page {
 
             Timer {
                 interval: ratePass
-                running:Qt.ApplicationActive
+                running: true
                 repeat:true
                 onTriggered: {
-                    Qt.ApplicationActive ? saveDecr = 1 : saveDecr = 10
+                    Qt.application.active ? saveDecr = 1 : saveDecr = 10
                     bestBus.getProperties()
                     wifiBus.getServices()
                     Mydbases.checkFences();
                     statusExtra.text = extraMsg
+                    //console.log("passiivist", varus.timeInFenceS)
+
                 }
             }
 
