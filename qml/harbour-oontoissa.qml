@@ -106,6 +106,7 @@ ApplicationWindow
         property string two_name
         property var wifi_name
         property var wifi_status
+        property int wifi_bool
         property var tringi
 
         signalsEnabled: true
@@ -141,16 +142,17 @@ ApplicationWindow
                           for (var i =1; i<tringi.length; i=i+2 ){
                               //console.log(tringi[i-1].indexOf("wifi"))
                               if (tringi[i-1].indexOf("wifi") > -1){
-                              wifi_name = tringi[i].split(",")
-                              wifi_name = wifi_name[0]
-                              wifi_name = wifi_name.replace("\"", "")
-                              wifi_name = wifi_name.replace("\"", "")
-                              wifi_status = tringi[i+1].split("}")
-                              wifi_status = wifi_status[0]
-                              wifi_status = wifi_status.replace("\"", "")
-                              wifi_status = wifi_status.replace("\"", "")
-                              //console.log (wifi_name, wifi_status)
-                              wifis.append({"name":wifi_name, "activity":wifi_status})
+                                  wifi_name = tringi[i].split(",")
+                                  wifi_name = wifi_name[0]
+                                  wifi_name = wifi_name.replace("\"", "")
+                                  wifi_name = wifi_name.replace("\"", "")
+                                  wifi_status = tringi[i+1].split("}")
+                                  wifi_status = wifi_status[0]
+                                  wifi_status = wifi_status.replace("\"", "")
+                                  wifi_status = wifi_status.replace("\"", "")
+                                  //console.log (wifi_name, wifi_status)
+                                  if (wifi_status == "online") {wifi_bool = 1} else {wifi_bool = 0};
+                                  wifis.append({"name":wifi_name, "activity":wifi_status, "actbool":wifi_bool})
                               }
                           }
                           //console.log(wifis.get(0).name)
@@ -175,6 +177,7 @@ ApplicationWindow
         ListElement {
             name:""
             activity:""
+            actbool:0
         }
     }
 }

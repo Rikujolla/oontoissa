@@ -351,6 +351,18 @@
         <source>Require wifi to be online</source>
         <translation>WLANin oltava yhdistetty</translation>
     </message>
+    <message>
+        <source>Show and set GPS info</source>
+        <translation>Näytä ja aseta GPS-tiedot</translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation>Näytä ja aseta solutiedot</translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation>Näytä ja aseta WLAN-tiedot</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>

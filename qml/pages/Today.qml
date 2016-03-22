@@ -171,7 +171,7 @@ Page {
                 running:Qt.application.active
                 repeat:true
                 onTriggered: {
-                    Qt.application.active ? saveDecr = 1 : saveDecr = 10
+                    Qt.application.active && newStatus !=4 ? saveDecr = 1 : saveDecr = ratePass/1000
                     bestBus.getProperties()
                     wifiBus.getServices()
                     Mydbases.checkFences();
@@ -191,7 +191,7 @@ Page {
                 running: true
                 repeat:true
                 onTriggered: {
-                    Qt.application.active ? saveDecr = 1 : saveDecr = 10
+                    Qt.application.active && newStatus !=4 ? saveDecr = 1 : saveDecr = ratePass/1000
                     bestBus.getProperties()
                     wifiBus.getServices()
                     Mydbases.checkFences();

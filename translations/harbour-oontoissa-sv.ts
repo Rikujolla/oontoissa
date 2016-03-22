@@ -351,6 +351,18 @@
         <source>Require wifi to be online</source>
         <translation>Kräver att WiFi-nätet är aktivt</translation>
     </message>
+    <message>
+        <source>Show and set GPS info</source>
+        <translation>Visa och ställ in GPS-info</translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation>Visa och ställ in basstationsinfo</translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation>Visa och ställ in WiFi-info</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>

@@ -351,6 +351,18 @@
         <source>Require wifi to be online</source>
         <translation>Richiede che la wifi sia attiva</translation>
     </message>
+    <message>
+        <source>Show and set GPS info</source>
+        <translation>Mostra e imposta le informazioni GPS</translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation>Mostra e imposta le informazioni cella</translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation>Mostra e imposta le informazioni wifi</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>

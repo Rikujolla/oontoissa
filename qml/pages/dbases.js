@@ -290,12 +290,10 @@ function checkFences() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Cellinfo(theplace TEXT, thecelli INTEGER, sigstrength INTEGER, cellat REAL, cellong REAL, celltol REAL)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Priorities(theplace TEXT, gps INTEGER, cell INTEGER, wifi INTEGER, blut INTEGER, other INTEGER)');
-                    //tx.executeSql('CREATE TABLE IF NOT EXISTS Enterstatus(theplace TEXT, previous INTEGER, current INTEGER)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Wifiinfo(theplace TEXT, thewifi TEXT, sigstrength INTEGER, status TEXT, active INTEGER)');
 
                     // Show all
                     var rs = tx.executeSql('SELECT * FROM Locations');
-                    //var rt = tx.executeSql('SELECT * FROM Enterstatus');
                     // Spherical distance
                     var dfii; // Latitude difference
                     var meanfii; // Latitude difference mean
@@ -307,6 +305,9 @@ function checkFences() {
                     varus.inFenceT = qsTr("Free galloping");
                     covLoc = varus.inFenceT;
                     newStatus = 0;
+
+                    // If gpsTrue, testing, if in area
+                    if (gpsTrue) {
                     var tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
                     var coord = possut.position.coordinate
                     for(var i = 0; i < rs.rows.length; i++) {
@@ -340,6 +341,26 @@ function checkFences() {
                         }
                     } //endfor
                     //console.log(ddist)
+                    }
+
+                    /// This clause tests if in wifi, not sure if the total logic works
+                    if (varus.inFence == "Not in a paddock") {
+                        //console.log("wifi tracks")
+                        for (i=0; i<wifis.count; i++) {
+                            //rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ? AND active = ?', [wifis.get(i).name, wifis.get(i).actbool]);
+                            rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ?', [wifis.get(i).name]);
+                            if (rs.rows.length >0 && rs.rows.item(0).active == 0
+                                    || rs.rows.length >0 && rs.rows.item(0).active == wifis.get(i).actbool) {
+                                varus.inFence = rs.rows.item(0).theplace;
+                                varus.inFenceT = varus.inFence;
+                                covLoc = varus.inFenceT;
+                                tolerat = rs.rows.item(0).tolerlong;
+                                newStatus = 4;
+                                extraMsg = qsTr("No GPS, wifi info used instead")
+                            }
+                        }
+                    }
+
                     // Maintaining location if in cell though not in gps range (e.g. in building)
                     if (varus.inFence == "Not in a paddock"
                             && (prevStatus == 2 || prevStatus == 3 || prevStatus == 4)
@@ -356,25 +377,6 @@ function checkFences() {
                                 newStatus = 3;
                                 extraMsg = qsTr("No GPS, cells info used instead")
                             }
-                        }
-                    }
-
-                    /// This clause tests if in wifi, not sure if the total logic works
-                    if (varus.inFence == "Not in a paddock") {
-                        //console.log("wifi tracks")
-                        for (i=0; i<wifis.count; i++) {
-                            rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ?', wifis.get(i).name); //activity missing
-                            if (rs.rows.length >0) {
-                                varus.inFence = rs.rows.item(0).theplace;
-                                varus.inFenceT = varus.inFence;
-                                covLoc = varus.inFenceT;
-                                tolerat = rs.rows.item(0).tolerlong;
-                                newStatus = 4;
-                                saveLag = 0;
-                                extraMsg = qsTr("No GPS, wifi info used instead")
-                                //rateAct = 25000  // When wifi tracking the data is updated 2 times per minute
-                            }
-
                         }
                     }
 

@@ -182,7 +182,7 @@ Page {
             }
 
             TextSwitch {
-                text: "Show and set GPS info"
+                text: qsTr("Show and set GPS info")
                 onCheckedChanged: tempor.gpsVisible = !tempor.gpsVisible
             }
 
@@ -277,7 +277,7 @@ Page {
             //SectionHeader { text: qsTr("Cells info") }
             // Cells section
             TextSwitch {
-                text: "Show and set cells info"
+                text: qsTr("Show and set cells info")
                 onCheckedChanged: tempor.cellsVisible = !tempor.cellsVisible
             }
 
@@ -336,7 +336,7 @@ Page {
 
             // Wifi settings section
             TextSwitch {
-                text: "Show and set wifi info"
+                text: qsTr("Show and set wifi info")
                 onCheckedChanged: tempor.wifiVisible = !tempor.wifiVisible
             }
 
@@ -346,7 +346,7 @@ Page {
                 visible : tempor.wifiVisible
                 onCheckedChanged: {
                     checked ? tempor.wifiActiveReq = true : tempor.wifiActiveReq = false
-                    console.log(tempor.wifiActiveReq)
+                    //console.log(tempor.wifiActiveReq)
                     Mydbases.updateLocation()
                 }
             }
@@ -433,6 +433,7 @@ Page {
                     onTriggered: {
                         //bestBus.getProperties()
                         cellie.text = currentCell
+                        Mydbases.populateView();
                         //console.log("low", possut.position.coordinate.latitude)
                         //wifiBus.getProperties()
                         //console.log("Cell updater")
