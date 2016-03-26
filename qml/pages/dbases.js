@@ -1,14 +1,17 @@
 ///
-/// updateLocation(), row 14
-/// loadLocation(), row 70
-/// delLocTable(), row 90
-/// delCelli(), row 127, deletes a single cell from cell list
-/// delLocation(), row 144
-/// populateView(), row 169
-/// checkFences(), row 234
-/// addTodayInfo(), row 315
-/// addHistoryData(), row 378
-///
+/// updateLocation(), row 17
+/// loadLocation(), row 89
+/// delLocTable(), row 109
+/// delCelli(), row 151, deletes a single cell from cell list
+/// delLocation(), row 168, deletes a location selected
+/// populateView(), row 193
+/// checkFences(), row 285
+/// addTodayInfo(), row 408
+/// addHistoryData(), row 479
+/// editInfo(), row 517
+/// deleteRecord(), 538
+/// extendUpRecord(), 550
+/// extendDownRecord(), 581
 
 
 function updateLocation() {
@@ -113,6 +116,9 @@ function delLocTable() { // DROP TABLE does not work yet. Table locking should b
                     case "all":
                         //tx.executeSql('DROP TABLE Locations');
                         tx.executeSql('DELETE FROM Locations');
+                        tx.executeSql('DELETE FROM Cellinfo');
+                        tx.executeSql('DELETE FROM Wifiinfo');
+                        tx.executeSql('DELETE FROM Priorities');
                         //tx.executeSql('DROP TABLE Today');
                         tx.executeSql('DELETE FROM Today');
                         //tx.executeSql('DROP TABLE History');
@@ -126,6 +132,9 @@ function delLocTable() { // DROP TABLE does not work yet. Table locking should b
                     case "locations":
                         //tx.executeSql('DROP TABLE Locations');
                         tx.executeSql('DELETE FROM Locations');
+                        tx.executeSql('DELETE FROM Cellinfo');
+                        tx.executeSql('DELETE FROM Wifiinfo');
+                        tx.executeSql('DELETE FROM Priorities');
                         deletions.choice = "none";
                         break;
                     case "cells":
@@ -134,7 +143,7 @@ function delLocTable() { // DROP TABLE does not work yet. Table locking should b
                         deletions.choice = "none";
                         break;
                     case "wifi":
-                        //tx.executeSql('DROP TABLE Cellinfo');
+                        //tx.executeSql('DROP TABLE Wifiinfo');
                         tx.executeSql('DELETE FROM Wifiinfo');
                         deletions.choice = "none";
                         break;
@@ -162,7 +171,7 @@ function delCelli() { // Deleting single cell from the list
                 )
 }
 
-function delLocation() { // DROP TABLE does not work yet. Table locking should be solved! Stop Timers??
+function delLocation() { //
 
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
@@ -171,18 +180,25 @@ function delLocation() { // DROP TABLE does not work yet. Table locking should b
                     // Create the table, if not existing
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Locations(thelongi REAL, thelati REAL, theplace TEXT, tolerlong REAL, tolerlat REAL)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Cellinfo(theplace TEXT, thecelli INTEGER, sigstrength INTEGER, cellat REAL, cellong REAL, celltol REAL)');
-                    // Show all
-                    //var rs = tx.executeSql('SELECT * FROM Locations');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Wifiinfo(theplace TEXT, thewifi TEXT, sigstrength INTEGER, status TEXT, active INTEGER)');
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Priorities(theplace TEXT, gps INTEGER, cell INTEGER, wifi INTEGER, blut INTEGER, other INTEGER)');
 
-                    // tx.executeSql('DELETE FROM Locations WHERE rowid = ?', (currentIndex));
-                    tx.executeSql('DELETE FROM Locations WHERE theplace = ?', (listix.get(currentIndex-1).pla));
+                    tx.executeSql('DELETE FROM Priorities WHERE theplace = ?', (listix.get(currentIndex-1).pla));
                     tx.executeSql('DELETE FROM Cellinfo WHERE theplace = ?', (listix.get(currentIndex-1).pla));
-
-                    //rs = tx.executeSql('SELECT * FROM Cellinfo');
+                    tx.executeSql('DELETE FROM Wifiinfo WHERE theplace = ?', (listix.get(currentIndex-1).pla));
+                    tx.executeSql('DELETE FROM Locations WHERE theplace = ?', (listix.get(currentIndex-1).pla));
 
                     var rs = tx.executeSql('SELECT * FROM Locations');
                     listSize = rs.rows.length;
                     currentIndex--;
+                    //updateL = true;
+                    //seloTim.start()
+                    loadLocation();
+
+                    // This section removes old orphan data due to problems in locations deletion prior the version 0.1.8
+                    tx.executeSql('DELETE FROM Priorities WHERE theplace NOT IN (SELECT Locations.theplace FROM Locations)');
+                    tx.executeSql('DELETE FROM Cellinfo WHERE theplace NOT IN (SELECT Locations.theplace FROM Locations)');
+                    tx.executeSql('DELETE FROM Wifiinfo WHERE theplace NOT IN (SELECT Locations.theplace FROM Locations)');
                 }
                 )
 }
@@ -310,6 +326,7 @@ function checkFences() {
                     if (gpsTrue) {
                     var tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
                     var coord = possut.position.coordinate
+                        //console.log(coord.latitude) // For Kalman
                     for(var i = 0; i < rs.rows.length; i++) {
                         dfii = Math.abs(coord.latitude - rs.rows.item(i).thelati)*Math.PI/180;
                         meanfii = (coord.latitude + rs.rows.item(i).thelati)*Math.PI/360
@@ -434,9 +451,9 @@ function addTodayInfo() {
                             prevStatus = newStatus}
                         // Updating the existing record
                         else {
-                            var evied = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
+                            var rs = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
                             tx.executeSql('UPDATE Today SET endtime=time(?, ?) WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', ['now', 'localtime']);
-                            tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', [evied.rows.item(0).rest]);
+                            tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', [rs.rows.item(0).rest]);
                             prevStatus = newStatus;
                         }
                     }
@@ -446,17 +463,19 @@ function addTodayInfo() {
                         prevStatus = newStatus;
                     }
                     // Show all values
-                    var evider = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
-                    //The next row will fail if the days first record and validating data. FIX in some phase. Not fatal.
-                    evied = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
-                    if (newStatus == 5 || newStatus == 7){
-                        varus.timeInFence = evied.rows.item(0).rest
+                    if (evid.rows.length == 0) {
+                        varus.timeInFence = 0
+                    }
+                    else if (newStatus == 5 || newStatus == 7){
+                        rs = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
+                        varus.timeInFence = rs.rows.item(0).rest
                     }
                     else {
-                        varus.timeInFence = evider.rows.item(0).resto
+                        rs = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
+                        varus.timeInFence = rs.rows.item(0).resto
                     }
 
-                    var rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) AND thestatus NOT IN (?)', ['now', 'localtime', 'Not in a paddock']);
+                    rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) AND thestatus NOT IN (?)', ['now', 'localtime', 'Not in a paddock']);
 
                     var r = ""
                     for(var i = 0; i < rs.rows.length; i++) {

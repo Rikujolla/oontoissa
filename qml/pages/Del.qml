@@ -88,6 +88,7 @@ Page {
 
             Button {
                 text: qsTr("Delete all!")
+                anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
                     deletions.choice = "all";
                     Mydbases.delLocTable();
@@ -97,6 +98,7 @@ Page {
 
             Button {
                 text: qsTr("Delete times!")
+                anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
                     deletions.choice = "times";
                     Mydbases.delLocTable();
@@ -106,6 +108,7 @@ Page {
 
             Button {
                 text: qsTr("Delete locations!")
+                anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
                     deletions.choice = "locations";
                     Mydbases.delLocTable();
@@ -115,6 +118,7 @@ Page {
 
             Button {
                 text: qsTr("Delete cells info!")
+                anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
                     deletions.choice = "cells";
                     Mydbases.delLocTable();
@@ -124,6 +128,7 @@ Page {
 
             Button {
                 text: qsTr("Delete wifi info!")
+                anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
                     deletions.choice = "wifi";
                     Mydbases.delLocTable();

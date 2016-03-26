@@ -367,20 +367,20 @@
 <context>
     <name>SetLocation</name>
     <message>
-        <source>Set location page</source>
-        <translation>Sijainnit</translation>
+        <source>Add location</source>
+        <translation>Lisää sijainti</translation>
     </message>
     <message>
         <source>Help</source>
         <translation>Ohje</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Sijainti</translation>
+        <source>Set location page</source>
+        <translation>Sijainnit</translation>
     </message>
     <message>
-        <source>Add location</source>
-        <translation>Lisää sijainti</translation>
+        <source>Location</source>
+        <translation>Sijainti</translation>
     </message>
 </context>
 <context>

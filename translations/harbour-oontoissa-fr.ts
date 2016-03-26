@@ -353,34 +353,34 @@
     </message>
     <message>
         <source>Show and set GPS info</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher et définir les info GPS</translation>
     </message>
     <message>
         <source>Show and set cells info</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher et définir les infos des cellules</translation>
     </message>
     <message>
         <source>Show and set wifi info</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher et définir les infos wifi</translation>
     </message>
 </context>
 <context>
     <name>SetLocation</name>
     <message>
-        <source>Set location page</source>
-        <translation>Page de saisie de la position</translation>
+        <source>Add location</source>
+        <translation>Ajouter un emplacement</translation>
     </message>
     <message>
         <source>Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Position</translation>
+        <source>Set location page</source>
+        <translation>Page de saisie de la position</translation>
     </message>
     <message>
-        <source>Add location</source>
-        <translation>Ajouter un emplacement</translation>
+        <source>Location</source>
+        <translation>Position</translation>
     </message>
 </context>
 <context>

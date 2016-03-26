@@ -37,6 +37,22 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
+            /*MenuItem {
+                text: qsTr("Data maintenance")
+                onClicked: pageStack.push(Qt.resolvedUrl("Del.qml"))
+            }*/
+            /*MenuItem {
+                text: qsTr("Export location")
+                onClicked:{
+                    console.log("export")
+                }
+            }
+            MenuItem {
+                text: qsTr("Import location")
+                onClicked:{
+                    console.log("import")
+                }
+            }*/
             MenuItem {
                 text: qsTr("Add location")
                 onClicked:{
@@ -79,11 +95,14 @@ Page {
         }
 
         Timer {
+            id: seloTim
             interval: rateAct
-            running: Qt.application.active
+            //running: Qt.application.active
+            running: false
             repeat: false
             onTriggered: {
                 Mydbases.loadLocation()
+                //updateL = false
                 //console.log("Select Location Timer")
             }
         }

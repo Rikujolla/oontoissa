@@ -334,6 +334,28 @@ Page {
                 }
             }
 
+            BackgroundItem {
+                width: page.width
+                height: tempor.backHeight
+                visible: tempor.cellsVisible
+            GridView {
+                id: grid
+                cellWidth: page.width
+                cellHeight: page.width/8
+                anchors.fill: parent
+                model: cellistit
+                delegate:
+                    Button {
+                    text: qsTr("Delete") + " " + cels
+                    onClicked: {
+                        tempor.ind = index
+                        Mydbases.delCelli()
+                    }
+                }
+            }
+            }
+
+
             // Wifi settings section
             TextSwitch {
                 text: qsTr("Show and set wifi info")
@@ -433,7 +455,7 @@ Page {
                     onTriggered: {
                         //bestBus.getProperties()
                         cellie.text = currentCell
-                        Mydbases.populateView();
+                        //Mydbases.populateView(); //problems with this in the location name feed
                         //console.log("low", possut.position.coordinate.latitude)
                         //wifiBus.getProperties()
                         //console.log("Cell updater")
@@ -460,26 +482,6 @@ Page {
                         ListElement {
                             cels: 0
                         }
-                }
-                BackgroundItem {
-                    width: page.width
-                    height: tempor.backHeight
-                    visible: tempor.cellsVisible
-                GridView {
-                    id: grid
-                    cellWidth: page.width
-                    cellHeight: page.width/8
-                    anchors.fill: parent
-                    model: cellistit
-                    delegate:
-                        Button {
-                        text: qsTr("Delete") + " " + cels
-                        onClicked: {
-                            tempor.ind = index
-                            Mydbases.delCelli()
-                        }
-                    }
-                }
                 }
         }
 

@@ -367,20 +367,20 @@
 <context>
     <name>SetLocation</name>
     <message>
-        <source>Set location page</source>
-        <translation>Pagina impostazioni luogo</translation>
+        <source>Add location</source>
+        <translation>Aggiungi luogo</translation>
     </message>
     <message>
         <source>Help</source>
         <translation>Aiuto</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Luogo</translation>
+        <source>Set location page</source>
+        <translation>Pagina impostazioni luogo</translation>
     </message>
     <message>
-        <source>Add location</source>
-        <translation>Aggiungi luogo</translation>
+        <source>Location</source>
+        <translation>Luogo</translation>
     </message>
 </context>
 <context>

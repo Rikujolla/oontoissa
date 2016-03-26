@@ -43,7 +43,7 @@ ApplicationWindow
     property int rateSleep: 58000 // Timers when nothing happens, long away from tracking areas
     property string covLoc: "Test"  // Cover location display
     property string covTim: "07:12" // Cover Time display
-    property bool updateL : true //
+    property bool updateL : true // Used to run timers once, obsolete??
     property int currentCell //saves current cell number globally
     property string currentWifi // Maybe later var array to enable multiple wifis
     property real fenceThickness : 50.0 //Utilized ec to stop cell facilitated tracking

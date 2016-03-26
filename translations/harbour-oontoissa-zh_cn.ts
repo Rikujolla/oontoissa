@@ -367,20 +367,20 @@
 <context>
     <name>SetLocation</name>
     <message>
-        <source>Set location page</source>
-        <translation>设置位置页面</translation>
+        <source>Add location</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>帮助</translation>
+        <translation type="unfinished">帮助</translation>
+    </message>
+    <message>
+        <source>Set location page</source>
+        <translation type="unfinished">设置位置页面</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>位置</translation>
-    </message>
-    <message>
-        <source>Add location</source>
-        <translation>添加位置</translation>
+        <translation type="unfinished">位置</translation>
     </message>
 </context>
 <context>

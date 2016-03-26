@@ -367,7 +367,7 @@
 <context>
     <name>SetLocation</name>
     <message>
-        <source>Set location page</source>
+        <source>Add location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -375,11 +375,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Location</source>
+        <source>Set location page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add location</source>
+        <source>Location</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
