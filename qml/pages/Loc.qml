@@ -97,6 +97,7 @@ Page {
 
             Row {
                 x: Theme.paddingLarge
+                spacing: Theme.paddingMedium
 
                 Text {
                     text: qsTr("Location name")
@@ -125,6 +126,7 @@ Page {
 
             Row {
                 x: Theme.paddingLarge
+                spacing: Theme.paddingMedium
                 Text {
                     text: qsTr("Location size (m)")
                     //visible: tempor.gpsVisible
@@ -154,6 +156,7 @@ Page {
 
             Row {
                 x: Theme.paddingLarge
+                spacing: Theme.paddingMedium
                 Text {
                     text: qsTr("Fence thickness (m)")
                     //visible: tempor.gpsVisible
@@ -181,10 +184,20 @@ Page {
                 }
             }
 
-            TextSwitch {
+            ///////////////////////////////////////
+            /// GPS-section
+            ///////////////////////////////////
+            BackgroundItem {
+                SectionHeader {
+                    text: tempor.gpsVisible ? qsTr("Minimize GPS info view") : qsTr("Show and set GPS info")
+                }
+                onClicked: tempor.gpsVisible = !tempor.gpsVisible
+            }
+
+            /*TextSwitch {
                 text: qsTr("Show and set GPS info")
                 onCheckedChanged: tempor.gpsVisible = !tempor.gpsVisible
-            }
+            }*/
 
             Text {
                 id: baassi
@@ -273,13 +286,19 @@ Page {
                 }
             }
 
-
-            //SectionHeader { text: qsTr("Cells info") }
-            // Cells section
-            TextSwitch {
+            //////////////////
+            /// Cells section
+            //////////////////
+            BackgroundItem {
+                SectionHeader {
+                    text: tempor.cellsVisible ? qsTr("Minimize cells info view") : qsTr("Show and set cells info")
+                }
+                onClicked: tempor.cellsVisible = !tempor.cellsVisible
+            }
+            /*TextSwitch {
                 text: qsTr("Show and set cells info")
                 onCheckedChanged: tempor.cellsVisible = !tempor.cellsVisible
-            }
+            }*/
 
             TextSwitch {
                 id: sellPri
@@ -287,7 +306,7 @@ Page {
                 visible : tempor.cellsVisible
                 onCheckedChanged: {
                     checked ? tempor.cellPriori = true : tempor.cellPriori = false
-                    console.log(tempor.cellPriori)
+                    //console.log(tempor.cellPriori)
                     Mydbases.updateLocation()
                 }
             }
@@ -355,12 +374,19 @@ Page {
             }
             }
 
-
+            ////////////////////////////
             // Wifi settings section
-            TextSwitch {
+            ////////////////////////////
+            BackgroundItem {
+                SectionHeader {
+                    text: tempor.wifiVisible ? qsTr("Minimize wifi info view") : qsTr("Show and set wifi info")
+                }
+                onClicked: tempor.wifiVisible = !tempor.wifiVisible
+            }
+            /*TextSwitch {
                 text: qsTr("Show and set wifi info")
                 onCheckedChanged: tempor.wifiVisible = !tempor.wifiVisible
-            }
+            }*/
 
             TextSwitch {
                 id: wifiAct
@@ -375,7 +401,8 @@ Page {
 
             Text {
                 id:wifisSelected
-                text: qsTr("Selected wifis") + ": " + wifi.text
+                //text: qsTr("Selected wifis") + ": " + wifi.text
+                text: qsTr("Selected wifis") + ": " + currentWifi
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
                 width: page.width*9/10
@@ -449,16 +476,24 @@ Page {
                 }*/
 
                 Timer { //ensures the cellinfo to be get if GPS is not locating
-                    interval: rateAct
+                    interval: ratePass
                     repeat: true
                     running: Qt.application.active
                     onTriggered: {
                         //bestBus.getProperties()
                         cellie.text = currentCell
                         //Mydbases.populateView(); //problems with this in the location name feed
-                        //console.log("low", possut.position.coordinate.latitude)
-                        //wifiBus.getProperties()
-                        //console.log("Cell updater")
+                        /*wifisAvailable.text = qsTr("Available wifis") + ": "
+                        for (i=0; i<wifis.count; i++) {
+                            var j = wifis.count-1
+                            if (i == j) {
+                                wifisAvailable.text += wifis.get(i).name;
+                            }
+                            else {
+                                wifisAvailable.text += wifis.get(i).name + ", ";
+                            }
+                        }*/
+
 
                     }
                 }

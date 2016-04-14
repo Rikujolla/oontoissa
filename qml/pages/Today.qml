@@ -25,8 +25,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtQuick.LocalStorage 2.0
-import "dbases.js" as Mydbases
+import QtQuick.LocalStorage 2.0 //RLAH
+import "dbases.js" as Mydbases //RLAH
 
 
 Page {
@@ -54,7 +54,7 @@ Page {
                 text: qsTr("Set marker")
                 onClicked: marker = true
             }
-            MenuItem {
+            MenuItem { //RLAH
                 text: qsTr("Set location")
                 onClicked: pageStack.push(Qt.resolvedUrl("SetLocation.qml"))
             }
@@ -84,7 +84,11 @@ Page {
             PageHeader {
                 title: qsTr("At work")
             }
-            SectionHeader { text: qsTr("Location now") }
+
+            BackgroundItem {
+                SectionHeader { text: qsTr("Location now") }
+                onClicked: pageStack.push(Qt.resolvedUrl("SetLocation.qml"))
+            }
 
             Text {
                 id: status
@@ -98,7 +102,9 @@ Page {
             }
             Text {
                 id: statusExtra
+                visible: statusExtra.text != ""
                 color: Theme.secondaryColor
+                wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeSmall
                 anchors {
                     left: parent.left
@@ -108,7 +114,11 @@ Page {
                 text: extraMsg
             }
 
-            SectionHeader { text: qsTr("Today") }
+            BackgroundItem {
+                SectionHeader { text: qsTr("Today") }
+                onClicked: pageStack.push(Qt.resolvedUrl("EditData.qml"))
+            }
+
             Text {
                 id: todday
                 color: Theme.primaryColor
@@ -119,8 +129,13 @@ Page {
                 }
                 text: varus.whatToday
             }
-
-            SectionHeader { text: qsTr("History") }
+            BackgroundItem {
+                SectionHeader {
+                    id: history
+                    text: qsTr("History")
+                }
+                onClicked: varus.historyFilter = !varus.historyFilter
+            }
             Text {
                 id: histor
                 font.pixelSize: Theme.fontSizeSmall
@@ -133,8 +148,11 @@ Page {
                     margins: Theme.paddingLarge
                 }
                 text: varus.niceHistory
-
             }
+
+            ///////////////////////////////////
+            ///// Start of At work Today.qml to wht transfer
+            ///////////////////////////////////
 
             Item {
                 id: varus
@@ -151,6 +169,7 @@ Page {
                 //property real tolerat: 40000000.0 // Used to order two locations in order
                 property real temp1
                 property real temp2
+                property bool historyFilter : false // False showing all data in History, true the current week
                 function timeSow() {
                     hoursD = (varus.timeInFence-varus.timeInFence%3600)/3600;
                     minutesD = (varus.timeInFence-varus.timeInFence%60)/60-hoursD*60;
@@ -161,12 +180,20 @@ Page {
                 }
             }
 
-            Component.onCompleted: bestBus.getProperties()
+            Item {
+                id: kalman
+                property real z_k_lat // Measured latitude
+                property real x_k_lat : 0.0 //Kalman latitude
+                property real p_k_lat : 1.0 //Parameter
+                property real k_k_lat
+                property real r_lat : 0.00001 //Parameter
+            }
+            Component.onCompleted:bestBus.getProperties()
 
             /// Counting time in each location
 
 
-            Timer {
+            Timer { // Timer when the app is active
                 interval: rateAct
                 running:Qt.application.active
                 repeat:true
@@ -186,9 +213,9 @@ Page {
                 }
             }
 
-            Timer {
+            Timer { //Timer when the app is passive
                 interval: ratePass
-                running: true
+                running: true && !inSleep
                 repeat:true
                 onTriggered: {
                     Qt.application.active && newStatus !=4 ? saveDecr = 1 : saveDecr = ratePass/1000
@@ -197,9 +224,26 @@ Page {
                     Mydbases.checkFences();
                     statusExtra.text = extraMsg
                     //console.log("passiivist", varus.timeInFenceS)
-
                 }
             }
+
+            Timer { //Timer when the app is in sleep
+                interval: rateSleep
+                running: true
+                repeat:true
+                onTriggered: {
+                    //Qt.application.active && newStatus !=4 ? saveDecr = 1 : saveDecr = ratePass/1000
+                    bestBus.getProperties()
+                    wifiBus.getServices()
+                    Mydbases.checkFences();
+                    statusExtra.text = extraMsg
+                    //inSleep ? console.log("In sleep", varus.timeInFenceS) : console.log("Only sleep timer")
+                }
+            }
+
+            ///////////////////////////////////
+            ///// End of At work Today.qml to wht transfer
+            ///////////////////////////////////
 
 
 

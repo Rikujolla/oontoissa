@@ -67,8 +67,8 @@
         <translation>På jobbet</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Plats</translation>
+        <source>Sleep mode</source>
+        <translation>Sovläge</translation>
     </message>
 </context>
 <context>
@@ -363,6 +363,18 @@
         <source>Show and set wifi info</source>
         <translation>Visa och ställ in WiFi-info</translation>
     </message>
+    <message>
+        <source>Minimize GPS info view</source>
+        <translation>Minimera GPS-infovy</translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation>Minimera WiFi-infovy</translation>
+    </message>
+    <message>
+        <source>Minimize cells info view</source>
+        <translation>Minimera basstationsinfovy</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -467,6 +479,14 @@
     <message>
         <source>No GPS, wifi info used instead</source>
         <translation>Ingen GPS. WiFi-info används istället</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>Historik</translation>
+    </message>
+    <message>
+        <source>History, this week</source>
+        <translation>Historik denna vecka</translation>
     </message>
 </context>
 <context>

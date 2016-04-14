@@ -25,8 +25,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtPositioning 5.2
-import org.nemomobile.dbus 2.0
+import QtPositioning 5.2  //RLAH
+import org.nemomobile.dbus 2.0 //RLAH
 import "pages"
 
 ApplicationWindow
@@ -36,25 +36,34 @@ ApplicationWindow
     allowedOrientations: Orientation.All
     _defaultPageOrientations: Orientation.All
 
+    /////////////////////////////
+    /// At work common properties
+    /////////////////////////////
+    property bool atWork: true //At work tells to wht if at Work //RLAH // in real life false, for testing true
+
     property int currentIndex: 1 //
     property int listSize: 0 //
     property int rateAct: 900 // Timers update rate when active
     property int ratePass: 15000 // Timers update when application not active but tracking
-    property int rateSleep: 58000 // Timers when nothing happens, long away from tracking areas
+    property int rateSleep: 300000 // Timers when nothing happens, long away from tracking areas
+    property bool inSleep: false
     property string covLoc: "Test"  // Cover location display
     property string covTim: "07:12" // Cover Time display
-    property bool updateL : true // Used to run timers once, obsolete??
+    property bool updateL: true // Used to run timers once, obsolete??
     property int currentCell //saves current cell number globally
     property string currentWifi // Maybe later var array to enable multiple wifis
     property real fenceThickness : 50.0 //Utilized ec to stop cell facilitated tracking
-    property int saveLag : 50 // Used to postpone saving the values in unstable conditions
+    property int saveLag: 50 // Used to postpone saving the values in unstable conditions
     property int saveDecr: 1//Decrement for saveLag
-    property string gpsTxt : qsTr("Do not use GPS")
-    property bool gpsTrue : true
+    property string gpsTxt: qsTr("Do not use GPS")
+    property bool gpsTrue: true
     property int newStatus // Saving old status
     property int prevStatus // Saving old status
     property string extraMsg
-    property bool marker : false // Sets the marker, either breaks the data or if not in apaddock sets marker label
+    property bool marker: false // Sets the marker, either breaks the data or if not in apaddock sets marker label
+    property real prevClosDist: 0.0 //Save previous closest dist, used with sleep timer
+    property real prevSpeed: 7000.0 // Save previous speed, not actual speed, adjusted to constant timer
+    property int blackOut: 1 //Time, no new gpsinfo
 
     /*NetworkInfo { // Make multiple signals possible
         id : bestcell
@@ -67,7 +76,7 @@ ApplicationWindow
     }
 
     DBusInterface {
-        // Motivated ny shell script https://together.jolla.com/question/24943/howto-retrieve-gsm-cell-coordinates/
+        // Motivated by shell script https://together.jolla.com/question/24943/howto-retrieve-gsm-cell-coordinates/
         // and other valuable discussions at devel@lists.sailfishos.org and elsewhere
         id: bestBus
         bus: DBus.SystemBus
@@ -180,6 +189,10 @@ ApplicationWindow
             actbool:0
         }
     }
+    /////////////////////////////////////////////////
+    /// End At work common properties
+    ////////////////////////////////////////////////
+
 }
 
 

@@ -67,8 +67,8 @@
         <translation>A lavoro</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Luogo</translation>
+        <source>Sleep mode</source>
+        <translation>Modo sospensione</translation>
     </message>
 </context>
 <context>
@@ -363,6 +363,18 @@
         <source>Show and set wifi info</source>
         <translation>Mostra e imposta le informazioni wifi</translation>
     </message>
+    <message>
+        <source>Minimize GPS info view</source>
+        <translation>Riduci vista informazioni GPS</translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation>Riduci vista informazioni WiFi</translation>
+    </message>
+    <message>
+        <source>Minimize cells info view</source>
+        <translation>Riduci vista informazioni cella</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -467,6 +479,14 @@
     <message>
         <source>No GPS, wifi info used instead</source>
         <translation>Nessun GPS, verranno usare le informazioni del wifi</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>Storico</translation>
+    </message>
+    <message>
+        <source>History, this week</source>
+        <translation>Storico di questa settimana</translation>
     </message>
 </context>
 <context>

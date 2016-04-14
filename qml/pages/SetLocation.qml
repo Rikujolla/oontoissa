@@ -31,6 +31,11 @@ import "dbases.js" as Mydbases
 
 Page {
     id: page
+    onStatusChanged: {
+        //console.log("status")
+        Mydbases.loadLocation()
+    }
+
     SilicaListView {
         id: listView
         model: listix
@@ -94,7 +99,8 @@ Page {
             Mydbases.loadLocation()
         }
 
-        Timer {
+
+        /*Timer {
             id: seloTim
             interval: rateAct
             //running: Qt.application.active
@@ -105,7 +111,7 @@ Page {
                 //updateL = false
                 //console.log("Select Location Timer")
             }
-        }
+        }*/
     }
 }
 

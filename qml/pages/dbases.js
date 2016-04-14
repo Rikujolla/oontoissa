@@ -1,3 +1,27 @@
+/*Copyright (c) 2015-2016, Riku Lahtinen
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 ///
 /// updateLocation(), row 17
 /// loadLocation(), row 89
@@ -44,21 +68,21 @@ function updateLocation() {
                     // Updating the location fence thickness, later the parameter name should be changed
                     tx.executeSql('UPDATE Locations SET tolerlat=? WHERE theplace = ?', [fence.text, (listix.get(currentIndex-1).pla)]);
 
+                    // Show all
+                    var rs = tx.executeSql('SELECT * FROM Locations');
+                    listix.set((currentIndex-1),{"pla": rs.rows.item(currentIndex-1).theplace});
+                    listix.set((currentIndex-1),{"els": (rs.rows.item(currentIndex-1).thelati + ", "
+                                                         + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong)});
+
                     // Updating the cell information
                     if (celli.text != "") {
-                        var rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ? AND thecelli = ?', [(listix.get(currentIndex-1).pla), celli.text]);
+                        rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ? AND thecelli = ?', [(listix.get(currentIndex-1).pla), celli.text]);
 
                         //tx.executeSql('UPDATE Cellinfo SET thecelli=? WHERE theplace = ?', [celli.text, (listix.get(currentIndex-1).pla)]);
                         if (rs.rows.length == 0) {
                             tx.executeSql('INSERT INTO Cellinfo VALUES(?, ?, ?, ?, ?, ?)', [(listix.get(currentIndex-1).pla), celli.text, '1', '1.0', '1.0', '1.0']);
                         }
                     }
-                    // Show all
-                    rs = tx.executeSql('SELECT * FROM Locations');
-
-                    listix.set((currentIndex-1),{"pla": rs.rows.item(currentIndex-1).theplace});
-                    listix.set((currentIndex-1),{"els": (rs.rows.item(currentIndex-1).thelati + ", "
-                                                         + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong)});
 
                     rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ?',(listix.get(currentIndex-1).pla));
                     for(var i = 0; i < rs.rows.length; i++) {
@@ -79,6 +103,18 @@ function updateLocation() {
                         //tx.executeSql('INSERT INTO Wifiinfo VALUES(?, ?, ?, ?, ?)', [listix.get(currentIndex-1).pla, wifi.text, '50', 'idle', '0']);
 
                     }
+
+                    // This section removes old orphan data due to problems in locations deletion prior the version 0.1.8
+                    tx.executeSql('DELETE FROM Priorities WHERE theplace NOT IN (SELECT Locations.theplace FROM Locations)');
+                    tx.executeSql('DELETE FROM Cellinfo WHERE theplace NOT IN (SELECT Locations.theplace FROM Locations)');
+                    tx.executeSql('DELETE FROM Wifiinfo WHERE theplace NOT IN (SELECT Locations.theplace FROM Locations)');
+
+                    // Show all
+                    rs = tx.executeSql('SELECT * FROM Locations');
+
+                    listix.set((currentIndex-1),{"pla": rs.rows.item(currentIndex-1).theplace});
+                    listix.set((currentIndex-1),{"els": (rs.rows.item(currentIndex-1).thelati + ", "
+                                                         + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong)});
 
                 }
                 )
@@ -261,7 +297,6 @@ function populateView() {  // Loads existing info to Loc.qml page
                     else {
                         //sellPri.checked = true
                         rs = tx.executeSql('SELECT * FROM Priorities WHERE theplace = ?', neimi.text);
-                        //console.log("selle, ", rs.rows.item(0).cell)
                         sellPri.checked = rs.rows.item(0).cell
                     }
 
@@ -309,7 +344,7 @@ function checkFences() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Wifiinfo(theplace TEXT, thewifi TEXT, sigstrength INTEGER, status TEXT, active INTEGER)');
 
                     // Show all
-                    var rs = tx.executeSql('SELECT * FROM Locations');
+                    var rs = tx.executeSql('SELECT * FROM Locations ORDER BY tolerlong DESC');
                     // Spherical distance
                     var dfii; // Latitude difference
                     var meanfii; // Latitude difference mean
@@ -322,16 +357,27 @@ function checkFences() {
                     covLoc = varus.inFenceT;
                     newStatus = 0;
 
+                    var closDist = 20000000.0 //to tell the closest dist to any location
+                    var nextClosDist = 0.0 // to estimate if next closDist is in location
+                    var biggestTolerance = rs.rows.item(0).tolerlong
                     // If gpsTrue, testing, if in area
                     if (gpsTrue) {
                     var tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
                     var coord = possut.position.coordinate
-                        //console.log(coord.latitude) // For Kalman
+                        /// Kalman section
+                        /*kalman.z_k_lat = coord.latitude
+                        kalman.k_k_lat = kalman.p_k_lat / (kalman.p_k_lat + kalman.r_lat);
+                        //console.log(kalman.k_k_lat);
+                        kalman.x_k_lat = kalman.x_k_lat + kalman.k_k_lat * (kalman.z_k_lat - kalman.x_k_lat);
+                        kalman.p_k_lat = (1.0 - kalman.k_k_lat)*kalman.p_k_lat;
+                        console.log(kalman.z_k_lat, kalman.x_k_lat) */
+                        /// End Kalman section
                     for(var i = 0; i < rs.rows.length; i++) {
                         dfii = Math.abs(coord.latitude - rs.rows.item(i).thelati)*Math.PI/180;
                         meanfii = (coord.latitude + rs.rows.item(i).thelati)*Math.PI/360
                         dlamda = Math.abs(coord.longitude - rs.rows.item(i).thelongi)*Math.PI/180;
                         ddist = 6371009*Math.sqrt(Math.pow(dfii,2)+Math.pow(Math.cos(meanfii)*dlamda,2));
+                        if (ddist < closDist) {closDist = ddist}
                         if ((ddist < rs.rows.item(i).tolerlong)
                                 && (rs.rows.item(i).tolerlong < tolerat)) {
                             varus.inFenceT = rs.rows.item(i).theplace;
@@ -357,12 +403,10 @@ function checkFences() {
                             // 2 in GPS, 3 in Cellsupported gps, 4 wifi, 5 leaving area, 6 pure cell
                         }
                     } //endfor
-                    //console.log(ddist)
                     }
 
                     /// This clause tests if in wifi, not sure if the total logic works
                     if (varus.inFence == "Not in a paddock") {
-                        //console.log("wifi tracks")
                         for (i=0; i<wifis.count; i++) {
                             //rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ? AND active = ?', [wifis.get(i).name, wifis.get(i).actbool]);
                             rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ?', [wifis.get(i).name]);
@@ -410,6 +454,24 @@ function checkFences() {
                             extraMsg = qsTr("Pure cell info in use")
                         }
                     }
+                    ///// Simple estimator, later may be replaced by Kalman
+                    if (gpsTrue) {
+                    if (closDist == prevClosDist) {
+                        //console.log("No speed change")
+                        blackOut++
+                    }
+                    else {
+                        //prevSpeed = closDist-prevClosDist
+                        blackOut = 1
+                    }
+                    nextClosDist = closDist - blackOut*prevSpeed
+                    //console.log(newStatus, prevStatus, prevClosDist, closDist, nextClosDist, biggestTolerance)
+                    if (newStatus == 0 && prevStatus == 0 && nextClosDist > biggestTolerance) {inSleep = true} else {inSleep = false}
+                    var date0 = new Date;
+                    console.log(date0, varus.inFenceT, coord.latitude, coord.longitude, closDist, newStatus, currentCell);
+                    prevClosDist = closDist;
+                    }
+                    ////// End simple estimator
                 }
                 )
     if (newStatus == 0) {extraMsg = ""};
@@ -439,7 +501,6 @@ function addTodayInfo() {
                     else if (evid.rows.length == 0 || marker == true) {
                         if (varus.inFence == "Not in a paddock" && marker == true) {varus.inFence = qsTr("Manual marker")}
                         tx.executeSql('INSERT INTO Today VALUES(datetime(?,?), ?, time(?,?), time(?,?), time(?,?))', [ 'now', 'localtime', varus.inFence, 'now', 'localtime', 'now', 'localtime', 'now', 'localtime' ]);
-                        //console.log("first of the day or a marker", prevStatus, newStatus)
                         marker = false
                         prevStatus = newStatus;
                     }
@@ -498,7 +559,15 @@ function addHistoryData() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
 
                     // Show all values
-                    var rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE thestatus NOT IN (?) GROUP BY deit, thestatus ORDER BY deit DESC', 'Not in a paddock');
+                    var rs;
+                    if (!varus.historyFilter){
+                    rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE thestatus NOT IN (?) GROUP BY deit, thestatus ORDER BY deit DESC', 'Not in a paddock');
+                        history.text = qsTr("History")
+                    }
+                    else {
+                        rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE thestatus NOT IN (?) AND date(theday) >= date(?, ?, ?, ?) GROUP BY deit, thestatus ORDER BY deit DESC', ['Not in a paddock','now', 'localtime', 'weekday 0', '-6 days']);
+                        history.text = qsTr("History, this week")
+                    }
 
                     var r = ""
                     var rmos = 0;
@@ -575,7 +644,6 @@ function extendUpRecord() {
                         dfmt1 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit).endtime)
                         dfmt2 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit-1).starttime)
                         var rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
-                        console.log(rs.rows.item(0).tulos)
                         tx.executeSql('UPDATE Today SET starttime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [(dayValues.get(dayValues.indexEdit-1).starttime), rs.rows.item(0).tulos, button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)] );
                         tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND endtime = ?', [button.selectedDate, (dayValues.get(dayValues.indexEdit-1).pla), (dayValues.get(dayValues.indexEdit-1).endtime)]);
                     }
@@ -584,7 +652,6 @@ function extendUpRecord() {
                         dfmt1 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit).endtime)
                         dfmt2 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit-1).endtime)
                         rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
-                        console.log(rs.rows.item(0).tulos)
                         tx.executeSql('UPDATE Today SET starttime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [dayValues.get(dayValues.indexEdit-1).endtime, rs.rows.item(0).tulos, button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)] );
                     }
                 }
@@ -606,7 +673,6 @@ function extendDownRecord() {
                         dfmt1 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit+1).endtime)
                         dfmt2 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit).starttime)
                         var rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
-                        console.log(rs.rows.item(0).tulos)
                         tx.executeSql('UPDATE Today SET endtime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [(dayValues.get(dayValues.indexEdit+1).endtime), rs.rows.item(0).tulos, button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)] );
                         tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [button.selectedDate, (dayValues.get(dayValues.indexEdit+1).pla), (dayValues.get(dayValues.indexEdit+1).starttime)]);
                     }
@@ -615,7 +681,6 @@ function extendDownRecord() {
                         dfmt1 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit+1).starttime)
                         dfmt2 = "2016-02-28T" + (dayValues.get(dayValues.indexEdit).starttime)
                         rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
-                        console.log(rs.rows.item(0).tulos)
                         tx.executeSql('UPDATE Today SET endtime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [dayValues.get(dayValues.indexEdit+1).starttime, rs.rows.item(0).tulos, button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)] );
                     }
                 }

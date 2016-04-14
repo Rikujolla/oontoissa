@@ -67,8 +67,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Местоположение</translation>
+        <source>Sleep mode</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -363,6 +363,18 @@
         <source>Show and set wifi info</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Minimize GPS info view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimize cells info view</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -466,6 +478,14 @@
     </message>
     <message>
         <source>No GPS, wifi info used instead</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished">История</translation>
+    </message>
+    <message>
+        <source>History, this week</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

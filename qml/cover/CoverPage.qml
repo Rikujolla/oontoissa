@@ -40,31 +40,28 @@ CoverBackground {
         id: label2
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: label.bottom
-        text: qsTr("Location")
+        text: covLoc
         anchors.topMargin: Theme.paddingLarge
-        //x: Theme.paddingLarge
-        //width: parent.width
         wrapMode: Text.WordWrap
     }
     Label {
         id: label3
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: label2.bottom
-        text: "07:15"
+        text: covTim
         anchors.topMargin: Theme.paddingLarge
         x: Theme.paddingLarge
     }
 
-    Timer {
-        interval: ratePass
-        running:Qt.ApplicationActive
-        repeat:true
-        onTriggered: {
-            label3.text = covTim;
-            label2.text = covLoc;
-        }
+    Label {
+        id: label4
+        visible:inSleep
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: label3.bottom
+        text: qsTr("Sleep mode")
+        anchors.topMargin: Theme.paddingLarge
+        x: Theme.paddingLarge
     }
-
 
     CoverActionList {
         id: coverAction

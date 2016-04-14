@@ -67,8 +67,8 @@
         <translation>Oon töissä</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Sijainti</translation>
+        <source>Sleep mode</source>
+        <translation>Horrosmoodi</translation>
     </message>
 </context>
 <context>
@@ -363,6 +363,18 @@
         <source>Show and set wifi info</source>
         <translation>Näytä ja aseta WLAN-tiedot</translation>
     </message>
+    <message>
+        <source>Minimize GPS info view</source>
+        <translation>Piilota GPS-tiedot</translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation>Piilota WLAN-tiedot</translation>
+    </message>
+    <message>
+        <source>Minimize cells info view</source>
+        <translation>Piilota solutiedot</translation>
+    </message>
 </context>
 <context>
     <name>SetLocation</name>
@@ -467,6 +479,14 @@
     <message>
         <source>No GPS, wifi info used instead</source>
         <translation>Ei GPS-tietoa, käytetään WLAN-tietoa</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>Historia</translation>
+    </message>
+    <message>
+        <source>History, this week</source>
+        <translation>Historia, tämä viikko</translation>
     </message>
 </context>
 <context>
