@@ -53,4 +53,5 @@ TRANSLATIONS += translations/harbour-oontoissa-fi.ts \
     translations/harbour-oontoissa-it.ts
 
 DISTFILES += \
-    rpm/harbour-oontoissa.changes
+    rpm/harbour-oontoissa.changes \
+    qml/pages/inertianav.js

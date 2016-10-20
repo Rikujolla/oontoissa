@@ -27,6 +27,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0 //RLAH
 import "dbases.js" as Mydbases //RLAH
+import "inertianav.js" as Myinertia //RLAH
+import QtSensors 5.0
 
 
 Page {
@@ -223,6 +225,8 @@ Page {
                     wifiBus.getServices()
                     Mydbases.checkFences();
                     statusExtra.text = extraMsg
+                    rot.active ? (console.log("Rottaa")):console.log("Ei Rottaa")
+                    rot.active ? rot.stop() : rot.start()
                     //console.log("passiivist", varus.timeInFenceS)
                 }
             }
@@ -240,6 +244,60 @@ Page {
                     //inSleep ? console.log("In sleep", varus.timeInFenceS) : console.log("Only sleep timer")
                 }
             }
+
+            Accelerometer {
+                id:accelo
+                alwaysOn: true
+                active:false
+                dataRate: 20
+                //skipDuplicates: true
+                //onReadingChanged: console.log("Translaatio", reading.x,reading.y,reading.z)
+                //position estimation
+                // x, positive acceleration right
+                // y, positive acceleration forward
+                // z, positive acceleration up
+            }
+
+            Compass {
+                id:kompassi
+                active:true && Qt.application.active
+                //alwaysOn: true
+                dataRate: 20
+                //onReadingChanged: console.log("Kompassi", reading.azimuth)
+
+            }
+
+            Gyroscope {
+                id: gyroo
+                active:false
+                alwaysOn: true
+                dataRate: 20
+                //skipDuplicates: true
+                //onReadingChanged: console.log("Gyro", reading.x,reading.y,reading.z)
+                // xrot, positive rotation nose up
+                // yrot, positive rotation roll right
+                // zrot, positive rotation yaw left
+            }
+
+            RotationSensor {
+                id: rot
+                active:false
+                alwaysOn: true
+                dataRate: 1
+                onReadingChanged: console.log ("Rotation", reading.x, reading.y, reading.z)
+                //x == 0 when horizontal
+                //y == 0 when screen downwards
+                //z == 0 ???? south??
+            }
+
+            /*Timer{
+                interval : rateAct
+                running: !Qt.application.active && !inSleep
+                repeat: true
+                onTriggered: Myinertia.flyInertia()
+            }*/
+
+
 
             ///////////////////////////////////
             ///// End of At work Today.qml to wht transfer

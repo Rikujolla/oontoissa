@@ -29,7 +29,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /// delCelli(), row 151, deletes a single cell from cell list
 /// delLocation(), row 168, deletes a location selected
 /// populateView(), row 193
-/// checkFences(), row 285
+/// checkFences(), row 333
 /// addTodayInfo(), row 408
 /// addHistoryData(), row 479
 /// editInfo(), row 517
@@ -362,8 +362,12 @@ function checkFences() {
                     var biggestTolerance = rs.rows.item(0).tolerlong
                     // If gpsTrue, testing, if in area
                     if (gpsTrue) {
-                    var tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
-                    var coord = possut.position.coordinate
+                        var tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
+                        if (possut.position.horizontalAccuracyValid) {
+                            var htol = possut.position.horizontalAccuracy
+                            console.log(possut.position.horizontalAccuracy, possut.position.horizontalAccuracyValid)
+                        }
+                        var coord = possut.position.coordinate
                         /// Kalman section
                         /*kalman.z_k_lat = coord.latitude
                         kalman.k_k_lat = kalman.p_k_lat / (kalman.p_k_lat + kalman.r_lat);
@@ -372,37 +376,46 @@ function checkFences() {
                         kalman.p_k_lat = (1.0 - kalman.k_k_lat)*kalman.p_k_lat;
                         console.log(kalman.z_k_lat, kalman.x_k_lat) */
                         /// End Kalman section
-                    for(var i = 0; i < rs.rows.length; i++) {
-                        dfii = Math.abs(coord.latitude - rs.rows.item(i).thelati)*Math.PI/180;
-                        meanfii = (coord.latitude + rs.rows.item(i).thelati)*Math.PI/360
-                        dlamda = Math.abs(coord.longitude - rs.rows.item(i).thelongi)*Math.PI/180;
-                        ddist = 6371009*Math.sqrt(Math.pow(dfii,2)+Math.pow(Math.cos(meanfii)*dlamda,2));
-                        if (ddist < closDist) {closDist = ddist}
-                        if ((ddist < rs.rows.item(i).tolerlong)
-                                && (rs.rows.item(i).tolerlong < tolerat)) {
-                            varus.inFenceT = rs.rows.item(i).theplace;
-                            varus.inFence = rs.rows.item(i).theplace;
-                            covLoc = varus.inFenceT;
-                            tolerat = rs.rows.item(i).tolerlong;
-                            newStatus = 2
-                            extraMsg = ""
-                        }
-                        else if ((ddist < (rs.rows.item(i).tolerlong + rs.rows.item(i).tolerlong))) {
-                            if (prevStatus == 2 || prevStatus == 3 || prevStatus == 4 || prevStatus == 5){
+                        for(var i = 0; i < rs.rows.length; i++) {
+                            dfii = Math.abs(coord.latitude - rs.rows.item(i).thelati)*Math.PI/180;
+                            meanfii = (coord.latitude + rs.rows.item(i).thelati)*Math.PI/360
+                            dlamda = Math.abs(coord.longitude - rs.rows.item(i).thelongi)*Math.PI/180;
+                            ddist = 6371009*Math.sqrt(Math.pow(dfii,2)+Math.pow(Math.cos(meanfii)*dlamda,2));
+                            if (ddist < closDist) {closDist = ddist}
+                            if ((ddist < rs.rows.item(i).tolerlong)
+                                    && (rs.rows.item(i).tolerlong < tolerat)) {
                                 varus.inFenceT = rs.rows.item(i).theplace;
                                 varus.inFence = rs.rows.item(i).theplace;
                                 covLoc = varus.inFenceT;
-                                //tolerat = rs.rows.item(i).tolerlong;
-                                newStatus=5
-                                extraMsg = qsTr("Leaving the paddock")
+                                tolerat = rs.rows.item(i).tolerlong;
+                                newStatus = 2
+                                extraMsg = ""
+                                if ((htol+ddist) < tolerat) {
+                                    if (ratePass < 55001) {ratePass = ratePass + 5000}
+                                    console.log("Well in", ratePass)
+                                }
+                                else {
+                                    ratePass = 10000
+                                    console.log("Zero wellin", ratePass)
+                                }
                             }
-                            else {
-                                newStatus=1
-                                extraMsg = qsTr("Entering the paddock")
+
+                            else if ((ddist < (rs.rows.item(i).tolerlong + rs.rows.item(i).tolerlat))) {
+                                if (prevStatus == 2 || prevStatus == 3 || prevStatus == 4 || prevStatus == 5){
+                                    varus.inFenceT = rs.rows.item(i).theplace;
+                                    varus.inFence = rs.rows.item(i).theplace;
+                                    covLoc = varus.inFenceT;
+                                    //tolerat = rs.rows.item(i).tolerlong;
+                                    newStatus=5
+                                    extraMsg = qsTr("Leaving the paddock")
+                                }
+                                else {
+                                    newStatus=1
+                                    extraMsg = qsTr("Entering the paddock")
+                                }
+                                // 2 in GPS, 3 in Cellsupported gps, 4 wifi, 5 leaving area, 6 pure cell
                             }
-                            // 2 in GPS, 3 in Cellsupported gps, 4 wifi, 5 leaving area, 6 pure cell
-                        }
-                    } //endfor
+                        } //endfor
                     }
 
                     /// This clause tests if in wifi, not sure if the total logic works
@@ -456,20 +469,20 @@ function checkFences() {
                     }
                     ///// Simple estimator, later may be replaced by Kalman
                     if (gpsTrue) {
-                    if (closDist == prevClosDist) {
-                        //console.log("No speed change")
-                        blackOut++
-                    }
-                    else {
-                        //prevSpeed = closDist-prevClosDist
-                        blackOut = 1
-                    }
-                    nextClosDist = closDist - blackOut*prevSpeed
-                    //console.log(newStatus, prevStatus, prevClosDist, closDist, nextClosDist, biggestTolerance)
-                    if (newStatus == 0 && prevStatus == 0 && nextClosDist > biggestTolerance) {inSleep = true} else {inSleep = false}
-                    var date0 = new Date;
-                    console.log(date0, varus.inFenceT, coord.latitude, coord.longitude, closDist, newStatus, currentCell);
-                    prevClosDist = closDist;
+                        if (closDist == prevClosDist) {
+                            //console.log("No speed change")
+                            blackOut++
+                        }
+                        else {
+                            //prevSpeed = closDist-prevClosDist
+                            blackOut = 1
+                        }
+                        nextClosDist = closDist - blackOut*prevSpeed
+                        //console.log(newStatus, prevStatus, prevClosDist, closDist, nextClosDist, biggestTolerance)
+                        if (newStatus == 0 && prevStatus == 0 && nextClosDist > biggestTolerance) {inSleep = true} else {inSleep = false}
+                        var date0 = new Date;
+                        console.log(date0, varus.inFenceT, coord.latitude, coord.longitude, closDist, newStatus, currentCell);
+                        prevClosDist = closDist;
                     }
                     ////// End simple estimator
                 }
@@ -686,3 +699,4 @@ function extendDownRecord() {
                 }
                 )
 }
+

@@ -71,7 +71,7 @@ ApplicationWindow
 
     PositionSource {
         id: possut
-        updateInterval: Qt.application.active ? rateAct : ratePass/2
+        updateInterval: Qt.application.active ? rateAct : (inSleep ? rateSleep/2 : ratePass*4/5)
         active: gpsTrue
     }
 
@@ -101,6 +101,8 @@ ApplicationWindow
 
     DBusInterface {
         // Under construction
+        // https://together.jolla.com/question/80828/enable-mobile-data-with-command-line/
+        // dbus-send --system --type=method_call --print-reply --dest=net.connman / net.connman.Manager.GetServices
         id: wifiBus
         bus: DBus.SystemBus
         service: 'net.connman'
@@ -146,7 +148,7 @@ ApplicationWindow
                           one_name = JSON.stringify(result, ['Name', 'State']) //OK
                           //two_name = JSON.stringify(result, replacer) //OK
                           tringi = one_name.split(":")
-                          //console.log(tringi)
+                          console.log(tringi)
                           //console.log(tringi.length)
                           for (var i =1; i<tringi.length; i=i+2 ){
                               //console.log(tringi[i-1].indexOf("wifi"))
