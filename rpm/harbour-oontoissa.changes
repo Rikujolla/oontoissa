@@ -4,6 +4,8 @@
 # Add new changelog entries following the format below.
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
+* Wed Oct 20 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.2.0-1
+- Technical version not for release
 
 * Thu Apr 14 2016 Riku Lahtinen <rikul.lajolla@kiu.as> 0.1.9-1
 - Included distance based sleep mode

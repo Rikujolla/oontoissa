@@ -59,6 +59,10 @@
         <source>Italian (Tichy)</source>
         <translation>Italiano (Tichy)</translation>
     </message>
+    <message>
+        <source>Dutch (Nathan Follens)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

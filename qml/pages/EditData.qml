@@ -40,14 +40,12 @@ Page {
             MenuItem {
                 id: button
                 property string selectedDate
-                //property date tiikro;
-                //property bool tiikro_done : false
                 function dateFormat() {
-                    var tempo = new Date()
+                    var tempo = new Date(selectedDate_g)
                     selectedDate = tempo.getFullYear() + "-"
                             + ((tempo.getMonth()+1) < 10 ? ("0" + (tempo.getMonth()+1)) : (tempo.getMonth()+1)) + "-"
                             + (tempo.getDate() < 10 ? ("0"+ tempo.getDate()) : tempo.getDate())
-                    labeli.text = qsTr("Selected date") + ": " + button.selectedDate
+                    labeli.text = qsTr("Selected date") + ": " + tempo.toLocaleDateString();
                 }
                 text: qsTr("Select a date")
                 onClicked: {
@@ -57,12 +55,10 @@ Page {
                                                 })
                     dialog.accepted.connect(function() {
                         labeli.text = qsTr("Selected date") + ": " + dialog.dateText;
-                       // button.tiikro = dialog.date;
-                       // button.tiikro_done = true;
                         selectedDate = dialog.date.getFullYear() + "-"
                                 + ((dialog.date.getMonth()+1) < 10 ? ("0" + (dialog.date.getMonth()+1)) : (dialog.date.getMonth()+1)) + "-"
                                 + (dialog.date.getDate() < 10 ? ("0"+ dialog.date.getDate()) : dialog.date.getDate())
-                        //console.log(dialog.date,selectedDate)
+                        selectedDate_g = selectedDate
                         editDataUpdate.start();
                     })
                 }
@@ -74,7 +70,6 @@ Page {
             }
             MenuLabel {
                 id: labeli
-                //text: qsTr("Selected date") + ": " + button.selectedDate
             }
 
         }
@@ -173,7 +168,8 @@ Page {
 
     }
 
-    Component.onCompleted:{button.dateFormat()
+    Component.onCompleted:{
+        button.dateFormat()
         Mydbases.editInfo()
     }
 }

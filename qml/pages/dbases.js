@@ -365,7 +365,7 @@ function checkFences() {
                         var tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
                         if (possut.position.horizontalAccuracyValid) {
                             var htol = possut.position.horizontalAccuracy
-                            console.log(possut.position.horizontalAccuracy, possut.position.horizontalAccuracyValid)
+                            //console.log(possut.position.horizontalAccuracy, possut.position.horizontalAccuracyValid)
                         }
                         var coord = possut.position.coordinate
                         /// Kalman section
@@ -392,11 +392,11 @@ function checkFences() {
                                 extraMsg = ""
                                 if ((htol+ddist) < tolerat) {
                                     if (ratePass < 55001) {ratePass = ratePass + 5000}
-                                    console.log("Well in", ratePass)
+                                    //console.log("Well in", ratePass)
                                 }
                                 else {
                                     ratePass = 10000
-                                    console.log("Zero wellin", ratePass)
+                                    //console.log("Zero wellin", ratePass)
                                 }
                             }
 
@@ -481,7 +481,7 @@ function checkFences() {
                         //console.log(newStatus, prevStatus, prevClosDist, closDist, nextClosDist, biggestTolerance)
                         if (newStatus == 0 && prevStatus == 0 && nextClosDist > biggestTolerance) {inSleep = true} else {inSleep = false}
                         var date0 = new Date;
-                        console.log(date0, varus.inFenceT, coord.latitude, coord.longitude, closDist, newStatus, currentCell);
+                        //console.log(date0, varus.inFenceT, coord.latitude, coord.longitude, closDist, newStatus, currentCell);
                         prevClosDist = closDist;
                     }
                     ////// End simple estimator
@@ -700,3 +700,22 @@ function extendDownRecord() {
                 )
 }
 
+/// Find data for the datepicker element. Search and return seconds of recorded data of the day
+function findIfData(y,m,d) {
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+    var time_e = 0
+    var date_e = y + (m<10? '-0'+m: '-'+m)+(d<10? '-0'+d: '-'+d)
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    var rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE deit = ? AND thestatus NOT IN (?) GROUP BY deit', [date_e,'Not in a paddock']);
+                        if (rs.rows.length > 0)
+                            time_e = rs.rows.item(0).totle
+                        else
+                            time_e = 0
+                }
+                )
+
+    return time_e;
+}

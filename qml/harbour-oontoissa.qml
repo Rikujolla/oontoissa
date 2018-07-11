@@ -64,6 +64,7 @@ ApplicationWindow
     property real prevClosDist: 0.0 //Save previous closest dist, used with sleep timer
     property real prevSpeed: 7000.0 // Save previous speed, not actual speed, adjusted to constant timer
     property int blackOut: 1 //Time, no new gpsinfo
+    property string selectedDate_g // Global variable to tell the date to be explored
 
     /*NetworkInfo { // Make multiple signals possible
         id : bestcell
@@ -77,6 +78,7 @@ ApplicationWindow
 
     DBusInterface {
         // Motivated by shell script https://together.jolla.com/question/24943/howto-retrieve-gsm-cell-coordinates/
+        // dbus-send --system --print-reply=literal --type=method_call --dest=org.ofono /ril_0 org.ofono.NetworkRegistration.GetProperties
         // and other valuable discussions at devel@lists.sailfishos.org and elsewhere
         id: bestBus
         bus: DBus.SystemBus
@@ -85,6 +87,13 @@ ApplicationWindow
         path: '/ril_0'
 
         signalsEnabled: true
+
+        // https://github.com/intgr/ofono/blob/master/doc/network-api.txt
+        function propertyChanged(name, value){
+            //console.log("signals", name, value)
+            //if (name == "CellId") {console.log("CellId ", value)}
+            //if (name == "Strength") {console.log("Strength_sig_cell", value)}
+        }
 
         function getProperties() {
             typedCall('GetProperties',[],
@@ -122,10 +131,14 @@ ApplicationWindow
 
         signalsEnabled: true
 
+        /* Not working
+        // https://together.jolla.com/question/73948/show-wifi-signal-strength-in-app-or-terminal/
+        // https://github.com/sidorares/node-dbus/issues/113
+        // https://w1.fi/wpa_supplicant/devel/dbus.html#dbus_interface
         //https://github.com/aldebaran/connman/blob/master/doc/service-api.txt
         function propertyChanged(name, value){
-            console.log("signals2")
-            if (name == "Name") {console.log("sig", value)}
+            console.log("signals2", name, value)
+            if (name == "Strength") {console.log("Strength_sig_wifi", value)}
         }
 
         function replacer(key, value) {
@@ -135,7 +148,7 @@ ApplicationWindow
             }
             return value;
             //return vvlue;
-        }
+        }*/
 
 
         function getServices() {
@@ -148,7 +161,7 @@ ApplicationWindow
                           one_name = JSON.stringify(result, ['Name', 'State']) //OK
                           //two_name = JSON.stringify(result, replacer) //OK
                           tringi = one_name.split(":")
-                          console.log(tringi)
+                          //console.log(tringi)
                           //console.log(tringi.length)
                           for (var i =1; i<tringi.length; i=i+2 ){
                               //console.log(tringi[i-1].indexOf("wifi"))

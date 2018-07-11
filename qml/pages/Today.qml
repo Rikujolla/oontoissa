@@ -95,6 +95,7 @@ Page {
             Text {
                 id: status
                 color: Theme.primaryColor
+                font.pixelSize: Theme.fontSizeSmall
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -124,6 +125,7 @@ Page {
             Text {
                 id: todday
                 color: Theme.primaryColor
+                font.pixelSize: Theme.fontSizeSmall
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -131,6 +133,7 @@ Page {
                 }
                 text: varus.whatToday
             }
+
             BackgroundItem {
                 SectionHeader {
                     id: history
@@ -138,6 +141,100 @@ Page {
                 }
                 onClicked: varus.historyFilter = !varus.historyFilter
             }
+
+            Row {
+                anchors.horizontalCenter: parent.horizontalCenter
+                IconButton {
+                    icon.source: "image://theme/icon-m-back?" + (pressed
+                                                                 ? Theme.highlightColor
+                                                                 : Theme.primaryColor)
+                    onClicked: {
+                        datePicker.date = new Date(datePicker.year, datePicker.month-2, datePicker.day, 12, 0, 0)
+                    }
+                }
+
+                Button {
+                    text: datePicker.date.toLocaleDateString(Locale.ShortFormat);
+                    onClicked: datePicker.date = new Date()
+                }
+                IconButton {
+                    icon.source: "image://theme/icon-m-forward?" + (pressed
+                                                                    ? Theme.highlightColor
+                                                                    : Theme.primaryColor)
+                    onClicked: datePicker.date = new Date(datePicker.year, datePicker.month, datePicker.day, 12, 0, 0)
+                }
+
+            }
+
+            DatePicker {
+                id: datePicker
+
+                function getModelData(dateObject, primaryMonth) {
+                    var y = dateObject.getFullYear()
+                    var m = dateObject.getMonth() + 1
+                    var d = dateObject.getDate()
+                    var data = {'year': y, 'month': m, 'day': d,
+                                'primaryMonth': primaryMonth,
+                                'hasData': Mydbases.findIfData(y,m,d)
+                    }
+                    return data
+                }
+
+                modelComponent: Component {
+                    ListModel { }
+                }
+
+                onUpdateModel: {
+                    var i = 0
+                    var dateObject = new Date(fromDate)
+                    while (dateObject < toDate) {
+                        if (i < modelObject.count) {
+                            modelObject.set(i, getModelData(dateObject, primaryMonth))
+                        } else {
+                            modelObject.append(getModelData(dateObject, primaryMonth))
+                        }
+                        dateObject.setDate(dateObject.getDate() + 1)
+                        i++
+                    }
+                }
+
+                delegate: MouseArea {
+                    width: datePicker.cellWidth
+                    height: datePicker.cellHeight
+
+                    onClicked: {
+                        datePicker.date = new Date(year, month-1, day, 12, 0, 0)
+                        selectedDate_g = datePicker.date
+                        pageStack.push(Qt.resolvedUrl("EditData.qml"))
+                    }
+
+                    Rectangle {
+                        width: datePicker.cellWidth
+                        height: datePicker.cellHeight
+                        gradient: Gradient {
+                            GradientStop { position: 1.0-hasData/86400.0; color: "transparent" }
+                            GradientStop { position: 1.0; color: hasData>0 ? "blue":"transparent" }
+                        }
+
+                    }
+
+                    Label {
+                        anchors.centerIn: parent
+                        text: day
+                        color: hasData>0? "white" : "orange"
+                        font.bold: hasData>0
+                        font.pixelSize: month === primaryMonth ? Theme.fontSizeMedium : Theme.fontSizeExtraSmall
+                    }
+                    Label {
+                        anchors.bottom: parent.bottom
+                        text: hasData>0? (hasData%3600 <600? (hasData-hasData%3600)/3600+':0'+(hasData%3600-hasData%60)/60 : (hasData-hasData%3600)/3600+':'+(hasData%3600-hasData%60)/60):''
+                        color: hasData>0? "white" : "orange"
+                        font.bold: hasData>0
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                    }
+                }
+            }
+
             Text {
                 id: histor
                 font.pixelSize: Theme.fontSizeSmall
@@ -225,7 +322,7 @@ Page {
                     wifiBus.getServices()
                     Mydbases.checkFences();
                     statusExtra.text = extraMsg
-                    rot.active ? (console.log("Rottaa")):console.log("Ei Rottaa")
+                    //rot.active ? (console.log("Rottaa")):console.log("Ei Rottaa")
                     rot.active ? rot.stop() : rot.start()
                     //console.log("passiivist", varus.timeInFenceS)
                 }
@@ -284,7 +381,7 @@ Page {
                 active:false
                 alwaysOn: true
                 dataRate: 1
-                onReadingChanged: console.log ("Rotation", reading.x, reading.y, reading.z)
+                //onReadingChanged: console.log ("Rotation", reading.x, reading.y, reading.z)
                 //x == 0 when horizontal
                 //y == 0 when screen downwards
                 //z == 0 ???? south??
