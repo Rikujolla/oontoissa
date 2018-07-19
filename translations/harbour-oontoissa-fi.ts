@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Dutch (Nathan Follens)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hollanniksi (Nathan Follens)</translation>
     </message>
 </context>
 <context>
@@ -397,6 +397,57 @@
     <message>
         <source>Location</source>
         <translation>Sijainti</translation>
+    </message>
+</context>
+<context>
+    <name>ShowDay</name>
+    <message>
+        <source>Selected day recordings</source>
+        <translation>Valitun päivän tallenteet</translation>
+    </message>
+    <message>
+        <source>Show and edit data page</source>
+        <translation>Datan editointisivu</translation>
+    </message>
+    <message>
+        <source>Subtotals of the day</source>
+        <translation>Päivän välisummat</translation>
+    </message>
+    <message>
+        <source>The day total</source>
+        <translation>Päivä yhteensä</translation>
+    </message>
+    <message>
+        <source>hours</source>
+        <translation>tuntia</translation>
+    </message>
+    <message>
+        <source>Extend up</source>
+        <translation>Laajenna ylempään</translation>
+    </message>
+    <message>
+        <source>Extending up</source>
+        <translation>Laajennetaan ylös</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Poistetaan</translation>
+    </message>
+    <message>
+        <source>Extend down</source>
+        <translation>Laajenna alempaan</translation>
+    </message>
+    <message>
+        <source>Extending down</source>
+        <translation>Laajennetaan alas</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation>Korjaa tietoja</translation>
     </message>
 </context>
 <context>

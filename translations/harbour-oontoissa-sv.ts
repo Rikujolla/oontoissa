@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Dutch (Nathan Follens)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nederländska (Nathan Follens)</translation>
     </message>
 </context>
 <context>
@@ -397,6 +397,57 @@
     <message>
         <source>Location</source>
         <translation>Plats</translation>
+    </message>
+</context>
+<context>
+    <name>ShowDay</name>
+    <message>
+        <source>Selected day recordings</source>
+        <translation>Valda dagsposter</translation>
+    </message>
+    <message>
+        <source>Show and edit data page</source>
+        <translation>Visa och redigera datasidan</translation>
+    </message>
+    <message>
+        <source>Subtotals of the day</source>
+        <translation>Delsummor för dagen</translation>
+    </message>
+    <message>
+        <source>The day total</source>
+        <translation>Dagen sammanlagt</translation>
+    </message>
+    <message>
+        <source>hours</source>
+        <translation>timmar</translation>
+    </message>
+    <message>
+        <source>Extend up</source>
+        <translation>Utöka uppåt</translation>
+    </message>
+    <message>
+        <source>Extending up</source>
+        <translation>Utökar uppåt</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Ta bort</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>Tar bort</translation>
+    </message>
+    <message>
+        <source>Extend down</source>
+        <translation>Utöka neråt</translation>
+    </message>
+    <message>
+        <source>Extending down</source>
+        <translation>Utökar neråt</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation>Redigera data</translation>
     </message>
 </context>
 <context>

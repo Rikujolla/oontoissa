@@ -605,7 +605,7 @@ function addHistoryData() {
                 )
     status.text = varus.inFenceT + ": " + varus.timeInFenceS;
     todday.text = varus.whatToday;
-    histor.text = varus.niceHistory;
+    //histor.text = varus.niceHistory;
 
 }
 
@@ -700,6 +700,96 @@ function extendDownRecord() {
                 )
 }
 
+function editInfo_n() {
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+    var date_e= selectedDate_g.substring(0, 10)
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    var rs = tx.executeSql('DELETE FROM Today WHERE thestatus = ?', ['Not in a paddock']);
+                    rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = ? AND thestatus NOT IN (?)', [date_e, 'Not in a paddock']);
+                    dayValues_g.clear();
+                    for(var i = 0; i < rs.rows.length; i++) {
+                        dayValues_g.set((i),{"starttime": rs.rows.item(i).starttime});
+                        dayValues_g.set((i),{"endtime": rs.rows.item(i).endtime});
+                        dayValues_g.set((i),{"pla": rs.rows.item(i).thestatus});
+                        dayValues_g.set((i),{"subtotal": rs.rows.item(i).subtotal});
+                    }
+                }
+                )
+}
+
+function deleteRecord_n() {
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+    var date_e= selectedDate_g.substring(0, 10)
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [date_e, (dayValues_g.get(dayValues_g.indexEdit).pla), (dayValues_g.get(dayValues_g.indexEdit).starttime)]);
+                }
+                )
+}
+
+function extendUpRecord_n() {
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+    var date_e= selectedDate_g.substring(0, 10)
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    var dfmt1 = new Date()
+                    var dfmt2 = new Date()
+                    if (dayValues_g.indexEdit == 0) {} //The first record cannot be extended up
+                    // Join adjacent records of the same location
+                    else if(dayValues_g.get(dayValues_g.indexEdit-1).pla == dayValues_g.get(dayValues_g.indexEdit).pla) {
+                        dfmt1 = "2016-02-28T" + (dayValues_g.get(dayValues_g.indexEdit).endtime)
+                        dfmt2 = "2016-02-28T" + (dayValues_g.get(dayValues_g.indexEdit-1).starttime)
+                        var rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
+                        tx.executeSql('UPDATE Today SET starttime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [(dayValues_g.get(dayValues_g.indexEdit-1).starttime), rs.rows.item(0).tulos, date_e, (dayValues_g.get(dayValues_g.indexEdit).pla), (dayValues_g.get(dayValues_g.indexEdit).starttime)] );
+                        tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND endtime = ?', [date_e, (dayValues_g.get(dayValues_g.indexEdit-1).pla), (dayValues_g.get(dayValues_g.indexEdit-1).endtime)]);
+                    }
+                    // Filling gap to adjacent record
+                    else {
+                        dfmt1 = "2016-02-28T" + (dayValues_g.get(dayValues_g.indexEdit).endtime)
+                        dfmt2 = "2016-02-28T" + (dayValues_g.get(dayValues_g.indexEdit-1).endtime)
+                        rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
+                        tx.executeSql('UPDATE Today SET starttime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [dayValues_g.get(dayValues_g.indexEdit-1).endtime, rs.rows.item(0).tulos, date_e, (dayValues_g.get(dayValues_g.indexEdit).pla), (dayValues_g.get(dayValues_g.indexEdit).starttime)] );
+                    }
+                }
+                )
+}
+
+function extendDownRecord_n() {
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+    var date_e= selectedDate_g.substring(0, 10)
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    var dfmt1 = new Date()
+                    var dfmt2 = new Date()
+                    if (dayValues_g.indexEdit == dayValues_g.count-1) {console.log("last LINE")} //The LAST record cannot be extended DOWN
+                    // Join adjacent records of the same location
+                    else if(dayValues_g.get(dayValues_g.indexEdit+1).pla == dayValues_g.get(dayValues_g.indexEdit).pla) {
+                        dfmt1 = "2016-02-28T" + (dayValues_g.get(dayValues_g.indexEdit+1).endtime)
+                        dfmt2 = "2016-02-28T" + (dayValues_g.get(dayValues_g.indexEdit).starttime)
+                        var rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
+                        tx.executeSql('UPDATE Today SET endtime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [(dayValues_g.get(dayValues_g.indexEdit+1).endtime), rs.rows.item(0).tulos, date_e, (dayValues_g.get(dayValues_g.indexEdit).pla), (dayValues_g.get(dayValues_g.indexEdit).starttime)] );
+                        tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [date_e, (dayValues_g.get(dayValues_g.indexEdit+1).pla), (dayValues_g.get(dayValues_g.indexEdit+1).starttime)]);
+                    }
+                    // Filling gap to adjacent record
+                    else {
+                        dfmt1 = "2016-02-28T" + (dayValues_g.get(dayValues_g.indexEdit+1).starttime)
+                        dfmt2 = "2016-02-28T" + (dayValues_g.get(dayValues_g.indexEdit).starttime)
+                        rs = tx.executeSql('SELECT strftime(?,?)-strftime(?,?) AS tulos', ['%s', dfmt1, '%s', dfmt2]);
+                        tx.executeSql('UPDATE Today SET endtime=?, subtotal=? WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [dayValues_g.get(dayValues_g.indexEdit+1).starttime, rs.rows.item(0).tulos, date_e, (dayValues_g.get(dayValues_g.indexEdit).pla), (dayValues_g.get(dayValues_g.indexEdit).starttime)] );
+                    }
+                }
+                )
+}
+
 /// Find data for the datepicker element. Search and return seconds of recorded data of the day
 function findIfData(y,m,d) {
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
@@ -718,4 +808,40 @@ function findIfData(y,m,d) {
                 )
 
     return time_e;
+}
+
+/// Find the day total values for a view
+function dayTotals() {
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+    var date_e= selectedDate_g.substring(0, 10)
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    var rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE deit = ? AND thestatus NOT IN (?) GROUP BY deit', [date_e,'Not in a paddock']);
+                    theDayTotal.clear();
+                    for (var i=0;i<rs.rows.length;i++)   {
+                        theDayTotal.append({"date":date_e, "total": rs.rows.item(i).totle});
+                    }
+                }
+                )
+}
+
+/// Find the day subtotal values for a view
+function daySubTot() {
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+    var date_e= selectedDate_g.substring(0, 10)
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    var rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE deit = ? AND thestatus NOT IN (?) GROUP BY deit, thestatus ORDER BY deit DESC', [date_e,'Not in a paddock']);
+                    theSubTot.clear();
+                    for (var i=0;i<rs.rows.length;i++)   {
+                        theSubTot.append({"date":date_e, "categor":rs.rows.item(i).thestatus, "subtot": rs.rows.item(i).totle});
+                        //console.log(rs.rows.item(i).thestatus)
+                        //console.log(theSubTot.get(i).categor)
+                    }
+                }
+                )
 }

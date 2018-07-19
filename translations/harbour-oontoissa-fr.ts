@@ -400,6 +400,57 @@
     </message>
 </context>
 <context>
+    <name>ShowDay</name>
+    <message>
+        <source>Selected day recordings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and edit data page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtotals of the day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The day total</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extend up</source>
+        <translation type="unfinished">Etendre en haut</translation>
+    </message>
+    <message>
+        <source>Extending up</source>
+        <translation type="unfinished">Extension en haut</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Supprimer</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished">Suppression</translation>
+    </message>
+    <message>
+        <source>Extend down</source>
+        <translation type="unfinished">Etendre en bas</translation>
+    </message>
+    <message>
+        <source>Extending down</source>
+        <translation type="unfinished">Extension en bas</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation type="unfinished">Modifier les données</translation>
+    </message>
+</context>
+<context>
     <name>Today</name>
     <message>
         <source>Set location</source>

@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>The idea of the software is to support your daily working times automatically based on sensor data. You create areas and the Jolla detects whether you are inside the boundary or galloping freely elsewhere.</source>
-        <translation>这个软件的创意是根据传感器数据支持你每天的工作时间。当你创建区域的时候， olla会判断你是在屋内还是在某处嗨着。</translation>
+        <translation>这个软件的创意是根据传感器数据支持你每天的工作时间。当你创建区域的时候， Jolla会判断你是在屋内还是在某处嗨着。</translation>
     </message>
     <message>
         <source>French (Jordi)</source>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Dutch (Nathan Follens)</source>
-        <translation type="unfinished"></translation>
+        <translation>荷兰（Nathan Follens）</translation>
     </message>
 </context>
 <context>
@@ -72,7 +72,7 @@
     </message>
     <message>
         <source>Sleep mode</source>
-        <translation type="unfinished"></translation>
+        <translation>睡眠模式</translation>
     </message>
 </context>
 <context>
@@ -103,54 +103,54 @@
     </message>
     <message>
         <source>Delete cells info!</source>
-        <translation>删除小区信息！</translation>
+        <translation>删除移动数据信息！</translation>
     </message>
     <message>
         <source>Delete wifi info!</source>
-        <translation type="unfinished"></translation>
+        <translation>删除WiFi信息</translation>
     </message>
 </context>
 <context>
     <name>EditData</name>
     <message>
         <source>Selected date</source>
-        <translation type="unfinished"></translation>
+        <translation>选择日期</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">帮助</translation>
+        <translation>帮助</translation>
     </message>
     <message>
         <source>Edit data page</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑数据页</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">删除</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <source>Extend up</source>
-        <translation type="unfinished"></translation>
+        <translation>扩展</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished">删除中</translation>
+        <translation>删除中</translation>
     </message>
     <message>
         <source>Select a date</source>
-        <translation type="unfinished"></translation>
+        <translation>选择日期</translation>
     </message>
     <message>
         <source>Extending up</source>
-        <translation type="unfinished"></translation>
+        <translation>扩展中</translation>
     </message>
     <message>
         <source>Extend down</source>
-        <translation type="unfinished"></translation>
+        <translation>向下延伸</translation>
     </message>
     <message>
         <source>Extending down</source>
-        <translation type="unfinished"></translation>
+        <translation>向下延伸中</translation>
     </message>
 </context>
 <context>
@@ -185,22 +185,22 @@
     </message>
     <message>
         <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
-        <translation type="unfinished"></translation>
+        <translation>您可以在“工作中”视图或封面操作中设置标记。</translation>
     </message>
 </context>
 <context>
     <name>HelpEdit</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished">帮助</translation>
+        <translation>帮助</translation>
     </message>
     <message>
         <source>Edit data page</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑数据页</translation>
     </message>
     <message>
         <source>On this page you may delete records or fill possible gaps in data by extending the records to the adjacent records.</source>
-        <translation type="unfinished"></translation>
+        <translation>在此页面上，您可以通过将记录扩展到相邻记录来删除记录或填充数据中可能存在的间隙。</translation>
     </message>
 </context>
 <context>
@@ -255,11 +255,11 @@
     </message>
     <message>
         <source>The fence thickness is used as a virtual aid to determine whether you are entering the location or leaving that.</source>
-        <translation type="unfinished"></translation>
+        <translation>围栏厚度用作虚拟辅助，以确定您是进入该位置还是离开该位置。</translation>
     </message>
     <message>
         <source>It can be used also as an extra tolerance of the area you have entered.</source>
-        <translation type="unfinished"></translation>
+        <translation>它也可以用作您输入区域的额外容差。</translation>
     </message>
 </context>
 <context>
@@ -329,7 +329,7 @@
     </message>
     <message>
         <source>Use CellId as a primary location source</source>
-        <translation>使用小区ID作为首要的位置源</translation>
+        <translation>使用移动数据id作为首要的位置源</translation>
     </message>
     <message>
         <source>Location size (m)</source>
@@ -337,66 +337,117 @@
     </message>
     <message>
         <source>Fence thickness (m)</source>
-        <translation type="unfinished"></translation>
+        <translation>栅栏厚度（m）</translation>
     </message>
     <message>
         <source>Write wifi station name</source>
-        <translation type="unfinished"></translation>
+        <translation>写下WiFi基站名</translation>
     </message>
     <message>
         <source>Selected wifis</source>
-        <translation type="unfinished"></translation>
+        <translation>已选择的WiFi</translation>
     </message>
     <message>
         <source>Available wifis</source>
-        <translation type="unfinished"></translation>
+        <translation>可用的WiFi</translation>
     </message>
     <message>
         <source>Require wifi to be online</source>
-        <translation type="unfinished"></translation>
+        <translation>要求WiFi在线</translation>
     </message>
     <message>
         <source>Show and set GPS info</source>
-        <translation type="unfinished"></translation>
+        <translation>展示并设置GPS信息</translation>
     </message>
     <message>
         <source>Show and set cells info</source>
-        <translation type="unfinished"></translation>
+        <translation>展示并设置移动数据信息</translation>
     </message>
     <message>
         <source>Show and set wifi info</source>
-        <translation type="unfinished"></translation>
+        <translation>展示并设置WiFi信息</translation>
     </message>
     <message>
         <source>Minimize GPS info view</source>
-        <translation type="unfinished"></translation>
+        <translation>最小化GPS信息视图</translation>
     </message>
     <message>
         <source>Minimize wifi info view</source>
-        <translation type="unfinished"></translation>
+        <translation>最小化WiFi信息视图</translation>
     </message>
     <message>
         <source>Minimize cells info view</source>
-        <translation type="unfinished"></translation>
+        <translation>最小化移动数据信息视图</translation>
     </message>
 </context>
 <context>
     <name>SetLocation</name>
     <message>
         <source>Add location</source>
-        <translation type="unfinished"></translation>
+        <translation>添加位置</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">帮助</translation>
+        <translation>帮助</translation>
     </message>
     <message>
         <source>Set location page</source>
-        <translation type="unfinished">设置位置页面</translation>
+        <translation>设置位置页面</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished">位置</translation>
+        <translation>位置</translation>
+    </message>
+</context>
+<context>
+    <name>ShowDay</name>
+    <message>
+        <source>Selected day recordings</source>
+        <translation>已选择的当日记录</translation>
+    </message>
+    <message>
+        <source>Show and edit data page</source>
+        <translation>展示并编辑数据页</translation>
+    </message>
+    <message>
+        <source>Subtotals of the day</source>
+        <translation>当天的小计</translation>
+    </message>
+    <message>
+        <source>The day total</source>
+        <translation>当天总计</translation>
+    </message>
+    <message>
+        <source>hours</source>
+        <translation>小时</translation>
+    </message>
+    <message>
+        <source>Extend up</source>
+        <translation>扩展</translation>
+    </message>
+    <message>
+        <source>Extending up</source>
+        <translation>扩展中</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation>删除中</translation>
+    </message>
+    <message>
+        <source>Extend down</source>
+        <translation>向下延伸</translation>
+    </message>
+    <message>
+        <source>Extending down</source>
+        <translation>向下延伸中</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation>编辑数据</translation>
     </message>
 </context>
 <context>
@@ -439,11 +490,11 @@
     </message>
     <message>
         <source>Set marker</source>
-        <translation type="unfinished"></translation>
+        <translation>设置标记</translation>
     </message>
     <message>
         <source>Edit data</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑数据</translation>
     </message>
 </context>
 <context>
@@ -454,43 +505,43 @@
     </message>
     <message>
         <source>Leaving the paddock</source>
-        <translation type="unfinished"></translation>
+        <translation>离开围场</translation>
     </message>
     <message>
         <source>Entering the paddock</source>
-        <translation type="unfinished"></translation>
+        <translation>进入围场</translation>
     </message>
     <message>
         <source>No GPS, cells info used instead</source>
-        <translation type="unfinished"></translation>
+        <translation>无GPS，使用移动数据信息</translation>
     </message>
     <message>
         <source>Pure cell info in use</source>
-        <translation type="unfinished"></translation>
+        <translation>在使用纯移动数据信息</translation>
     </message>
     <message>
         <source>Validating the location info</source>
-        <translation type="unfinished"></translation>
+        <translation>校验位置信息</translation>
     </message>
     <message>
         <source>Manual marker</source>
-        <translation type="unfinished"></translation>
+        <translation>手动标记</translation>
     </message>
     <message>
         <source>Available wifis</source>
-        <translation type="unfinished"></translation>
+        <translation>可用的WiFi</translation>
     </message>
     <message>
         <source>No GPS, wifi info used instead</source>
-        <translation type="unfinished"></translation>
+        <translation>无GPS，使用WiFi信息</translation>
     </message>
     <message>
         <source>History</source>
-        <translation type="unfinished">历史</translation>
+        <translation>历史</translation>
     </message>
     <message>
         <source>History, this week</source>
-        <translation type="unfinished"></translation>
+        <translation>这周历史</translation>
     </message>
 </context>
 <context>

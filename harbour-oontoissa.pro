@@ -32,7 +32,8 @@ OTHER_FILES += qml/harbour-oontoissa.qml \
     qml/pages/HelpSetLoc.qml \
     qml/pages/Del.qml \
     qml/pages/HelpEdit.qml \
-    qml/pages/EditData.qml
+    qml/pages/EditData.qml \
+    qml/pages/ShowDay.qml
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
@@ -44,12 +45,14 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/harbour-oontoissa-fi.ts \
+TRANSLATIONS += translations/harbour-oontoissa-de.ts \
+    translations/harbour-oontoissa-fi.ts \
     translations/harbour-oontoissa-zh_cn.ts \
     translations/harbour-oontoissa-fr.ts \
+    translations/harbour-oontoissa-nl.ts \
+    translations/harbour-oontoissa-nl_be.ts \
     translations/harbour-oontoissa-sv.ts \
     translations/harbour-oontoissa-ru.ts \
-    translations/harbour-oontoissa-de.ts \
     translations/harbour-oontoissa-it.ts
 
 DISTFILES += \

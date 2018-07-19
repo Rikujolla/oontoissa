@@ -119,7 +119,11 @@ Page {
 
             BackgroundItem {
                 SectionHeader { text: qsTr("Today") }
-                onClicked: pageStack.push(Qt.resolvedUrl("EditData.qml"))
+                onClicked: {
+                    selectedDate_g = new Date()
+                    //pageStack.push(Qt.resolvedUrl("EditData.qml"))
+                    pageStack.push(Qt.resolvedUrl("ShowDay.qml"))
+                }
             }
 
             Text {
@@ -205,7 +209,8 @@ Page {
                     onClicked: {
                         datePicker.date = new Date(year, month-1, day, 12, 0, 0)
                         selectedDate_g = datePicker.date
-                        pageStack.push(Qt.resolvedUrl("EditData.qml"))
+                        //pageStack.push(Qt.resolvedUrl("EditData.qml"))
+                        pageStack.push(Qt.resolvedUrl("ShowDay.qml"))
                     }
 
                     Rectangle {
@@ -235,7 +240,7 @@ Page {
                 }
             }
 
-            Text {
+            /*Text {
                 id: histor
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.primaryColor
@@ -247,7 +252,7 @@ Page {
                     margins: Theme.paddingLarge
                 }
                 text: varus.niceHistory
-            }
+            }*/
 
             ///////////////////////////////////
             ///// Start of At work Today.qml to wht transfer

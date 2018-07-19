@@ -204,6 +204,38 @@ ApplicationWindow
             actbool:0
         }
     }
+
+    ListModel {
+        id: theDayTotal
+        ListElement {
+            date:''
+            total:0
+        }
+    }
+
+    ListModel {
+        id: theSubTot
+    }
+    /*ListModel {
+        id: theSubTot
+        ListElement {
+            date:''
+            categor:''
+            subtot:0
+        }
+    }*/
+
+    ListModel {
+        id: dayValues_g
+        property int indexEdit
+        ListElement {
+            pla: "place"
+            starttime: ""
+            endtime: ""
+            subtotal: ""
+        }
+    }
+
     /////////////////////////////////////////////////
     /// End At work common properties
     ////////////////////////////////////////////////

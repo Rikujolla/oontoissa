@@ -400,6 +400,57 @@
     </message>
 </context>
 <context>
+    <name>ShowDay</name>
+    <message>
+        <source>Selected day recordings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and edit data page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subtotals of the day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The day total</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extend up</source>
+        <translation type="unfinished">Estendi</translation>
+    </message>
+    <message>
+        <source>Extending up</source>
+        <translation type="unfinished">Estendo</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Elimina</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished">Eliminazione</translation>
+    </message>
+    <message>
+        <source>Extend down</source>
+        <translation type="unfinished">Riduci</translation>
+    </message>
+    <message>
+        <source>Extending down</source>
+        <translation type="unfinished">Riduco</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation type="unfinished">Modifica dati</translation>
+    </message>
+</context>
+<context>
     <name>Today</name>
     <message>
         <source>Set location</source>
