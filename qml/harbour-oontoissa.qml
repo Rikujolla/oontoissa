@@ -26,7 +26,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtPositioning 5.2  //RLAH
-import org.nemomobile.dbus 2.0 //RLAH
+import Nemo.DBus 2.0 //RLAH
 import "pages"
 
 ApplicationWindow
@@ -115,21 +115,10 @@ ApplicationWindow
         id: wifiBus
         bus: DBus.SystemBus
         service: 'net.connman'
-        //service: 'com.jolla'
         iface: 'net.connman.Manager'
-        //iface: 'com.jolla.Connectiond'
-        //path: '/Connectiond'
         path: '/'
-        //path: '/net/connman/technology/wifi'
-        //path: '/net/connman/service/'
-        property string one_name
-        property string two_name
-        property var wifi_name
-        property var wifi_status
-        property int wifi_bool
-        property var tringi
-
         signalsEnabled: true
+        property int wifi_bool
 
         /* Not working
         // https://together.jolla.com/question/73948/show-wifi-signal-strength-in-app-or-terminal/
@@ -156,30 +145,14 @@ ApplicationWindow
                       //typedCall('GetTechnologies',[],
                       function(result) {
                           wifis.clear();
-                          //console.log("Wifi found ", JSON.stringify(result)); //OK
-                          //console.log("Wifi found ", JSON.stringify(result, ['Name'])); //OK
-                          one_name = JSON.stringify(result, ['Name', 'State']) //OK
-                          //two_name = JSON.stringify(result, replacer) //OK
-                          tringi = one_name.split(":")
-                          //console.log(tringi)
-                          //console.log(tringi.length)
-                          for (var i =1; i<tringi.length; i=i+2 ){
-                              //console.log(tringi[i-1].indexOf("wifi"))
-                              if (tringi[i-1].indexOf("wifi") > -1){
-                                  wifi_name = tringi[i].split(",")
-                                  wifi_name = wifi_name[0]
-                                  wifi_name = wifi_name.replace("\"", "")
-                                  wifi_name = wifi_name.replace("\"", "")
-                                  wifi_status = tringi[i+1].split("}")
-                                  wifi_status = wifi_status[0]
-                                  wifi_status = wifi_status.replace("\"", "")
-                                  wifi_status = wifi_status.replace("\"", "")
-                                  //console.log (wifi_name, wifi_status)
-                                  if (wifi_status == "online") {wifi_bool = 1} else {wifi_bool = 0};
-                                  wifis.append({"name":wifi_name, "activity":wifi_status, "actbool":wifi_bool})
+                          // Loop through all cellular and wifi services and save your wifi networks
+                          for (var i =0;i<Object.keys(result).length;i++){
+                              if (result[i][1].Type == 'wifi'){
+                                  //console.log(result[i][1].Name, result[i][1].State, result[i][1].Type, result[i][1].Strength);
+                                  if (result[i][1].State == "online") {wifi_bool = 1} else {wifi_bool = 0};
+                                  wifis.append({"name":result[i][1].Name, "activity":result[i][1].State, "actbool":wifi_bool})
                               }
                           }
-                          //console.log(wifis.get(0).name)
                       },
                       function() { console.log('call failed') })
         }

@@ -4,6 +4,8 @@
 # Add new changelog entries following the format below.
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
+* Mon Jul 23 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.2.2-1
+- Repaired WiFi tracking bug
 
 * Thu Jul 19 2018 Riku Lahtinen <rikul.lajolla@kiu.as> 0.2.1-1
 - View settings changed to include calendar

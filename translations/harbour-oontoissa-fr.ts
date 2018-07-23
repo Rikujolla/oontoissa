@@ -492,10 +492,6 @@
         <source>Set marker</source>
         <translation>Définir le jalon</translation>
     </message>
-    <message>
-        <source>Edit data</source>
-        <translation>Modifier les données</translation>
-    </message>
 </context>
 <context>
     <name>dbases</name>

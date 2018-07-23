@@ -492,10 +492,6 @@
         <source>Set marker</source>
         <translation>Markierung setzen</translation>
     </message>
-    <message>
-        <source>Edit data</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>dbases</name>

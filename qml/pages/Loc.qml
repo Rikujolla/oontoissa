@@ -103,6 +103,7 @@ Page {
                     text: qsTr("Location name")
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
+                    font.pixelSize: Theme.fontSizeSmall
                     width:page.width/2
                     wrapMode: Text.WordWrap
                 }
@@ -132,6 +133,7 @@ Page {
                     //visible: tempor.gpsVisible
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
+                    font.pixelSize: Theme.fontSizeSmall
                     width:page.width/2
                     wrapMode: Text.WordWrap
                 }
@@ -162,6 +164,7 @@ Page {
                     //visible: tempor.gpsVisible
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
+                    font.pixelSize: Theme.fontSizeSmall
                     width:page.width/2
                     wrapMode: Text.WordWrap
                 }
@@ -206,6 +209,7 @@ Page {
                 visible: tempor.gpsVisible
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
+                font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.WordWrap
             }
 
@@ -214,6 +218,7 @@ Page {
                     visible: tempor.gpsVisible
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
+                    font.pixelSize: Theme.fontSizeSmall
                 }
 
             Row {
@@ -253,6 +258,7 @@ Page {
                     visible: tempor.gpsVisible
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
+                    font.pixelSize: Theme.fontSizeSmall
                 }
 
             Row {
@@ -295,10 +301,6 @@ Page {
                 }
                 onClicked: tempor.cellsVisible = !tempor.cellsVisible
             }
-            /*TextSwitch {
-                text: qsTr("Show and set cells info")
-                onCheckedChanged: tempor.cellsVisible = !tempor.cellsVisible
-            }*/
 
             TextSwitch {
                 id: sellPri
@@ -316,6 +318,7 @@ Page {
                 text: tempor.selltitleBase
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
+                font.pixelSize: Theme.fontSizeSmall
                 width: page.width*9/10
                 wrapMode: Text.WordWrap
                 visible: tempor.cellsVisible
@@ -383,15 +386,13 @@ Page {
                 }
                 onClicked: tempor.wifiVisible = !tempor.wifiVisible
             }
-            /*TextSwitch {
-                text: qsTr("Show and set wifi info")
-                onCheckedChanged: tempor.wifiVisible = !tempor.wifiVisible
-            }*/
 
             TextSwitch {
                 id: wifiAct
+                //visible: false  //maybe removing this switch in future
                 text: qsTr("Require wifi to be online")
                 visible : tempor.wifiVisible
+                checked: tempor.wifiActiveReq
                 onCheckedChanged: {
                     checked ? tempor.wifiActiveReq = true : tempor.wifiActiveReq = false
                     //console.log(tempor.wifiActiveReq)
@@ -405,6 +406,7 @@ Page {
                 text: qsTr("Selected wifis") + ": " + currentWifi
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
+                font.pixelSize: Theme.fontSizeSmall
                 width: page.width*9/10
                 wrapMode: Text.WordWrap
                 visible: tempor.wifiVisible
@@ -415,6 +417,7 @@ Page {
                 text: qsTr("Available wifis") + ": "
                 color: Theme.secondaryHighlightColor
                 x: Theme.paddingLarge
+                font.pixelSize: Theme.fontSizeSmall
                 width: page.width*9/10
                 wrapMode: Text.WordWrap
                 visible: tempor.wifiVisible
@@ -509,7 +512,7 @@ Page {
                 property bool cellsVisible : false
                 property bool wifiVisible : false
                 property bool cellPriori :false
-                property bool wifiActiveReq :false // Require wifi to be active if used in tracking
+                property bool wifiActiveReq :true // Require wifi to be active if used in tracking
                 }
 
                 ListModel {

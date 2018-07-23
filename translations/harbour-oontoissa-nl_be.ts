@@ -422,32 +422,32 @@
         <translation>uur</translation>
     </message>
     <message>
-        <source>Edit data</source>
-        <translation type="unfinished">Gegevens bewerken</translation>
-    </message>
-    <message>
         <source>Extend up</source>
-        <translation type="unfinished">Uitbreiden naar omhoog</translation>
+        <translation>Uitbreiden naar omhoog</translation>
     </message>
     <message>
         <source>Extending up</source>
-        <translation type="unfinished">Wordt naar omhoog uitgebreid</translation>
+        <translation>Wordt naar omhoog uitgebreid</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">Verwijderen</translation>
+        <translation>Verwijderen</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished">Wordt verwijderd</translation>
+        <translation>Wordt verwijderd</translation>
     </message>
     <message>
         <source>Extend down</source>
-        <translation type="unfinished">Uitbreiden naar omlaag</translation>
+        <translation>Uitbreiden naar omlaag</translation>
     </message>
     <message>
         <source>Extending down</source>
-        <translation type="unfinished">Wordt naar omlaag uitgebreid</translation>
+        <translation>Wordt naar omlaag uitgebreid</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation>Gegevens bewerken</translation>
     </message>
 </context>
 <context>
@@ -491,10 +491,6 @@
     <message>
         <source>Set marker</source>
         <translation>Marker instellen</translation>
-    </message>
-    <message>
-        <source>Edit data</source>
-        <translation>Gegevens bewerken</translation>
     </message>
 </context>
 <context>

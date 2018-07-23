@@ -492,10 +492,6 @@
         <source>Set marker</source>
         <translation>Aseta merkki</translation>
     </message>
-    <message>
-        <source>Edit data</source>
-        <translation>Korjaa tietoja</translation>
-    </message>
 </context>
 <context>
     <name>dbases</name>

@@ -492,10 +492,6 @@
         <source>Set marker</source>
         <translation>设置标记</translation>
     </message>
-    <message>
-        <source>Edit data</source>
-        <translation>编辑数据</translation>
-    </message>
 </context>
 <context>
     <name>dbases</name>

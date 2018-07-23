@@ -44,7 +44,7 @@ Page {
             width: parent.width
 
             PageHeader {
-            title: qsTr("Show and edit data page")
+                title: qsTr("Show and edit data page")
             }
 
             SectionHeader { text: qsTr("Selected day recordings") }
@@ -54,32 +54,29 @@ Page {
                 model:dayValues_g
                 width: parent.width
                 itemHeight: Theme.itemSizeSmall
-
+                //implicitHeight: itemHeight*(dayValues_g.count+3)
                 delegate: ComboBox {
                     id: listos
                     x: Theme.paddingLarge
                     label: starttime + " - " + endtime + ", " + pla
-                    //color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
                     menu: ContextMenu {
                         id:listosMenu
                         MenuItem {
-                                text: qsTr("Extend up")
-                                onClicked: {dayValues_g.indexEdit=index;
-                                    remorseExtendUp.execute(qsTr("Extending up"), console.log("remorse") , 3000 )
-                                }
-                                RemorsePopup { id: remorseExtendUp
-                                    onTriggered: {
-                                        Mydbases.extendUpRecord_n();
-                                        editDataUpdate.start();
-                                    }
+                            text: qsTr("Extend up")
+                            onClicked: {dayValues_g.indexEdit=index;
+                                remorseExtendUp.execute(qsTr("Extending up"), console.log("remorse") , 3000 )
+                            }
+                            RemorsePopup { id: remorseExtendUp
+                                onTriggered: {
+                                    Mydbases.extendUpRecord_n();
+                                    editDataUpdate.start();
                                 }
                             }
+                        }
                         MenuItem {
                             text: qsTr("Delete")
                             onClicked: {dayValues_g.indexEdit=index;
                                 remorseDel.execute(qsTr("Deleting"), console.log("remorse") , 3000 )
-                                //Mydbases.deleteRecord();
-                                //editDataUpdate.start();
                             }
                             RemorsePopup { id: remorseDel
                                 onTriggered: {
@@ -89,22 +86,21 @@ Page {
                             }
                         }
                         MenuItem {
-                                text: qsTr("Extend down")
-                                onClicked: {dayValues_g.indexEdit=index;
-                                    remorseExtendDown.execute(qsTr("Extending down"), console.log("remorse") , 3000 )
-                                }
-                                RemorsePopup { id: remorseExtendDown
-                                    onTriggered: {
-                                        Mydbases.extendDownRecord_n();
-                                        editDataUpdate.start();
-                                    }
+                            text: qsTr("Extend down")
+                            onClicked: {dayValues_g.indexEdit=index;
+                                remorseExtendDown.execute(qsTr("Extending down"), console.log("remorse") , 3000 )
+                            }
+                            RemorsePopup { id: remorseExtendDown
+                                onTriggered: {
+                                    Mydbases.extendDownRecord_n();
+                                    editDataUpdate.start();
                                 }
                             }
+                        }
                     }
 
                 }
             }
-
 
             SectionHeader { text: qsTr("Subtotals of the day")}
 
@@ -118,7 +114,6 @@ Page {
                     width: parent.width
                     Label {
                         text: theSubTot.get(index).categor+', '+ ((theSubTot.get(index).subtot%3600 <600? (theSubTot.get(index).subtot-theSubTot.get(index).subtot%3600)/3600+':0'+(theSubTot.get(index).subtot%3600-theSubTot.get(index).subtot%60)/60 : (theSubTot.get(index).subtot-theSubTot.get(index).subtot%3600)/3600+':'+(theSubTot.get(index).subtot%3600-theSubTot.get(index).subtot%60)/60))
-                        //text: theSubTot.get(index).categor
                         anchors.centerIn: parent
                     }
                 }
@@ -155,10 +150,8 @@ Page {
 
     }
     Component.onCompleted:{
-        //firstColumn.model = 4
         Mydbases.editInfo_n()
         Mydbases.daySubTot()
         Mydbases.dayTotals()
-        //console.log("test"+theDayTotal.get(0).total)
     }
 }

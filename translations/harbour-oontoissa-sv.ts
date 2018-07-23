@@ -492,10 +492,6 @@
         <source>Set marker</source>
         <translation>Ange markör</translation>
     </message>
-    <message>
-        <source>Edit data</source>
-        <translation>Redigera data</translation>
-    </message>
 </context>
 <context>
     <name>dbases</name>

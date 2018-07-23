@@ -49,10 +49,6 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Edit data")
-                onClicked: pageStack.push(Qt.resolvedUrl("EditData.qml"))
-            }
-            MenuItem {
                 text: qsTr("Set marker")
                 onClicked: marker = true
             }
@@ -121,7 +117,6 @@ Page {
                 SectionHeader { text: qsTr("Today") }
                 onClicked: {
                     selectedDate_g = new Date()
-                    //pageStack.push(Qt.resolvedUrl("EditData.qml"))
                     pageStack.push(Qt.resolvedUrl("ShowDay.qml"))
                 }
             }
@@ -143,31 +138,8 @@ Page {
                     id: history
                     text: qsTr("History")
                 }
-                onClicked: varus.historyFilter = !varus.historyFilter
-            }
-
-            Row {
-                anchors.horizontalCenter: parent.horizontalCenter
-                IconButton {
-                    icon.source: "image://theme/icon-m-back?" + (pressed
-                                                                 ? Theme.highlightColor
-                                                                 : Theme.primaryColor)
-                    onClicked: {
-                        datePicker.date = new Date(datePicker.year, datePicker.month-2, datePicker.day, 12, 0, 0)
-                    }
-                }
-
-                Button {
-                    text: datePicker.date.toLocaleDateString(Locale.ShortFormat);
-                    onClicked: datePicker.date = new Date()
-                }
-                IconButton {
-                    icon.source: "image://theme/icon-m-forward?" + (pressed
-                                                                    ? Theme.highlightColor
-                                                                    : Theme.primaryColor)
-                    onClicked: datePicker.date = new Date(datePicker.year, datePicker.month, datePicker.day, 12, 0, 0)
-                }
-
+                onClicked: {}
+                //onClicked: varus.historyFilter = !varus.historyFilter
             }
 
             DatePicker {
@@ -240,19 +212,29 @@ Page {
                 }
             }
 
-            /*Text {
-                id: histor
-                font.pixelSize: Theme.fontSizeSmall
-                color: Theme.primaryColor
-                wrapMode: Text.WordWrap
-                width: parent.width
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    margins: Theme.paddingLarge
+            Row {
+                anchors.horizontalCenter: parent.horizontalCenter
+                IconButton {
+                    icon.source: "image://theme/icon-m-back?" + (pressed
+                                                                 ? Theme.highlightColor
+                                                                 : Theme.primaryColor)
+                    onClicked: {
+                        datePicker.date = new Date(datePicker.year, datePicker.month-2, datePicker.day, 12, 0, 0)
+                    }
                 }
-                text: varus.niceHistory
-            }*/
+
+                Button {
+                    text: datePicker.date.toLocaleDateString(Locale.ShortFormat);
+                    onClicked: datePicker.date = new Date()
+                }
+                IconButton {
+                    icon.source: "image://theme/icon-m-forward?" + (pressed
+                                                                    ? Theme.highlightColor
+                                                                    : Theme.primaryColor)
+                    onClicked: datePicker.date = new Date(datePicker.year, datePicker.month, datePicker.day, 12, 0, 0)
+                }
+
+            }
 
             ///////////////////////////////////
             ///// Start of At work Today.qml to wht transfer
@@ -365,8 +347,14 @@ Page {
                 active:true && Qt.application.active
                 //alwaysOn: true
                 dataRate: 20
-                //onReadingChanged: console.log("Kompassi", reading.azimuth)
+                onReadingChanged: console.log("Kompassi", reading.azimuth)
+            }
 
+            Magnetometer{
+                id:magnetometre
+                active:false
+                dataRate: 20
+                onReadingChanged: console.log("Magnetometer", reading.x)
             }
 
             Gyroscope {
