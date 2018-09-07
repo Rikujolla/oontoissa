@@ -342,13 +342,13 @@ Page {
                 // z, positive acceleration up
             }
 
-            Compass {
+            /*Compass {
                 id:kompassi
                 active:true && Qt.application.active
                 //alwaysOn: true
                 dataRate: 20
                 onReadingChanged: console.log("Kompassi", reading.azimuth)
-            }
+            }*/
 
             Magnetometer{
                 id:magnetometre

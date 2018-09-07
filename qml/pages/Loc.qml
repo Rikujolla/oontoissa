@@ -47,10 +47,10 @@ Page {
                     remorse.execute(qsTr("Deleting"), console.log("remorse") , 3000 )
                 }
                 RemorsePopup { id: remorse
-                onTriggered: {
-                    Mydbases.delLocation()
-                    pageStack.pop()
-                }
+                    onTriggered: {
+                        Mydbases.delLocation()
+                        pageStack.pop()
+                    }
                 }
             }
             MenuItem {
@@ -59,7 +59,7 @@ Page {
                     Mydbases.updateLocation()
                     baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 }
-           }
+            }
         }
 
         PushUpMenu {
@@ -81,18 +81,6 @@ Page {
             spacing: Theme.paddingMedium
             PageHeader {
                 title: qsTr("Location")
-            }
-
-            Item {
-                id: varis
-                property string itemi //saved location in database
-                property var itemis: [
-                    {pla:"",els:""},
-                    {pla:"",els:""},
-                    {pla:"",els:""}
-                ] //saved locations in database
-                property string tempur //temporary string
-                property int indos // currentIndex
             }
 
             Row {
@@ -120,7 +108,6 @@ Page {
                         focus = false
                         Mydbases.updateLocation()
                         baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
-                        //updateL = true
                     }
                 }
             }
@@ -130,7 +117,6 @@ Page {
                 spacing: Theme.paddingMedium
                 Text {
                     text: qsTr("Location size (m)")
-                    //visible: tempor.gpsVisible
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
                     font.pixelSize: Theme.fontSizeSmall
@@ -140,7 +126,6 @@ Page {
 
                 TextField {
                     id: saissi
-                    //visible: tempor.gpsVisible
                     placeholderText: "50"
                     width: page.width/2
                     validator: RegExpValidator { regExp: /^\d*\.?\d*$/ }
@@ -161,7 +146,6 @@ Page {
                 spacing: Theme.paddingMedium
                 Text {
                     text: qsTr("Fence thickness (m)")
-                    //visible: tempor.gpsVisible
                     color: Theme.secondaryHighlightColor
                     x: Theme.paddingLarge
                     font.pixelSize: Theme.fontSizeSmall
@@ -171,7 +155,6 @@ Page {
 
                 TextField {
                     id: fence
-                    //visible: tempor.gpsVisible
                     placeholderText: "50"
                     width: page.width/2
                     validator: RegExpValidator { regExp: /^\d*\.?\d*$/ }
@@ -197,11 +180,6 @@ Page {
                 onClicked: tempor.gpsVisible = !tempor.gpsVisible
             }
 
-            /*TextSwitch {
-                text: qsTr("Show and set GPS info")
-                onCheckedChanged: tempor.gpsVisible = !tempor.gpsVisible
-            }*/
-
             Text {
                 id: baassi
                 width: page.width*9/10
@@ -214,12 +192,12 @@ Page {
             }
 
             Text {
-                    text: qsTr("Latitude")
-                    visible: tempor.gpsVisible
-                    color: Theme.secondaryHighlightColor
-                    x: Theme.paddingLarge
-                    font.pixelSize: Theme.fontSizeSmall
-                }
+                text: qsTr("Latitude")
+                visible: tempor.gpsVisible
+                color: Theme.secondaryHighlightColor
+                x: Theme.paddingLarge
+                font.pixelSize: Theme.fontSizeSmall
+            }
 
             Row {
                 visible: tempor.gpsVisible
@@ -238,6 +216,7 @@ Page {
                         baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                     }
                 }
+
                 Button {
                     id: lattite
                     text: possut.position.coordinate.latitude
@@ -249,24 +228,21 @@ Page {
                         baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                     }
                 }
-
             }
 
-
             Text {
-                    text: qsTr("Longitude")
-                    visible: tempor.gpsVisible
-                    color: Theme.secondaryHighlightColor
-                    x: Theme.paddingLarge
-                    font.pixelSize: Theme.fontSizeSmall
-                }
+                text: qsTr("Longitude")
+                visible: tempor.gpsVisible
+                color: Theme.secondaryHighlightColor
+                x: Theme.paddingLarge
+                font.pixelSize: Theme.fontSizeSmall
+            }
 
             Row {
                 visible: tempor.gpsVisible
                 TextField {
                     id: longi
                     placeholderText: "24.2"
-                    //visible: openingMode == 2
                     width: page.width/2
                     validator: RegExpValidator { regExp: /^\-?\d?\d?\d\.\d*$/ }
                     color: errorHighlight? "red" : Theme.primaryColor
@@ -302,13 +278,13 @@ Page {
                 onClicked: tempor.cellsVisible = !tempor.cellsVisible
             }
 
-            TextSwitch {
+            TextSwitch { // Sometimes need manual update
                 id: sellPri
                 text: qsTr("Use CellId as a primary location source")
                 visible : tempor.cellsVisible
-                onCheckedChanged: {
-                    checked ? tempor.cellPriori = true : tempor.cellPriori = false
-                    //console.log(tempor.cellPriori)
+                automaticCheck:false
+                onClicked: {
+                    checked ? checked = false : checked = true
                     Mydbases.updateLocation()
                 }
             }
@@ -322,7 +298,7 @@ Page {
                 width: page.width*9/10
                 wrapMode: Text.WordWrap
                 visible: tempor.cellsVisible
-                }
+            }
 
             Row {
                 visible: tempor.cellsVisible
@@ -341,13 +317,13 @@ Page {
                         celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
                     }
                 }
+
                 Button {
                     id: cellie
                     text: tempor.sello
                     color: Theme.secondaryHighlightColor
                     width:page.width/2
                     onClicked: {
-                        //tempor.sello = currentCell
                         cellie.text = currentCell
                         celli.text = cellie.text
                         Mydbases.updateLocation()
@@ -360,21 +336,21 @@ Page {
                 width: page.width
                 height: tempor.backHeight
                 visible: tempor.cellsVisible
-            GridView {
-                id: grid
-                cellWidth: page.width
-                cellHeight: page.width/8
-                anchors.fill: parent
-                model: cellistit
-                delegate:
-                    Button {
-                    text: qsTr("Delete") + " " + cels
-                    onClicked: {
-                        tempor.ind = index
-                        Mydbases.delCelli()
+                GridView {
+                    id: grid
+                    cellWidth: page.width
+                    cellHeight: page.width/8
+                    anchors.fill: parent
+                    model: cellistit
+                    delegate:
+                        Button {
+                        text: qsTr("Delete") + " " + cels
+                        onClicked: {
+                            tempor.ind = index
+                            Mydbases.delCelli()
+                        }
                     }
                 }
-            }
             }
 
             ////////////////////////////
@@ -393,9 +369,9 @@ Page {
                 text: qsTr("Require wifi to be online")
                 visible : tempor.wifiVisible
                 checked: tempor.wifiActiveReq
-                onCheckedChanged: {
-                    checked ? tempor.wifiActiveReq = true : tempor.wifiActiveReq = false
-                    //console.log(tempor.wifiActiveReq)
+                automaticCheck:false
+                onClicked: {
+                    checked ? checked = false : checked = true
                     Mydbases.updateLocation()
                 }
             }
@@ -410,7 +386,7 @@ Page {
                 width: page.width*9/10
                 wrapMode: Text.WordWrap
                 visible: tempor.wifiVisible
-                }
+            }
 
             Text {
                 id:wifisAvailable
@@ -421,7 +397,7 @@ Page {
                 width: page.width*9/10
                 wrapMode: Text.WordWrap
                 visible: tempor.wifiVisible
-                }
+            }
 
             Row {
                 visible: tempor.wifiVisible
@@ -440,21 +416,17 @@ Page {
                         focus = false
                         currentWifi = wifi.text
                         Mydbases.updateLocation()
-                        //celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
                     }
                 }
+
                 Button {
                     id: wifie
-                    //text: tempor.sello
                     visible: false
                     text: "Scroll"
                     color: Theme.secondaryHighlightColor
                     width:page.width/2
                     onClicked: {
-                        //tempor.sello = currentCell
-                        //celli.text = cellie.text
                         Mydbases.updateLocation()
-                        //celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
                     }
                 }
             }
@@ -466,27 +438,19 @@ Page {
                 baassi.text = listix.get(currentIndex-1).pla + ", " + listix.get(currentIndex-1).els
                 celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
                 cellie.text = currentCell
-                //sellPri.checked = true
             }
 
-                ////Functions etc
-            /*Connections {
-                target: possut
-                    onPositionChanged: {
-                        tempor.sello = currentCell
-                        console.log("positionLOC")
-                    }
-                }*/
+            ////Functions etc
 
-                Timer { //ensures the cellinfo to be get if GPS is not locating
-                    interval: ratePass
-                    repeat: true
-                    running: Qt.application.active
-                    onTriggered: {
-                        //bestBus.getProperties()
-                        cellie.text = currentCell
-                        //Mydbases.populateView(); //problems with this in the location name feed
-                        /*wifisAvailable.text = qsTr("Available wifis") + ": "
+            Timer { //ensures the cellinfo to be get if GPS is not locating
+                interval: ratePass
+                repeat: true
+                running: Qt.application.active
+                onTriggered: {
+                    //bestBus.getProperties()
+                    cellie.text = currentCell
+                    //Mydbases.populateView(); //problems with this in the location name feed
+                    /*wifisAvailable.text = qsTr("Available wifis") + ": "
                         for (i=0; i<wifis.count; i++) {
                             var j = wifis.count-1
                             if (i == j) {
@@ -498,10 +462,10 @@ Page {
                         }*/
 
 
-                    }
                 }
+            }
 
-                Item {
+            Item {
                 id: tempor
                 property int sello //temporary celllid
                 property string sellotext // sellotext
@@ -511,16 +475,15 @@ Page {
                 property bool gpsVisible : false
                 property bool cellsVisible : false
                 property bool wifiVisible : false
-                property bool cellPriori :false
                 property bool wifiActiveReq :true // Require wifi to be active if used in tracking
-                }
+            }
 
-                ListModel {
-                        id: cellistit
-                        ListElement {
-                            cels: 0
-                        }
+            ListModel {
+                id: cellistit
+                ListElement {
+                    cels: 0
                 }
+            }
         }
 
 
