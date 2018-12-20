@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.1">
 <context>
     <name>About</name>
     <message>
@@ -62,6 +60,14 @@
     <message>
         <source>Dutch (Nathan Follens)</source>
         <translation>荷兰（Nathan Follens）</translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation>贡献者</translation>
+    </message>
+    <message>
+        <source>App icon (JSEHV)</source>
+        <translation>应用图标(JSEHV)</translation>
     </message>
 </context>
 <context>

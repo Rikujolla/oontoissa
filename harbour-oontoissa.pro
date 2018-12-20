@@ -57,4 +57,5 @@ TRANSLATIONS += translations/harbour-oontoissa-de.ts \
 
 DISTFILES += \
     rpm/harbour-oontoissa.changes \
-    qml/pages/inertianav.js
+    qml/pages/inertianav.js \
+    icons/172x172/harbour-oontoissa.png

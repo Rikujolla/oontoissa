@@ -63,6 +63,14 @@
         <source>Dutch (Nathan Follens)</source>
         <translation>Hollanniksi (Nathan Follens)</translation>
     </message>
+    <message>
+        <source>Contributions</source>
+        <translation>Avustaminen</translation>
+    </message>
+    <message>
+        <source>App icon (JSEHV)</source>
+        <translation>Ikoni (JSEHV)</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
 <context>
     <name>About</name>
     <message>
@@ -61,7 +59,15 @@
     </message>
     <message>
         <source>Dutch (Nathan Follens)</source>
-        <translation type="unfinished"></translation>
+        <translation>Néerlandais (Nathan Follens)</translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation>Contributions</translation>
+    </message>
+    <message>
+        <source>App icon (JSEHV)</source>
+        <translation>Icône de l&apos;app (JSEHV)</translation>
     </message>
 </context>
 <context>
@@ -403,51 +409,51 @@
     <name>ShowDay</name>
     <message>
         <source>Selected day recordings</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrement de la journée sélectionnée</translation>
     </message>
     <message>
         <source>Show and edit data page</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher et modifier la page de données</translation>
     </message>
     <message>
         <source>Subtotals of the day</source>
-        <translation type="unfinished"></translation>
+        <translation>Sous-totaux du jour</translation>
     </message>
     <message>
         <source>The day total</source>
-        <translation type="unfinished"></translation>
+        <translation>Total du jour</translation>
     </message>
     <message>
         <source>hours</source>
-        <translation type="unfinished"></translation>
+        <translation>heures</translation>
     </message>
     <message>
         <source>Extend up</source>
-        <translation type="unfinished">Etendre en haut</translation>
+        <translation>Etendre en haut</translation>
     </message>
     <message>
         <source>Extending up</source>
-        <translation type="unfinished">Extension en haut</translation>
+        <translation>Extension en haut</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">Supprimer</translation>
+        <translation>Supprimer</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished">Suppression</translation>
+        <translation>Suppression</translation>
     </message>
     <message>
         <source>Extend down</source>
-        <translation type="unfinished">Etendre en bas</translation>
+        <translation>Etendre en bas</translation>
     </message>
     <message>
         <source>Extending down</source>
-        <translation type="unfinished">Extension en bas</translation>
+        <translation>Extension en bas</translation>
     </message>
     <message>
         <source>Edit data</source>
-        <translation type="unfinished">Modifier les données</translation>
+        <translation>Modifier les données</translation>
     </message>
 </context>
 <context>

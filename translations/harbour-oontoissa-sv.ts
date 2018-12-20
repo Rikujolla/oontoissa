@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sv">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.1">
 <context>
     <name>About</name>
     <message>
@@ -62,6 +60,14 @@
     <message>
         <source>Dutch (Nathan Follens)</source>
         <translation>Nederländska (Nathan Follens)</translation>
+    </message>
+    <message>
+        <source>Contributions</source>
+        <translation>Bidrag</translation>
+    </message>
+    <message>
+        <source>App icon (JSEHV)</source>
+        <translation>App-ikon (JSEHV)</translation>
     </message>
 </context>
 <context>
