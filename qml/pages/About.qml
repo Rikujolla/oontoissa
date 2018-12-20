@@ -90,6 +90,22 @@ Page {
                 }
             }
 
+            SectionHeader { text: qsTr("Contributions") }
+            Text {
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                wrapMode: Text.WordWrap
+                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                text: {
+                    qsTr("App icon (JSEHV)")
+                }
+            }
+
             SectionHeader { text: qsTr("Licence") }
             Text {
                 font.pixelSize: Theme.fontSizeSmall

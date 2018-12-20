@@ -28,6 +28,13 @@ import Sailfish.Silica 1.0
 //import QtQuick.LocalStorage 2.0
 
 CoverBackground {
+    Image{
+        source:"../images/harbour-oontoissa-coverpage-256.png"
+        opacity: 0.2
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+    }
+
     Label {
         id: label
         anchors.horizontalCenter: parent.horizontalCenter

@@ -63,6 +63,14 @@
         <source>Dutch (Nathan Follens)</source>
         <translation>荷兰（Nathan Follens）</translation>
     </message>
+    <message>
+        <source>Contributions</source>
+        <translation>贡献者</translation>
+    </message>
+    <message>
+        <source>App icon (JSEHV)</source>
+        <translation>应用图标(JSEHV)</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
