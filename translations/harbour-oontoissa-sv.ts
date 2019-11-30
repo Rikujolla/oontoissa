@@ -71,6 +71,11 @@
         <source>App icon (JSEHV)</source>
         <translation>App-ikon (JSEHV)</translation>
     </message>
+    <message>
+        <source>At work, version</source>
+        <extracomment>The name of the app followed with a version number</extracomment>
+        <translation>At work, version</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -159,6 +164,33 @@
     <message>
         <source>Extending down</source>
         <translation>Utökar neråt</translation>
+    </message>
+    <message>
+        <source>No recordings on the day</source>
+        <translation>Inga poster för dagen</translation>
+    </message>
+    <message>
+        <source>Pull down to change the day or add data manually</source>
+        <translation>Dra neråt för att ändra dag eller lägga till data manuellt</translation>
+    </message>
+    <message>
+        <source>Add manual mark in the past</source>
+        <translation>Lägg till manuell markering tidigare</translation>
+    </message>
+</context>
+<context>
+    <name>EditDay</name>
+    <message>
+        <source>Edit day page</source>
+        <translation>Redigera dagsida</translation>
+    </message>
+    <message>
+        <source>Location now</source>
+        <translation>Plats nu</translation>
+    </message>
+    <message>
+        <source>Location now.</source>
+        <translation>Plats nu.</translation>
     </message>
 </context>
 <context>
@@ -389,6 +421,17 @@
     </message>
 </context>
 <context>
+    <name>LocationDialog</name>
+    <message>
+        <source>Location selection</source>
+        <translation>Platsval</translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation>Plats</translation>
+    </message>
+</context>
+<context>
     <name>SetLocation</name>
     <message>
         <source>Add location</source>
@@ -504,6 +547,10 @@
 <context>
     <name>dbases</name>
     <message>
+        <source>Available wifis</source>
+        <translation>Tillgängliga WiFi-nät</translation>
+    </message>
+    <message>
         <source>Free galloping</source>
         <translation>Fritt rörlig</translation>
     </message>
@@ -514,6 +561,10 @@
     <message>
         <source>Entering the paddock</source>
         <translation>Ankommer inhägnaden</translation>
+    </message>
+    <message>
+        <source>No GPS, wifi info used instead</source>
+        <translation>Ingen GPS. WiFi-info används istället</translation>
     </message>
     <message>
         <source>No GPS, cells info used instead</source>
@@ -532,20 +583,28 @@
         <translation>Manuell markör</translation>
     </message>
     <message>
-        <source>Available wifis</source>
-        <translation>Tillgängliga WiFi-nät</translation>
-    </message>
-    <message>
-        <source>No GPS, wifi info used instead</source>
-        <translation>Ingen GPS. WiFi-info används istället</translation>
-    </message>
-    <message>
         <source>History</source>
         <translation>Historik</translation>
     </message>
     <message>
         <source>History, this week</source>
         <translation>Historik denna vecka</translation>
+    </message>
+    <message>
+        <source>GPS is not working properly</source>
+        <translation>GPS fungerar inte som den skall</translation>
+    </message>
+    <message>
+        <source>No GPS, cells nor wifi</source>
+        <translation>Ingen GPS. basstation eller WiFi</translation>
+    </message>
+    <message>
+        <source>GPS is used</source>
+        <translation>GPS används</translation>
+    </message>
+    <message>
+        <source>GPS is not reliable, cells info is used instead</source>
+        <translation>GPS är inte tillförlitlig, basstationsinfo används istället.</translation>
     </message>
 </context>
 <context>

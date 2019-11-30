@@ -34,6 +34,9 @@ import QtSensors 5.0
 Page {
     id: page
 
+    property real prevLatitude : 0.0// Save latitude
+    property int latitudeStagnationInd : 0
+
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
         anchors.fill: parent
@@ -138,8 +141,9 @@ Page {
                     id: history
                     text: qsTr("History")
                 }
-                onClicked: {}
-                //onClicked: varus.historyFilter = !varus.historyFilter
+                onClicked: {
+                    //pageStack.push(Qt.resolvedUrl("EditDay.qml"))
+                }
             }
 
             DatePicker {
@@ -150,8 +154,8 @@ Page {
                     var m = dateObject.getMonth() + 1
                     var d = dateObject.getDate()
                     var data = {'year': y, 'month': m, 'day': d,
-                                'primaryMonth': primaryMonth,
-                                'hasData': Mydbases.findIfData(y,m,d)
+                        'primaryMonth': primaryMonth,
+                        'hasData': Mydbases.findIfData(y,m,d)
                     }
                     return data
                 }
@@ -181,8 +185,13 @@ Page {
                     onClicked: {
                         datePicker.date = new Date(year, month-1, day, 12, 0, 0)
                         selectedDate_g = datePicker.date
-                        //pageStack.push(Qt.resolvedUrl("EditData.qml"))
                         pageStack.push(Qt.resolvedUrl("ShowDay.qml"))
+                    }
+
+                    onPressAndHold: {
+                        datePicker.date = new Date(year, month-1, day, 12, 0, 0)
+                        selectedDate_g = datePicker.date
+                        pageStack.push(Qt.resolvedUrl("EditData.qml"))
                     }
 
                     Rectangle {

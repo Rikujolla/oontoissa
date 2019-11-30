@@ -71,6 +71,11 @@
         <source>App icon (JSEHV)</source>
         <translation>应用图标(JSEHV)</translation>
     </message>
+    <message>
+        <source>At work, version</source>
+        <extracomment>The name of the app followed with a version number</extracomment>
+        <translation>At work，版本</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -159,6 +164,33 @@
     <message>
         <source>Extending down</source>
         <translation>向下延伸中</translation>
+    </message>
+    <message>
+        <source>No recordings on the day</source>
+        <translation>该天无录音</translation>
+    </message>
+    <message>
+        <source>Pull down to change the day or add data manually</source>
+        <translation>下拉以更改日期或手动输入数据</translation>
+    </message>
+    <message>
+        <source>Add manual mark in the past</source>
+        <translation>标记过去的日期</translation>
+    </message>
+</context>
+<context>
+    <name>EditDay</name>
+    <message>
+        <source>Edit day page</source>
+        <translation>编辑日期页面</translation>
+    </message>
+    <message>
+        <source>Location now</source>
+        <translation>当前位置</translation>
+    </message>
+    <message>
+        <source>Location now.</source>
+        <translation>当前位置</translation>
     </message>
 </context>
 <context>
@@ -389,6 +421,17 @@
     </message>
 </context>
 <context>
+    <name>LocationDialog</name>
+    <message>
+        <source>Location selection</source>
+        <translation>选择位置</translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation>位置</translation>
+    </message>
+</context>
+<context>
     <name>SetLocation</name>
     <message>
         <source>Add location</source>
@@ -504,6 +547,10 @@
 <context>
     <name>dbases</name>
     <message>
+        <source>Available wifis</source>
+        <translation>可用的WiFi</translation>
+    </message>
+    <message>
         <source>Free galloping</source>
         <translation>自由驰骋</translation>
     </message>
@@ -514,6 +561,10 @@
     <message>
         <source>Entering the paddock</source>
         <translation>进入围场</translation>
+    </message>
+    <message>
+        <source>No GPS, wifi info used instead</source>
+        <translation>无GPS，使用WiFi信息</translation>
     </message>
     <message>
         <source>No GPS, cells info used instead</source>
@@ -532,20 +583,28 @@
         <translation>手动标记</translation>
     </message>
     <message>
-        <source>Available wifis</source>
-        <translation>可用的WiFi</translation>
-    </message>
-    <message>
-        <source>No GPS, wifi info used instead</source>
-        <translation>无GPS，使用WiFi信息</translation>
-    </message>
-    <message>
         <source>History</source>
         <translation>历史</translation>
     </message>
     <message>
         <source>History, this week</source>
         <translation>这周历史</translation>
+    </message>
+    <message>
+        <source>GPS is not working properly</source>
+        <translation>GPS 工作异常</translation>
+    </message>
+    <message>
+        <source>No GPS, cells nor wifi</source>
+        <translation>无 GPS、蜂窝网络及Wifi</translation>
+    </message>
+    <message>
+        <source>GPS is used</source>
+        <translation>正在使用GPS </translation>
+    </message>
+    <message>
+        <source>GPS is not reliable, cells info is used instead</source>
+        <translation>GPS不可靠，使用蜂窝网络以替代</translation>
     </message>
 </context>
 <context>

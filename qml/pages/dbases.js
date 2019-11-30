@@ -343,7 +343,7 @@ function checkFences() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Priorities(theplace TEXT, gps INTEGER, cell INTEGER, wifi INTEGER, blut INTEGER, other INTEGER)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Wifiinfo(theplace TEXT, thewifi TEXT, sigstrength INTEGER, status TEXT, active INTEGER)');
 
-                    // Show all
+                    // Show all locations
                     var rs = tx.executeSql('SELECT * FROM Locations ORDER BY tolerlong DESC');
                     // Spherical distance
                     var dfii; // Latitude difference
@@ -360,14 +360,23 @@ function checkFences() {
                     var closDist = 20000000.0 //to tell the closest dist to any location
                     var nextClosDist = 0.0 // to estimate if next closDist is in location
                     var biggestTolerance = rs.rows.item(0).tolerlong
-                    // If gpsTrue, testing, if in area
-                    if (gpsTrue) {
+                    // Check gps reliability
+                    var coord = possut.position.coordinate
+                    if (coord.latitude === prevLatitude) {
+                        latitudeStagnationInd++;
+                    }
+                    else {
+                        latitudeStagnationInd = 0;
+                    }
+                    prevLatitude = coord.latitude;
+
+                    // If gpsTrue and gps operable, testing, if in area
+                    if (gpsTrue && latitudeStagnationInd < 15) {
                         var tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
                         if (possut.position.horizontalAccuracyValid) {
                             var htol = possut.position.horizontalAccuracy
                             //console.log(possut.position.horizontalAccuracy, possut.position.horizontalAccuracyValid)
                         }
-                        var coord = possut.position.coordinate
                         /// Kalman section
                         /*kalman.z_k_lat = coord.latitude
                         kalman.k_k_lat = kalman.p_k_lat / (kalman.p_k_lat + kalman.r_lat);
@@ -389,7 +398,7 @@ function checkFences() {
                                 covLoc = varus.inFenceT;
                                 tolerat = rs.rows.item(i).tolerlong;
                                 newStatus = 2
-                                extraMsg = ""
+                                extraMsg = qsTr("GPS is used")
                                 if ((htol+ddist) < tolerat) {
                                     if (ratePass < 55001) {ratePass = ratePass + 5000}
                                     //console.log("Well in", ratePass)
@@ -423,8 +432,8 @@ function checkFences() {
                         for (i=0; i<wifis.count; i++) {
                             //rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ? AND active = ?', [wifis.get(i).name, wifis.get(i).actbool]);
                             rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ?', [wifis.get(i).name]);
-                            if (rs.rows.length >0 && rs.rows.item(0).active == 0
-                                    || rs.rows.length >0 && rs.rows.item(0).active == wifis.get(i).actbool) {
+                            if (rs.rows.length >0 && rs.rows.item(0).active === 0
+                                    || rs.rows.length >0 && rs.rows.item(0).active === wifis.get(i).actbool) {
                                 varus.inFence = rs.rows.item(0).theplace;
                                 varus.inFenceT = varus.inFence;
                                 covLoc = varus.inFenceT;
@@ -439,7 +448,8 @@ function checkFences() {
                     if (varus.inFence == "Not in a paddock"
                             && (prevStatus == 2 || prevStatus == 3 || prevStatus == 4)
                             && newStatus != 5) {
-                        var rt = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()');
+                        //var rt = tx.executeSql('SELECT * FROM Today WHERE ROWID = last_insert_rowid()');
+                        var rt = tx.executeSql('SELECT * FROM Today WHERE strftime(?,theday) = (SELECT MAX(strftime(?,theday))  FROM Today)', ['%s', '%s']);
                         if (rt.rows.length >0) {
                             rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ? AND thecelli = ?', [rt.rows.item(0).thestatus, currentCell]);
                             if (rs.rows.length > 0) {
@@ -449,7 +459,12 @@ function checkFences() {
                                 covLoc = varus.inFenceT;
                                 tolerat = rs.rows.item(0).tolerlong;
                                 newStatus = 3;
-                                extraMsg = qsTr("No GPS, cells info used instead")
+                                if(!gpsTrue) {
+                                    extraMsg = qsTr("No GPS, cells info used instead")
+                                }
+                                else if (latitudeStagnationInd > 14) {
+                                    extraMsg = qsTr("GPS is not reliable, cells info is used instead")
+                                }
                             }
                         }
                     }
@@ -467,10 +482,10 @@ function checkFences() {
                             extraMsg = qsTr("Pure cell info in use")
                         }
                     }
-                    ///// Simple estimator, later may be replaced by Kalman
+                    ///// Simple speed estimator, later may be replaced by Kalman
                     if (gpsTrue) {
-                        if (closDist == prevClosDist) {
-                            //console.log("No speed change")
+                        if (closDist === prevClosDist) {
+                            //console.log("No speed change", closDist, prevClosDist, blackOut)
                             blackOut++
                         }
                         else {
@@ -487,12 +502,13 @@ function checkFences() {
                     ////// End simple estimator
                 }
                 )
-    if (newStatus == 0) {extraMsg = ""};
+    //if (newStatus == 0) {extraMsg = ""};
     varus.timeSow()
     addTodayInfo()
 
 }
 
+// This function adds data to the main page
 function addTodayInfo() {
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
@@ -502,7 +518,7 @@ function addTodayInfo() {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
 
                     // Testing, if the status is still same
-                    // First selecting the most recent value saved to database
+                    // First selecting the most recent value saved to database, MAXROWID cannot be used anymore after manual events
                     var evid = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) ORDER BY theday DESC LIMIT 1', ['now', 'localtime'])
                     // Not recording until the data is valid, currently only time lag, in future much more better logic
                     if (saveLag >0) {
@@ -510,46 +526,65 @@ function addTodayInfo() {
                         newStatus = 7
                         extraMsg = qsTr("Validating the location info")
                     }
+                    else if (latitudeStagnationInd > 20 && newStatus != 3 && newStatus != 4 && newStatus != 6) {
+                        newStatus = 8; // Status for nonreliable gps
+                        if (gpsTrue){
+                        extraMsg = qsTr("GPS is not working properly")
+                        }
+                        else {
+                            extraMsg = qsTr("No GPS, cells nor wifi")
+                        }
+                    }
+
                     // Recording the first value of the day or if marker set recording that
-                    else if (evid.rows.length == 0 || marker == true) {
+                    else if (evid.rows.length === 0 || marker == true) {
                         if (varus.inFence == "Not in a paddock" && marker == true) {varus.inFence = qsTr("Manual marker")}
                         tx.executeSql('INSERT INTO Today VALUES(datetime(?,?), ?, time(?,?), time(?,?), time(?,?))', [ 'now', 'localtime', varus.inFence, 'now', 'localtime', 'now', 'localtime', 'now', 'localtime' ]);
                         marker = false
                         prevStatus = newStatus;
+                        if (newStatus == 0) {extraMsg = ""};
                     }
                     // Updating existing record
-                    else if (evid.rows.item(0).thestatus == varus.inFence){
+                    else if (evid.rows.item(0).thestatus === varus.inFence){
                         // If leaving the location, not saving the info
                         if (newStatus == 5){
                             //if (varus.inFence == "Not in a paddock" && newStatus == 5 ){
                             prevStatus = newStatus}
                         // Updating the existing record
                         else {
-                            var rs = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
-                            tx.executeSql('UPDATE Today SET endtime=time(?, ?) WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', ['now', 'localtime']);
-                            tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', [rs.rows.item(0).rest]);
+                            var rs = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE strftime(?,theday) = (SELECT MAX(strftime(?,theday))  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday), '%s', '%s'])
+                            //var rs = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
+                            tx.executeSql('UPDATE Today SET endtime=time(?, ?) WHERE strftime(?,theday) = (SELECT MAX(strftime(?,theday))  FROM Today)', ['now', 'localtime', '%s', '%s']);
+                            //tx.executeSql('UPDATE Today SET endtime=time(?, ?) WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', ['now', 'localtime']);
+                            tx.executeSql('UPDATE Today SET subtotal=? WHERE strftime(?,theday) = (SELECT MAX(strftime(?,theday))  FROM Today)', [rs.rows.item(0).rest, '%s', '%s']);
+                            //tx.executeSql('UPDATE Today SET subtotal=? WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)', [rs.rows.item(0).rest]);
                             prevStatus = newStatus;
+                            if (newStatus == 0) {extraMsg = ""};
                         }
                     }
                     // If ending here starting the new record
                     else {
                         tx.executeSql('INSERT INTO Today VALUES(datetime(?,?), ?, time(?,?), time(?,?), time(?,?))', [ 'now', 'localtime', varus.inFence, 'now', 'localtime', 'now', 'localtime', 'now', 'localtime' ]);
                         prevStatus = newStatus;
+                        if (newStatus == 0) {extraMsg = ""};
+
                     }
                     // Show all values
-                    if (evid.rows.length == 0) {
+                    if (evid.rows.length === 0) {
                         varus.timeInFence = 0
                     }
-                    else if (newStatus == 5 || newStatus == 7){
-                        rs = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
+                    else if (newStatus == 5 || newStatus == 7 || newStatus == 8){
+                        //rs = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday)])
+                        rs = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS rest  FROM Today WHERE strftime(?,theday) = (SELECT MAX(strftime(?,theday))  FROM Today)',['%s', 'now', 'localtime', '%s', (evid.rows.item(0).theday), '%s', '%s'])
                         varus.timeInFence = rs.rows.item(0).rest
                     }
                     else {
-                        rs = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
+                        //rs = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE ROWID = (SELECT MAX(ROWID)  FROM Today)')
+                        rs = tx.executeSql('SELECT subtotal AS resto  FROM Today WHERE strftime(?,theday) = (SELECT MAX(strftime(?,theday))  FROM Today)', ['%s', '%s'])
                         varus.timeInFence = rs.rows.item(0).resto
                     }
 
-                    rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) AND thestatus NOT IN (?)', ['now', 'localtime', 'Not in a paddock']);
+                    rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?,?) AND thestatus NOT IN (?) ORDER BY starttime, endtime ASC', ['now', 'localtime', 'Not in a paddock']);
 
                     var r = ""
                     for(var i = 0; i < rs.rows.length; i++) {
@@ -574,7 +609,7 @@ function addHistoryData() {
                     // Show all values
                     var rs;
                     if (!varus.historyFilter){
-                    rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE thestatus NOT IN (?) GROUP BY deit, thestatus ORDER BY deit DESC', 'Not in a paddock');
+                        rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE thestatus NOT IN (?) GROUP BY deit, thestatus ORDER BY deit DESC', 'Not in a paddock');
                         history.text = qsTr("History")
                     }
                     else {
@@ -617,7 +652,7 @@ function editInfo() {
                     // Create the database if it doesn't already exist
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
                     var rs = tx.executeSql('DELETE FROM Today WHERE thestatus = ?', ['Not in a paddock']);
-                        rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = ? AND thestatus NOT IN (?)', [button.selectedDate, 'Not in a paddock']);
+                    rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = ? AND thestatus NOT IN (?) ORDER BY starttime, endtime ASC', [button.selectedDate, 'Not in a paddock']);
                     for(var i = 0; i < rs.rows.length; i++) {
                         dayValues.set((i),{"starttime": rs.rows.item(i).starttime});
                         dayValues.set((i),{"endtime": rs.rows.item(i).endtime});
@@ -800,10 +835,10 @@ function findIfData(y,m,d) {
                     // Create the database if it doesn't already exist
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
                     var rs = tx.executeSql('SELECT date(theday) AS deit, thestatus, SUM(subtotal) AS totle FROM Today WHERE deit = ? AND thestatus NOT IN (?) GROUP BY deit', [date_e,'Not in a paddock']);
-                        if (rs.rows.length > 0)
-                            time_e = rs.rows.item(0).totle
-                        else
-                            time_e = 0
+                    if (rs.rows.length > 0)
+                        time_e = rs.rows.item(0).totle
+                    else
+                        time_e = 0
                 }
                 )
 
@@ -839,8 +874,37 @@ function daySubTot() {
                     theSubTot.clear();
                     for (var i=0;i<rs.rows.length;i++)   {
                         theSubTot.append({"date":date_e, "categor":rs.rows.item(i).thestatus, "subtot": rs.rows.item(i).totle});
-                        //console.log(rs.rows.item(i).thestatus)
-                        //console.log(theSubTot.get(i).categor)
+                    }
+                }
+                )
+}
+
+function addMarkerManually(_date, _time, _where) {
+    var _datestr = _date.substring(0,11)+_time+":00"
+    //console.log("manualMarker", _date, _time, _datestr)
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    // First checking if the value to be set is in past
+                    var rs = tx.executeSql('SELECT strftime(?,?,?)-strftime(?,?) AS past  FROM Today WHERE strftime(?,theday) = (SELECT MAX(strftime(?,theday))  FROM Today)',['%s', 'now', 'localtime', '%s', _datestr, '%s', '%s'])
+                    // Then checking if value to be added is breaking the existing period
+                    var ry = tx.executeSql('SELECT * FROM Today WHERE date(theday) = date(?) AND time(endtime) > time(?) AND time(starttime) < time(?)',[_date, _datestr, _datestr]);
+                    if (ry.rows.length > 0) {
+                        //console.log("Hard task to break", ry.rows.length, ry.rows.item(0).theday, ry.rows.item(0).starttime, ry.rows.item(0).endtime)
+                        tx.executeSql('DELETE FROM Today WHERE date(theday) = date(?) AND time(endtime) > time(?) AND time(starttime) < time(?)',[_date, _datestr, _datestr]);
+                        tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), strftime(?,?)-strftime(?,?))', [ ry.rows.item(0).theday, ry.rows.item(0).thestatus, ry.rows.item(0).starttime, _datestr, '%s', _datestr,'%s', ry.rows.item(0).starttime, ]);
+                        tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), ?)', [ _datestr, _where, _datestr, _datestr, '0.0' ]);
+                        tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), strftime(?,?)-strftime(?,?))', [ ry.rows.item(0).theday, ry.rows.item(0).thestatus, _datestr, ry.rows.item(0).endtime, '%s', ry.rows.item(0).endtime, '%s', _datestr]);
+
+                    }
+                    else if (rs.rows.length > 0 && rs.rows.item(0).past > 0) {
+                        tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), ?)', [ _datestr, _where, _datestr, _datestr, '0.0' ]);
+                    }
+                    else {
+                        //console.log("Future value can not to be set")
                     }
                 }
                 )

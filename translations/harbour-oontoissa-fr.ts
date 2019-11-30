@@ -71,6 +71,11 @@
         <source>App icon (JSEHV)</source>
         <translation>Icône de l&apos;app (JSEHV)</translation>
     </message>
+    <message>
+        <source>At work, version</source>
+        <extracomment>The name of the app followed with a version number</extracomment>
+        <translation>Au travail, version</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -160,6 +165,33 @@
         <source>Extending down</source>
         <translation>Extension en bas</translation>
     </message>
+    <message>
+        <source>No recordings on the day</source>
+        <translation>Pas d&apos;enregistrement ce jour</translation>
+    </message>
+    <message>
+        <source>Pull down to change the day or add data manually</source>
+        <translation>Tirer vers le bas pour changer de jour ou ajouter des données manuellement</translation>
+    </message>
+    <message>
+        <source>Add manual mark in the past</source>
+        <translation>Ajouter une marque manuellement dans le passé</translation>
+    </message>
+</context>
+<context>
+    <name>EditDay</name>
+    <message>
+        <source>Edit day page</source>
+        <translation>Modifier la page du jour</translation>
+    </message>
+    <message>
+        <source>Location now</source>
+        <translation>Position actuelle</translation>
+    </message>
+    <message>
+        <source>Location now.</source>
+        <translation>Position actuelle.</translation>
+    </message>
 </context>
 <context>
     <name>Help</name>
@@ -193,7 +225,7 @@
     </message>
     <message>
         <source>You can set a marker from &apos;At work&apos; view or with a cover action.</source>
-        <translation>Vous pouvez définir un jalon à partir de la vue &quot;Aujourd&apos;hui&quot; ou depuis une action de couverture.</translation>
+        <translation>Vous pouvez définir un jalon à partir de la vue &quot;Au travail&quot; ou depuis une action de couverture.</translation>
     </message>
 </context>
 <context>
@@ -389,6 +421,17 @@
     </message>
 </context>
 <context>
+    <name>LocationDialog</name>
+    <message>
+        <source>Location selection</source>
+        <translation>Sélection de la position</translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation>Position</translation>
+    </message>
+</context>
+<context>
     <name>SetLocation</name>
     <message>
         <source>Add location</source>
@@ -504,6 +547,10 @@
 <context>
     <name>dbases</name>
     <message>
+        <source>Available wifis</source>
+        <translation>Réseaux wifi disponibles</translation>
+    </message>
+    <message>
         <source>Free galloping</source>
         <translation>Galopant librement</translation>
     </message>
@@ -514,6 +561,10 @@
     <message>
         <source>Entering the paddock</source>
         <translation>Entrant dans le paddock</translation>
+    </message>
+    <message>
+        <source>No GPS, wifi info used instead</source>
+        <translation>Pas de GPS, l&apos;info provient du wifi</translation>
     </message>
     <message>
         <source>No GPS, cells info used instead</source>
@@ -532,20 +583,28 @@
         <translation>Jalon manuel</translation>
     </message>
     <message>
-        <source>Available wifis</source>
-        <translation>Réseaux wifi disponibles</translation>
-    </message>
-    <message>
-        <source>No GPS, wifi info used instead</source>
-        <translation>Pas de GPS, l&apos;info provient du wifi</translation>
-    </message>
-    <message>
         <source>History</source>
         <translation>Historique</translation>
     </message>
     <message>
         <source>History, this week</source>
         <translation>Historique de la semaine</translation>
+    </message>
+    <message>
+        <source>GPS is not working properly</source>
+        <translation>Le GPS ne fonctionne pas correctement</translation>
+    </message>
+    <message>
+        <source>No GPS, cells nor wifi</source>
+        <translation>Pas de GPS, de données cellulaires ou de wifi</translation>
+    </message>
+    <message>
+        <source>GPS is used</source>
+        <translation>Utilisation du GPS</translation>
+    </message>
+    <message>
+        <source>GPS is not reliable, cells info is used instead</source>
+        <translation>Les données GPS ne sont pas fiables, utilisation des données cellulaires</translation>
     </message>
 </context>
 <context>

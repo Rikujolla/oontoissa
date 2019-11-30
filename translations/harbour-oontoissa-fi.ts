@@ -71,6 +71,11 @@
         <source>App icon (JSEHV)</source>
         <translation>Ikoni (JSEHV)</translation>
     </message>
+    <message>
+        <source>At work, version</source>
+        <extracomment>The name of the app followed with a version number</extracomment>
+        <translation>Oon töissä, versio</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -159,6 +164,33 @@
     <message>
         <source>Extending down</source>
         <translation>Laajennetaan alas</translation>
+    </message>
+    <message>
+        <source>No recordings on the day</source>
+        <translation>Valittuna päivänä ei ole tallennettuja tietoja</translation>
+    </message>
+    <message>
+        <source>Pull down to change the day or add data manually</source>
+        <translation>Vedä alas vaihtaaksesi päivää tai lisätäksesi arvoja</translation>
+    </message>
+    <message>
+        <source>Add manual mark in the past</source>
+        <translation>Lisää merkintä menneisyyteen</translation>
+    </message>
+</context>
+<context>
+    <name>EditDay</name>
+    <message>
+        <source>Edit day page</source>
+        <translation>Korjaa päivän tietoja</translation>
+    </message>
+    <message>
+        <source>Location now</source>
+        <translation>Sijaintisi nyt</translation>
+    </message>
+    <message>
+        <source>Location now.</source>
+        <translation>Sijaintisi nyt.</translation>
     </message>
 </context>
 <context>
@@ -389,6 +421,17 @@
     </message>
 </context>
 <context>
+    <name>LocationDialog</name>
+    <message>
+        <source>Location selection</source>
+        <translation>Sijainnin valinta</translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation>Sijainti</translation>
+    </message>
+</context>
+<context>
     <name>SetLocation</name>
     <message>
         <source>Add location</source>
@@ -504,6 +547,10 @@
 <context>
     <name>dbases</name>
     <message>
+        <source>Available wifis</source>
+        <translation>Käytettävissä olevat WLAN-asemat</translation>
+    </message>
+    <message>
         <source>Free galloping</source>
         <translation>Laukkaamassa...</translation>
     </message>
@@ -514,6 +561,10 @@
     <message>
         <source>Entering the paddock</source>
         <translation>Tulossa aitaukseen</translation>
+    </message>
+    <message>
+        <source>No GPS, wifi info used instead</source>
+        <translation>Ei GPS-tietoa, käytetään WLAN-tietoa</translation>
     </message>
     <message>
         <source>No GPS, cells info used instead</source>
@@ -532,20 +583,28 @@
         <translation>Merkki</translation>
     </message>
     <message>
-        <source>Available wifis</source>
-        <translation>Käytettävissä olevat WLAN-asemat</translation>
-    </message>
-    <message>
-        <source>No GPS, wifi info used instead</source>
-        <translation>Ei GPS-tietoa, käytetään WLAN-tietoa</translation>
-    </message>
-    <message>
         <source>History</source>
         <translation>Historia</translation>
     </message>
     <message>
         <source>History, this week</source>
         <translation>Historia, tämä viikko</translation>
+    </message>
+    <message>
+        <source>GPS is not working properly</source>
+        <translation>GPS ei toimi kunnolla</translation>
+    </message>
+    <message>
+        <source>No GPS, cells nor wifi</source>
+        <translation>Ei GPS-, solu- tai wifi-tietoa</translation>
+    </message>
+    <message>
+        <source>GPS is used</source>
+        <translation>GPS käytössä</translation>
+    </message>
+    <message>
+        <source>GPS is not reliable, cells info is used instead</source>
+        <translation>GPS ei ole luotettava, käytetään solutietoa</translation>
     </message>
 </context>
 <context>

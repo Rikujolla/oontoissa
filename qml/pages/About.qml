@@ -52,6 +52,27 @@ Page {
                 title: qsTr("About page")
             }
 
+            Image {
+                id: logo
+                source: "../images/harbour-oontoissa.png"
+                anchors.horizontalCenter: parent.horizontalCenter
+                height: Screen.width/7
+                width: Screen.width/7
+            }
+
+            Label {
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.primaryColor
+                width: parent.width
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: Theme.paddingLarge
+                }
+                //: The name of the app followed with a version number
+                text: {qsTr("At work, version") + " 0.2.5"}
+            }
+
             SectionHeader { text: qsTr("Idea") }
             Text {
                 font.pixelSize: Theme.fontSizeSmall
@@ -80,13 +101,13 @@ Page {
                 }
                 text: {
                     qsTr("German (John Gibbon)") + "\n" +
-                    qsTr("Finnish (Riku Lahtinen)") + "\n" +
-                    qsTr("French (Jordi)") + "\n" +
-                    qsTr("Italian (Tichy)") + "\n" +
-                    qsTr("Dutch (Nathan Follens)") + "\n" +
-                    qsTr("Russian (lewa)") + "\n" +
-                    qsTr("Swedish (Åke Engelbrektson)") + "\n" +
-                    qsTr("Chinese (0312birdzhang)")
+                            qsTr("Finnish (Riku Lahtinen)") + "\n" +
+                            qsTr("French (Jordi)") + "\n" +
+                            qsTr("Italian (Tichy)") + "\n" +
+                            qsTr("Dutch (Nathan Follens)") + "\n" +
+                            qsTr("Russian (lewa)") + "\n" +
+                            qsTr("Swedish (Åke Engelbrektson)") + "\n" +
+                            qsTr("Chinese (0312birdzhang)")
                 }
             }
 
@@ -122,7 +143,7 @@ Page {
                       + ("https://github.com/Rikujolla/oontoissa")
             }
 
-//loppusulkeet
+            //loppusulkeet
         }
     }
 }
