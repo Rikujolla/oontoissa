@@ -71,6 +71,11 @@
         <source>App icon (JSEHV)</source>
         <translation>Icône de l&apos;app (JSEHV)</translation>
     </message>
+    <message>
+        <source>At work, version</source>
+        <extracomment>The name of the app followed with a version number</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -159,6 +164,33 @@
     <message>
         <source>Extending down</source>
         <translation>Extension en bas</translation>
+    </message>
+    <message>
+        <source>No recordings on the day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to change the day or add data manually</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add manual mark in the past</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditDay</name>
+    <message>
+        <source>Edit day page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location now</source>
+        <translation type="unfinished">Position actuelle</translation>
+    </message>
+    <message>
+        <source>Location now.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -389,6 +421,17 @@
     </message>
 </context>
 <context>
+    <name>LocationDialog</name>
+    <message>
+        <source>Location selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation type="unfinished">Position</translation>
+    </message>
+</context>
+<context>
     <name>SetLocation</name>
     <message>
         <source>Add location</source>
@@ -504,48 +547,64 @@
 <context>
     <name>dbases</name>
     <message>
+        <source>Available wifis</source>
+        <translation type="unfinished">Réseaux wifi disponibles</translation>
+    </message>
+    <message>
         <source>Free galloping</source>
-        <translation>Galopant librement</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Leaving the paddock</source>
-        <translation>Quittant le paddock</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Entering the paddock</source>
-        <translation>Entrant dans le paddock</translation>
-    </message>
-    <message>
-        <source>No GPS, cells info used instead</source>
-        <translation>Pas de GPS, l&apos;info provient des cellules</translation>
-    </message>
-    <message>
-        <source>Pure cell info in use</source>
-        <translation>Info des cellules uniquement</translation>
-    </message>
-    <message>
-        <source>Validating the location info</source>
-        <translation>Validation de l&apos;info de positionnement</translation>
-    </message>
-    <message>
-        <source>Manual marker</source>
-        <translation>Jalon manuel</translation>
-    </message>
-    <message>
-        <source>Available wifis</source>
-        <translation>Réseaux wifi disponibles</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No GPS, wifi info used instead</source>
-        <translation>Pas de GPS, l&apos;info provient du wifi</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No GPS, cells info used instead</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pure cell info in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Validating the location info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>History</source>
-        <translation>Historique</translation>
+        <translation type="unfinished">Historique</translation>
     </message>
     <message>
         <source>History, this week</source>
-        <translation>Historique de la semaine</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GPS is not working properly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No GPS, cells nor wifi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GPS is used</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GPS is not reliable, cells info is used instead</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

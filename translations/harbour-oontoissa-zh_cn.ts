@@ -71,6 +71,11 @@
         <source>App icon (JSEHV)</source>
         <translation>应用图标(JSEHV)</translation>
     </message>
+    <message>
+        <source>At work, version</source>
+        <extracomment>The name of the app followed with a version number</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -159,6 +164,33 @@
     <message>
         <source>Extending down</source>
         <translation>向下延伸中</translation>
+    </message>
+    <message>
+        <source>No recordings on the day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to change the day or add data manually</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add manual mark in the past</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditDay</name>
+    <message>
+        <source>Edit day page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location now</source>
+        <translation type="unfinished">当前位置</translation>
+    </message>
+    <message>
+        <source>Location now.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -389,6 +421,17 @@
     </message>
 </context>
 <context>
+    <name>LocationDialog</name>
+    <message>
+        <source>Location selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location</source>
+        <translation type="unfinished">位置</translation>
+    </message>
+</context>
+<context>
     <name>SetLocation</name>
     <message>
         <source>Add location</source>
@@ -504,48 +547,64 @@
 <context>
     <name>dbases</name>
     <message>
+        <source>Available wifis</source>
+        <translation type="unfinished">可用的WiFi</translation>
+    </message>
+    <message>
         <source>Free galloping</source>
-        <translation>自由驰骋</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Leaving the paddock</source>
-        <translation>离开围场</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Entering the paddock</source>
-        <translation>进入围场</translation>
-    </message>
-    <message>
-        <source>No GPS, cells info used instead</source>
-        <translation>无GPS，使用移动数据信息</translation>
-    </message>
-    <message>
-        <source>Pure cell info in use</source>
-        <translation>在使用纯移动数据信息</translation>
-    </message>
-    <message>
-        <source>Validating the location info</source>
-        <translation>校验位置信息</translation>
-    </message>
-    <message>
-        <source>Manual marker</source>
-        <translation>手动标记</translation>
-    </message>
-    <message>
-        <source>Available wifis</source>
-        <translation>可用的WiFi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No GPS, wifi info used instead</source>
-        <translation>无GPS，使用WiFi信息</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No GPS, cells info used instead</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pure cell info in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Validating the location info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manual marker</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>History</source>
-        <translation>历史</translation>
+        <translation type="unfinished">历史</translation>
     </message>
     <message>
         <source>History, this week</source>
-        <translation>这周历史</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GPS is not working properly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No GPS, cells nor wifi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GPS is used</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GPS is not reliable, cells info is used instead</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

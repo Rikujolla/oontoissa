@@ -56,5 +56,7 @@ TRANSLATIONS += translations/harbour-oontoissa-de.ts \
     translations/harbour-oontoissa-it.ts
 
 DISTFILES += \
+    qml/pages/EditDay.qml \
+    qml/pages/LocationDialog.qml \
     rpm/harbour-oontoissa.changes \
     qml/pages/inertianav.js

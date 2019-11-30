@@ -30,13 +30,36 @@ import "dbases.js" as Mydbases
 
 
 Page {
+    property string _location_name : "Prisma"
     id: page
+
+    onStatusChanged: {
+        //console.log("status")
+        Mydbases.editInfo()
+    }
+
+
     SilicaListView {
         id: listView2
         model: dayValues
         anchors.fill: parent
 
+        ViewPlaceholder {
+            enabled: dayValues.get(0).starttime === ""
+            text: qsTr("No recordings on the day")
+            hintText: qsTr("Pull down to change the day or add data manually")
+        }
+
         PullDownMenu {
+
+            MenuItem {
+                id: button0
+                text: qsTr("Add manual mark in the past")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("LocationDialog.qml"))
+                }
+            }
+
             MenuItem {
                 id: button
                 property string selectedDate
@@ -86,25 +109,26 @@ Page {
         }
         delegate: ComboBox {
             id: listos
+            visible: dayValues.get(0).starttime !== ""
             x: Theme.paddingLarge
             label: starttime + " - " + endtime + ", " + pla
             //color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             menu: ContextMenu {
                 id:listosMenu
                 MenuItem {
-                        text: qsTr("Extend up")
-                        onClicked: {dayValues.indexEdit=index;
-                            remorseExtendUp.execute(qsTr("Extending up"), console.log("remorse") , 3000 )
-                            //Mydbases.extendUpRecord();
-                            //editDataUpdate.start();
-                        }
-                        RemorsePopup { id: remorseExtendUp
-                            onTriggered: {
-                                Mydbases.extendUpRecord();
-                                editDataUpdate.start();
-                            }
+                    text: qsTr("Extend up")
+                    onClicked: {dayValues.indexEdit=index;
+                        remorseExtendUp.execute(qsTr("Extending up"), console.log("remorse") , 3000 )
+                        //Mydbases.extendUpRecord();
+                        //editDataUpdate.start();
+                    }
+                    RemorsePopup { id: remorseExtendUp
+                        onTriggered: {
+                            Mydbases.extendUpRecord();
+                            editDataUpdate.start();
                         }
                     }
+                }
                 MenuItem {
                     text: qsTr("Delete")
                     onClicked: {dayValues.indexEdit=index;
@@ -120,18 +144,19 @@ Page {
                     }
                 }
                 MenuItem {
-                        text: qsTr("Extend down")
-                        onClicked: {dayValues.indexEdit=index;
-                            remorseExtendDown.execute(qsTr("Extending down"), console.log("remorse") , 3000 )
-                        }
-                        RemorsePopup { id: remorseExtendDown
-                            onTriggered: {
-                                Mydbases.extendDownRecord();
-                                editDataUpdate.start();
-                            }
+                    text: qsTr("Extend down")
+                    onClicked: {dayValues.indexEdit=index;
+                        remorseExtendDown.execute(qsTr("Extending down"), console.log("remorse") , 3000 )
+                    }
+                    RemorsePopup { id: remorseExtendDown
+                        onTriggered: {
+                            Mydbases.extendDownRecord();
+                            editDataUpdate.start();
                         }
                     }
+                }
             }
+
 
         }
 
@@ -150,6 +175,27 @@ Page {
                 starttime: ""
                 endtime: ""
                 subtotal: ""
+            }
+        }
+
+
+        Timer {
+            id: timeSelect
+            interval: 500
+            running: false
+            repeat: false
+            onTriggered: {
+                var dialog1 = pageStack.push("Sailfish.Silica.TimePickerDialog", {
+                                                 hour: 13,
+                                                 minute: 30,
+                                                 //hourMode: DateTime.TwelveHours
+                                             })
+                dialog1.accepted.connect(function() {
+                    Mydbases.addMarkerManually(selectedDate_g, dialog1.timeText, _location_name)
+                    button0.text = "Y" + dialog1.timeText
+                    editDataUpdate.start();
+                })
+                timeSelect.stop();
             }
         }
 
