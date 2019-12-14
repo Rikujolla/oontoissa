@@ -47,13 +47,14 @@ Page {
             id: column
 
             width: page.width
-            spacing: Theme.paddingLarge
+            //spacing: Theme.paddingLarge
             PageHeader {
+                id:_header
                 title: qsTr("Edit day page")
             }
 
-            SectionHeader { text: qsTr("Location now") }
-            Text {
+            //SectionHeader { text: qsTr("Location now") }
+            /*Text {
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.primaryColor
                 wrapMode: Text.WordWrap
@@ -65,12 +66,81 @@ Page {
                 }
                 text: {qsTr("Location now.")
                 }
-            }
-            Rectangle {
-                height: page.height*0.8
-                width: page.width*0.8
-                color: "blue"
-                anchors.horizontalCenter: parent.horizontalCenter
+            }*/
+
+            Canvas {
+                id: canvas
+                width:parent.width
+                height: page.height-_header.height
+                property int margin : Theme.fontSizeExtraSmall
+
+                function drawBackground(ctx)
+                {
+                    ctx.save();
+
+                    // clear previous plot
+                    ctx.clearRect(0,0,canvas.width, canvas.height);
+
+                    // fill translucent background
+                    // ctx.fillStyle = Qt.rgba(0,0,0,0.5);
+                    // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    // draw grid lines
+                    ctx.strokeStyle = Qt.rgba(1,1,1,0.3);
+                    ctx.fillStyle = Qt.rgba(1, 0, 0, 1);
+                    ctx.beginPath();
+
+                    var cols = 1.0;
+                    var rows = 24.0;
+
+                    for (var i = 0; i < rows+1; i++)
+                    {
+                        ctx.moveTo(0, i * ((canvas.height-2*margin)/rows) + Theme.fontSizeExtraSmall);
+                        ctx.lineTo(canvas.width, i * ((canvas.height-2*margin)/rows)+ Theme.fontSizeExtraSmall);
+                        ctx.fillText(i+":00", 10, i * ((canvas.height-2*margin)/rows) + 1.35 *Theme.fontSizeExtraSmall)
+                    }
+                    for (i = 0; i < cols; i++)
+                    {
+                        ctx.moveTo(i * (canvas.width/cols), 0);
+                        ctx.lineTo(i * (canvas.width/cols), canvas.height);
+                    }
+                    ctx.stroke();
+
+                    ctx.restore();
+                }
+
+                function drawRecordings(ctx) {
+                    ctx.save();
+
+                    ctx.fillStyle = Qt.rgba(1, 0, 0, 1);
+
+                    ctx.fillRect(150, margin+ 0.2*height, width-200, height-2*margin);
+
+                    ctx.stroke();
+
+                    ctx.restore();
+
+                }
+
+
+
+
+
+                onPaint: {
+                    var ctx = getContext("2d");
+                    ctx.globalCompositeOperation = "source-over";
+                    ctx.lineWidth = 2;
+
+                    ctx.font = Theme.fontSizeExtraSmall + "px sans-serif"
+                    //ctx.fillStyle = Qt.rgba(1, 0, 0, 1);
+                    drawBackground(ctx);
+                    drawRecordings(ctx);
+
+                    //ctx.fillRect(150, margin, width-200, height-2*margin);
+                    //ctx.font = texti
+                    //ctx.fillText("0:00", 10, 200)
+                }
+
             }
 
 

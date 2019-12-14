@@ -672,7 +672,7 @@ function deleteRecord() {
                 function(tx) {
                     // Create the database if it doesn't already exist
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
-                    tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND starttime = ?', [button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime)]);
+                    tx.executeSql('DELETE FROM Today WHERE date(theday) = ? AND thestatus = ? AND starttime = ? AND endtime = ?', [button.selectedDate, (dayValues.get(dayValues.indexEdit).pla), (dayValues.get(dayValues.indexEdit).starttime), (dayValues.get(dayValues.indexEdit).endtime)]);
                 }
                 )
 }
@@ -880,7 +880,9 @@ function daySubTot() {
 }
 
 function addMarkerManually(_date, _time, _where) {
+    var _timestr = _time + ":00"
     var _datestr = _date.substring(0,11)+_time+":00"
+
     //console.log("manualMarker", _date, _time, _datestr)
     var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
 
@@ -895,9 +897,11 @@ function addMarkerManually(_date, _time, _where) {
                     if (ry.rows.length > 0) {
                         //console.log("Hard task to break", ry.rows.length, ry.rows.item(0).theday, ry.rows.item(0).starttime, ry.rows.item(0).endtime)
                         tx.executeSql('DELETE FROM Today WHERE date(theday) = date(?) AND time(endtime) > time(?) AND time(starttime) < time(?)',[_date, _datestr, _datestr]);
-                        tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), strftime(?,?)-strftime(?,?))', [ ry.rows.item(0).theday, ry.rows.item(0).thestatus, ry.rows.item(0).starttime, _datestr, '%s', _datestr,'%s', ry.rows.item(0).starttime, ]);
-                        tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), ?)', [ _datestr, _where, _datestr, _datestr, '0.0' ]);
-                        tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), strftime(?,?)-strftime(?,?))', [ ry.rows.item(0).theday, ry.rows.item(0).thestatus, _datestr, ry.rows.item(0).endtime, '%s', ry.rows.item(0).endtime, '%s', _datestr]);
+                        tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), strftime(?,?)-strftime(?,?))', [ ry.rows.item(0).theday, ry.rows.item(0).thestatus, ry.rows.item(0).starttime, _datestr, '%s', _timestr,'%s', ry.rows.item(0).starttime, ]);
+                        if (_where !== ry.rows.item(0).thestatus) {
+                            tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), ?)', [ _datestr, _where, _datestr, _datestr, '0.0' ]);
+                        }
+                        tx.executeSql('INSERT INTO Today VALUES(datetime(?), ?, time(?), time(?), strftime(?,?)-strftime(?,?))', [ _datestr, ry.rows.item(0).thestatus, _datestr, ry.rows.item(0).endtime, '%s', ry.rows.item(0).endtime, '%s', _timestr]);
 
                     }
                     else if (rs.rows.length > 0 && rs.rows.item(0).past > 0) {

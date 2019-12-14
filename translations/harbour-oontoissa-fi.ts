@@ -184,14 +184,6 @@
         <source>Edit day page</source>
         <translation>Korjaa päivän tietoja</translation>
     </message>
-    <message>
-        <source>Location now</source>
-        <translation>Sijaintisi nyt</translation>
-    </message>
-    <message>
-        <source>Location now.</source>
-        <translation>Sijaintisi nyt.</translation>
-    </message>
 </context>
 <context>
     <name>Help</name>

@@ -179,7 +179,7 @@ Page {
         }
 
 
-        Timer {
+        /*Timer {
             id: timeSelect
             interval: 500
             running: false
@@ -197,7 +197,7 @@ Page {
                 })
                 timeSelect.stop();
             }
-        }
+        }*/
 
 
         Timer {

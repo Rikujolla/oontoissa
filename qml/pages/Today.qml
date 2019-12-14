@@ -234,7 +234,9 @@ Page {
 
                 Button {
                     text: datePicker.date.toLocaleDateString(Locale.ShortFormat);
-                    onClicked: datePicker.date = new Date()
+                    onClicked: {
+                        datePicker.date = new Date();
+                    }
                 }
                 IconButton {
                     icon.source: "image://theme/icon-m-forward?" + (pressed

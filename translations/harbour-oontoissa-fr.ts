@@ -184,14 +184,6 @@
         <source>Edit day page</source>
         <translation>Modifier la page du jour</translation>
     </message>
-    <message>
-        <source>Location now</source>
-        <translation>Position actuelle</translation>
-    </message>
-    <message>
-        <source>Location now.</source>
-        <translation>Position actuelle.</translation>
-    </message>
 </context>
 <context>
     <name>Help</name>

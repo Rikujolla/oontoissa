@@ -184,14 +184,6 @@
         <source>Edit day page</source>
         <translation>Redigera dagsida</translation>
     </message>
-    <message>
-        <source>Location now</source>
-        <translation>Plats nu</translation>
-    </message>
-    <message>
-        <source>Location now.</source>
-        <translation>Plats nu.</translation>
-    </message>
 </context>
 <context>
     <name>Help</name>

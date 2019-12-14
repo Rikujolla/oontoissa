@@ -184,14 +184,6 @@
         <source>Edit day page</source>
         <translation>编辑日期页面</translation>
     </message>
-    <message>
-        <source>Location now</source>
-        <translation>当前位置</translation>
-    </message>
-    <message>
-        <source>Location now.</source>
-        <translation>当前位置</translation>
-    </message>
 </context>
 <context>
     <name>Help</name>

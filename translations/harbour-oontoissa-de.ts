@@ -184,14 +184,6 @@
         <source>Edit day page</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Location now</source>
-        <translation type="unfinished">Aktueller Ort</translation>
-    </message>
-    <message>
-        <source>Location now.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Help</name>

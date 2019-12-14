@@ -66,7 +66,7 @@ Page {
 
     Timer {
         id: pagePopping
-        interval: 500
+        interval: 700
         running: false
         repeat: false
         onTriggered: {
