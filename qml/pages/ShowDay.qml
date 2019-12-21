@@ -29,6 +29,17 @@ import QtQuick.LocalStorage 2.0
 import "dbases.js" as Mydbases
 
 Page {
+    id:page
+
+    onStatusChanged: {
+        //console.log("status", page.status)
+        if (page.status === 2) {
+            Mydbases.editInfo_n()
+            Mydbases.daySubTot()
+            Mydbases.dayTotals()
+        }
+    }
+
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: mainColumn.height
@@ -37,6 +48,13 @@ Page {
                 text: qsTr("Edit data")
                 onClicked: pageStack.push(Qt.resolvedUrl("EditData.qml"))
             }
+            MenuItem {
+                text: qsTr("Show day graphics")
+                onClicked:  {
+                    pageStack.replace(Qt.resolvedUrl("EditDay.qml"))
+                }
+
+            }
         }
 
         Column {
@@ -44,7 +62,7 @@ Page {
             width: parent.width
 
             PageHeader {
-                title: qsTr("Show and edit data page")
+                title: qsTr("Show day data")
             }
 
             SectionHeader { text: qsTr("Selected day recordings") }
@@ -61,7 +79,7 @@ Page {
                     label: starttime + " - " + endtime + ", " + pla
                     menu: ContextMenu {
                         id:listosMenu
-                        MenuItem {
+                        /*MenuItem {
                             text: qsTr("Extend up")
                             onClicked: {dayValues_g.indexEdit=index;
                                 remorseExtendUp.execute(qsTr("Extending up"), console.log("remorse") , 3000 )
@@ -96,7 +114,7 @@ Page {
                                     editDataUpdate.start();
                                 }
                             }
-                        }
+                        }*/
                     }
 
                 }
@@ -136,7 +154,7 @@ Page {
                 }
             }
         }
-        Timer {
+        Timer { // Maybe not needed in future
             id: editDataUpdate
             interval: 60
             running: false
@@ -150,8 +168,8 @@ Page {
 
     }
     Component.onCompleted:{
-        Mydbases.editInfo_n()
-        Mydbases.daySubTot()
-        Mydbases.dayTotals()
+        //Mydbases.editInfo_n()
+        //Mydbases.daySubTot()
+        //Mydbases.dayTotals()
     }
 }

@@ -181,8 +181,16 @@
 <context>
     <name>EditDay</name>
     <message>
-        <source>Edit day page</source>
-        <translation>Korjaa päivän tietoja</translation>
+        <source>Show day data</source>
+        <translation>Päivän tiedot</translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation>Päivä graafisesti</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation>Korjaa tietoja</translation>
     </message>
 </context>
 <context>
@@ -344,26 +352,6 @@
         <translation>Työ1</translation>
     </message>
     <message>
-        <source>Latitude</source>
-        <translation>Leveyspiiri</translation>
-    </message>
-    <message>
-        <source>Longitude</source>
-        <translation>Pituuspiiri</translation>
-    </message>
-    <message>
-        <source>Cell IDs</source>
-        <translation>Solunumerot</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Poista</translation>
-    </message>
-    <message>
-        <source>Use CellId as a primary location source</source>
-        <translation>Käytä solutietoa ensisijaisena paikkatietona</translation>
-    </message>
-    <message>
         <source>Location size (m)</source>
         <translation>Sijainnin koko (m)</translation>
     </message>
@@ -372,8 +360,52 @@
         <translation>Aidan vahvuus (m)</translation>
     </message>
     <message>
-        <source>Write wifi station name</source>
-        <translation>Kirjoita WLAN-aseman nimi</translation>
+        <source>Location color</source>
+        <translation>Sijainnin väri</translation>
+    </message>
+    <message>
+        <source>Minimize GPS info view</source>
+        <translation>Piilota GPS-tiedot</translation>
+    </message>
+    <message>
+        <source>Show and set GPS info</source>
+        <translation>Näytä ja aseta GPS-tiedot</translation>
+    </message>
+    <message>
+        <source>Latitude</source>
+        <translation>Leveyspiiri</translation>
+    </message>
+    <message>
+        <source>Longitude</source>
+        <translation>Pituuspiiri</translation>
+    </message>
+    <message>
+        <source>Minimize cells info view</source>
+        <translation>Piilota solutiedot</translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation>Näytä ja aseta solutiedot</translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation>Käytä solutietoa ensisijaisena paikkatietona</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation>Piilota WLAN-tiedot</translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation>Näytä ja aseta WLAN-tiedot</translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
+        <translation>WLANin oltava yhdistetty</translation>
     </message>
     <message>
         <source>Selected wifis</source>
@@ -384,32 +416,12 @@
         <translation>Käytettävissä olevat WLAN-asemat</translation>
     </message>
     <message>
-        <source>Require wifi to be online</source>
-        <translation>WLANin oltava yhdistetty</translation>
+        <source>Write wifi station name</source>
+        <translation>Kirjoita WLAN-aseman nimi</translation>
     </message>
     <message>
-        <source>Show and set GPS info</source>
-        <translation>Näytä ja aseta GPS-tiedot</translation>
-    </message>
-    <message>
-        <source>Show and set cells info</source>
-        <translation>Näytä ja aseta solutiedot</translation>
-    </message>
-    <message>
-        <source>Show and set wifi info</source>
-        <translation>Näytä ja aseta WLAN-tiedot</translation>
-    </message>
-    <message>
-        <source>Minimize GPS info view</source>
-        <translation>Piilota GPS-tiedot</translation>
-    </message>
-    <message>
-        <source>Minimize wifi info view</source>
-        <translation>Piilota WLAN-tiedot</translation>
-    </message>
-    <message>
-        <source>Minimize cells info view</source>
-        <translation>Piilota solutiedot</translation>
+        <source>Cell IDs</source>
+        <translation>Solunumerot</translation>
     </message>
 </context>
 <context>
@@ -449,10 +461,6 @@
         <translation>Valitun päivän tallenteet</translation>
     </message>
     <message>
-        <source>Show and edit data page</source>
-        <translation>Datan editointisivu</translation>
-    </message>
-    <message>
         <source>Subtotals of the day</source>
         <translation>Päivän välisummat</translation>
     </message>
@@ -465,32 +473,16 @@
         <translation>tuntia</translation>
     </message>
     <message>
-        <source>Extend up</source>
-        <translation>Laajenna ylempään</translation>
-    </message>
-    <message>
-        <source>Extending up</source>
-        <translation>Laajennetaan ylös</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Poista</translation>
-    </message>
-    <message>
-        <source>Deleting</source>
-        <translation>Poistetaan</translation>
-    </message>
-    <message>
-        <source>Extend down</source>
-        <translation>Laajenna alempaan</translation>
-    </message>
-    <message>
-        <source>Extending down</source>
-        <translation>Laajennetaan alas</translation>
-    </message>
-    <message>
         <source>Edit data</source>
         <translation>Korjaa tietoja</translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation>Päivä graafisesti</translation>
+    </message>
+    <message>
+        <source>Show day data</source>
+        <translation>Päivän tiedot</translation>
     </message>
 </context>
 <context>

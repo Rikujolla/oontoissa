@@ -55,11 +55,11 @@ function updateLocation() {
                     tx.executeSql('UPDATE Locations SET theplace=? WHERE theplace = ?', [neimi.text, (listix.get(currentIndex-1).pla)] );
                     //}
                     // Updating the location latitude
-                    if (latti.text != "") {
+                    if (latti.text !== "") {
                         tx.executeSql('UPDATE Locations SET thelati=? WHERE theplace = ?', [latti.text, (listix.get(currentIndex-1).pla)]);
                     }
                     // Updating the location longitude
-                    if (longi.text != "") {
+                    if (longi.text !== "") {
                         tx.executeSql('UPDATE Locations SET thelongi=? WHERE theplace = ?', [longi.text, (listix.get(currentIndex-1).pla)]);
                     }
                     // Updating the location tolerance
@@ -75,11 +75,11 @@ function updateLocation() {
                                                          + rs.rows.item(currentIndex-1).thelongi + ", " + rs.rows.item(currentIndex-1).tolerlong)});
 
                     // Updating the cell information
-                    if (celli.text != "") {
+                    if (celli.text !== "") {
                         rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ? AND thecelli = ?', [(listix.get(currentIndex-1).pla), celli.text]);
 
                         //tx.executeSql('UPDATE Cellinfo SET thecelli=? WHERE theplace = ?', [celli.text, (listix.get(currentIndex-1).pla)]);
-                        if (rs.rows.length == 0) {
+                        if (rs.rows.length === 0) {
                             tx.executeSql('INSERT INTO Cellinfo VALUES(?, ?, ?, ?, ?, ?)', [(listix.get(currentIndex-1).pla), celli.text, '1', '1.0', '1.0', '1.0']);
                         }
                     }
@@ -91,8 +91,8 @@ function updateLocation() {
                     tx.executeSql('UPDATE Priorities SET cell=? WHERE theplace = ?', [sellPri.checked, (listix.get(currentIndex-1).pla)]);
 
                     rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE theplace = ?', [listix.get(currentIndex-1).pla]);
-                    if (wifi.text != "" || rs.rows.length > 0) {
-                        if (rs.rows.length == 0){
+                    if (wifi.text !== "" || rs.rows.length > 0) {
+                        if (rs.rows.length === 0){
                             tx.executeSql('INSERT INTO Wifiinfo VALUES(?, ?, ?, ?, ?)', [listix.get(currentIndex-1).pla, wifi.text, '50', 'idle', wifiAct.checked]);
                         }
                         else {
@@ -290,7 +290,7 @@ function populateView() {  // Loads existing info to Loc.qml page
 
                     rs = tx.executeSql('SELECT * FROM Priorities WHERE theplace = ?', neimi.text);
 
-                    if (rs.rows.length == 0) {
+                    if (rs.rows.length === 0) {
                         sellPri.checked = false
                         tx.executeSql('INSERT INTO Priorities VALUES(?, ?, ?, ?, ?, ?)', [(listix.get(currentIndex-1).pla), '1', '0', '0', '0', '0']);
                     }
@@ -304,8 +304,11 @@ function populateView() {  // Loads existing info to Loc.qml page
 
                     rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE theplace = ?', neimi.text);
 
-                    if (rs.rows.length == 0) {
+                    if (rs.rows.length === 0) {
 
+                        wifi.text = "";
+                        currentWifi = "";
+                        wifiAct.checked = false;
                     }
                     else {
                         wifi.text = rs.rows.item(0).thewifi
@@ -316,7 +319,7 @@ function populateView() {  // Loads existing info to Loc.qml page
                     wifisAvailable.text = qsTr("Available wifis") + ": "
                     for (i=0; i<wifis.count; i++) {
                         var j = wifis.count-1
-                        if (i == j) {
+                        if (i === j) {
                             wifisAvailable.text += wifis.get(i).name;
                         }
                         else {
@@ -529,7 +532,7 @@ function addTodayInfo() {
                     else if (latitudeStagnationInd > 20 && newStatus != 3 && newStatus != 4 && newStatus != 6) {
                         newStatus = 8; // Status for nonreliable gps
                         if (gpsTrue){
-                        extraMsg = qsTr("GPS is not working properly")
+                            extraMsg = qsTr("GPS is not working properly")
                         }
                         else {
                             extraMsg = qsTr("No GPS, cells nor wifi")
@@ -743,7 +746,7 @@ function editInfo_n() {
                     // Create the database if it doesn't already exist
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
                     var rs = tx.executeSql('DELETE FROM Today WHERE thestatus = ?', ['Not in a paddock']);
-                    rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = ? AND thestatus NOT IN (?)', [date_e, 'Not in a paddock']);
+                    rs = tx.executeSql('SELECT * FROM Today WHERE date(theday) = ? AND thestatus NOT IN (?) ORDER BY starttime, endtime ASC', [date_e, 'Not in a paddock']);
                     dayValues_g.clear();
                     for(var i = 0; i < rs.rows.length; i++) {
                         dayValues_g.set((i),{"starttime": rs.rows.item(i).starttime});
@@ -909,6 +912,26 @@ function addMarkerManually(_date, _time, _where) {
                     }
                     else {
                         //console.log("Future value can not to be set")
+                    }
+                }
+                )
+}
+
+function getDayMinutes(_date) {
+    var _puretimestr = "00:00:00"
+    var db = LocalStorage.openDatabaseSync("AtworkDB", "1.0", "At work database", 1000000);
+
+    db.transaction(
+                function(tx) {
+                    // Create the database if it doesn't already exist
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Today(theday TEXT, thestatus TEXT, starttime TEXT, endtime TEXT, subtotal TEXT)');
+                    // Get day minute values
+                    var rs = tx.executeSql('SELECT thestatus, (strftime(?,starttime)-strftime(?,?))/60 AS start_time, (strftime(?,endtime)-strftime(?,?))/60 as end_time FROM Today WHERE date(theday) = date(?) AND thestatus NOT IN (?) ORDER BY start_time',['%s','%s',_puretimestr,'%s','%s',_puretimestr, _date, 'Not in a paddock'])
+                    dayDraw.clear();
+                    for (var i=0;i<rs.rows.length;i++)   {
+                        // adding one to end time to eable drawing in the case there is only a marker
+                        dayDraw.append({"start_time":rs.rows.item(i).start_time, "end_time":rs.rows.item(i).end_time+1, "name":rs.rows.item(i).thestatus});
+                        //console.log(rs.rows.item(i).start_time, rs.rows.item(i).end_time)
                     }
                 }
                 )

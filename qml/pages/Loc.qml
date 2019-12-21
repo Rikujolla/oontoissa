@@ -170,6 +170,39 @@ Page {
                 }
             }
 
+            Row {
+                x: Theme.paddingLarge
+                spacing: Theme.paddingMedium
+                visible: false
+                Text {
+                    text: qsTr("Location color")
+                    color: Theme.secondaryHighlightColor
+                    x: Theme.paddingLarge
+                    font.pixelSize: Theme.fontSizeSmall
+                    width:page.width/2
+                    wrapMode: Text.WordWrap
+                }
+
+                BackgroundItem {
+                    width:page.width/3
+                    height:Theme.fontSizeSmall
+                    onClicked: {
+                        var dialog = pageStack.push("Sailfish.Silica.ColorPickerDialog")
+                        dialog.accepted.connect(function() {
+                            color_box.color = dialog.color
+                        })
+                    }
+                    Rectangle{
+                        id:color_box
+                        width:page.width/3
+                        height:Theme.fontSizeSmall
+                        color: "blue"
+                    }
+                }
+            }
+
+
+
             ///////////////////////////////////////
             /// GPS-section
             ///////////////////////////////////

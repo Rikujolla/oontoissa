@@ -181,7 +181,15 @@
 <context>
     <name>EditDay</name>
     <message>
-        <source>Edit day page</source>
+        <source>Show day data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -313,66 +321,90 @@
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation>Tabellen löschen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete location</source>
-        <translation>Aufenthaltsort entfernen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation>Entferne</translation>
+        <translation type="unfinished">Entferne</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation>Werte aktualisieren</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation type="unfinished">Hilfe</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Aufenthaltsort</translation>
+        <translation type="unfinished">Aufenthaltsort</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation>Name des Ortes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation>Arbeit1</translation>
-    </message>
-    <message>
-        <source>Latitude</source>
-        <translation>Breitengrad</translation>
-    </message>
-    <message>
-        <source>Longitude</source>
-        <translation>Längengrad</translation>
-    </message>
-    <message>
-        <source>Cell IDs</source>
-        <translation>Zellen-IDs</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Löschen</translation>
-    </message>
-    <message>
-        <source>Use CellId as a primary location source</source>
-        <translation>Celld als primäre Standorterkennung benutzen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Location size (m)</source>
-        <translation>Standortgröße (in m)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fence thickness (m)</source>
-        <translation>Zaundicke (m)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Write wifi station name</source>
+        <source>Location color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimize GPS info view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and set GPS info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Longitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimize cells info view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Löschen</translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -384,32 +416,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Require wifi to be online</source>
+        <source>Write wifi station name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show and set GPS info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show and set cells info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show and set wifi info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Minimize GPS info view</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Minimize wifi info view</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Minimize cells info view</source>
-        <translation type="unfinished"></translation>
+        <source>Cell IDs</source>
+        <translation type="unfinished">Zellen-IDs</translation>
     </message>
 </context>
 <context>
@@ -449,10 +461,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show and edit data page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subtotals of the day</source>
         <translation type="unfinished"></translation>
     </message>
@@ -465,31 +473,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Extend up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extending up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="unfinished">Löschen</translation>
-    </message>
-    <message>
-        <source>Deleting</source>
-        <translation type="unfinished">Entferne</translation>
-    </message>
-    <message>
-        <source>Extend down</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extending down</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Edit data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

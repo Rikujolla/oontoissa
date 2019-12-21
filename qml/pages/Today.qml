@@ -1,4 +1,4 @@
-/*Copyright (c) 2015, Riku Lahtinen
+/*Copyright (c) 2015-2019, Riku Lahtinen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -142,6 +142,7 @@ Page {
                     text: qsTr("History")
                 }
                 onClicked: {
+                    //selectedDate_g = datePicker.date
                     //pageStack.push(Qt.resolvedUrl("EditDay.qml"))
                 }
             }
@@ -185,7 +186,7 @@ Page {
                     onClicked: {
                         datePicker.date = new Date(year, month-1, day, 12, 0, 0)
                         selectedDate_g = datePicker.date
-                        pageStack.push(Qt.resolvedUrl("ShowDay.qml"))
+                        pageStack.push(Qt.resolvedUrl("EditDay.qml"))
                     }
 
                     onPressAndHold: {

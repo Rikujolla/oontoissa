@@ -181,8 +181,16 @@
 <context>
     <name>EditDay</name>
     <message>
-        <source>Edit day page</source>
-        <translation>Redigera dagsida</translation>
+        <source>Show day data</source>
+        <translation>Visa dagdata</translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation>Visa daggrafik</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation>Redigera data</translation>
     </message>
 </context>
 <context>
@@ -344,26 +352,6 @@
         <translation>Arbete1</translation>
     </message>
     <message>
-        <source>Latitude</source>
-        <translation>Latitud</translation>
-    </message>
-    <message>
-        <source>Longitude</source>
-        <translation>Longitud</translation>
-    </message>
-    <message>
-        <source>Cell IDs</source>
-        <translation>Basstations-ID</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Ta bort</translation>
-    </message>
-    <message>
-        <source>Use CellId as a primary location source</source>
-        <translation>Använd basstations-ID som primär platskälla</translation>
-    </message>
-    <message>
         <source>Location size (m)</source>
         <translation>Platsstorlek (m)</translation>
     </message>
@@ -372,8 +360,52 @@
         <translation>Stängseltjocklek (m)</translation>
     </message>
     <message>
-        <source>Write wifi station name</source>
-        <translation>Ange WiFi-nätets namn</translation>
+        <source>Location color</source>
+        <translation>Platsfärg</translation>
+    </message>
+    <message>
+        <source>Minimize GPS info view</source>
+        <translation>Minimera GPS-infovy</translation>
+    </message>
+    <message>
+        <source>Show and set GPS info</source>
+        <translation>Visa och ställ in GPS-info</translation>
+    </message>
+    <message>
+        <source>Latitude</source>
+        <translation>Latitud</translation>
+    </message>
+    <message>
+        <source>Longitude</source>
+        <translation>Longitud</translation>
+    </message>
+    <message>
+        <source>Minimize cells info view</source>
+        <translation>Minimera basstationsinfovy</translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation>Visa och ställ in basstationsinfo</translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation>Använd basstations-ID som primär platskälla</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Ta bort</translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation>Minimera WiFi-infovy</translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation>Visa och ställ in WiFi-info</translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
+        <translation>Kräver att WiFi-nätet är aktivt</translation>
     </message>
     <message>
         <source>Selected wifis</source>
@@ -384,32 +416,12 @@
         <translation>Tillgängliga WiFi-nät</translation>
     </message>
     <message>
-        <source>Require wifi to be online</source>
-        <translation>Kräver att WiFi-nätet är aktivt</translation>
+        <source>Write wifi station name</source>
+        <translation>Ange WiFi-nätets namn</translation>
     </message>
     <message>
-        <source>Show and set GPS info</source>
-        <translation>Visa och ställ in GPS-info</translation>
-    </message>
-    <message>
-        <source>Show and set cells info</source>
-        <translation>Visa och ställ in basstationsinfo</translation>
-    </message>
-    <message>
-        <source>Show and set wifi info</source>
-        <translation>Visa och ställ in WiFi-info</translation>
-    </message>
-    <message>
-        <source>Minimize GPS info view</source>
-        <translation>Minimera GPS-infovy</translation>
-    </message>
-    <message>
-        <source>Minimize wifi info view</source>
-        <translation>Minimera WiFi-infovy</translation>
-    </message>
-    <message>
-        <source>Minimize cells info view</source>
-        <translation>Minimera basstationsinfovy</translation>
+        <source>Cell IDs</source>
+        <translation>Basstations-ID</translation>
     </message>
 </context>
 <context>
@@ -449,10 +461,6 @@
         <translation>Valda dagsposter</translation>
     </message>
     <message>
-        <source>Show and edit data page</source>
-        <translation>Visa och redigera datasidan</translation>
-    </message>
-    <message>
         <source>Subtotals of the day</source>
         <translation>Delsummor för dagen</translation>
     </message>
@@ -465,32 +473,16 @@
         <translation>timmar</translation>
     </message>
     <message>
-        <source>Extend up</source>
-        <translation>Utöka uppåt</translation>
-    </message>
-    <message>
-        <source>Extending up</source>
-        <translation>Utökar uppåt</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Ta bort</translation>
-    </message>
-    <message>
-        <source>Deleting</source>
-        <translation>Tar bort</translation>
-    </message>
-    <message>
-        <source>Extend down</source>
-        <translation>Utöka neråt</translation>
-    </message>
-    <message>
-        <source>Extending down</source>
-        <translation>Utökar neråt</translation>
-    </message>
-    <message>
         <source>Edit data</source>
         <translation>Redigera data</translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation>Visa daggrafik</translation>
+    </message>
+    <message>
+        <source>Show day data</source>
+        <translation>Visa dagdata</translation>
     </message>
 </context>
 <context>

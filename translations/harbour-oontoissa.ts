@@ -181,7 +181,15 @@
 <context>
     <name>EditDay</name>
     <message>
-        <source>Edit day page</source>
+        <source>Show day data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -344,26 +352,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Latitude</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Longitude</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cell IDs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use CellId as a primary location source</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Location size (m)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -372,7 +360,51 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Write wifi station name</source>
+        <source>Location color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimize GPS info view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and set GPS info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Longitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimize cells info view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -384,31 +416,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Require wifi to be online</source>
+        <source>Write wifi station name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show and set GPS info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show and set cells info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show and set wifi info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Minimize GPS info view</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Minimize wifi info view</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Minimize cells info view</source>
+        <source>Cell IDs</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -449,10 +461,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show and edit data page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subtotals of the day</source>
         <translation type="unfinished"></translation>
     </message>
@@ -465,31 +473,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Extend up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extending up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Deleting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extend down</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extending down</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Edit data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

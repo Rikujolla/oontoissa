@@ -25,21 +25,38 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "dbases.js" as Mydbases //RLAH
+import QtQuick.LocalStorage 2.0 //RLAH
 
 
 Page {
     id: page
 
+    onStatusChanged: {
+        //console.log("status", page.status)
+        if (page.status == 2) {
+            Mydbases.getDayMinutes(selectedDate_g)
+            canvas.clear();
+        }
+    }
+
     SilicaFlickable {
         anchors.fill: parent
 
-        /*PullDownMenu {
+        PullDownMenu {
 
             MenuItem {
-                text: qsTr("Back to settings")
-                onClicked: pageStack.pop()
+                text: qsTr("Edit data")
+                onClicked: pageStack.push(Qt.resolvedUrl("EditData.qml"))
             }
-        }*/
+            MenuItem {
+                text: qsTr("Show day data")
+                onClicked:  {
+                    pageStack.replace(Qt.resolvedUrl("ShowDay.qml"))
+                }
+
+            }
+        }
 
         contentHeight: column.height
 
@@ -50,23 +67,8 @@ Page {
             //spacing: Theme.paddingLarge
             PageHeader {
                 id:_header
-                title: qsTr("Edit day page")
+                title: qsTr("Show day graphics")
             }
-
-            //SectionHeader { text: qsTr("Location now") }
-            /*Text {
-                font.pixelSize: Theme.fontSizeSmall
-                color: Theme.primaryColor
-                wrapMode: Text.WordWrap
-                width: parent.width
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    margins: Theme.paddingLarge
-                }
-                text: {qsTr("Location now.")
-                }
-            }*/
 
             Canvas {
                 id: canvas
@@ -74,6 +76,11 @@ Page {
                 height: page.height-_header.height
                 property int margin : Theme.fontSizeExtraSmall
 
+                function clear() {
+                    var ctx = getContext("2d");
+                    ctx.reset();
+                    canvas.requestPaint()
+                }
                 function drawBackground(ctx)
                 {
                     ctx.save();
@@ -87,7 +94,7 @@ Page {
 
                     // draw grid lines
                     ctx.strokeStyle = Qt.rgba(1,1,1,0.3);
-                    ctx.fillStyle = Qt.rgba(1, 0, 0, 1);
+                    ctx.fillStyle = Theme.secondaryColor;
                     ctx.beginPath();
 
                     var cols = 1.0;
@@ -101,23 +108,39 @@ Page {
                     }
                     for (i = 0; i < cols; i++)
                     {
-                        ctx.moveTo(i * (canvas.width/cols), 0);
-                        ctx.lineTo(i * (canvas.width/cols), canvas.height);
+                        ctx.moveTo(i * (width/cols), 0);
+                        ctx.lineTo(i * (width/cols), height);
                     }
                     ctx.stroke();
-
                     ctx.restore();
                 }
 
                 function drawRecordings(ctx) {
                     ctx.save();
 
-                    ctx.fillStyle = Qt.rgba(1, 0, 0, 1);
+                    ctx.fillStyle = "blue"; //Later to be made selectable
 
-                    ctx.fillRect(150, margin+ 0.2*height, width-200, height-2*margin);
-
+                    for (var i = 0; i < dayDraw.count; i++)
+                    {
+                        ctx.fillRect(0.17*width, margin+ dayDraw.get(i).start_time*(height-2*margin)/1440, 0.78*width, (dayDraw.get(i).end_time-dayDraw.get(i).start_time)*(height-2*margin)/1440);
+                        //console.log(height, margin, dayDrawValues.get(i).start_time, margin+dayDrawValues.get(i).start_time*(height-2*margin)/1440)
+                        //console.log(height, margin, dayDrawValues.get(i).end_time, margin+dayDrawValues.get(i).end_time*(height-2*margin)/1440)
+                    }
                     ctx.stroke();
+                    ctx.restore();
 
+                }
+
+                function drawTexts(ctx) {
+                    ctx.save();
+
+                    ctx.fillStyle = Theme.primaryColor;
+
+                    for (var i = 0; i < dayDraw.count; i++)
+                    {
+                        ctx.fillText(dayDraw.get(i).name, 0.2*width + width*(i%3)/5, margin+ dayDraw.get(i).start_time*(height-2*margin)/1440+ (dayDraw.get(i).end_time-dayDraw.get(i).start_time)*(height-2*margin)/1440/2+ 0.35 *Theme.fontSizeExtraSmall)
+                    }
+                    ctx.stroke();
                     ctx.restore();
 
                 }
@@ -125,24 +148,34 @@ Page {
 
 
 
-
                 onPaint: {
+
                     var ctx = getContext("2d");
                     ctx.globalCompositeOperation = "source-over";
                     ctx.lineWidth = 2;
 
                     ctx.font = Theme.fontSizeExtraSmall + "px sans-serif"
-                    //ctx.fillStyle = Qt.rgba(1, 0, 0, 1);
+
                     drawBackground(ctx);
                     drawRecordings(ctx);
+                    drawTexts(ctx);
+                }
+            }
 
-                    //ctx.fillRect(150, margin, width-200, height-2*margin);
-                    //ctx.font = texti
-                    //ctx.fillText("0:00", 10, 200)
+            ListModel {
+                id:dayDraw
+                ListElement {
+                    start_time: 120
+                    end_time: 180
+                    name:""
                 }
 
             }
 
+            Component.onCompleted: {
+                Mydbases.getDayMinutes(selectedDate_g)
+                Mydbases.editInfo_n()
+            }
 
             //loppusulkeet
         }

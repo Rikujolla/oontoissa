@@ -181,8 +181,16 @@
 <context>
     <name>EditDay</name>
     <message>
-        <source>Edit day page</source>
-        <translation>Modifier la page du jour</translation>
+        <source>Show day data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation type="unfinished">Modifier les données</translation>
     </message>
 </context>
 <context>
@@ -344,26 +352,6 @@
         <translation>Travail1</translation>
     </message>
     <message>
-        <source>Latitude</source>
-        <translation>Latitude</translation>
-    </message>
-    <message>
-        <source>Longitude</source>
-        <translation>Longitude</translation>
-    </message>
-    <message>
-        <source>Cell IDs</source>
-        <translation>ID des cellules</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Supprimer</translation>
-    </message>
-    <message>
-        <source>Use CellId as a primary location source</source>
-        <translation>Utiliser l&apos;ID des cellules comme source principale de positionnement</translation>
-    </message>
-    <message>
         <source>Location size (m)</source>
         <translation>Taille de l&apos;emplacement (m.)</translation>
     </message>
@@ -372,8 +360,52 @@
         <translation>Largeur de la zone tampon.</translation>
     </message>
     <message>
-        <source>Write wifi station name</source>
-        <translation>Ecrire le nom du réseau wifi</translation>
+        <source>Location color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimize GPS info view</source>
+        <translation>Réduire la vue des infos GPS</translation>
+    </message>
+    <message>
+        <source>Show and set GPS info</source>
+        <translation>Afficher et définir les info GPS</translation>
+    </message>
+    <message>
+        <source>Latitude</source>
+        <translation>Latitude</translation>
+    </message>
+    <message>
+        <source>Longitude</source>
+        <translation>Longitude</translation>
+    </message>
+    <message>
+        <source>Minimize cells info view</source>
+        <translation>Réduire la vue des infos cellules</translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation>Afficher et définir les infos des cellules</translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation>Utiliser l&apos;ID des cellules comme source principale de positionnement</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Supprimer</translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation>Réduire la vue des infos wifi</translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation>Afficher et définir les infos wifi</translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
+        <translation>Nécessite d&apos;être connecté par wifi</translation>
     </message>
     <message>
         <source>Selected wifis</source>
@@ -384,32 +416,12 @@
         <translation>Réseaux wifi disponibles</translation>
     </message>
     <message>
-        <source>Require wifi to be online</source>
-        <translation>Nécessite d&apos;être connecté par wifi</translation>
+        <source>Write wifi station name</source>
+        <translation>Ecrire le nom du réseau wifi</translation>
     </message>
     <message>
-        <source>Show and set GPS info</source>
-        <translation>Afficher et définir les info GPS</translation>
-    </message>
-    <message>
-        <source>Show and set cells info</source>
-        <translation>Afficher et définir les infos des cellules</translation>
-    </message>
-    <message>
-        <source>Show and set wifi info</source>
-        <translation>Afficher et définir les infos wifi</translation>
-    </message>
-    <message>
-        <source>Minimize GPS info view</source>
-        <translation>Réduire la vue des infos GPS</translation>
-    </message>
-    <message>
-        <source>Minimize wifi info view</source>
-        <translation>Réduire la vue des infos wifi</translation>
-    </message>
-    <message>
-        <source>Minimize cells info view</source>
-        <translation>Réduire la vue des infos cellules</translation>
+        <source>Cell IDs</source>
+        <translation>ID des cellules</translation>
     </message>
 </context>
 <context>
@@ -449,10 +461,6 @@
         <translation>Enregistrement de la journée sélectionnée</translation>
     </message>
     <message>
-        <source>Show and edit data page</source>
-        <translation>Afficher et modifier la page de données</translation>
-    </message>
-    <message>
         <source>Subtotals of the day</source>
         <translation>Sous-totaux du jour</translation>
     </message>
@@ -465,32 +473,16 @@
         <translation>heures</translation>
     </message>
     <message>
-        <source>Extend up</source>
-        <translation>Etendre en haut</translation>
-    </message>
-    <message>
-        <source>Extending up</source>
-        <translation>Extension en haut</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Supprimer</translation>
-    </message>
-    <message>
-        <source>Deleting</source>
-        <translation>Suppression</translation>
-    </message>
-    <message>
-        <source>Extend down</source>
-        <translation>Etendre en bas</translation>
-    </message>
-    <message>
-        <source>Extending down</source>
-        <translation>Extension en bas</translation>
-    </message>
-    <message>
         <source>Edit data</source>
         <translation>Modifier les données</translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day data</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

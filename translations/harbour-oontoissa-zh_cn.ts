@@ -181,8 +181,16 @@
 <context>
     <name>EditDay</name>
     <message>
-        <source>Edit day page</source>
-        <translation>编辑日期页面</translation>
+        <source>Show day data</source>
+        <translation>显示当天数据</translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation>显示当天图示</translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation>编辑数据</translation>
     </message>
 </context>
 <context>
@@ -344,26 +352,6 @@
         <translation>工作1</translation>
     </message>
     <message>
-        <source>Latitude</source>
-        <translation>纬度</translation>
-    </message>
-    <message>
-        <source>Longitude</source>
-        <translation>经度</translation>
-    </message>
-    <message>
-        <source>Cell IDs</source>
-        <translation>小区ID</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>删除</translation>
-    </message>
-    <message>
-        <source>Use CellId as a primary location source</source>
-        <translation>使用移动数据id作为首要的位置源</translation>
-    </message>
-    <message>
         <source>Location size (m)</source>
         <translation>位置尺寸（米）</translation>
     </message>
@@ -372,8 +360,52 @@
         <translation>栅栏厚度（m）</translation>
     </message>
     <message>
-        <source>Write wifi station name</source>
-        <translation>写下WiFi基站名</translation>
+        <source>Location color</source>
+        <translation>位置颜色</translation>
+    </message>
+    <message>
+        <source>Minimize GPS info view</source>
+        <translation>最小化GPS信息视图</translation>
+    </message>
+    <message>
+        <source>Show and set GPS info</source>
+        <translation>展示并设置GPS信息</translation>
+    </message>
+    <message>
+        <source>Latitude</source>
+        <translation>纬度</translation>
+    </message>
+    <message>
+        <source>Longitude</source>
+        <translation>经度</translation>
+    </message>
+    <message>
+        <source>Minimize cells info view</source>
+        <translation>最小化移动数据信息视图</translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation>展示并设置移动数据信息</translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation>使用移动数据id作为首要的位置源</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation>最小化WiFi信息视图</translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation>展示并设置WiFi信息</translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
+        <translation>要求WiFi在线</translation>
     </message>
     <message>
         <source>Selected wifis</source>
@@ -384,32 +416,12 @@
         <translation>可用的WiFi</translation>
     </message>
     <message>
-        <source>Require wifi to be online</source>
-        <translation>要求WiFi在线</translation>
+        <source>Write wifi station name</source>
+        <translation>写下WiFi基站名</translation>
     </message>
     <message>
-        <source>Show and set GPS info</source>
-        <translation>展示并设置GPS信息</translation>
-    </message>
-    <message>
-        <source>Show and set cells info</source>
-        <translation>展示并设置移动数据信息</translation>
-    </message>
-    <message>
-        <source>Show and set wifi info</source>
-        <translation>展示并设置WiFi信息</translation>
-    </message>
-    <message>
-        <source>Minimize GPS info view</source>
-        <translation>最小化GPS信息视图</translation>
-    </message>
-    <message>
-        <source>Minimize wifi info view</source>
-        <translation>最小化WiFi信息视图</translation>
-    </message>
-    <message>
-        <source>Minimize cells info view</source>
-        <translation>最小化移动数据信息视图</translation>
+        <source>Cell IDs</source>
+        <translation>小区ID</translation>
     </message>
 </context>
 <context>
@@ -449,10 +461,6 @@
         <translation>已选择的当日记录</translation>
     </message>
     <message>
-        <source>Show and edit data page</source>
-        <translation>展示并编辑数据页</translation>
-    </message>
-    <message>
         <source>Subtotals of the day</source>
         <translation>当天的小计</translation>
     </message>
@@ -465,32 +473,16 @@
         <translation>小时</translation>
     </message>
     <message>
-        <source>Extend up</source>
-        <translation>扩展</translation>
-    </message>
-    <message>
-        <source>Extending up</source>
-        <translation>扩展中</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>删除</translation>
-    </message>
-    <message>
-        <source>Deleting</source>
-        <translation>删除中</translation>
-    </message>
-    <message>
-        <source>Extend down</source>
-        <translation>向下延伸</translation>
-    </message>
-    <message>
-        <source>Extending down</source>
-        <translation>向下延伸中</translation>
-    </message>
-    <message>
         <source>Edit data</source>
         <translation>编辑数据</translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation>显示当天图示</translation>
+    </message>
+    <message>
+        <source>Show day data</source>
+        <translation>显示当天数据</translation>
     </message>
 </context>
 <context>

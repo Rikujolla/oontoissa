@@ -181,8 +181,16 @@
 <context>
     <name>EditDay</name>
     <message>
-        <source>Edit day page</source>
+        <source>Show day data</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation type="unfinished">Modifica dati</translation>
     </message>
 </context>
 <context>
@@ -313,103 +321,107 @@
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation>Elimina tabelle</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete location</source>
-        <translation>Elimina luogo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation>Eliminazione</translation>
+        <translation type="unfinished">Eliminazione</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation>Aggiorna valori</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Aiuto</translation>
+        <translation type="unfinished">Aiuto</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Luogo</translation>
+        <translation type="unfinished">Luogo</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation>Nome luogo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation>Lavoro1</translation>
-    </message>
-    <message>
-        <source>Latitude</source>
-        <translation>Latitudine</translation>
-    </message>
-    <message>
-        <source>Longitude</source>
-        <translation>Longitudine</translation>
-    </message>
-    <message>
-        <source>Cell IDs</source>
-        <translation>Identificatori cella</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Elimina</translation>
-    </message>
-    <message>
-        <source>Use CellId as a primary location source</source>
-        <translation>Usa Cell ID come fonte primaria per la posizione</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Location size (m)</source>
-        <translation>Dimensione luogo (m)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fence thickness (m)</source>
-        <translation>Spessore recinto (m)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Write wifi station name</source>
-        <translation>Scrivi nome stazione wifi</translation>
-    </message>
-    <message>
-        <source>Selected wifis</source>
-        <translation>Wifi selesionzate</translation>
-    </message>
-    <message>
-        <source>Available wifis</source>
-        <translation>Wifi disponibili</translation>
-    </message>
-    <message>
-        <source>Require wifi to be online</source>
-        <translation>Richiede che la wifi sia attiva</translation>
-    </message>
-    <message>
-        <source>Show and set GPS info</source>
-        <translation>Mostra e imposta le informazioni GPS</translation>
-    </message>
-    <message>
-        <source>Show and set cells info</source>
-        <translation>Mostra e imposta le informazioni cella</translation>
-    </message>
-    <message>
-        <source>Show and set wifi info</source>
-        <translation>Mostra e imposta le informazioni wifi</translation>
+        <source>Location color</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Minimize GPS info view</source>
-        <translation>Riduci vista informazioni GPS</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Minimize wifi info view</source>
-        <translation>Riduci vista informazioni WiFi</translation>
+        <source>Show and set GPS info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Longitude</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Minimize cells info view</source>
-        <translation>Riduci vista informazioni cella</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Elimina</translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected wifis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available wifis</source>
+        <translation type="unfinished">Wifi disponibili</translation>
+    </message>
+    <message>
+        <source>Write wifi station name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cell IDs</source>
+        <translation type="unfinished">Identificatori cella</translation>
     </message>
 </context>
 <context>
@@ -449,10 +461,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show and edit data page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subtotals of the day</source>
         <translation type="unfinished"></translation>
     </message>
@@ -465,32 +473,16 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Extend up</source>
-        <translation type="unfinished">Estendi</translation>
-    </message>
-    <message>
-        <source>Extending up</source>
-        <translation type="unfinished">Estendo</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="unfinished">Elimina</translation>
-    </message>
-    <message>
-        <source>Deleting</source>
-        <translation type="unfinished">Eliminazione</translation>
-    </message>
-    <message>
-        <source>Extend down</source>
-        <translation type="unfinished">Riduci</translation>
-    </message>
-    <message>
-        <source>Extending down</source>
-        <translation type="unfinished">Riduco</translation>
-    </message>
-    <message>
         <source>Edit data</source>
         <translation type="unfinished">Modifica dati</translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day data</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -53,7 +53,7 @@ ApplicationWindow
     property int currentCell //saves current cell number globally
     property string currentWifi // Maybe later var array to enable multiple wifis
     property real fenceThickness : 50.0 //Utilized ec to stop cell facilitated tracking
-    property int saveLag: 30 // Used to postpone saving the values in unstable conditions
+    property int saveLag: 40 // Used to postpone saving the values in unstable conditions
     property int saveDecr: 1//Decrement for saveLag
     property string gpsTxt: qsTr("Do not use GPS")
     property bool gpsTrue: true
@@ -65,6 +65,7 @@ ApplicationWindow
     property real prevSpeed: 7000.0 // Save previous speed, not actual speed, adjusted to constant timer
     property int blackOut: 1 //Time, no new gpsinfo
     property string selectedDate_g // Global variable to tell the date to be explored
+    property int dbVersion: 27 //
 
     /*NetworkInfo { // Make multiple signals possible
         id : bestcell
@@ -104,7 +105,9 @@ ApplicationWindow
                           currentCell = result.CellId;
                           //console.log("CellId found ", currentCell);
                       },
-                      function() { console.log('call failed') })
+                      function() {
+                          //console.log('call failed')
+                      })
         }
     }
 
@@ -145,16 +148,20 @@ ApplicationWindow
                       //typedCall('GetTechnologies',[],
                       function(result) {
                           wifis.clear();
-                          // Loop through all cellular and wifi services and save your wifi networks
+                          // Loop through all cellular and wifi services and save your available wifi networks
                           for (var i =0;i<Object.keys(result).length;i++){
-                              if (result[i][1].Type == 'wifi'){
+                              // Requesting type to be wifi and reguesting availability also.
+                              // Otherwise all saved connections are thought to be valid and tracking does not break when needed.
+                              if (result[i][1].Type === 'wifi' && result[i][1].Available === true){
                                   //console.log(result[i][1].Name, result[i][1].State, result[i][1].Type, result[i][1].Strength);
-                                  if (result[i][1].State == "online") {wifi_bool = 1} else {wifi_bool = 0};
+                                  if (result[i][1].State === "online") {wifi_bool = 1} else {wifi_bool = 0};
                                   wifis.append({"name":result[i][1].Name, "activity":result[i][1].State, "actbool":wifi_bool})
                               }
                           }
                       },
-                      function() { console.log('call failed') })
+                      function() {
+                          //console.log('call failed')
+                      })
         }
     }
 

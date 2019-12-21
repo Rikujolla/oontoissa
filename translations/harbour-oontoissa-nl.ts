@@ -181,8 +181,16 @@
 <context>
     <name>EditDay</name>
     <message>
-        <source>Edit day page</source>
+        <source>Show day data</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit data</source>
+        <translation type="unfinished">Gegevens bewerken</translation>
     </message>
 </context>
 <context>
@@ -313,103 +321,107 @@
     <name>Loc</name>
     <message>
         <source>Delete tables</source>
-        <translation>Tabellen verwijderen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete location</source>
-        <translation>Locatie verwijderen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation>Wordt verwijderd</translation>
+        <translation type="unfinished">Wordt verwijderd</translation>
     </message>
     <message>
         <source>Update values</source>
-        <translation>Waarden bijwerken</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hulp</translation>
+        <translation type="unfinished">Hulp</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Locatie</translation>
+        <translation type="unfinished">Locatie</translation>
     </message>
     <message>
         <source>Location name</source>
-        <translation>Locatienaam</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Work1</source>
-        <translation>Werk1</translation>
-    </message>
-    <message>
-        <source>Latitude</source>
-        <translation>Breedtegraad</translation>
-    </message>
-    <message>
-        <source>Longitude</source>
-        <translation>Lengtegraad</translation>
-    </message>
-    <message>
-        <source>Cell IDs</source>
-        <translation>Cel-ID’s</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Verwijderen</translation>
-    </message>
-    <message>
-        <source>Use CellId as a primary location source</source>
-        <translation>Cel-ID gebruiken als primaire locatiebron</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Location size (m)</source>
-        <translation>Locatiegrootte (m)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fence thickness (m)</source>
-        <translation>Hekdikte (m)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Write wifi station name</source>
-        <translation>Voer wifistationnaam in</translation>
-    </message>
-    <message>
-        <source>Selected wifis</source>
-        <translation>Geselecteerde wifi’s</translation>
-    </message>
-    <message>
-        <source>Available wifis</source>
-        <translation>Beschikbare wifi’s</translation>
-    </message>
-    <message>
-        <source>Require wifi to be online</source>
-        <translation>Wifi vereisen om online te zijn</translation>
-    </message>
-    <message>
-        <source>Show and set GPS info</source>
-        <translation>Gps-informatie tonen en instellen</translation>
-    </message>
-    <message>
-        <source>Show and set cells info</source>
-        <translation>Celinformatie tonen en instellen</translation>
-    </message>
-    <message>
-        <source>Show and set wifi info</source>
-        <translation>Wifi-informatie tonen en instellen</translation>
+        <source>Location color</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Minimize GPS info view</source>
-        <translation>Gps-informatieoverzicht minimaliseren</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Minimize wifi info view</source>
-        <translation>Wifi-informatieoverzicht minimaliseren</translation>
+        <source>Show and set GPS info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latitude</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Longitude</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Minimize cells info view</source>
-        <translation>Celinformatieoverzicht minimaliseren</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and set cells info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use CellId as a primary location source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Verwijderen</translation>
+    </message>
+    <message>
+        <source>Minimize wifi info view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show and set wifi info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Require wifi to be online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected wifis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available wifis</source>
+        <translation type="unfinished">Beschikbare wifi’s</translation>
+    </message>
+    <message>
+        <source>Write wifi station name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cell IDs</source>
+        <translation type="unfinished">Cel-ID’s</translation>
     </message>
 </context>
 <context>
@@ -449,10 +461,6 @@
         <translation>Geselecteerde dagopnames</translation>
     </message>
     <message>
-        <source>Show and edit data page</source>
-        <translation>Gegevenspagina tonen en bewerken</translation>
-    </message>
-    <message>
         <source>Subtotals of the day</source>
         <translation>Subtotalen van de dag</translation>
     </message>
@@ -465,32 +473,16 @@
         <translation>uren</translation>
     </message>
     <message>
-        <source>Extend up</source>
-        <translation>Uitbreiden naar omhoog</translation>
-    </message>
-    <message>
-        <source>Extending up</source>
-        <translation>Wordt naar omhoog uitgebreid</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Verwijderen</translation>
-    </message>
-    <message>
-        <source>Deleting</source>
-        <translation>Wordt verwijderd</translation>
-    </message>
-    <message>
-        <source>Extend down</source>
-        <translation>Uitbreiden naar omlaag</translation>
-    </message>
-    <message>
-        <source>Extending down</source>
-        <translation>Wordt naar omlaag uitgebreid</translation>
-    </message>
-    <message>
         <source>Edit data</source>
         <translation>Gegevens bewerken</translation>
+    </message>
+    <message>
+        <source>Show day graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show day data</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
