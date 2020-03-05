@@ -1,4 +1,4 @@
-/*Copyright (c) 2015-2016, Riku Lahtinen
+/*Copyright (c) 2015-2020, Riku Lahtinen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -93,10 +93,10 @@ function updateLocation() {
                     rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE theplace = ?', [listix.get(currentIndex-1).pla]);
                     if (wifi.text !== "" || rs.rows.length > 0) {
                         if (rs.rows.length === 0){
-                            tx.executeSql('INSERT INTO Wifiinfo VALUES(?, ?, ?, ?, ?)', [listix.get(currentIndex-1).pla, wifi.text, '50', 'idle', wifiAct.checked]);
+                            tx.executeSql('INSERT INTO Wifiinfo VALUES(?, ?, ?, ?, ?)', [listix.get(currentIndex-1).pla, wifi.text,strength_row.text_high*100 + strength_row.text_low, 'idle', wifiAct.checked]);
                         }
                         else {
-                            tx.executeSql('UPDATE Wifiinfo SET thewifi=?, active = ? WHERE theplace = ?', [wifi.text, wifiAct.checked, (listix.get(currentIndex-1).pla)]);
+                            tx.executeSql('UPDATE Wifiinfo SET thewifi=?, sigstrength = ?, active = ? WHERE theplace = ?', [wifi.text, strength_row.text_high*100 +strength_row.text_low, wifiAct.checked, (listix.get(currentIndex-1).pla)]);
                         }
                     }
                     else {
@@ -251,7 +251,7 @@ function populateView() {  // Loads existing info to Loc.qml page
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Priorities(theplace TEXT, gps INTEGER, cell INTEGER, wifi INTEGER, blut INTEGER, other INTEGER)');
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Wifiinfo(theplace TEXT, thewifi TEXT, sigstrength INTEGER, status TEXT, active INTEGER)');
 
-                    // Show all
+                    // Show all from Locations
                     var rs = tx.executeSql('SELECT * FROM Locations');
 
                     // Adding location if location empty
@@ -275,6 +275,8 @@ function populateView() {  // Loads existing info to Loc.qml page
                         listix.set(i,{"els": (rs.rows.item(i).thelati + ", "
                                               + rs.rows.item(i).thelongi + ", " + rs.rows.item(i).tolerlong)});
                     }
+
+                    // Cell info
                     rs = tx.executeSql('SELECT * FROM Cellinfo WHERE theplace = ?', neimi.text);
                     tempor.backHeight = rs.rows.length*72
                     cellistit.clear()
@@ -286,6 +288,7 @@ function populateView() {  // Loads existing info to Loc.qml page
                     }
                     listix.set((currentIndex-1),{"cels": tempor.sellotext});
                     celltitle.text = tempor.selltitleBase + listix.get(currentIndex-1).cels
+
                     //Priorities
 
                     rs = tx.executeSql('SELECT * FROM Priorities WHERE theplace = ?', neimi.text);
@@ -310,20 +313,31 @@ function populateView() {  // Loads existing info to Loc.qml page
                         currentWifi = "";
                         wifiAct.checked = false;
                     }
+                    // Due to historical reasons if sigstrength is 50 it will be transferred to 50 low and 100 high
+                    else if (rs.rows.item(0).sigstrength === 50){
+                        wifi.text = rs.rows.item(0).thewifi
+                        currentWifi = rs.rows.item(0).thewifi
+                        wifi_low.text = 50
+                        wifi_high.text = 100
+                        wifiAct.checked = rs.rows.item(0).active
+                    }
+
                     else {
                         wifi.text = rs.rows.item(0).thewifi
                         currentWifi = rs.rows.item(0).thewifi
                         wifiAct.checked = rs.rows.item(0).active
+                        wifi_low.text = rs.rows.item(0).sigstrength %100
+                        wifi_high.text = (rs.rows.item(0).sigstrength - rs.rows.item(0).sigstrength %100)/100
                     }
 
-                    wifisAvailable.text = qsTr("Available wifis") + ": "
+                    wifisAvailable.text = qsTr("Available wifis") + ":"
                     for (i=0; i<wifis.count; i++) {
                         var j = wifis.count-1
                         if (i === j) {
-                            wifisAvailable.text += wifis.get(i).name;
+                            wifisAvailable.text += "\n" + wifis.get(i).name+ ", " + wifis.get(i).strength;
                         }
                         else {
-                            wifisAvailable.text += wifis.get(i).name + ", ";
+                            wifisAvailable.text += "\n" + wifis.get(i).name+ ", " + wifis.get(i).strength;
                         }
                     }
 
@@ -374,8 +388,8 @@ function checkFences() {
                     prevLatitude = coord.latitude;
 
                     // If gpsTrue and gps operable, testing, if in area
+                    var tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
                     if (gpsTrue && latitudeStagnationInd < 15) {
-                        var tolerat = 40000000.0; // Ordering by this the tighter tolerance to be selected when two possible locations
                         if (possut.position.horizontalAccuracyValid) {
                             var htol = possut.position.horizontalAccuracy
                             //console.log(possut.position.horizontalAccuracy, possut.position.horizontalAccuracyValid)
@@ -431,18 +445,29 @@ function checkFences() {
                     }
 
                     /// This clause tests if in wifi, not sure if the total logic works
+                    // 1. List all available wifis
+                    // 2. Select acceptable strengths
+                    // 3. Select smallest location
                     if (varus.inFence == "Not in a paddock") {
+                        // Loop through all available wifis
                         for (i=0; i<wifis.count; i++) {
                             //rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ? AND active = ?', [wifis.get(i).name, wifis.get(i).actbool]);
-                            rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ?', [wifis.get(i).name]);
-                            if (rs.rows.length >0 && rs.rows.item(0).active === 0
-                                    || rs.rows.length >0 && rs.rows.item(0).active === wifis.get(i).actbool) {
-                                varus.inFence = rs.rows.item(0).theplace;
-                                varus.inFenceT = varus.inFence;
-                                covLoc = varus.inFenceT;
-                                tolerat = rs.rows.item(0).tolerlong;
-                                newStatus = 4;
-                                extraMsg = qsTr("No GPS, wifi info used instead")
+                            // List all the wifis saved to the locations
+                            // rs = tx.executeSql('SELECT * FROM Wifiinfo WHERE thewifi = ? AND ? > sigstrength%100', [wifis.get(i).name, wifis.get(i).strength]);
+                            // Select smallest location for that wifi
+                            var rz = tx.executeSql('SELECT Locations.theplace AS Theplace, tolerlong, Wifiinfo.active AS Active, Wifiinfo.sigstrength AS Strength FROM Locations INNER JOIN Wifiinfo ON Locations.theplace = Wifiinfo.theplace WHERE Wifiinfo.thewifi = ? ORDER BY Locations.tolerlong ASC LIMIT 1', [wifis.get(i).name]);
+
+                            if (rz.rows.length >0 && rz.rows.item(0).Active === 0
+                                    || rz.rows.length >0 && rz.rows.item(0).Active === wifis.get(i).actbool) {
+                                if (rz.rows.item(0).tolerlong < tolerat && wifis.get(i).strength >= rz.rows.item(0).Strength%100 && wifis.get(i).strength <= (rz.rows.item(0).Strength - rz.rows.item(0).Strength%100)/100){
+                                    varus.inFence = rz.rows.item(0).Theplace;
+                                    varus.inFenceT = varus.inFence;
+                                    covLoc = varus.inFenceT;
+                                    tolerat = rz.rows.item(0).tolerlong;
+                                    //console.log(rz.rows.length, wifis.get(i).name, wifis.get(i).strength, rz.rows.item(0).Theplace, tolerat)
+                                    newStatus = 4;
+                                    extraMsg = qsTr("No GPS, wifi info used instead")
+                                }
                             }
                         }
                     }

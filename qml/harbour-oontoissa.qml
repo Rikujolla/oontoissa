@@ -155,7 +155,7 @@ ApplicationWindow
                               if (result[i][1].Type === 'wifi' && result[i][1].Available === true){
                                   //console.log(result[i][1].Name, result[i][1].State, result[i][1].Type, result[i][1].Strength);
                                   if (result[i][1].State === "online") {wifi_bool = 1} else {wifi_bool = 0};
-                                  wifis.append({"name":result[i][1].Name, "activity":result[i][1].State, "actbool":wifi_bool})
+                                  wifis.append({"name":result[i][1].Name, "activity":result[i][1].State, "actbool":wifi_bool, "strength":result[i][1].Strength})
                               }
                           }
                       },
@@ -182,6 +182,7 @@ ApplicationWindow
             name:""
             activity:""
             actbool:0
+            strength:0
         }
     }
 

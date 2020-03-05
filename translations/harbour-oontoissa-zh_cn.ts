@@ -423,6 +423,16 @@
         <source>Cell IDs</source>
         <translation>小区ID</translation>
     </message>
+    <message>
+        <source>Low strength</source>
+        <extracomment>Limited size to tell to input wifi strength low value</extracomment>
+        <translation>低强度</translation>
+    </message>
+    <message>
+        <source>High strength</source>
+        <extracomment>Limited size to tell to input wifi strength high value</extracomment>
+        <translation>高强度</translation>
+    </message>
 </context>
 <context>
     <name>LocationDialog</name>

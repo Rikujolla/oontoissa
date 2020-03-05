@@ -322,7 +322,7 @@ Page {
                     Mydbases.checkFences();
                     statusExtra.text = extraMsg
                     //rot.active ? (console.log("Rottaa")):console.log("Ei Rottaa")
-                    rot.active ? rot.stop() : rot.start()
+                    //rot.active ? rot.stop() : rot.start()
                     //console.log("passiivist", varus.timeInFenceS)
                 }
             }

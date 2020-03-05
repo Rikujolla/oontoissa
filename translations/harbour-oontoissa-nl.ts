@@ -423,6 +423,16 @@
         <source>Cell IDs</source>
         <translation type="unfinished">Cel-ID’s</translation>
     </message>
+    <message>
+        <source>Low strength</source>
+        <extracomment>Limited size to tell to input wifi strength low value</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>High strength</source>
+        <extracomment>Limited size to tell to input wifi strength high value</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LocationDialog</name>

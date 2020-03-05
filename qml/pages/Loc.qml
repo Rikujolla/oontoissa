@@ -1,4 +1,4 @@
-/*Copyright (c) 2015, Riku Lahtinen
+/*Copyright (c) 2015-2020, Riku Lahtinen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -451,16 +451,78 @@ Page {
                         Mydbases.updateLocation()
                     }
                 }
+                Text {
+                    id: wifi_strength
+                    text: ""
+                    width: page.width*1/8
+                }
 
-                Button {
-                    id: wifie
-                    visible: false
-                    text: "Scroll"
-                    color: Theme.secondaryHighlightColor
-                    width:page.width/2
-                    onClicked: {
-                        Mydbases.updateLocation()
+            }
+            Row {
+                id: strength_row
+                visible: tempor.wifiVisible
+                property int text_low: 0
+                property int text_high: 0
+
+            TextField {
+                id: wifi_low
+                placeholderText: "50"
+                //: Limited size to tell to input wifi strength low value
+                label: qsTr("Low strength")
+                labelVisible: true
+                width: page.width*2/5
+                //validator: RegExpValidator { regExp: /^\d{1,10}$/ }
+                validator: IntValidator { bottom: 0; top: 99 }
+                color: errorHighlight? "red" : Theme.primaryColor
+                inputMethodHints: Qt.ImhNoPredictiveText
+                EnterKey.enabled: !errorHighlight
+                EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                EnterKey.onClicked: {
+                    focus = false
+                    strength_row.text_low = wifi_low.text
+                    strength_row.text_high = wifi_high.text
+                    if (strength_row.text_high < strength_row.text_low +1) {
+                        strength_row.text_high = strength_row.text_low +1
+                        wifi_high.text = strength_row.text_low +1
                     }
+                    //currentWifi = wifi.text
+                    Mydbases.updateLocation()
+                }
+            }
+            TextField {
+                id: wifi_high
+                placeholderText: "90"
+                //: Limited size to tell to input wifi strength high value
+                label: qsTr("High strength")
+                width: page.width*2/5
+                //validator: RegExpValidator { regExp: /^\d{1,10}$/ }
+                validator: IntValidator { bottom: 1; top: 100 }
+                color: errorHighlight? "red" : Theme.primaryColor
+                inputMethodHints: Qt.ImhNoPredictiveText
+                EnterKey.enabled: !errorHighlight
+                EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                EnterKey.onClicked: {
+                    focus = false
+                    strength_row.text_low = wifi_low.text
+                    strength_row.text_high = wifi_high.text
+                    if (strength_row.text_low > strength_row.text_high - 1) {
+                        strength_row.text_low = strength_row.text_high - 1
+                        wifi_low.text = strength_row.text_high - 1
+                    }
+                    //currentWifi = wifi.text
+                    Mydbases.updateLocation()
+                }
+            }
+            }
+
+            Button {
+                id: wifie
+                visible: false
+                text: "Scroll"
+                color: Theme.secondaryHighlightColor
+                width:page.width/2
+                onClicked: {
+                    Mydbases.updateLocation()
                 }
             }
 
