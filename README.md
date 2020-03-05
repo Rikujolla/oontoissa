@@ -18,7 +18,7 @@ The phases for the release are:
 8. Commit changes for the version, amend commits if changes are needed in the test process
 9. Merge dev branch to the master
 10. Move the source to GitHub
-11. Create package from GitHub master to the Mer OBS (tar -czvf harbour-oontoissa-0.2.7.tar.bz2 ...)
+11. Create package from GitHub master to the Mer OBS (tar -czvf harbour-oontoissa-0.2.8.tar.bz2 ...)
 12. Load the local rpms to Jolla Harbour and edit release info
 13. Load the local rpms to OpenRepos and edit release info
 

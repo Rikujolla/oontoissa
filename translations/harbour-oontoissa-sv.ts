@@ -423,6 +423,14 @@
         <source>Cell IDs</source>
         <translation>Basstations-ID</translation>
     </message>
+    <message>
+        <source>Low strength</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>High strength</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LocationDialog</name>
