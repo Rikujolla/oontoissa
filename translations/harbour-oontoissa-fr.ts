@@ -182,15 +182,15 @@
     <name>EditDay</name>
     <message>
         <source>Show day data</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les données du jour</translation>
     </message>
     <message>
         <source>Show day graphics</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les données du jour</translation>
     </message>
     <message>
         <source>Edit data</source>
-        <translation type="unfinished">Modifier les données</translation>
+        <translation>Modifier les données</translation>
     </message>
 </context>
 <context>
@@ -361,7 +361,7 @@
     </message>
     <message>
         <source>Location color</source>
-        <translation type="unfinished"></translation>
+        <translation>Couleur d&apos;emplacement</translation>
     </message>
     <message>
         <source>Minimize GPS info view</source>
@@ -426,12 +426,12 @@
     <message>
         <source>Low strength</source>
         <extracomment>Limited size to tell to input wifi strength low value</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Niveau inférieur</translation>
     </message>
     <message>
         <source>High strength</source>
         <extracomment>Limited size to tell to input wifi strength high value</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Niveau supérieur</translation>
     </message>
 </context>
 <context>
@@ -488,11 +488,11 @@
     </message>
     <message>
         <source>Show day graphics</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les graphiques du jour</translation>
     </message>
     <message>
         <source>Show day data</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les données du jour</translation>
     </message>
 </context>
 <context>

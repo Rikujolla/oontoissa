@@ -4,6 +4,9 @@
 # Add new changelog entries following the format below.
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
+* Wed Apr 01 2020 Riku Lahtinen <rikul.lajolla@kiu.as> 0.2.9-1
+- Updated French translation
+
 * Sat Mar 07 2020 Riku Lahtinen <rikul.lajolla@kiu.as> 0.2.8-1
 - Better wifi logic
 
